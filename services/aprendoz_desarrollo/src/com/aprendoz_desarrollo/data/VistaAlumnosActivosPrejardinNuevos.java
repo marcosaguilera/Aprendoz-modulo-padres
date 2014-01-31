@@ -1,0 +1,23 @@
+
+package com.aprendoz_desarrollo.data;
+
+
+
+/**
+ *  aprendoz_desarrollo.VistaAlumnosActivosPrejardinNuevos
+ *  01/24/2014 18:46:14
+ * 
+ */
+public class VistaAlumnosActivosPrejardinNuevos {
+
+    private VistaAlumnosActivosPrejardinNuevosId id;
+
+    public VistaAlumnosActivosPrejardinNuevosId getId() {
+        return id;
+    }
+
+    public void setId(VistaAlumnosActivosPrejardinNuevosId id) {
+        this.id = id;
+    }
+
+}

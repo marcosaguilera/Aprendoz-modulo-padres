@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.TipoCosto" table="tipo_costo" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idTipoCosto" type="integer">
+            <column name="id_tipo_costo"/>
+            <generator class="identity"/>
+        </id>
+        <property name="tipoCosto" type="string">
+            <column name="tipo_costo" length="45" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

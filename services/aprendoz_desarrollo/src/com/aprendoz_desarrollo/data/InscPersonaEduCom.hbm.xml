@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.InscPersonaEduCom" table="insc_persona_edu_com" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idInscPersonaEduCom" type="integer">
+            <column name="id_insc_persona_edu_com"/>
+            <generator class="identity"/>
+        </id>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19"/>
+        </property>
+        <property name="descuento" type="double">
+            <column name="descuento" precision="22" not-null="true"/>
+        </property>
+        <property name="tomaTransporte" type="byte">
+            <column name="toma_transporte" not-null="true"/>
+        </property>
+        <many-to-one name="educom" class="com.aprendoz_desarrollo.data.Educom">
+            <column name="educom_id_educom" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona">
+            <column name="persona_id_persona" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

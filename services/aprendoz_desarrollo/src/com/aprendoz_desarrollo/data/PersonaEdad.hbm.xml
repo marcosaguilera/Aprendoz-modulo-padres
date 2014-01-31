@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.PersonaEdad" table="persona_edad" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.PersonaEdadId">
+            <key-property name="idPersona" type="integer">
+                <column name="Id_Persona"/>
+            </key-property>
+            <key-property name="edad_vistaAlumnosActivos_idPersona_" type="long">
+                <column name="`edad(vista_alumnos_activos.Id_Persona)`"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,138 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.Educom" table="educom" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idEducom" type="integer">
+            <column name="id_educom"/>
+            <generator class="identity"/>
+        </id>
+        <property name="edadRequeridadFinal" type="integer">
+            <column name="edad_requeridad_final"/>
+        </property>
+        <property name="edadRequeridaInicial" type="integer">
+            <column name="edad_requerida_inicial"/>
+        </property>
+        <property name="comentario" type="string">
+            <column name="comentario" length="65535"/>
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" not-null="true"/>
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" not-null="true"/>
+        </property>
+        <property name="cupoMinimo" type="integer">
+            <column name="cupo_minimo" not-null="true"/>
+        </property>
+        <property name="cupoMaximo" type="integer">
+            <column name="cupo_maximo" not-null="true"/>
+        </property>
+        <property name="lunes" type="byte">
+            <column name="lunes"/>
+        </property>
+        <property name="hora1Lunes" type="time">
+            <column name="hora1_lunes" length="8"/>
+        </property>
+        <property name="hora2Lunes" type="time">
+            <column name="hora2_lunes" length="8"/>
+        </property>
+        <property name="martes" type="byte">
+            <column name="martes"/>
+        </property>
+        <property name="hora1Martes" type="time">
+            <column name="hora1_martes" length="8"/>
+        </property>
+        <property name="hora2Martes" type="time">
+            <column name="hora2_martes" length="8"/>
+        </property>
+        <property name="miercoles" type="byte">
+            <column name="miercoles"/>
+        </property>
+        <property name="hora1Miercoles" type="time">
+            <column name="hora1_miercoles" length="8"/>
+        </property>
+        <property name="hora2Miercoles" type="time">
+            <column name="hora2_miercoles" length="8"/>
+        </property>
+        <property name="jueves" type="byte">
+            <column name="jueves"/>
+        </property>
+        <property name="hora1Jueves" type="time">
+            <column name="hora1_jueves" length="8"/>
+        </property>
+        <property name="hora2Jueves" type="time">
+            <column name="hora2_jueves" length="8"/>
+        </property>
+        <property name="viernes" type="byte">
+            <column name="viernes"/>
+        </property>
+        <property name="hora1Viernes" type="time">
+            <column name="hora1_viernes" length="8"/>
+        </property>
+        <property name="hora2Viernes" type="time">
+            <column name="hora2_viernes" length="8"/>
+        </property>
+        <property name="sabado" type="byte">
+            <column name="sabado"/>
+        </property>
+        <property name="hora1Sabado" type="time">
+            <column name="hora1_sabado" length="8"/>
+        </property>
+        <property name="hora2Sabado" type="time">
+            <column name="hora2_sabado" length="8"/>
+        </property>
+        <property name="domingo" type="byte">
+            <column name="domingo"/>
+        </property>
+        <property name="hora1Domingo" type="time">
+            <column name="hora1_domingo" length="8"/>
+        </property>
+        <property name="hora2Domingo" type="time">
+            <column name="hora2_domingo" length="8"/>
+        </property>
+        <property name="profesor1" type="integer">
+            <column name="profesor1" not-null="true"/>
+        </property>
+        <property name="profesor2" type="integer">
+            <column name="profesor2" not-null="true"/>
+        </property>
+        <property name="numeroHoras" type="float">
+            <column name="numero_horas" precision="11" not-null="true"/>
+        </property>
+        <property name="valorHonorarios" type="double">
+            <column name="valor_honorarios" precision="22" not-null="true"/>
+        </property>
+        <property name="fechaAperturaCurso" type="date">
+            <column name="fechaAperturaCurso" length="10"/>
+        </property>
+        <property name="fechaCierreCurso" type="date">
+            <column name="fechaCierreCurso" length="10"/>
+        </property>
+        <property name="valorTransporte" type="double">
+            <column name="valor_transporte" precision="22"/>
+        </property>
+        <property name="tarifaAnticipado" type="double">
+            <column name="tarifa_anticipado" precision="22"/>
+        </property>
+        <property name="costoTransporte" type="double">
+            <column name="costo_transporte" precision="22"/>
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="65535"/>
+        </property>
+        <property name="tipoEducom" type="string">
+            <column name="tipo_educom" length="65535"/>
+        </property>
+        <many-to-one name="sy" class="com.aprendoz_desarrollo.data.Sy">
+            <column name="sy_id_sy" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="costos" class="com.aprendoz_desarrollo.data.Costos">
+            <column name="costo_id_costo" not-null="true"/>
+        </many-to-one>
+        <set name="inscPersonaEduComs" inverse="true" cascade="">
+            <key>
+                <column name="educom_id_educom" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaEduCom"/>
+        </set>
+    </class>
+</hibernate-mapping>

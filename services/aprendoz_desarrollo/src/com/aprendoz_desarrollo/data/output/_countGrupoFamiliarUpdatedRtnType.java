@@ -1,0 +1,22 @@
+
+package com.aprendoz_desarrollo.data.output;
+
+
+
+/**
+ * Generated for query "_countGrupoFamiliarUpdated" on 01/24/2014 20:17:44
+ * 
+ */
+public class _countGrupoFamiliarUpdatedRtnType {
+
+    private Long _count;
+
+    public Long get_count() {
+        return _count;
+    }
+
+    public void set_count(Long _count) {
+        this._count = _count;
+    }
+
+}
