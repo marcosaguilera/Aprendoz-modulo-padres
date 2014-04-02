@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Sy
- *  02/04/2014 07:39:37
+ *  04/02/2014 11:03:06
  * 
  */
 public class Sy {
@@ -34,6 +34,7 @@ public class Sy {
     private Set<com.aprendoz_desarrollo.data.Costos> costoses = new HashSet<com.aprendoz_desarrollo.data.Costos>();
     private Set<com.aprendoz_desarrollo.data.Matricula> matriculas = new HashSet<com.aprendoz_desarrollo.data.Matricula>();
     private Set<com.aprendoz_desarrollo.data.SesionNivel> sesionNivels = new HashSet<com.aprendoz_desarrollo.data.SesionNivel>();
+    private Set<com.aprendoz_desarrollo.data.SecretariaEquivalenciaNotas> secretariaEquivalenciaNotases = new HashSet<com.aprendoz_desarrollo.data.SecretariaEquivalenciaNotas>();
     private Set<com.aprendoz_desarrollo.data.Coordinacion> coordinacions = new HashSet<com.aprendoz_desarrollo.data.Coordinacion>();
 
     public Integer getIdSy() {
@@ -202,6 +203,14 @@ public class Sy {
 
     public void setSesionNivels(Set<com.aprendoz_desarrollo.data.SesionNivel> sesionNivels) {
         this.sesionNivels = sesionNivels;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.SecretariaEquivalenciaNotas> getSecretariaEquivalenciaNotases() {
+        return secretariaEquivalenciaNotases;
+    }
+
+    public void setSecretariaEquivalenciaNotases(Set<com.aprendoz_desarrollo.data.SecretariaEquivalenciaNotas> secretariaEquivalenciaNotases) {
+        this.secretariaEquivalenciaNotases = secretariaEquivalenciaNotases;
     }
 
     public Set<com.aprendoz_desarrollo.data.Coordinacion> getCoordinacions() {

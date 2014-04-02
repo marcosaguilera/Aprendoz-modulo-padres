@@ -20,6 +20,12 @@
         <property name="plazo" type="string">
             <column name="plazo" length="20"/>
         </property>
+        <property name="activoRetirado" type="boolean">
+            <column name="activo_retirado"/>
+        </property>
+        <property name="beca" type="boolean">
+            <column name="beca"/>
+        </property>
         <many-to-one name="educom" class="com.aprendoz_desarrollo.data.Educom">
             <column name="educom_id_educom" not-null="true"/>
         </many-to-one>

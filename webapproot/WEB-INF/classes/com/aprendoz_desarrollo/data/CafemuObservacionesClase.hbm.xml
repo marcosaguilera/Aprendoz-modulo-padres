@@ -1,0 +1,171 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.CafemuObservacionesClase" table="cafemu_observaciones_clase" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="observacionId" type="integer">
+            <column name="observacion_id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" not-null="true"/>
+        </property>
+        <property name="hora" type="time">
+            <column name="hora" length="8" not-null="true"/>
+        </property>
+        <property name="a1" type="double">
+            <column name="a1" precision="22" not-null="true"/>
+        </property>
+        <property name="a2" type="double">
+            <column name="a2" precision="22" not-null="true"/>
+        </property>
+        <property name="a3" type="double">
+            <column name="a3" precision="22" not-null="true"/>
+        </property>
+        <property name="a4" type="double">
+            <column name="a4" precision="22" not-null="true"/>
+        </property>
+        <property name="a5" type="double">
+            <column name="a5" precision="22" not-null="true"/>
+        </property>
+        <property name="a6" type="double">
+            <column name="a6" precision="22" not-null="true"/>
+        </property>
+        <property name="a7" type="double">
+            <column name="a7" precision="22" not-null="true"/>
+        </property>
+        <property name="a8" type="double">
+            <column name="a8" precision="22" not-null="true"/>
+        </property>
+        <property name="a9" type="double">
+            <column name="a9" precision="22" not-null="true"/>
+        </property>
+        <property name="a10" type="double">
+            <column name="a10" precision="22" not-null="true"/>
+        </property>
+        <property name="ambientePorcentaje" type="double">
+            <column name="ambiente_porcentaje" precision="22" not-null="true"/>
+        </property>
+        <property name="c1" type="double">
+            <column name="c1" precision="22" not-null="true"/>
+        </property>
+        <property name="c2" type="double">
+            <column name="c2" precision="22" not-null="true"/>
+        </property>
+        <property name="c3" type="double">
+            <column name="c3" precision="22" not-null="true"/>
+        </property>
+        <property name="c4" type="double">
+            <column name="c4" precision="22" not-null="true"/>
+        </property>
+        <property name="c5" type="double">
+            <column name="c5" precision="22" not-null="true"/>
+        </property>
+        <property name="c6" type="double">
+            <column name="c6" precision="22" not-null="true"/>
+        </property>
+        <property name="c7" type="double">
+            <column name="c7" precision="22" not-null="true"/>
+        </property>
+        <property name="c8" type="double">
+            <column name="c8" precision="22" not-null="true"/>
+        </property>
+        <property name="c9" type="double">
+            <column name="c9" precision="22" not-null="true"/>
+        </property>
+        <property name="competenciasPuntaje" type="double">
+            <column name="competencias_puntaje" precision="22" not-null="true"/>
+        </property>
+        <property name="m1" type="double">
+            <column name="m1" precision="22" not-null="true"/>
+        </property>
+        <property name="m2" type="double">
+            <column name="m2" precision="22" not-null="true"/>
+        </property>
+        <property name="m3" type="double">
+            <column name="m3" precision="22" not-null="true"/>
+        </property>
+        <property name="m4" type="double">
+            <column name="m4" precision="22" not-null="true"/>
+        </property>
+        <property name="mejoramientoPuntaje" type="double">
+            <column name="mejoramiento_puntaje" precision="22" not-null="true"/>
+        </property>
+        <property name="q1" type="double">
+            <column name="q1" precision="22" not-null="true"/>
+        </property>
+        <property name="q2" type="double">
+            <column name="q2" precision="22" not-null="true"/>
+        </property>
+        <property name="q3" type="double">
+            <column name="q3" precision="22" not-null="true"/>
+        </property>
+        <property name="q4" type="double">
+            <column name="q4" precision="22" not-null="true"/>
+        </property>
+        <property name="q5" type="double">
+            <column name="q5" precision="22" not-null="true"/>
+        </property>
+        <property name="q6" type="double">
+            <column name="q6" precision="22" not-null="true"/>
+        </property>
+        <property name="calidadPuntaje" type="double">
+            <column name="calidad_puntaje" precision="22" not-null="true"/>
+        </property>
+        <property name="promedioPuntajeTotal" type="double">
+            <column name="promedio_puntaje_total" precision="22" not-null="true"/>
+        </property>
+        <property name="puntajeTotal" type="double">
+            <column name="puntaje_total" precision="22" not-null="true"/>
+        </property>
+        <property name="aprecioObservador" type="string">
+            <column name="aprecio_observador" length="65535" not-null="true"/>
+        </property>
+        <property name="maestroText" type="string">
+            <column name="maestro_text" length="65535" not-null="true"/>
+        </property>
+        <property name="comentario" type="string">
+            <column name="comentario" length="65535" not-null="true"/>
+        </property>
+        <property name="descripcionClase" type="string">
+            <column name="descripcion_clase" length="65535" not-null="true"/>
+        </property>
+        <property name="acuerdosPreliminares" type="string">
+            <column name="acuerdos_preliminares" length="65535" not-null="true"/>
+        </property>
+        <property name="descripcionFisicaAula" type="string">
+            <column name="descripcion_fisica_aula" length="65535" not-null="true"/>
+        </property>
+        <property name="mesObservacion" type="integer">
+            <column name="mes_observacion" not-null="true"/>
+        </property>
+        <property name="observadorText" type="string">
+            <column name="observador_text" length="65535" not-null="true"/>
+        </property>
+        <property name="cursoIdCurso" type="integer">
+            <column name="curso_id_curso" not-null="true"/>
+        </property>
+        <property name="cursoText" type="string">
+            <column name="curso_text" length="65535" not-null="true"/>
+        </property>
+        <property name="gradoIdGrado" type="integer">
+            <column name="grado_id_grado"/>
+        </property>
+        <property name="asignaturaIdAsignatura" type="integer">
+            <column name="asignatura_id_asignatura" not-null="true"/>
+        </property>
+        <property name="asignaturaText" type="string">
+            <column name="asignatura_text" length="65535" not-null="true"/>
+        </property>
+        <property name="personaIdPersona1" type="integer">
+            <column name="persona_id_persona_1" not-null="true"/>
+        </property>
+        <property name="personaIdPersona2" type="integer">
+            <column name="persona_id_persona_2" not-null="true"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19"/>
+        </property>
+    </class>
+</hibernate-mapping>

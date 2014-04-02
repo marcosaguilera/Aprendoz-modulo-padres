@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.EducomLog" table="educom_log" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idEducomLog" type="integer">
+            <column name="id_educom_log"/>
+            <generator class="identity"/>
+        </id>
+        <property name="usuario" type="string">
+            <column name="usuario" length="20" not-null="true"/>
+        </property>
+        <property name="accionRealizada" type="string">
+            <column name="accion_realizada" length="20" not-null="true"/>
+        </property>
+        <property name="tablaAfectada" type="string">
+            <column name="tabla_afectada" length="20" not-null="true"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" not-null="true"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
