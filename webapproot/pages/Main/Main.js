@@ -2,7 +2,7 @@ Date.prototype.getWeek = function() {
 	
 var onejan = new Date(this.getFullYear(),0,1);
 return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7);
-}
+},
 
 dojo.declare("Main", wm.Page, {
   start: function() { 
@@ -21,28 +21,7 @@ dojo.declare("Main", wm.Page, {
     window.location.reload();  
   },    
   
-  boton_generar_informeClick: function(inSender, inEvent) {
-      this.a_getInforUser.update(); 
-      var idp = this.personaDataGridX.selectedItem.getData().id.idPersona;  
-      var ida = this.inscalumasigDataGridX.selectedItem.getData().idasignatura;
-      var idsy = this.inscalumasigDataGridX.selectedItem.getData().idsy;
-      var getter = main.a_getInforUser.getItem(0); 
-      var id= getter.data.idpersona;
-      var clave= getter.data.clave1;
-      var codigoRep= "PAD001";
-      var formatType= "PDF";
-      $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {       
-        failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
-        httpMethod: "POST",
-        data:{ idp: id, 
-               pass: clave,
-               uri: "/aprendozreports/"+codigoRep,
-               format: formatType,
-               params: { idpersona: idp, asignatura: ida }
-         }
-       });
-       inEvent.preventDefault();
-  },
+  
   
  /*********************************
   *                              *
@@ -1629,6 +1608,24 @@ dojo.declare("Main", wm.Page, {
     }},
  
     /** Coding new version of Aprendoz Padres **/
+    // generate report for tracking students
+    performance_student_download1Click: function(inSender) {
+      var idp = this.performance_family_grid.selectedItem.data.pid; 
+      var ida = this.performance_student_subjects.selectedItem.data.idasignatura;
+      var id= "1065952";
+      var clave= "zombie2012+";
+      var formatType= "PDF";
+      $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {       
+        failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
+        httpMethod: "POST",
+        data:{ idp: id, 
+               pass: clave,
+               uri: "/aprendozreports/PAD001",
+               format: formatType,
+               params: { idpersona: idp, asignatura: ida }
+         }
+       });
+	},
     // mouse click parents_estudents_performance change color
     parents_estudents_performanceClick3: function(inSender) {
           $('#main_parents_estudents_performance')
@@ -1733,6 +1730,7 @@ dojo.declare("Main", wm.Page, {
 	parents_estudents_performanceClick: function(inSender) {
         this.performance_top_header.setCaption("CALIFICACIONES DEL ESTUDIANTE");
         this.panel_comunity_education.hide();
+        this.panel_estado_cuenta.hide();
         this.panel_inicio.show();
         this.performance_left_buttons_panel.show();
         this.performance_general_buttonClick1();
@@ -1741,6 +1739,7 @@ dojo.declare("Main", wm.Page, {
     parents_comunity_comunicationClick1: function(inSender) {
     	this.panel_inicio.hide();       
         this.panel_performance.hide();
+        this.panel_estado_cuenta.hide();
         this.panel_comunity_education.show();
 	},   
     //getData from selection in dojoGrid
@@ -1814,6 +1813,8 @@ dojo.declare("Main", wm.Page, {
 		var idp = this.performance_family_grid.selectedItem.data.pid;
         var json= main.parents_global_currentSy.getItem(0);
         var idsy= json.data.idsy;
+        var sy= json.data.sy;
+        this.performance_student_sy.setCaption(sy);
         this.parents_local_student_subjects.input.setValue("idpersona", idp);
         this.parents_local_student_subjects.input.setValue("idsy", idsy);
         this.parents_local_student_subjects.update();
@@ -1868,7 +1869,7 @@ dojo.declare("Main", wm.Page, {
 	},	
     // when the user accept the terms and contidions aprendoz trigger and 
     // insert a record into InscAlumCurso 
-	comunity_terms_acceptClick: function(inSender) {
+	/*comunity_terms_acceptClick: function(inSender) {
         var json= main.parents_global_currentSy.getItem(0);
         var idsy= json.data.idsy;
 		var idcosto= this.comunity_costs_grid.selectedItem.data.idcosto;
@@ -1878,10 +1879,6 @@ dojo.declare("Main", wm.Page, {
         var descuento= 0;
         var fechainicio= this.comunity_costs_grid.selectedItem.data.fechainicio;
         var fechafin= this.comunity_costs_grid.selectedItem.data.fechafin;
-        console.log("Persona: "+idpersona);
-        console.log("Costo: "+idcosto);
-        console.log("Sy: "+idsy);
-        console.log("Valor pagar: "+valorExtra);
 
         this.parents_viarbale_action_form.setValue("costos.idCosto", idcosto);
         this.parents_viarbale_action_form.setValue("persona.idPersona", idpersona);
@@ -1896,24 +1893,44 @@ dojo.declare("Main", wm.Page, {
         
         this.comunity_action_liveForm.setDataSet(this.parents_viarbale_action_form); 
         this.comunity_action_liveForm.insertData();        
-	},
+	},*/
     // insert record in insc_persona_educom
     comunity_terms_acceptClick1: function(inSender) {
     	var json= main.parents_global_currentSy.getItem(0);
         var idsy= json.data.idsy;
-    	var ideducom= this.comunity_costs_grid.selectedItem.data.id;
-        var idpersona= this.performance_family_grid.selectedItem.data.pid;
-        var descuento= 0;
         var now= new Date().getTime();
+    	var ideducom= this.comunity_costs_grid.selectedItem.data.id;
+        var idpersona= this.performance_family_grid.selectedItem.data.pid;              
         var tr= this.comunity_transp_selection.getDataValue();
-        console.log(tr);
-        this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
-        this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
-        this.parents_variable_insert_educom_subscription.setValue("descuento", descuento);
-        this.parents_variable_insert_educom_subscription.setValue("fechaCreacion", now);
-        this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
-        this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription); 
-        this.comunity_action_inscription_educom.insertData();  
+        var formaPago= this.comunity_payment_type.getDataValue();
+        var tipoPago= 5; 
+        var valorSinDescuento= this.comunity_costs_grid.selectedItem.data.valor;
+        var valorAnticipado= this.comunity_costs_grid.selectedItem.data.pagoAnticipado;
+        var plazo= this.comunity_payment_type.getDataValue();
+        if(formaPago=="anticipado"){
+            dtoActicipado= valorSinDescuento-valorAnticipado;
+            this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
+            this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
+            this.parents_variable_insert_educom_subscription.setValue("descuento", dtoActicipado);
+            this.parents_variable_insert_educom_subscription.setValue("fechaCreacion", now);
+            this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
+            this.parents_variable_insert_educom_subscription.setValue("tipoPago.idTipoPago", tipoPago);
+            this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
+            this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription); 
+            this.comunity_action_inscription_educom.insertData();    
+        }
+        if(formaPago=="mensual"){
+            dtoMensual= 0;
+            this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
+            this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
+            this.parents_variable_insert_educom_subscription.setValue("descuento", dtoMensual);
+            this.parents_variable_insert_educom_subscription.setValue("fechaCreacion", now);
+            this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
+            this.parents_variable_insert_educom_subscription.setValue("tipoPago.idTipoPago", tipoPago);
+            this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
+            this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription); 
+            this.comunity_action_inscription_educom.insertData();   
+        }     
 	},
     // selection and validation when the user tries to add a Curse
     // it shows a alert message
@@ -2013,8 +2030,74 @@ dojo.declare("Main", wm.Page, {
     	   this.parents_local_educom.update(); 
         }  
 	},
+    // enabling button when grid selected
 	comunity_costs_gridSelect: function(inSender) {
 		this.comunity_button_add.enable();
+	},
+    // passing idgrupofamiliar to Transporte page, it's soo cool!
+	parents_transportshipClick: function(inSender) {
+        var json= main.parents_local_performance_familyGroup.getItem(0);
+        var idgrupo= json.data.idgrupo;
+        console.log(idgrupo);
+	    wm.Page.getPage("Transporte").idGrupoFamiliar.setDataValue(idgrupo);
+	},
+    // genereat download reponse for report  
+    estado_cuenta_boton_descargaClick: function(inSender) {
+	    var _codigo = this.performance_family_grid.selectedItem.data.code;
+        var id= "1065952";
+        var clave= "zombie2012+";
+        var formatType= "PDF";
+            $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
+            failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
+            httpMethod: "POST",
+            data:{ idp: id, 
+                   pass: clave,
+                   uri: "/aprendozreports/FAC001",
+                   format: formatType,
+                   params: {codigo: _codigo }
+             }
+            });
+            //inEvent.preventDefault(); 
+	},
+    //get código persona for account_state
+	performance_family_gridSelect2: function(inSender) {
+		var codigo = this.performance_family_grid.selectedItem.data.code;
+        this.performance_top_header.setCaption("ESTADO DE CUENTA");
+        this.estado_cuenta_codigo.setCaption("Código: "+codigo);
+	},
+    //same action Event like performance_family_gridSelect2
+	parents_account_stateClick1: function(inSender) {
+		this.performance_family_gridSelect2();
+	},
+    //movin' panels & and actions
+	parents_account_stateClick2: function(inSender) {
+        this.panel_comunity_education.hide();
+        this.panel_inicio.hide();
+        this.performance_left_buttons_panel.hide();
+		this.panel_performance.hide();
+        this.panel_estado_cuenta.show();
+	},
+    // re-renderin' google charts
+	parents_estudents_performanceClick4: function(inSender) {
+	    this.renderChart_dash1();	
+	},
+    // re-renderin' google charts
+	performance_general_buttonClick2: function(inSender) {
+		this.renderChart_dash1();
+	},
+	performance_student_subjectsSelect2: function(inSender) {
+		this.performance_student_download1.enable();
+	},
+	performance_student_subjectsDeselect: function(inSender) {
+		this.performance_student_download1.disable();
+	},
+	performance_family_gridSelect3: function(inSender) {
+		var idp = this.performance_family_grid.selectedItem.data.pid;
+        var json= main.parents_global_currentSy.getItem(0);
+        var idsy= json.data.idsy;
+        this.parents_local_student_subjects.input.setValue("idpersona", idp);
+        this.parents_local_student_subjects.input.setValue("idsy", idsy);
+        this.parents_local_student_subjects.update();
 	},
 	_end: 0
 });

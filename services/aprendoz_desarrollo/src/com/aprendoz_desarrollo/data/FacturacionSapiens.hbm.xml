@@ -1,0 +1,49 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.FacturacionSapiens" table="facturacion_sapiens" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.FacturacionSapiensId">
+            <key-property name="dono" type="string">
+                <column name="dono"/>
+            </key-property>
+            <key-property name="ticon" type="string">
+                <column name="ticon"/>
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="19"/>
+            </key-property>
+            <key-property name="concepto" type="string">
+                <column name="concepto"/>
+            </key-property>
+            <key-property name="nconcepto" type="string">
+                <column name="nconcepto"/>
+            </key-property>
+            <key-property name="valor" type="string">
+                <column name="valor"/>
+            </key-property>
+            <key-property name="pordcto" type="string">
+                <column name="pordcto"/>
+            </key-property>
+            <key-property name="valdcto" type="string">
+                <column name="valdcto"/>
+            </key-property>
+            <key-property name="anticipo" type="string">
+                <column name="anticipo"/>
+            </key-property>
+            <key-property name="saldo" type="string">
+                <column name="saldo"/>
+            </key-property>
+            <key-property name="nnombre" type="string">
+                <column name="nnombre"/>
+            </key-property>
+            <key-property name="cursoact" type="string">
+                <column name="cursoact"/>
+            </key-property>
+            <key-property name="alu" type="string">
+                <column name="alu"/>
+            </key-property>
+            <key-property name="otro" type="string">
+                <column name="otro"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

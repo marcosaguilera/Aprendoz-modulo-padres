@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.BusDriver" table="bus_driver" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true"/>
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" not-null="true"/>
+        </property>
+        <property name="identification" type="string">
+            <column name="identification" not-null="true"/>
+        </property>
+        <property name="rh" type="string">
+            <column name="rh" not-null="true"/>
+        </property>
+        <property name="arp" type="string">
+            <column name="arp" not-null="true"/>
+        </property>
+        <property name="eps" type="string">
+            <column name="eps" not-null="true"/>
+        </property>
+        <set name="busPhones" inverse="true" cascade="">
+            <key>
+                <column name="driver_id"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.BusPhone"/>
+        </set>
+        <set name="busRoutes" inverse="true" cascade="">
+            <key>
+                <column name="driver_id"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.BusRoute"/>
+        </set>
+    </class>
+</hibernate-mapping>

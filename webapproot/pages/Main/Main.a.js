@@ -1,7 +1,7 @@
 Date.prototype.getWeek = function() {
 var onejan = new Date(this.getFullYear(),0,1);
 return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7);
-}
+},
 dojo.declare("Main", wm.Page, {
 start: function() {
 var curdate = new Date().getTime();
@@ -14,28 +14,6 @@ dojo.subscribe("session-expiration", this, "mySessionExpiredMethod");
 mySessionExpiredMethod: function(){
 alert("Aviso importante: Sesión expirada \n\n"+ "Su sesión ha excedido el tiempo de inactividad permitido. Por favor ingrese nuevamente.");
 window.location.reload();
-},
-boton_generar_informeClick: function(inSender, inEvent) {
-this.a_getInforUser.update();
-var idp = this.personaDataGridX.selectedItem.getData().id.idPersona;
-var ida = this.inscalumasigDataGridX.selectedItem.getData().idasignatura;
-var idsy = this.inscalumasigDataGridX.selectedItem.getData().idsy;
-var getter = main.a_getInforUser.getItem(0);
-var id= getter.data.idpersona;
-var clave= getter.data.clave1;
-var codigoRep= "PAD001";
-var formatType= "PDF";
-$.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
-failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
-httpMethod: "POST",
-data:{ idp: id,
-pass: clave,
-uri: "/aprendozreports/"+codigoRep,
-format: formatType,
-params: { idpersona: idp, asignatura: ida }
-}
-});
-inEvent.preventDefault();
 },
 /*********************************
 *                              *
@@ -1415,6 +1393,24 @@ this.impresion_buttClick(inSender, inEvent);
 console.error('ERROR IN iraFinalizarClick: ' + e);
 }},
 /** Coding new version of Aprendoz Padres **/
+// generate report for tracking students
+performance_student_download1Click: function(inSender) {
+var idp = this.performance_family_grid.selectedItem.data.pid;
+var ida = this.performance_student_subjects.selectedItem.data.idasignatura;
+var id= "1065952";
+var clave= "zombie2012+";
+var formatType= "PDF";
+$.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
+failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
+httpMethod: "POST",
+data:{ idp: id,
+pass: clave,
+uri: "/aprendozreports/PAD001",
+format: formatType,
+params: { idpersona: idp, asignatura: ida }
+}
+});
+},
 // mouse click parents_estudents_performance change color
 parents_estudents_performanceClick3: function(inSender) {
 $('#main_parents_estudents_performance')
@@ -1519,6 +1515,7 @@ this.parents_local_performance_familyGroup.update();
 parents_estudents_performanceClick: function(inSender) {
 this.performance_top_header.setCaption("CALIFICACIONES DEL ESTUDIANTE");
 this.panel_comunity_education.hide();
+this.panel_estado_cuenta.hide();
 this.panel_inicio.show();
 this.performance_left_buttons_panel.show();
 this.performance_general_buttonClick1();
@@ -1527,6 +1524,7 @@ this.performance_general_buttonClick1();
 parents_comunity_comunicationClick1: function(inSender) {
 this.panel_inicio.hide();
 this.panel_performance.hide();
+this.panel_estado_cuenta.hide();
 this.panel_comunity_education.show();
 },
 //getData from selection in dojoGrid
@@ -1597,6 +1595,8 @@ performance_general_trackingClick: function(inSender) {
 var idp = this.performance_family_grid.selectedItem.data.pid;
 var json= main.parents_global_currentSy.getItem(0);
 var idsy= json.data.idsy;
+var sy= json.data.sy;
+this.performance_student_sy.setCaption(sy);
 this.parents_local_student_subjects.input.setValue("idpersona", idp);
 this.parents_local_student_subjects.input.setValue("idsy", idsy);
 this.parents_local_student_subjects.update();
@@ -1651,7 +1651,7 @@ this.comunity_terms_non_accept.enable();
 },
 // when the user accept the terms and contidions aprendoz trigger and
 // insert a record into InscAlumCurso
-comunity_terms_acceptClick: function(inSender) {
+/*comunity_terms_acceptClick: function(inSender) {
 var json= main.parents_global_currentSy.getItem(0);
 var idsy= json.data.idsy;
 var idcosto= this.comunity_costs_grid.selectedItem.data.idcosto;
@@ -1661,10 +1661,6 @@ var tipoPago= this.comunity_payment_type.getDataValue();
 var descuento= 0;
 var fechainicio= this.comunity_costs_grid.selectedItem.data.fechainicio;
 var fechafin= this.comunity_costs_grid.selectedItem.data.fechafin;
-console.log("Persona: "+idpersona);
-console.log("Costo: "+idcosto);
-console.log("Sy: "+idsy);
-console.log("Valor pagar: "+valorExtra);
 this.parents_viarbale_action_form.setValue("costos.idCosto", idcosto);
 this.parents_viarbale_action_form.setValue("persona.idPersona", idpersona);
 this.parents_viarbale_action_form.setValue("sy.idSy", idsy);
@@ -1677,24 +1673,44 @@ this.parents_viarbale_action_form.setValue("fechaInicio", fechainicio);
 this.parents_viarbale_action_form.setValue("fechaFin", fechafin);
 this.comunity_action_liveForm.setDataSet(this.parents_viarbale_action_form);
 this.comunity_action_liveForm.insertData();
-},
+},*/
 // insert record in insc_persona_educom
 comunity_terms_acceptClick1: function(inSender) {
 var json= main.parents_global_currentSy.getItem(0);
 var idsy= json.data.idsy;
+var now= new Date().getTime();
 var ideducom= this.comunity_costs_grid.selectedItem.data.id;
 var idpersona= this.performance_family_grid.selectedItem.data.pid;
-var descuento= 0;
-var now= new Date().getTime();
 var tr= this.comunity_transp_selection.getDataValue();
-console.log(tr);
+var formaPago= this.comunity_payment_type.getDataValue();
+var tipoPago= 5;
+var valorSinDescuento= this.comunity_costs_grid.selectedItem.data.valor;
+var valorAnticipado= this.comunity_costs_grid.selectedItem.data.pagoAnticipado;
+var plazo= this.comunity_payment_type.getDataValue();
+if(formaPago=="anticipado"){
+dtoActicipado= valorSinDescuento-valorAnticipado;
 this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
 this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
-this.parents_variable_insert_educom_subscription.setValue("descuento", descuento);
+this.parents_variable_insert_educom_subscription.setValue("descuento", dtoActicipado);
 this.parents_variable_insert_educom_subscription.setValue("fechaCreacion", now);
 this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
+this.parents_variable_insert_educom_subscription.setValue("tipoPago.idTipoPago", tipoPago);
+this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
 this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription);
 this.comunity_action_inscription_educom.insertData();
+}
+if(formaPago=="mensual"){
+dtoMensual= 0;
+this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
+this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
+this.parents_variable_insert_educom_subscription.setValue("descuento", dtoMensual);
+this.parents_variable_insert_educom_subscription.setValue("fechaCreacion", now);
+this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
+this.parents_variable_insert_educom_subscription.setValue("tipoPago.idTipoPago", tipoPago);
+this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
+this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription);
+this.comunity_action_inscription_educom.insertData();
+}
 },
 // selection and validation when the user tries to add a Curse
 // it shows a alert message
@@ -1792,8 +1808,74 @@ this.parents_local_educom.input.setValue("y", undefined);
 this.parents_local_educom.update();
 }
 },
+// enabling button when grid selected
 comunity_costs_gridSelect: function(inSender) {
 this.comunity_button_add.enable();
+},
+// passing idgrupofamiliar to Transporte page, it's soo cool!
+parents_transportshipClick: function(inSender) {
+var json= main.parents_local_performance_familyGroup.getItem(0);
+var idgrupo= json.data.idgrupo;
+console.log(idgrupo);
+wm.Page.getPage("Transporte").idGrupoFamiliar.setDataValue(idgrupo);
+},
+// genereat download reponse for report
+estado_cuenta_boton_descargaClick: function(inSender) {
+var _codigo = this.performance_family_grid.selectedItem.data.code;
+var id= "1065952";
+var clave= "zombie2012+";
+var formatType= "PDF";
+$.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
+failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
+httpMethod: "POST",
+data:{ idp: id,
+pass: clave,
+uri: "/aprendozreports/FAC001",
+format: formatType,
+params: {codigo: _codigo }
+}
+});
+//inEvent.preventDefault();
+},
+//get código persona for account_state
+performance_family_gridSelect2: function(inSender) {
+var codigo = this.performance_family_grid.selectedItem.data.code;
+this.performance_top_header.setCaption("ESTADO DE CUENTA");
+this.estado_cuenta_codigo.setCaption("Código: "+codigo);
+},
+//same action Event like performance_family_gridSelect2
+parents_account_stateClick1: function(inSender) {
+this.performance_family_gridSelect2();
+},
+//movin' panels & and actions
+parents_account_stateClick2: function(inSender) {
+this.panel_comunity_education.hide();
+this.panel_inicio.hide();
+this.performance_left_buttons_panel.hide();
+this.panel_performance.hide();
+this.panel_estado_cuenta.show();
+},
+// re-renderin' google charts
+parents_estudents_performanceClick4: function(inSender) {
+this.renderChart_dash1();
+},
+// re-renderin' google charts
+performance_general_buttonClick2: function(inSender) {
+this.renderChart_dash1();
+},
+performance_student_subjectsSelect2: function(inSender) {
+this.performance_student_download1.enable();
+},
+performance_student_subjectsDeselect: function(inSender) {
+this.performance_student_download1.disable();
+},
+performance_family_gridSelect3: function(inSender) {
+var idp = this.performance_family_grid.selectedItem.data.pid;
+var json= main.parents_global_currentSy.getItem(0);
+var idsy= json.data.idsy;
+this.parents_local_student_subjects.input.setValue("idpersona", idp);
+this.parents_local_student_subjects.input.setValue("idsy", idsy);
+this.parents_local_student_subjects.update();
 },
 _end: 0
 });
@@ -1866,13 +1948,13 @@ binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"performance_family_grid.selectedItem.pid","targetProperty":"filter.persona.idPersona"}, {}]
 }],
 liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.InscPersonaEduCom","related":["educom","educom.costos","persona"],"view":[
-{"caption":"IdInscPersonaEduCom","sortable":true,"dataIndex":"idInscPersonaEduCom","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},
-{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},
-{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},
-{"caption":"Descuento","sortable":true,"dataIndex":"descuento","type":"java.lang.Double","displayType":"Number","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},
-{"caption":"TomaTransporte","sortable":true,"dataIndex":"tomaTransporte","type":"java.lang.Byte","displayType":"Number","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"},
-{"caption":"Codigo","sortable":true,"dataIndex":"educom.costos.codigo","type":"java.lang.String","displayType":"Text","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3001},
-{"caption":"NombreProducto","sortable":true,"dataIndex":"educom.costos.nombreProducto","type":"java.lang.String","displayType":"Text","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3002}
+{"caption":"IdInscPersonaEduCom","sortable":true,"dataIndex":"idInscPersonaEduCom","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":16000,"subType":null,"widthUnits":"px"},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":16001,"subType":null,"widthUnits":"px"},
+{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":16002,"subType":null,"widthUnits":"px"},
+{"caption":"Descuento","sortable":true,"dataIndex":"descuento","type":"java.lang.Double","displayType":"Number","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":16003,"subType":null,"widthUnits":"px"},
+{"caption":"TomaTransporte","sortable":true,"dataIndex":"tomaTransporte","type":"java.lang.Byte","displayType":"Number","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":16004,"subType":null,"widthUnits":"px"},
+{"caption":"Plazo","sortable":true,"dataIndex":"plazo","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":16005,"subType":null,"widthUnits":"px"},
+{"caption":"NombreProducto","sortable":true,"dataIndex":"educom.costos.nombreProducto","type":"java.lang.String","displayType":"Text","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":18002}
 ]}, {}]
 }],
 recordInserted: ["wm.NavigationCall", {"operation":"showToast"}, {}, {
@@ -1932,8 +2014,8 @@ wire: ["wm.Wire", {"expression":undefined,"source":"syDojoGrid.selectedItem","ta
 }],
 idSyEditor1: ["wm.Number", {"border":"0","caption":"IdSy","captionSize":"140px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"zero","formField":"idSy","height":"26px","required":true,"width":"100%"}, {}],
 schoolYearEditor1: ["wm.Text", {"border":"0","caption":"SchoolYear","captionSize":"140px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"schoolYear","height":"26px","maxChars":45,"width":"100%"}, {}],
-fechaDesdeEditor1: ["wm.DateTime", {"caption":"FechaDesde","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaDesde","height":"26px","width":"100%"}, {}],
-fechaHastaEditor1: ["wm.DateTime", {"caption":"FechaHasta","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaHasta","height":"26px","width":"100%"}, {}]
+fechaDesdeEditor1: ["wm.DateTime", {"border":"0","caption":"FechaDesde","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaDesde","height":"26px","width":"100%"}, {}],
+fechaHastaEditor1: ["wm.DateTime", {"border":"0","caption":"FechaHasta","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaHasta","height":"26px","width":"100%"}, {}]
 }]
 }],
 buttonBar: ["wm.ButtonBarPanel", {"border":"1,0,0,0","borderColor":"#eeeeee","desktopHeight":"33px","height":"33px"}, {}, {
@@ -1986,19 +2068,20 @@ SecurityLogoutButton: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_10px"
 }]
 }],
 parents_line_long: ["wm.Panel", {"height":"6px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundColor":"#3752a3"},"verticalAlign":"top","width":"100%"}, {}],
-parents_menu_panel: ["wm.Panel", {"height":"40px","horizontalAlign":"left","layoutKind":"left-to-right","lock":true,"padding":"0,0,0,20","styles":{"backgroundColor":"#a3a3a3"},"verticalAlign":"top","width":"100%"}, {}, {
-parents_estudents_performance: ["wm.Button", {"border":"0","borderColor":"","caption":"Calificaciones","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/students.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px","backgroundColor":"#3652a4"},"width":"145.5px"}, {"onclick":"parents_estudents_performanceClick","onclick3":"parents_estudents_performanceClick3"}],
+parents_menu_panel: ["wm.Panel", {"height":"40px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"0,0,0,20","styles":{"backgroundColor":"#a3a3a3"},"verticalAlign":"top","width":"100%"}, {}, {
+parents_estudents_performance: ["wm.Button", {"border":"0","borderColor":"","caption":"Calificaciones","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/students.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px","backgroundColor":"#3652a4"},"width":"145.5px"}, {"onclick":"parents_estudents_performanceClick","onclick3":"parents_estudents_performanceClick3","onclick4":"parents_estudents_performanceClick4"}],
 parents_homework: ["wm.Button", {"border":"0","borderColor":"","caption":"Tareas y trabajos","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/homework.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"120undefined"}, {"onclick":"parents_homeworkClick"}],
 parents_update_data: ["wm.Button", {"border":"0","borderColor":"","caption":"Actualizar datos","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/update.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"120undefined"}, {"onclick":"parents_update_dataClick"}],
-parents_account_state: ["wm.Button", {"border":"0","borderColor":"","caption":"Estado de cuenta","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/money.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"110undefined"}, {"onclick":"parents_account_stateClick"}],
-parents_comunity_comunication: ["wm.Button", {"border":"0","borderColor":"","caption":"Educación comunitaria","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/extracurricular.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_comunity_comunicationClick","onclick1":"parents_comunity_comunicationClick1","onclick2":"parents_comunity_comunicationClick2"}]
+parents_comunity_comunication: ["wm.Button", {"border":"0","borderColor":"","caption":"Educación comunitaria","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/extracurricular.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_comunity_comunicationClick","onclick1":"parents_comunity_comunicationClick1","onclick2":"parents_comunity_comunicationClick2"}],
+parents_account_state: ["wm.Button", {"border":"0","borderColor":"","caption":"Estado de cuenta","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/money.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px"},"width":"110undefined"}, {"onclick":"parents_account_stateClick","onclick1":"parents_account_stateClick1","onclick2":"parents_account_stateClick2"}],
+parents_transportship: ["wm.Button", {"border":"0","borderColor":"","caption":"Transporte","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/bus.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"showing":false,"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_transportshipClick","onclick1":"parents_transportshipClick1","onclick2":"parents_transportshipClick2"}]
 }],
 parents_spacer2: ["wm.Spacer", {"height":"15px","styles":{},"width":"100%"}, {}],
 panel_main_contents: ["wm.Panel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-performance_left_details: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"top","width":"240px"}, {}, {
+performance_left_details: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"styles":{},"verticalAlign":"top","width":"240px"}, {}, {
 performance_top_header: ["wm.Label", {"caption":"CALIFICACIONES DEL ESTUDIANTE","height":"69px","padding":"4","singleLine":false,"styles":{"backgroundColor":"#63bb00"},"width":"100%"}, {}],
 performance_left_buttons_panel: ["wm.Panel", {"height":"29px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
-performance_general_button: ["wm.Button", {"border":"0","borderColor":"","caption":" General","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/general.png","iconWidth":"24px","margin":"0","styles":{"backgroundColor":"#63bb00"},"width":"100%"}, {"onclick":"performance_general_buttonClick","onclick1":"performance_general_buttonClick1"}],
+performance_general_button: ["wm.Button", {"border":"0","borderColor":"","caption":" General","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/general.png","iconWidth":"24px","margin":"0","styles":{"backgroundColor":"#63bb00"},"width":"100%"}, {"onclick":"performance_general_buttonClick","onclick1":"performance_general_buttonClick1","onclick2":"performance_general_buttonClick2"}],
 performance_general_tracking: ["wm.Button", {"border":"0","borderColor":"","caption":" Desempeño","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/develop.png","iconWidth":"24px","margin":"0","styles":{"backgroundColor":"#a3a3a3"},"width":"100%"}, {"onclick":"performance_general_trackingClick","onclick1":"performance_general_trackingClick1","onclick2":"performance_general_trackingClick2"}]
 }],
 performance_spacer1: ["wm.Spacer", {"height":"15px","styles":{},"width":"100%"}, {}],
@@ -2013,7 +2096,7 @@ performance_family_grid: ["wm.DojoGrid", {"_classes":{"domNode":["Striped"]},"bo
 {"show":false,"field":"pid","title":"Pid","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"user","title":"User","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"idgrupo","title":"Idgrupo","width":"100%","align":"left","formatFunc":"","mobileColumn":false}
-],"dsType":"com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType","height":"110%","localizationStructure":{},"margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onSelect":"performance_family_gridSelect","onSelect1":"parents_local_comunity_subscribed_curses"}, {
+],"dsType":"com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType","height":"110%","localizationStructure":{},"margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onSelect":"performance_family_gridSelect","onSelect1":"parents_local_comunity_subscribed_curses","onSelect2":"performance_family_gridSelect2","onSelect3":"performance_family_gridSelect3"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_performance_familyGroup","targetProperty":"dataSet"}, {}]
 }]
@@ -2063,16 +2146,16 @@ comunity_spacer1: ["wm.Spacer", {"height":"60px","styles":{},"width":"100%"}, {}
 comunity_button_add: ["wm.Button", {"caption":"[+] Inscribir","desktopHeight":"40px","disabled":true,"height":"40px","margin":"0,10,0,0","mobileHeight":"100%","padding":"0,0,0,0","styles":{},"width":"90px"}, {"onclick":"comunity_button_addClick","onclick1":"comunity_button_addClick1"}]
 }],
 comunity_costs_label2: ["wm.Label", {"caption":"CURSOS INSCRITOS","height":"30px","padding":"4","styles":{"color":"#3752a3","fontSize":"15px","fontWeight":"bolder"},"width":"100%"}, {}],
-comunity_action_inscription_educom: ["wm.LiveForm", {"horizontalAlign":"left","showing":false,"verticalAlign":"top"}, {}],
+comunity_action_inscription_educom: ["wm.LiveForm", {"horizontalAlign":"left","showing":false,"verticalAlign":"top"}, {"onError":"errorInsertion","onSuccess":"parents_local_comunity_subscribed_curses","onSuccess1":"recordInserted","onSuccess2":"comunity_dialog_terms.hide"}],
 comunity_costs_grid1: ["wm.DojoGrid", {"columns":[
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\" : \" + ${idInscPersonaEduCom} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Código: \" + ${educom.costos.codigo}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Curso inscrito: \" + ${educom.costos.nombreProducto}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Transporte: \" + ${tomaTransporte}\n + \"</div>\"\n\n","mobileColumn":true},
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\" : \" + ${idInscPersonaEduCom} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Cursos: \" + ${educom.costos.nombreProducto}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Transporte: \" + ${tomaTransporte}\n + \"</div>\"\n\n","mobileColumn":true},
 {"show":true,"field":"idInscPersonaEduCom","title":" ","width":"60px","align":"center","formatFunc":"","editorProps":null,"mobileColumn":false},
-{"show":true,"field":"educom.costos.codigo","title":"Código","width":"70px","align":"left","formatFunc":"","formatProps":null,"editorProps":null,"mobileColumn":false},
-{"show":true,"field":"educom.costos.nombreProducto","title":"Curso inscrito","width":"100%","align":"left","formatFunc":"","formatProps":null,"editorProps":null,"mobileColumn":false},
+{"show":true,"field":"educom.costos.nombreProducto","title":"Cursos","width":"100%","align":"left","formatFunc":"","formatProps":null,"editorProps":null,"mobileColumn":false},
 {"show":true,"field":"tomaTransporte","title":"Transporte","width":"80px","align":"center","formatFunc":"","fieldType":"dojox.grid.cells.Bool","editorProps":null,"mobileColumn":false},
 {"show":false,"field":"fechaCreacion","title":"FechaCreacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"fechaActualizacion","title":"FechaActualizacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":false,"field":"descuento","title":"Descuento","width":"80px","align":"right","formatFunc":"","mobileColumn":false}
+{"show":false,"field":"descuento","title":"Descuento","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"plazo","title":"Plazo","width":"100%","align":"left","formatFunc":"","mobileColumn":false}
 ],"height":"150px","margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"13px","color":"#020202"}}, {"onSelect":"comunity_costs_grid1Select"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_comunity_subscribed_curses","targetProperty":"dataSet"}, {}]
@@ -2082,7 +2165,7 @@ comunity_top_panel2: ["wm.Panel", {"height":"40px","horizontalAlign":"right","la
 comunity_button_delete: ["wm.Button", {"caption":"[-] Retirar","disabled":true,"height":"100%","margin":"0","styles":{},"width":"90px"}, {"onclick":"comunity_button_deleteClick"}]
 }]
 }],
-panel_inicio: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"padding":"5,15,5,15","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_inicio: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"padding":"5,15,5,15","showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 parents_greetings_panel: ["wm.Panel", {"height":"50px","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 parents_hi_name: ["wm.Label", {"align":"center","caption":"BIENVENIDO, ","padding":"4","styles":{"color":"#2d2626","fontSize":"14px"},"width":"100%"}, {}],
 parents_hi_family: ["wm.Label", {"align":"center","caption":"GRUPO FAMILIAR,","padding":"4","styles":{"color":"#2d2929","fontSize":"14px","fontWeight":"bold"},"width":"100%"}, {}]
@@ -2093,18 +2176,18 @@ picture1: ["wm.Picture", {"aspect":"h","height":"100%","source":"resources/image
 }],
 dashboard_d1: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"425px","horizontalAlign":"left","layoutKind":"left-to-right","lock":true,"styles":{},"verticalAlign":"top","width":"100%"}, {}],
 parents_spacer3: ["wm.Spacer", {"height":"15px","width":"96px"}, {}],
-parents_thus_times_access: ["wm.Picture", {"aspect":"v","height":"55px","source":"resources/images/icons%20v2/Aprendoz_tt_padres.jpg","styles":{},"width":"100%"}, {}]
+parents_thus_times_access: ["wm.Picture", {"aspect":"h","height":"55px","source":"resources/images/icons%20v2/Aprendoz_tt_padres.jpg","styles":{},"width":"100%"}, {}]
 }],
-panel_performance: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-performance_student_track: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"padding":"0,0,0,20","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_performance: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+performance_student_track: ["wm.Panel", {"height":"100%","horizontalAlign":"left","padding":"0,0,0,20","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 performance_student_sy: ["wm.Label", {"align":"center","caption":"AÑO ESCOLAR","height":"27px","padding":"4","styles":{"color":"#3652a4","fontSize":"16px","fontWeight":"bold"},"width":"100%"}, {}],
 performance_student_header: ["wm.Panel", {"height":"27px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
 performance_student_asignaturas: ["wm.Label", {"align":"left","caption":"ASIGNATURAS","height":"100%","padding":"4","styles":{"color":"#3652a4","fontSize":"14px","fontWeight":"bold"},"width":"100%"}, {}],
-performance_student_download1: ["wm.Button", {"border":"0","borderColor":"","caption":"Generar reporte","height":"100%","margin":"0","styles":{"backgroundColor":"#63bb00","color":"#ffffff"},"width":"134px"}, {}]
+performance_student_download1: ["wm.Button", {"border":"0","borderColor":"","caption":"Generar reporte","disabled":true,"height":"100%","margin":"0","styles":{"backgroundColor":"#63bb00","color":"#ffffff"},"width":"134px"}, {"onclick":"performance_student_download1Click"}]
 }],
 performance_student_subjects: ["wm.DojoGrid", {"columns":[
-{"show":true,"field":"idasignatura","title":"Código","width":"80px","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
-{"show":true,"field":"asignatura","title":"Asignatura","width":"100%","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
+{"show":true,"field":"idasignatura","title":"Código<br>","width":"80px","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
+{"show":true,"field":"asignatura","title":"Asignatura<br> ","width":"100%","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
 {"show":true,"field":"calificacion","title":"Calificación","width":"30%","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
 {"show":true,"field":"puntaje","title":"Puntaje","width":"30%","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
 {"show":false,"field":"porcentaje","title":"Porcentaje","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
@@ -2112,25 +2195,25 @@ performance_student_subjects: ["wm.DojoGrid", {"columns":[
 {"show":false,"field":"idalumno","title":"Idalumno","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"sy","title":"Sy","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"logrados","title":"Logrados","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Código: \" + ${idasignatura} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Asignatura: \" + ${asignatura}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Calificación: \" + ${calificacion}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Puntaje: \" + ${puntaje}\n + \"</div>\"\n\n","mobileColumn":true}
-],"dsType":"com.aprendoz_desarrollo.data.output.Hql_dash_asignaturasRtnType","height":"220px","margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onSelect":"performance_student_subjectsSelect","onSelect1":"performance_student_subjectsSelect1"}, {
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Código<br>: \" + ${idasignatura} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Asignatura<br> : \" + ${asignatura}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Calificación: \" + ${calificacion}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Puntaje: \" + ${puntaje}\n + \"</div>\"\n\n","mobileColumn":true}
+],"dsType":"com.aprendoz_desarrollo.data.output.Hql_dash_asignaturasRtnType","height":"220px","margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onDeselect":"performance_student_subjectsDeselect","onSelect":"performance_student_subjectsSelect","onSelect1":"performance_student_subjectsSelect1","onSelect2":"performance_student_subjectsSelect2"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_student_subjects","targetProperty":"dataSet"}, {}]
 }]
 }],
-performance_student_details: ["wm.Panel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","padding":"15,0,0,0","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+performance_student_details: ["wm.Panel", {"height":"420px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"15,0,0,0","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 performance_student_details_left: ["wm.Panel", {"height":"100%","horizontalAlign":"left","padding":"0,15,0,0","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 performance_student_learnings: ["wm.Label", {"align":"left","caption":"APRENDIZAJES","height":"27px","padding":"0,0,0,0","styles":{"color":"#3652a4","fontSize":"14px","fontWeight":"bold"},"width":"100%"}, {}],
 performance_student_details_learnings: ["wm.DojoGrid", {"columns":[
 {"show":false,"field":"idunidad","title":"Idunidad","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"idaprendizaje","title":" ","width":"65px","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
-{"show":true,"field":"fecha","title":"Fecha esperada","width":"80px","align":"left","formatFunc":"wm_date_formatter","editorProps":null,"mobileColumn":false},
+{"show":true,"field":"fecha","title":"Fecha<br>esperada","width":"80px","align":"left","formatFunc":"wm_date_formatter","editorProps":null,"mobileColumn":false},
 {"show":true,"field":"aprendizaje","title":"Aprendizajes","width":"100%","align":"left","formatFunc":"","formatProps":null,"editorProps":null,"mobileColumn":false},
 {"show":false,"field":"idsubtopico","title":"Idsubtopico","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"unidad","title":"Unidad","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"idasignatura","title":"Idasignatura","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"subtopico","title":"Subtopico","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Fecha esperada: \" + ${wm.runtimeId}.formatCell(\"fecha\", ${fecha}, ${this}, ${wm.rowId}) +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Aprendizajes: \" + ${aprendizaje}\n + \"</div>\"\n\n","mobileColumn":true}
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Fecha<br>esperada: \" + ${wm.runtimeId}.formatCell(\"fecha\", ${fecha}, ${this}, ${wm.rowId}) +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Aprendizajes: \" + ${aprendizaje}\n + \"</div>\"\n\n","mobileColumn":true}
 ],"dsType":"com.aprendoz_desarrollo.data.output.ParentsSubjectStructureRtnType","height":"100%","margin":"4","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"11px"}}, {"onSelect":"performance_student_details_learningsSelect","onSelect1":"performance_student_details_learningsSelect1","onSelect2":"performance_student_details_learningsSelect2"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_students_learnings","targetProperty":"dataSet"}, {}]
@@ -2163,7 +2246,16 @@ wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_students_histo
 }]
 }]
 }],
-panel_estado_cuenta: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"verticalAlign":"top","width":"100%"}, {}]
+panel_estado_cuenta: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"padding":"25","showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+estado_cuenta_title: ["wm.Label", {"align":"center","caption":"Seleccione un estudiante y a continuación presione el botón de descarga","height":"32px","padding":"4","styles":{"color":"#090808"},"width":"100%"}, {}],
+estado_cuenta_codigo: ["wm.Label", {"align":"center","caption":"Código","height":"56px","padding":"4","styles":{"color":"#000000"},"width":"200%"}, {}],
+estado_cuenta_panel_button: ["wm.Panel", {"height":"55px","horizontalAlign":"center","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+estado_cuenta_boton_descarga: ["wm.Button", {"caption":"Descargar extracto","desktopHeight":"55px","height":"55px","iconHeight":"20px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/download.png","iconWidth":"32px","margin":"4","width":"155px"}, {"onclick":"estado_cuenta_boton_descargaClick"}]
+}]
+}],
+panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"verticalAlign":"top","width":"100%"}, {}, {
+transporte_page_container: ["wm.PageContainer", {"deferLoad":true,"pageName":"Transporte","styles":{},"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {}]
+}]
 }]
 }],
 templateRight: ["wm.Panel", {"_classes":{"domNode":["template-right"]},"height":"100%","horizontalAlign":"left","showing":false,"verticalAlign":"top","width":"24px"}, {}]
@@ -2308,6 +2400,11 @@ cursor: pointer;\
 }\
 #main_panelFooter{\
 height: 15px !important;\
+}\
+#main_parents_transportship{\
+border: none;\
+color: #fff;\
+background: none;\
 }\
 /** fin css **/\
 .Main .Main-aviso2{\

@@ -6,7 +6,7 @@
             <generator class="identity"/>
         </id>
         <property name="numeroRuta" type="string">
-            <column name="numero_ruta" not-null="true"/>
+            <column name="numero_ruta"/>
         </property>
         <property name="placaVehiculo" type="string">
             <column name="placa_vehiculo" not-null="true"/>
@@ -15,13 +15,13 @@
             <column name="nombre_conductor" length="65535" not-null="true"/>
         </property>
         <property name="telefonoConductor" type="string">
-            <column name="telefono_conductor" length="15"/>
+            <column name="telefono_conductor" length="15" not-null="true"/>
         </property>
         <property name="movilConductor" type="string">
             <column name="movil_conductor" length="15"/>
         </property>
         <property name="nombreMonitora" type="string">
-            <column name="nombre_monitora" length="65535" not-null="true"/>
+            <column name="nombre_monitora" length="65535"/>
         </property>
         <property name="telefonoMonitor" type="string">
             <column name="telefono_monitor" length="15"/>

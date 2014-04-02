@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.CalificacionFinal
- *  01/24/2014 18:46:15
+ *  02/04/2014 07:39:36
  * 
  */
 public class CalificacionFinal {

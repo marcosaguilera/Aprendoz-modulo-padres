@@ -6,18 +6,20 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscPersonaEduCom
- *  01/24/2014 18:46:14
+ *  02/04/2014 07:39:36
  * 
  */
 public class InscPersonaEduCom {
 
     private Integer idInscPersonaEduCom;
     private Educom educom;
+    private TipoPago tipoPago;
     private Persona persona;
     private Date fechaCreacion;
     private Date fechaActualizacion;
     private Double descuento;
     private Byte tomaTransporte;
+    private String plazo;
 
     public Integer getIdInscPersonaEduCom() {
         return idInscPersonaEduCom;
@@ -33,6 +35,14 @@ public class InscPersonaEduCom {
 
     public void setEducom(Educom educom) {
         this.educom = educom;
+    }
+
+    public TipoPago getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(TipoPago tipoPago) {
+        this.tipoPago = tipoPago;
     }
 
     public Persona getPersona() {
@@ -73,6 +83,14 @@ public class InscPersonaEduCom {
 
     public void setTomaTransporte(Byte tomaTransporte) {
         this.tomaTransporte = tomaTransporte;
+    }
+
+    public String getPlazo() {
+        return plazo;
+    }
+
+    public void setPlazo(String plazo) {
+        this.plazo = plazo;
     }
 
 }

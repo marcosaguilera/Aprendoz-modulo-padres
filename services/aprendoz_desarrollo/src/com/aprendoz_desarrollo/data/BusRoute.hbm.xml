@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.BusRoute" table="bus_route" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="date" type="date">
+            <column name="date" length="10" not-null="true"/>
+        </property>
+        <property name="startingPoint" type="string">
+            <column name="starting_point" not-null="true"/>
+        </property>
+        <property name="endingPoint" type="string">
+            <column name="ending_point" not-null="true"/>
+        </property>
+        <property name="startingTime" type="time">
+            <column name="starting_time" length="8" not-null="true"/>
+        </property>
+        <property name="endingTime" type="time">
+            <column name="ending_time" length="8" not-null="true"/>
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="19" not-null="true"/>
+        </property>
+        <many-to-one name="busBus" class="com.aprendoz_desarrollo.data.BusBus">
+            <column name="bus_id"/>
+        </many-to-one>
+        <many-to-one name="busDriver" class="com.aprendoz_desarrollo.data.BusDriver">
+            <column name="driver_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

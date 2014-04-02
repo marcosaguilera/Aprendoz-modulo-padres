@@ -17,8 +17,14 @@
         <property name="tomaTransporte" type="byte">
             <column name="toma_transporte" not-null="true"/>
         </property>
+        <property name="plazo" type="string">
+            <column name="plazo" length="20"/>
+        </property>
         <many-to-one name="educom" class="com.aprendoz_desarrollo.data.Educom">
             <column name="educom_id_educom" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="tipoPago" class="com.aprendoz_desarrollo.data.TipoPago">
+            <column name="tipo_pago_id_tipo_pago" not-null="true"/>
         </many-to-one>
         <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona">
             <column name="persona_id_persona" not-null="true"/>

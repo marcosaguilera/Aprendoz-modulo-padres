@@ -1,0 +1,76 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.ImportacionExtracto" table="importacion_extracto" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.ImportacionExtractoId">
+            <key-property name="donoA" type="string">
+                <column name="dono_a"/>
+            </key-property>
+            <key-property name="dotipo" type="string">
+                <column name="dotipo"/>
+            </key-property>
+            <key-property name="ticonA" type="string">
+                <column name="ticon_a"/>
+            </key-property>
+            <key-property name="fechaA" type="date">
+                <column name="fecha_a" length="10"/>
+            </key-property>
+            <key-property name="observa" type="string">
+                <column name="observa"/>
+            </key-property>
+            <key-property name="ncodigo" type="string">
+                <column name="ncodigo"/>
+            </key-property>
+            <key-property name="forpago" type="string">
+                <column name="forpago"/>
+            </key-property>
+            <key-property name="mes" type="string">
+                <column name="mes"/>
+            </key-property>
+            <key-property name="donoB" type="string">
+                <column name="dono_b"/>
+            </key-property>
+            <key-property name="ticonB" type="string">
+                <column name="ticon_b"/>
+            </key-property>
+            <key-property name="nro" type="string">
+                <column name="nro"/>
+            </key-property>
+            <key-property name="donoa" type="string">
+                <column name="donoa"/>
+            </key-property>
+            <key-property name="ticona" type="string">
+                <column name="ticona"/>
+            </key-property>
+            <key-property name="valor" type="string">
+                <column name="valor"/>
+            </key-property>
+            <key-property name="saldo" type="string">
+                <column name="saldo"/>
+            </key-property>
+            <key-property name="concepto" type="string">
+                <column name="concepto"/>
+            </key-property>
+            <key-property name="nconcepto" type="string">
+                <column name="nconcepto"/>
+            </key-property>
+            <key-property name="ccosto" type="string">
+                <column name="ccosto"/>
+            </key-property>
+            <key-property name="anticipo" type="string">
+                <column name="anticipo"/>
+            </key-property>
+            <key-property name="abono" type="string">
+                <column name="abono"/>
+            </key-property>
+            <key-property name="nit1" type="string">
+                <column name="nit1"/>
+            </key-property>
+            <key-property name="cursoact" type="string">
+                <column name="cursoact"/>
+            </key-property>
+            <key-property name="nnombre" type="string">
+                <column name="nnombre"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>
