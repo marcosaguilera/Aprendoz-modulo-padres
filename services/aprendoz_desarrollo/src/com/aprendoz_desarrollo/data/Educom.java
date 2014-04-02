@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Educom
- *  01/24/2014 18:46:14
+ *  04/02/2014 11:03:06
  * 
  */
 public class Educom {
@@ -16,6 +16,7 @@ public class Educom {
     private Integer idEducom;
     private Sy sy;
     private Costos costos;
+    private Boolean activoRetirado;
     private Integer edadRequeridadFinal;
     private Integer edadRequeridaInicial;
     private String comentario;
@@ -79,6 +80,14 @@ public class Educom {
 
     public void setCostos(Costos costos) {
         this.costos = costos;
+    }
+
+    public Boolean getActivoRetirado() {
+        return activoRetirado;
+    }
+
+    public void setActivoRetirado(Boolean activoRetirado) {
+        this.activoRetirado = activoRetirado;
     }
 
     public Integer getEdadRequeridadFinal() {

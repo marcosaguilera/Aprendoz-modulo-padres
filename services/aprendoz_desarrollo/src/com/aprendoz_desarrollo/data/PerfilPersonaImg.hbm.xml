@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.PerfilPersonaImg" table="perfil_persona_img" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idPersonaImg" type="integer">
+            <column name="id_persona_img"/>
+            <generator class="identity"/>
+        </id>
+        <property name="imgName" type="string">
+            <column name="img_name" length="65535" not-null="true"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19"/>
+        </property>
+        <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona">
+            <column name="persona_id_persona" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

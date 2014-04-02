@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.SeguridadPermisosModulos" table="seguridad_permisos_modulos" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idGlobalPermisosModulos" type="integer">
+            <column name="id_global_permisos_modulos"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombreModulo" type="string">
+            <column name="nombre_modulo" length="50" not-null="true"/>
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" not-null="true"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

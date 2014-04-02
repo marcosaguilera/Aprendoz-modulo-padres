@@ -108,48 +108,54 @@ border: none !important;
 }    
 #main_performance_family_grid{
     cursor: pointer;    
-}
+    }
 
 #main_performance_student_subjects{
     cursor: pointer;    
-}
+    }
 
 #main_performance_student_details_learnings{
     cursor: pointer;    
-}
+    }
 
 #main_comunity_terms_accept{
     background-color: rgb(85, 189, 19) !important;
     border: none !important;
     color: #ffffff;
     background: none;
-}
+    }
 
 #main_comunity_terms_non_accept{
     background-color: rgb(197, 53, 57) !important;
     border: none !important;
     color: #ffffff;
     background: none;
-}
+    }
 
 #main_SecurityLogoutButton{
     background-color: rgb(197, 53, 57) !important;
     border: none !important;
     color: #ffffff;
     background: none;
-}
+    }
 
 #main_comunity_costs_grid1{
     cursor: pointer;
-}
+    }
 
 #main_comunity_costs_grid{
     cursor: pointer;
-}
+    }
 
 #main_panelFooter{
     height: 15px !important;
-}
+    }
+
+#main_parents_transportship{
+    border: none;
+    color: #fff;
+    background: none;   
+    }
 /** fin css **/
 
 .Main .Main-aviso2{

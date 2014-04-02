@@ -9,7 +9,7 @@
             <column name="codigo" length="6" not-null="true"/>
         </property>
         <property name="nombreProducto" type="string">
-            <column name="nombre_producto" length="50" not-null="true"/>
+            <column name="nombre_producto" length="200" not-null="true"/>
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="65535"/>

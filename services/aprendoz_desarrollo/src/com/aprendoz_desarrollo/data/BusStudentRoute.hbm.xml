@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.BusStudentRoute" table="bus_student_route" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="code" type="string">
+            <column name="code" not-null="true"/>
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true"/>
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="10" not-null="true"/>
+        </property>
+        <property name="status" type="string">
+            <column name="status" not-null="true"/>
+        </property>
+        <property name="morningTime" type="time">
+            <column name="morning_time" length="8" not-null="true"/>
+        </property>
+        <property name="morningAction" type="string">
+            <column name="morning_action" not-null="true"/>
+        </property>
+        <property name="morningRoute" type="string">
+            <column name="morning_route" not-null="true"/>
+        </property>
+        <property name="afternoonTime" type="time">
+            <column name="afternoon_time" length="8" not-null="true"/>
+        </property>
+        <property name="afternoonAction" type="string">
+            <column name="afternoon_action" not-null="true"/>
+        </property>
+        <property name="afternoonRoute" type="string">
+            <column name="afternoon_route" not-null="true"/>
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="19" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

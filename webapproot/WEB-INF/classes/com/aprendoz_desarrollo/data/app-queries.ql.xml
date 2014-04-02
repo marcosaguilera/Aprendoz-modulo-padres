@@ -167,6 +167,24 @@ FROM Asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.
 WHERE a.idAsignatura=:ida
 ORDER BY apr.fechaEsperada asc
     </query>
+    <query name="parentsLearningsStructure">
+        <query-param name="ida2" type="java.lang.Integer"/>
+        <query-param name="idapr2" type="java.lang.Integer"/>
+        SELECT a.idAsignatura as idasignatura,
+u.idUnidad as idunidad,
+u.unidad as unidad,
+u.unit as unit,
+u.numeroUnidad as numunidad,
+s.idSubtopico as idsubtopico,
+s.subtopico as subtopico,
+s.numeroSubtopico as numsubtopico,
+s.subtopic as subtopic,
+apr.idAprendizaje as idaprendizaje,
+apr.aprendizaje as aprendizaje,
+apr.fechaEsperada as fecha
+FROM Asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.aprendizajes apr
+WHERE a.idAsignatura=:ida2 AND apr.idAprendizaje=:idapr2
+    </query>
     <query name="showInformationUser">
         <query-param name="user" type="java.lang.String"/>
         SELECT
@@ -185,24 +203,6 @@ tipo.idTipoPersona as idtipo
 FROM Persona AS p
 INNER JOIN p.tipoPersona AS tipo
 WHERE p.nombreLdap=:user
-    </query>
-    <query name="parentsLearningsStructure">
-        <query-param name="ida2" type="java.lang.Integer"/>
-        <query-param name="idapr2" type="java.lang.Integer"/>
-        SELECT a.idAsignatura as idasignatura,
-u.idUnidad as idunidad,
-u.unidad as unidad,
-u.unit as unit,
-u.numeroUnidad as numunidad,
-s.idSubtopico as idsubtopico,
-s.subtopico as subtopico,
-s.numeroSubtopico as numsubtopico,
-s.subtopic as subtopic,
-apr.idAprendizaje as idaprendizaje,
-apr.aprendizaje as aprendizaje,
-apr.fechaEsperada as fecha
-FROM Asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.aprendizajes apr
-WHERE a.idAsignatura=:ida2 AND apr.idAprendizaje=:idapr2
     </query>
     <query name="hql_dash_asignaturas">
         <query-param name="idsy" type="java.lang.Integer"/>
@@ -412,16 +412,16 @@ WHERE adp.persona IN(SELECT _p.idPersona FROM Persona _p WHERE _p.idPersona=:idp
 FROM FichaMedica fm INNER JOIN fm.persona p
 WHERE p.idPersona=:idp
     </query>
-    <query name="hqlAlergiasByUser">
-        <query-param name="idp" type="java.lang.Integer"/>
-        SELECT _p.idPersona as id, fm.alergias as alergias, fm.recomendacionesEspeciales as recomendaciones, fm.idfichaMedica as idficha
-FROM FichaMedica fm INNER JOIN fm.persona _p
-WHERE _p.idPersona=:idp
-    </query>
     <query name="updateInscPersonaGrupoFamiliar">
         <query-param name="responsable" type="java.lang.Boolean"/>
         <query-param name="idipgf" type="java.lang.Integer"/>
         UPDATE InscPersonaGrupoFamiliar ipgf SET ipgf.responsable=:responsable
 WHERE ipgf.idInscPersonaGrupoFamiliar=:idipgf
+    </query>
+    <query name="hqlAlergiasByUser">
+        <query-param name="idp" type="java.lang.Integer"/>
+        SELECT _p.idPersona as id, fm.alergias as alergias, fm.recomendacionesEspeciales as recomendaciones, fm.idfichaMedica as idficha
+FROM FichaMedica fm INNER JOIN fm.persona _p
+WHERE _p.idPersona=:idp
     </query>
 </hibernate-mapping>

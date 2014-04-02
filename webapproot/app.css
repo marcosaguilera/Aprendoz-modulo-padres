@@ -1,0 +1,27 @@
+#main_estado_cuenta_boton_descarga {
+    background-color: rgb(197, 53, 57) !important;
+    border: none !important;
+    color: #ffffff;
+    background: none;
+}
+
+#main_estado_cuenta_codigo{
+    color: rgb(197, 53, 57) !important;
+}
+    
+#main_estado_cuenta_codigo {
+    color: rgb(197, 53, 57) !important;
+    font-size: xx-large;
+    font-weight: 500;
+    font-family: 'Source Sans Pro', sans-serif;
+}  
+    
+#main_estado_cuenta_title {
+    color: rgb(54, 82, 164) !important;
+    font-size: 14px;
+    font-weight: bold !important;
+    line-height: 19px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    font-weight: 400;
+}    

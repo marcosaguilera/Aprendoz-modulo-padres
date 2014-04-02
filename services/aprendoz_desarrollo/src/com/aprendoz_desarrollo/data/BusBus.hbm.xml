@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.BusBus" table="bus_bus" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="plate" type="string">
+            <column name="plate" not-null="true"/>
+        </property>
+        <set name="busRoutes" inverse="true" cascade="">
+            <key>
+                <column name="bus_id"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.BusRoute"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -8,8 +8,8 @@
         <property name="inscrito" type="boolean">
             <column name="inscrito" not-null="true"/>
         </property>
-        <property name="descuentoPorcentaje" type="integer">
-            <column name="descuento_porcentaje" not-null="true"/>
+        <property name="descuentoPorcentaje" type="big_decimal">
+            <column name="descuento_porcentaje" precision="8" not-null="true"/>
         </property>
         <property name="descuentoValor" type="double">
             <column name="descuento_valor" precision="22" not-null="true"/>

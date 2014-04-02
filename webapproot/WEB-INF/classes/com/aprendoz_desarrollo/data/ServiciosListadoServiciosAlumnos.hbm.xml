@@ -30,7 +30,7 @@
                 <column name="codigo_prod" length="6"/>
             </key-property>
             <key-property name="nombreProducto" type="string">
-                <column name="nombre_producto" length="50"/>
+                <column name="nombre_producto" length="200"/>
             </key-property>
             <key-property name="descripcion" type="string">
                 <column name="descripcion" length="65535"/>

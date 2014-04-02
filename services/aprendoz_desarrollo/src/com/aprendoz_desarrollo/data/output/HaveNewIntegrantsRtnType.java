@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "haveNewIntegrants" on 01/24/2014 20:17:44
+ * Generated for query "haveNewIntegrants" on 04/02/2014 11:03:23
  * 
  */
 public class HaveNewIntegrantsRtnType {

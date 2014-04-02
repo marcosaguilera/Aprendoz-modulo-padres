@@ -116,6 +116,12 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.SesionNivel"/>
         </set>
+        <set name="secretariaEquivalenciaNotases" inverse="true" cascade="">
+            <key>
+                <column name="sy_id_sy" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.SecretariaEquivalenciaNotas"/>
+        </set>
         <set name="coordinacions" inverse="true" cascade="">
             <key>
                 <column name="SY_Id_SY" not-null="true"/>

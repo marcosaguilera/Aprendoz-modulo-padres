@@ -5,6 +5,9 @@
             <column name="id_educom"/>
             <generator class="identity"/>
         </id>
+        <property name="activoRetirado" type="boolean">
+            <column name="activo_retirado"/>
+        </property>
         <property name="edadRequeridadFinal" type="integer">
             <column name="edad_requeridad_final"/>
         </property>

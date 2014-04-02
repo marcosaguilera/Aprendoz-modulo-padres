@@ -8,14 +8,11 @@
         <property name="recurso" type="string">
             <column name="Recurso" length="300"/>
         </property>
-        <property name="documento" type="binary">
-            <column name="Documento"/>
-        </property>
         <property name="ubicacion" type="string">
             <column name="Ubicacion" length="300"/>
         </property>
-        <property name="idSyIdIdSy" type="integer">
-            <column name="idSY_id_idSY"/>
+        <property name="fileName" type="string">
+            <column name="file_name" length="500"/>
         </property>
         <many-to-one name="subtopico" class="com.aprendoz_desarrollo.data.Subtopico">
             <column name="Subtopico_Id_Subtopico" not-null="true"/>
