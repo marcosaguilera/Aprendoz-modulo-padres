@@ -21,8 +21,6 @@ dojo.declare("Main", wm.Page, {
     window.location.reload();  
   },    
   
-  
-  
  /*********************************
   *                              *
   * Implemenatacion de loaders   *
@@ -30,7 +28,7 @@ dojo.declare("Main", wm.Page, {
   *                              *
   *********************************/
   
-   nacionalidadBeforeUpdate: function(inSender, ioInput) {
+  nacionalidadBeforeUpdate: function(inSender, ioInput) {
     try {
       app.pageDialog.showPage("Loading", true, 400,120);
       
@@ -1638,6 +1636,8 @@ dojo.declare("Main", wm.Page, {
             .css('background-color', '#a3a3a3');
           $('#main_parents_homework')
             .css('background-color', '#a3a3a3'); 
+          $('#main_schoolar_schedule')
+            .css('background-color', '#a3a3a3');      
 	},
     // mouse click parents_homework change color
     parents_homeworkClick: function(inSender) {
@@ -1651,6 +1651,8 @@ dojo.declare("Main", wm.Page, {
             .css('background-color', '#a3a3a3');
           $('#main_parents_comunity_comunication')
             .css('background-color', '#a3a3a3');
+          $('#main_schoolar_schedule')
+            .css('background-color', '#a3a3a3');      
 	},
     // mouse click parents_update_data change color
     parents_update_dataClick: function(inSender) {
@@ -1664,6 +1666,8 @@ dojo.declare("Main", wm.Page, {
             .css('background-color', '#a3a3a3');
           $('#main_parents_comunity_comunication')
             .css('background-color', '#a3a3a3');
+          $('#main_schoolar_schedule')
+            .css('background-color', '#a3a3a3');      
 	},   
     // mouse click parents_account_state change color
     parents_account_stateClick: function(inSender) {
@@ -1677,6 +1681,8 @@ dojo.declare("Main", wm.Page, {
             .css('background-color', '#a3a3a3');                   
           $('#main_parents_comunity_comunication')
             .css('background-color', '#a3a3a3');
+          $('#main_schoolar_schedule')
+            .css('background-color', '#a3a3a3');      
 	},
     // mouse click parents_comunity_comunication change color
     parents_comunity_comunicationClick2: function(inSender) {
@@ -1690,6 +1696,23 @@ dojo.declare("Main", wm.Page, {
             .css('background-color', '#a3a3a3');    
           $('#main_parents_homework')
             .css('background-color', '#a3a3a3');
+          $('#main_schoolar_schedule')
+            .css('background-color', '#a3a3a3');    
+	},
+    // mouse click schoolar_schedule change color
+    schoolar_scheduleClick: function(inSender) {
+    	   $('#main_schoolar_schedule')
+            .css('background-color', '#3652a4');
+          $('#main_parents_estudents_performance')
+            .css('background-color', '#a3a3a3');             
+          $('#main_parents_update_data')
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_account_state')
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_comunity_comunication')
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_homework')
+            .css('background-color', '#a3a3a3'); 
 	},
     // mouse click performance_general_tracking change color
     performance_general_trackingClick2: function(inSender) {
@@ -1731,6 +1754,7 @@ dojo.declare("Main", wm.Page, {
         this.performance_top_header.setCaption("CALIFICACIONES DEL ESTUDIANTE");
         this.panel_comunity_education.hide();
         this.panel_estado_cuenta.hide();
+        this.panel_actividades.hide();
         this.panel_inicio.show();
         this.performance_left_buttons_panel.show();
         this.performance_general_buttonClick1();
@@ -1740,6 +1764,7 @@ dojo.declare("Main", wm.Page, {
     	this.panel_inicio.hide();       
         this.panel_performance.hide();
         this.panel_estado_cuenta.hide();
+        this.panel_actividades.hide();
         this.panel_comunity_education.show();
 	},   
     //getData from selection in dojoGrid
@@ -1763,7 +1788,6 @@ dojo.declare("Main", wm.Page, {
             this.renderChart_dash1();
         }     
 	},
-   
     renderChart_dash1: function() {
         var asignaturas= ["Año"];
         var puntajes= ['2013-2014'];
@@ -2075,22 +2099,26 @@ dojo.declare("Main", wm.Page, {
         this.panel_inicio.hide();
         this.performance_left_buttons_panel.hide();
 		this.panel_performance.hide();
+        this.panel_actividades.hide();
         this.panel_estado_cuenta.show();
 	},
-    // re-renderin' google charts
+    //re-renderin' google charts
 	parents_estudents_performanceClick4: function(inSender) {
 	    this.renderChart_dash1();	
 	},
-    // re-renderin' google charts
+    //re-renderin' google charts
 	performance_general_buttonClick2: function(inSender) {
 		this.renderChart_dash1();
 	},
+    //download report button enable
 	performance_student_subjectsSelect2: function(inSender) {
 		this.performance_student_download1.enable();
 	},
+    //download report button disable
 	performance_student_subjectsDeselect: function(inSender) {
 		this.performance_student_download1.disable();
 	},
+    //parents_local_student_subjects
 	performance_family_gridSelect3: function(inSender) {
 		var idp = this.performance_family_grid.selectedItem.data.pid;
         var json= main.parents_global_currentSy.getItem(0);
@@ -2099,5 +2127,40 @@ dojo.declare("Main", wm.Page, {
         this.parents_local_student_subjects.input.setValue("idsy", idsy);
         this.parents_local_student_subjects.update();
 	},
+    //enabling and disabling panels
+	schoolar_scheduleClick1: function(inSender) {
+        var selectedRow= main.performance_family_grid.isRowSelected;
+        if(selectedRow== true){
+          wm.Page.getPage("Schedule").fireClick();
+        }else{}
+        this.panel_performance.hide();
+        this.panel_inicio.hide();
+        this.panel_comunity_education.hide();
+        this.performance_left_buttons_panel.hide();
+        this.panel_actividades.show();
+        this.performance_top_header.setCaption("ACTIVIDADES");
+	},
+	parents_comunity_comunicationClick3: function(inSender) {
+		var selectedRow= main.performance_family_grid.isRowSelected;
+        if(selectedRow == true){
+          this.parents_local_comunity_subscribed_curses.update();
+        }else{
+          alert("Por favor seleccione un integrante del grupo familiar para realizar la inscripción de Cursos.")
+        }
+	},
+	performance_family_gridSelect1: function(inSender) {
+		var selectedRow= main.performance_family_grid.isRowSelected;
+        if(selectedRow== true){
+          this.parents_local_comunity_subscribed_curses.update();
+        }else{}
+	},
+    // it fires the start() function in 'Schedule Page'
+	performance_family_gridSelect4: function(inSender) {
+		var selectedRow= main.performance_family_grid.isRowSelected;
+        if(selectedRow== true){
+          wm.Page.getPage("Schedule").fireClick();
+        }else{}
+	},
+
 	_end: 0
 });

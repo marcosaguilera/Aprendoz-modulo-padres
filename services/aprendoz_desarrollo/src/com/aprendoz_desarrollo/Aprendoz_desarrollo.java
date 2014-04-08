@@ -3,6 +3,7 @@ package com.aprendoz_desarrollo;
 
 import java.util.Date;
 import java.util.List;
+import com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType;
 import com.aprendoz_desarrollo.data.output.GetCoordinatorInfoRtnType;
 import com.aprendoz_desarrollo.data.output.GetCostosRtnType;
 import com.aprendoz_desarrollo.data.output.GetCostosTransporteRtnType;
@@ -36,6 +37,7 @@ import com.aprendoz_desarrollo.data.output.PersonaGetInfoRtnType;
 import com.aprendoz_desarrollo.data.output.ReturExitsValueRtnType;
 import com.aprendoz_desarrollo.data.output.ReturnExistsValueGrupoFamiliarRtnType;
 import com.aprendoz_desarrollo.data.output.ShowInformationUserRtnType;
+import com.aprendoz_desarrollo.data.output.StudentSujectActivitiesRtnType;
 import com.aprendoz_desarrollo.data.output._countGrupoFamiliarUpdatedRtnType;
 import com.aprendoz_desarrollo.data.output._existeFichaMedicaByUserRtnType;
 import com.aprendoz_desarrollo.data.output._hqlAlergiasByUserRtnType;
@@ -54,7 +56,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  04/02/2014 11:03:27
+ *  04/04/2014 11:56:37
  * 
  */
 @SuppressWarnings("unchecked")
@@ -96,6 +98,10 @@ public class Aprendoz_desarrollo
 
     public List<_verificaResponsableRtnType> _verificaResponsable(Integer idgf, PagingOptions pagingOptions) {
         return ((List<_verificaResponsableRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants._verificaResponsableQueryName), idgf, pagingOptions));
+    }
+
+    public List<DetailsActivitiesStudentRtnType> detailsActivitiesStudent(Integer idp, Integer idsy, PagingOptions pagingOptions) {
+        return ((List<DetailsActivitiesStudentRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.detailsActivitiesStudentQueryName), idp, idsy, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.output.GetAsignaturasMalasRtnType getAsignaturasMalas(Integer id, PagingOptions pagingOptions) {
@@ -282,6 +288,10 @@ public class Aprendoz_desarrollo
 
     public List<ShowInformationUserRtnType> showInformationUser(String user, PagingOptions pagingOptions) {
         return ((List<ShowInformationUserRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.showInformationUserQueryName), user, pagingOptions));
+    }
+
+    public List<StudentSujectActivitiesRtnType> studentSujectActivities(Integer idp, Integer idsy, PagingOptions pagingOptions) {
+        return ((List<StudentSujectActivitiesRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.studentSujectActivitiesQueryName), idp, idsy, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.output.TrackingPersonasRtnType trackingPersonas(String usuario, PagingOptions pagingOptions) {
