@@ -62,6 +62,17 @@
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output._verificaResponsableRtnType]"
 	}, {
+		"name": "detailsActivitiesStudent",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "idsy",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType]"
+	}, {
 		"name": "getAsignaturasMalas",
 		"operationType": "hqlquery",
 		"parameters": [{
@@ -406,6 +417,17 @@
 			"type": "java.lang.String"
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.ShowInformationUserRtnType]"
+	}, {
+		"name": "studentSujectActivities",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "idsy",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.StudentSujectActivitiesRtnType]"
 	}, {
 		"name": "trackingPersonas",
 		"operationType": "hqlquery",
