@@ -11,7 +11,7 @@ dojo.declare("Aprendoz_Padres_v2", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha24", 
+	"projectSubVersion": "Alpha25", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"studioVersion": "6.6.0.RELEASE", 
