@@ -21,13 +21,10 @@ dojo.declare("Main", wm.Page, {
     window.location.reload();  
   },    
   
- /*********************************
-  *                              *
+ /********************************
   * Implemenatacion de loaders   *
   * y listas de nacionalidades   *
-  *                              *
-  *********************************/
-  
+  ********************************/  
   nacionalidadBeforeUpdate: function(inSender, ioInput) {
     try {
       app.pageDialog.showPage("Loading", true, 400,120);
@@ -2131,8 +2128,11 @@ dojo.declare("Main", wm.Page, {
 	schoolar_scheduleClick1: function(inSender) {
         var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow== true){
-          wm.Page.getPage("Schedule").fireClick();
-        }else{}
+            this.timeListener.update();
+            //wm.Page.getPage("Schedule").fireClick();
+        }else{
+            wm.Page.getPage("Schedule").fireClick();
+        }
         this.panel_performance.hide();
         this.panel_inicio.hide();
         this.panel_comunity_education.hide();
@@ -2148,6 +2148,7 @@ dojo.declare("Main", wm.Page, {
           alert("Por favor seleccione un integrante del grupo familiar para realizar la inscripción de Cursos.")
         }
 	},
+    // getting involved curses
 	performance_family_gridSelect1: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow== true){
@@ -2158,9 +2159,16 @@ dojo.declare("Main", wm.Page, {
 	performance_family_gridSelect4: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow== true){
-          wm.Page.getPage("Schedule").fireClick();
+             main.schedule_page_container.forceReloadPage(); 
+          console.log("time launcher-->");
+          this.timeListener.update();
         }else{}
 	},
-
+	schoolar_scheduleClick2: function(inSender) {		
+        main.schedule_page_container.forceReloadPage();         
+	},	
+	timeListenerTimerFire: function(inSender) {       
+        wm.Page.getPage("Schedule").fireClick();
+	},
 	_end: 0
 });

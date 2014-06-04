@@ -56,7 +56,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  04/04/2014 11:56:37
+ *  05/06/2014 11:00:31
  * 
  */
 @SuppressWarnings("unchecked")
@@ -100,8 +100,8 @@ public class Aprendoz_desarrollo
         return ((List<_verificaResponsableRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants._verificaResponsableQueryName), idgf, pagingOptions));
     }
 
-    public List<DetailsActivitiesStudentRtnType> detailsActivitiesStudent(Integer idp, Integer idsy, PagingOptions pagingOptions) {
-        return ((List<DetailsActivitiesStudentRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.detailsActivitiesStudentQueryName), idp, idsy, pagingOptions));
+    public List<DetailsActivitiesStudentRtnType> detailsActivitiesStudent(Integer idp, Integer idsy, Integer idact, PagingOptions pagingOptions) {
+        return ((List<DetailsActivitiesStudentRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.detailsActivitiesStudentQueryName), idp, idsy, idact, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.output.GetAsignaturasMalasRtnType getAsignaturasMalas(Integer id, PagingOptions pagingOptions) {

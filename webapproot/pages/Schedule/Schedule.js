@@ -3,6 +3,11 @@ dojo.declare("Schedule", wm.Page, {
           
 	},
 	"preferredDevice": "desktop",
+    getIdActivity: function(pidactividad){
+        var idactividad= pidactividad;
+        console.log("p-->"+pidactividad+" -->var"+idactividad);
+        return idactividad;
+    },
     fireClick: function(inSender) {
     	var selectedRow= wm.Page.getPage("Main").performance_family_grid.isRowSelected;
         if(selectedRow== true){
@@ -32,15 +37,11 @@ dojo.declare("Schedule", wm.Page, {
 		var now= this.today();
         var json= this.activitiesServiceVar.getData();
         var cont= this.activitiesServiceVar.getCount();
+        if(cont==0){alert("Lo sentimos, no tenemos actividades/tareas relacionadas con la persona seleccionada.");}else{}
+        var self= this;
+        $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar( 'removeEventSource', json);
         $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar({
-            eventClick: function(calEvent, jsEvent, view) {
-               /* alert('Event: ' + calEvent.title);
-                alert('Event: ' + calEvent.id);
-                alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-                alert('View: ' + view.name);*/
-                $(this).css('border-color', '#c0392b');   
-                wm.Page.getPage("Schedule").detallesClick();
-            },
+            eventClick: self.detallesClick,
             height: 700,
         	header: {
 				left: 'prev,next today',
@@ -51,20 +52,23 @@ dojo.declare("Schedule", wm.Page, {
 			defaultDate: now,
 			editable: true,
 			events: json
-		});
-	},
-	detallesClick: function(inSender) {
+		});  
+        $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar( 'refetchEvents');
+	},        
+	detallesClick: function(calEvent, jsEvent, view) {
+        var id= calEvent.id;
+        console.log("idactividad -->"+id);
+        $(this).css('border-color', '#c0392b');                          
 		var idp = wm.Page.getPage("Main").performance_family_grid.selectedItem.data.pid;
-        var idsy= this.parents_global_currentSy2.getItem(0).data.idsy;
-        var count= this.details_activities_estudent.getCount();
-        if(count==0){
-            this.details_activities_estudent.input.setValue("idp", idp);
-            this.details_activities_estudent.input.setValue("idsy", idsy);
-            this.details_activities_estudent.update(); 
-        }else{
-            //nothing happens here!
-            }
-        this.logActivities.show();
+        var idsy= wm.Page.getPage("Schedule").parents_global_currentSy2.getItem(0).data.idsy;
+        console.log(idsy);
+        var count= wm.Page.getPage("Schedule").details_activities_estudent.getCount();
+            wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idp", idp);
+            wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idsy", idsy);
+            wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idact", id);
+            wm.Page.getPage("Schedule").details_activities_estudent.update(); 
+            wm.Page.getPage("Schedule").logActivities.show();
 	},
+
 	_end: 0
 });

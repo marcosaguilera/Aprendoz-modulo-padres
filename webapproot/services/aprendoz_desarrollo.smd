@@ -70,6 +70,9 @@
 		}, {
 			"name": "idsy",
 			"type": "java.lang.Integer"
+		}, {
+			"name": "idact",
+			"type": "java.lang.Integer"
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType]"
 	}, {

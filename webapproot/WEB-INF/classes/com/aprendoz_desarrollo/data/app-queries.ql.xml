@@ -441,6 +441,7 @@ ORDER BY act.fecha
     <query name="detailsActivitiesStudent">
         <query-param name="idp" type="java.lang.Integer"/>
         <query-param name="idsy" type="java.lang.Integer"/>
+        <query-param name="idact" type="java.lang.Integer"/>
         SELECT
 act.idActividad as id,
 act.actividad  as actividad,
@@ -449,7 +450,7 @@ a.asignatura as title,
 act.fecha as fecha
 FROM InscAlumAsig iaa
 INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy
-WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL
+WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL AND act.idActividad=:idact
 ORDER BY act.fecha desc
     </query>
 </hibernate-mapping>

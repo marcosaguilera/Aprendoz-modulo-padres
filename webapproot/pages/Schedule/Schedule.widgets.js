@@ -27,6 +27,11 @@ Schedule.widgets = {
 			cerrar_dialog_box: ["wm.Button", {"_classes":{"domNode":["detalles"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"logActivities.hide"}]
 		}]
 	}],
+	loadingDialog1: ["wm.LoadingDialog", {"caption":"Generando calendario...","serviceVariableToTrack":["activitiesServiceVar","details_activities_estudent","parents_global_currentSy2"]}, {}, {
+		binding: ["wm.Binding", {}, {}, {
+			wire: ["wm.Wire", {"expression":undefined,"source":"schedule_main_panel","targetProperty":"widgetToCover"}, {}]
+		}]
+	}],
 	layoutBox1: ["wm.Layout", {"horizontalAlign":"left","padding":"10","styles":{"backgroundColor":"#bdc3c7"},"verticalAlign":"top"}, {}, {
 		schedule_main_panel: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{"backgroundColor":"#d2c9c9"},"verticalAlign":"top","width":"100%"}, {}, {
 			schedule_builder: ["wm.Panel", {"height":"100%","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"100%"}, {}, {
