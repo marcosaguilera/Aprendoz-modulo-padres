@@ -13,6 +13,7 @@ import com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType;
 import com.aprendoz_desarrollo.data.output.GetIdPersonabyUserRtnType;
 import com.aprendoz_desarrollo.data.output.GetIdbyUserRtnType;
 import com.aprendoz_desarrollo.data.output.GetInscPersonaGrupoFamiliarRtnType;
+import com.aprendoz_desarrollo.data.output.GetLogEncuestaRtnType;
 import com.aprendoz_desarrollo.data.output.GetSubjectsByStudentRtnType;
 import com.aprendoz_desarrollo.data.output.GetSyByCurDateRtnType;
 import com.aprendoz_desarrollo.data.output.GetTodosCostosRtnType;
@@ -56,7 +57,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  05/06/2014 11:00:31
+ *  06/05/2014 15:51:06
  * 
  */
 @SuppressWarnings("unchecked")
@@ -156,6 +157,10 @@ public class Aprendoz_desarrollo
 
     public List<GetInscPersonaGrupoFamiliarRtnType> getInscPersonaGrupoFamiliar(Integer gf) {
         return ((List<GetInscPersonaGrupoFamiliarRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.GetInscPersonaGrupoFamiliarQueryName), gf));
+    }
+
+    public List<GetLogEncuestaRtnType> getLogEncuesta(Integer idgp, PagingOptions pagingOptions) {
+        return ((List<GetLogEncuestaRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getLogEncuestaQueryName), idgp, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.GrupoFamiliar getNombreGrupoFamiliar(Integer id, PagingOptions pagingOptions) {

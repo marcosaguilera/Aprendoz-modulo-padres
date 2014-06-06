@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.CafeteriaTipoOpcion
- *  04/02/2014 11:03:07
+ *  06/05/2014 15:30:30
  * 
  */
 public class CafeteriaTipoOpcion {

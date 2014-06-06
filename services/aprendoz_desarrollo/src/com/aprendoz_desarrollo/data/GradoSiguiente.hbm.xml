@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.GradoSiguiente" table="grado_siguiente" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idGradoSiguiente" type="integer">
+            <column name="id_grado_siguiente"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gradoIdGrado1" type="integer">
+            <column name="Grado_Id_Grado1" not-null="true"/>
+        </property>
+        <property name="gradoIdGrado2" type="integer">
+            <column name="Grado_Id_Grado2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

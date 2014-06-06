@@ -7,14 +7,12 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Costos
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:30
  * 
  */
 public class Costos {
 
     private Integer idCosto;
-    private Grado grado;
-    private Sy sy;
     private String codigo;
     private String nombreProducto;
     private String descripcion;
@@ -24,8 +22,11 @@ public class Costos {
     private Boolean positivo;
     private Boolean anual;
     private Integer tipoCosto;
+    private Grado grado;
+    private Sy sy;
     private Set<com.aprendoz_desarrollo.data.InscAlumCosto> inscAlumCostos = new HashSet<com.aprendoz_desarrollo.data.InscAlumCosto>();
     private Set<com.aprendoz_desarrollo.data.Educom> educoms = new HashSet<com.aprendoz_desarrollo.data.Educom>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumCostoCopy> inscAlumCostoCopies = new HashSet<com.aprendoz_desarrollo.data.InscAlumCostoCopy>();
 
     public Integer getIdCosto() {
         return idCosto;
@@ -33,22 +34,6 @@ public class Costos {
 
     public void setIdCosto(Integer idCosto) {
         this.idCosto = idCosto;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public String getCodigo() {
@@ -123,6 +108,22 @@ public class Costos {
         this.tipoCosto = tipoCosto;
     }
 
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
+    }
+
     public Set<com.aprendoz_desarrollo.data.InscAlumCosto> getInscAlumCostos() {
         return inscAlumCostos;
     }
@@ -137,6 +138,14 @@ public class Costos {
 
     public void setEducoms(Set<com.aprendoz_desarrollo.data.Educom> educoms) {
         this.educoms = educoms;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscAlumCostoCopy> getInscAlumCostoCopies() {
+        return inscAlumCostoCopies;
+    }
+
+    public void setInscAlumCostoCopies(Set<com.aprendoz_desarrollo.data.InscAlumCostoCopy> inscAlumCostoCopies) {
+        this.inscAlumCostoCopies = inscAlumCostoCopies;
     }
 
 }

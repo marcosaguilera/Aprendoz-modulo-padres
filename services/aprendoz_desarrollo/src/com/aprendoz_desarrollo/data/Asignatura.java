@@ -7,15 +7,12 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Asignatura
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:30
  * 
  */
 public class Asignatura {
 
     private Integer idAsignatura;
-    private Grado grado;
-    private TipoInscAsig tipoInscAsig;
-    private Sy sy;
     private String asignatura;
     private String subject;
     private Boolean electiva;
@@ -35,12 +32,18 @@ public class Asignatura {
     private Float ihA3;
     private Float meses;
     private Integer esperadostotal;
+    private Grado grado;
+    private TipoInscAsig tipoInscAsig;
+    private Sy sy;
     private Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsig>();
     private Set<com.aprendoz_desarrollo.data.Horario> horarios = new HashSet<com.aprendoz_desarrollo.data.Horario>();
     private Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy> inscAlumAsigCopies = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsigCopy>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy3> inscAlumAsigCopy3s = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsigCopy3>();
     private Set<com.aprendoz_desarrollo.data.InscAlumAsig> inscAlumAsigs = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsig>();
     private Set<com.aprendoz_desarrollo.data.Sesion> sesions = new HashSet<com.aprendoz_desarrollo.data.Sesion>();
+    private Set<com.aprendoz_desarrollo.data.InscCursoAsigCopy> inscCursoAsigCopies = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsigCopy>();
     private Set<com.aprendoz_desarrollo.data.Unidad> unidads = new HashSet<com.aprendoz_desarrollo.data.Unidad>();
+    private Set<com.aprendoz_desarrollo.data.AprendizajesAsignaturas> aprendizajesAsignaturases = new HashSet<com.aprendoz_desarrollo.data.AprendizajesAsignaturas>();
     private Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy2> inscAlumAsigCopy2s = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsigCopy2>();
 
     public Integer getIdAsignatura() {
@@ -49,30 +52,6 @@ public class Asignatura {
 
     public void setIdAsignatura(Integer idAsignatura) {
         this.idAsignatura = idAsignatura;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
-    public TipoInscAsig getTipoInscAsig() {
-        return tipoInscAsig;
-    }
-
-    public void setTipoInscAsig(TipoInscAsig tipoInscAsig) {
-        this.tipoInscAsig = tipoInscAsig;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public String getAsignatura() {
@@ -227,6 +206,30 @@ public class Asignatura {
         this.esperadostotal = esperadostotal;
     }
 
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+
+    public TipoInscAsig getTipoInscAsig() {
+        return tipoInscAsig;
+    }
+
+    public void setTipoInscAsig(TipoInscAsig tipoInscAsig) {
+        this.tipoInscAsig = tipoInscAsig;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
+    }
+
     public Set<com.aprendoz_desarrollo.data.InscCursoAsig> getInscCursoAsigs() {
         return inscCursoAsigs;
     }
@@ -251,6 +254,14 @@ public class Asignatura {
         this.inscAlumAsigCopies = inscAlumAsigCopies;
     }
 
+    public Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy3> getInscAlumAsigCopy3s() {
+        return inscAlumAsigCopy3s;
+    }
+
+    public void setInscAlumAsigCopy3s(Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy3> inscAlumAsigCopy3s) {
+        this.inscAlumAsigCopy3s = inscAlumAsigCopy3s;
+    }
+
     public Set<com.aprendoz_desarrollo.data.InscAlumAsig> getInscAlumAsigs() {
         return inscAlumAsigs;
     }
@@ -267,12 +278,28 @@ public class Asignatura {
         this.sesions = sesions;
     }
 
+    public Set<com.aprendoz_desarrollo.data.InscCursoAsigCopy> getInscCursoAsigCopies() {
+        return inscCursoAsigCopies;
+    }
+
+    public void setInscCursoAsigCopies(Set<com.aprendoz_desarrollo.data.InscCursoAsigCopy> inscCursoAsigCopies) {
+        this.inscCursoAsigCopies = inscCursoAsigCopies;
+    }
+
     public Set<com.aprendoz_desarrollo.data.Unidad> getUnidads() {
         return unidads;
     }
 
     public void setUnidads(Set<com.aprendoz_desarrollo.data.Unidad> unidads) {
         this.unidads = unidads;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.AprendizajesAsignaturas> getAprendizajesAsignaturases() {
+        return aprendizajesAsignaturases;
+    }
+
+    public void setAprendizajesAsignaturases(Set<com.aprendoz_desarrollo.data.AprendizajesAsignaturas> aprendizajesAsignaturases) {
+        this.aprendizajesAsignaturases = aprendizajesAsignaturases;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy2> getInscAlumAsigCopy2s() {

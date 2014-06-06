@@ -6,19 +6,20 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumAprendizaje
- *  04/02/2014 11:03:07
+ *  06/05/2014 15:30:29
  * 
  */
 public class InscAlumAprendizaje {
 
     private Integer idInscAlumAprendizaje;
-    private Persona persona;
-    private Aprendizaje aprendizaje;
     private Date fechaLogro;
     private String calificacion;
     private Float calificacionNum;
     private String comentario;
     private Date fechaIngreso;
+    private String usuario;
+    private Persona persona;
+    private Aprendizaje aprendizaje;
 
     public Integer getIdInscAlumAprendizaje() {
         return idInscAlumAprendizaje;
@@ -26,22 +27,6 @@ public class InscAlumAprendizaje {
 
     public void setIdInscAlumAprendizaje(Integer idInscAlumAprendizaje) {
         this.idInscAlumAprendizaje = idInscAlumAprendizaje;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public Aprendizaje getAprendizaje() {
-        return aprendizaje;
-    }
-
-    public void setAprendizaje(Aprendizaje aprendizaje) {
-        this.aprendizaje = aprendizaje;
     }
 
     public Date getFechaLogro() {
@@ -82,6 +67,30 @@ public class InscAlumAprendizaje {
 
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    public Aprendizaje getAprendizaje() {
+        return aprendizaje;
+    }
+
+    public void setAprendizaje(Aprendizaje aprendizaje) {
+        this.aprendizaje = aprendizaje;
     }
 
 }

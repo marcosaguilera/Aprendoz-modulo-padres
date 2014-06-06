@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.GrupoFamiliar
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:29
  * 
  */
 public class GrupoFamiliar {
@@ -19,6 +19,7 @@ public class GrupoFamiliar {
     private Set<com.aprendoz_desarrollo.data.Persona> personas = new HashSet<com.aprendoz_desarrollo.data.Persona>();
     private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
     private Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar>();
+    private Set<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar> gestionEncuestasGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar>();
 
     public Integer getIdGrupoFamiliar() {
         return idGrupoFamiliar;
@@ -74,6 +75,14 @@ public class GrupoFamiliar {
 
     public void setActualizacionGrupoFamiliars(Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars) {
         this.actualizacionGrupoFamiliars = actualizacionGrupoFamiliars;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar> getGestionEncuestasGrupoFamiliars() {
+        return gestionEncuestasGrupoFamiliars;
+    }
+
+    public void setGestionEncuestasGrupoFamiliars(Set<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar> gestionEncuestasGrupoFamiliars) {
+        this.gestionEncuestasGrupoFamiliars = gestionEncuestasGrupoFamiliars;
     }
 
 }

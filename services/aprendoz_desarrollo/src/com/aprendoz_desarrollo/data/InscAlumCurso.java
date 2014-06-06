@@ -6,18 +6,18 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumCurso
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:30
  * 
  */
 public class InscAlumCurso {
 
     private Integer idInscAlumCurso;
-    private Curso curso;
-    private Sy sy;
-    private Persona persona;
     private Integer calificacion;
     private String califChar;
     private Date fechaMatricula;
+    private Curso curso;
+    private Sy sy;
+    private Persona persona;
 
     public Integer getIdInscAlumCurso() {
         return idInscAlumCurso;
@@ -25,30 +25,6 @@ public class InscAlumCurso {
 
     public void setIdInscAlumCurso(Integer idInscAlumCurso) {
         this.idInscAlumCurso = idInscAlumCurso;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     public Integer getCalificacion() {
@@ -73,6 +49,30 @@ public class InscAlumCurso {
 
     public void setFechaMatricula(Date fechaMatricula) {
         this.fechaMatricula = fechaMatricula;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

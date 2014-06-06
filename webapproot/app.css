@@ -30,3 +30,8 @@
     color: #ffffff;
     background: none; 
 }
+
+div.wmCheckboxSetItem {
+    width: 122px;
+	float: left;
+}

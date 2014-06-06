@@ -6,17 +6,17 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumActividad
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:30
  * 
  */
 public class InscAlumActividad {
 
     private Integer idInscAlumActividad;
-    private Actividad actividad;
-    private Persona persona;
     private Boolean logrado;
     private Date fecha;
     private String comentario;
+    private Actividad actividad;
+    private Persona persona;
 
     public Integer getIdInscAlumActividad() {
         return idInscAlumActividad;
@@ -24,22 +24,6 @@ public class InscAlumActividad {
 
     public void setIdInscAlumActividad(Integer idInscAlumActividad) {
         this.idInscAlumActividad = idInscAlumActividad;
-    }
-
-    public Actividad getActividad() {
-        return actividad;
-    }
-
-    public void setActividad(Actividad actividad) {
-        this.actividad = actividad;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     public Boolean getLogrado() {
@@ -64,6 +48,22 @@ public class InscAlumActividad {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public Actividad getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(Actividad actividad) {
+        this.actividad = actividad;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

@@ -6,6 +6,7 @@ return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7);
 
 dojo.declare("Main", wm.Page, {
   start: function() { 
+  //  this.designableDialog1.show();
     var curdate = new Date().getTime();
     this.parents_global_currentSy.input.setValue("f1", curdate);
     this.parents_global_currentSy.update();
@@ -2140,6 +2141,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_actividades.show();
         this.performance_top_header.setCaption("ACTIVIDADES");
 	},
+    //
 	parents_comunity_comunicationClick3: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow == true){
@@ -2169,6 +2171,107 @@ dojo.declare("Main", wm.Page, {
 	},	
 	timeListenerTimerFire: function(inSender) {       
         wm.Page.getPage("Schedule").fireClick();
+	},
+    //saving the poll
+	Guardar_y_TerminarClick: function(inSender) {
+        var idpersona= main.parents_global_user_info.getItem(0).data.idpersona;
+        var fechaIngreso= new Date().getTime();
+        var fechaActualizacion= new Date().getTime();
+        var grado= "Versión 2014-06";
+        var tipo= main.parents_global_user_info.getItem(0).data.tipoPe;
+		var p1= this.p1.getDataValue();
+        var p2= this.p2.getDataValue();
+        var p3= this.p3.getDataValue();
+        var p4= this.p4.getDataValue();
+        var p5= this.p5.getDataValue();
+        var p6= this.p6.getDataValue();
+        var p7= this.p7.getDataValue();
+        var p8= this.p8.getDataValue();
+        var p9= this.p9.getDataValue();
+        var p10= this.p10.getDataValue();
+        var p11= this.p11.getDataValue();
+        var p12= this.p12.getDataValue();
+        var p13= this.p13.getDataValue();
+        var p14= this.p14.getDataValue();
+        var p15= this.p15.getDataValue();
+        var p16= this.p16.getDataValue();
+        var p17= this.p17.getDataValue();
+        var p18= this.p18.getDataValue();
+        var p19= this.p19.getDataValue();
+        var p20= this.p20.getDataValue();
+        var sugerencia= this.sugerencias.getDataValue();
+        console.log(p1);
+        this.encuestaActions.setValue("persona.idPersona",idpersona);
+        this.encuestaActions.setValue("fechaIngreso",fechaIngreso);
+        this.encuestaActions.setValue("fechaActualizacion",fechaActualizacion);
+        this.encuestaActions.setValue("grado",grado);
+        this.encuestaActions.setValue("tipo",tipo);
+        this.encuestaActions.setValue("p1",p1);
+        this.encuestaActions.setValue("p2",p2);
+        this.encuestaActions.setValue("p3",p3);
+        this.encuestaActions.setValue("p4",p4);
+        this.encuestaActions.setValue("p5",p5);
+        this.encuestaActions.setValue("p6",p6);
+        this.encuestaActions.setValue("p7",p7);
+        this.encuestaActions.setValue("p8",p8);
+        this.encuestaActions.setValue("p9",p9);
+        this.encuestaActions.setValue("p10",p10);
+        this.encuestaActions.setValue("p11",p11);
+        this.encuestaActions.setValue("p12",p12);
+        this.encuestaActions.setValue("p13",p13);
+        this.encuestaActions.setValue("p14",p14);
+        this.encuestaActions.setValue("p15",p15);
+        this.encuestaActions.setValue("p16",p16);
+        this.encuestaActions.setValue("p17",p17);
+        this.encuestaActions.setValue("p18",p18);
+        this.encuestaActions.setValue("p19",p19);
+        this.encuestaActions.setValue("p20",p20);
+        this.encuestaActions.setValue("sugerencias",sugerencia);
+            
+        this.encuestaLiveForm.setDataSet(this.encuestaActions); 
+        this.encuestaLiveForm.insertData();    
+	},
+    //hiding dialog window
+	encuestaLiveFormSuccess: function(inSender, inData) {
+		this.designableDialog1.hide();
+	},
+    //shooting log grupo_familiar
+	Guardar_y_TerminarClick1: function(inSender) {
+		var idgrupofamiliar= main.parents_global_user_info.getItem(0).data.idFamilia;
+        var fechaCreacion=  new Date().getTime();
+        var fechaActualizacion=  new Date().getTime();
+        this.encuestaRegistroFamilia.setValue("fechaCreacion",fechaCreacion);
+        this.encuestaRegistroFamilia.setValue("fechaActualizacion",fechaActualizacion);
+        this.encuestaRegistroFamilia.setValue("encuestaTerminada", true);
+        this.encuestaRegistroFamilia.setValue("grupoFamiliar.idGrupoFamiliar", idgrupofamiliar);
+        this.logEncuestaForm.setDataSet(this.encuestaRegistroFamilia); 
+        this.logEncuestaForm.insertData();    
+	},
+	wizardLayers1DoneClick: function(inSender) {
+		this.Guardar_y_TerminarClick();
+	},
+	parents_global_user_infoSuccess2: function(inSender, inDeprecated) {
+		var idgrupofamiliar= main.parents_global_user_info.getItem(0).data.idFamilia;
+        this.getLogEncuesta.input.setValue("idgp",idgrupofamiliar);
+        this.getLogEncuesta.update();
+	},
+	getLogEncuestaSuccess: function(inSender, inDeprecated) {
+		var count= this.getLogEncuesta.getCount();
+        var tipo= main.parents_global_user_info.getItem(0).data.tipoId;
+        console.log(count);
+        if(count>0){
+          console.log("ya completó la encuesta");
+        }else{          
+          console.log("-----> tiene que completar la encuesta!");
+          this.designableDialog1.show();  
+          if(tipo==1){
+              this.wizardLayers1.hide();
+              this.estudiante.show();
+          }else{
+              this.estudiante.hide();
+              this.wizardLayers1.show();
+          }
+        }
 	},
 	_end: 0
 });

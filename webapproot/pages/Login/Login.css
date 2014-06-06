@@ -19,41 +19,47 @@ margin: 10px 0 30px;
 .Login .Login-passObject1{
   font-size: 12px;
   text-decoration: none;
-  
-}.Login .Login-layoutBox {
-  background:  #FAFAFA url(resources/images/gradients/subtle_dots.png);
-   color: #000;
-font: 14px Arial;
-margin: 0 auto;
-padding: 0;
-position: relative;
+}
+
+.Login .Login-layoutBox {
+    background-image: url(http://aprendoz.rochester.edu.co/recursos/imagen_papas.jpg);
+    color: #000;
+    font: 14px Arial;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .Login .Login-panel_image {
-    border-top-left-radius: 25px;
-    
+    border-top-left-radius: 25px;    
 }
 
 .Login .Login-loginInputPanel {
-    border-bottom-right-radius: 25px;
+    border-radius: 5px;
+    opacity: 0.8;
 }
 
 .Login .Login-label2 {
     font-family: 'Scada', sans-serif;
     font-size: 25px;
-color: #a62121;
-letter-spacing: -0.05em;
-line-height: 20px;
-margin: 10px 0 30px;
+    color: #a62121;
+    letter-spacing: -0.05em;
+    line-height: 20px;
+    margin: 10px 0 30px;
 }
 
 .Login .Login-usernameInput {
-  border: 1px solid #c8c8c8;
-  color: #777;
-margin: 0 0 10px;
-padding: 15px 10px 15px 40px;
+    border: 1px solid #c8c8c8;
+    color: #777;
+    margin: 0 0 10px;
+    padding: 15px 10px 15px 40px;
 }
 
+.Login .Login-panel2 {
+    opacity: 0.8;
+}
 
 
 .Login .Login-loginButton {

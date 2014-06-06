@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.VistaEnvioCorreoId
- *  04/02/2014 11:03:07
+ *  06/05/2014 15:30:30
  * 
  */
 public class VistaEnvioCorreoId

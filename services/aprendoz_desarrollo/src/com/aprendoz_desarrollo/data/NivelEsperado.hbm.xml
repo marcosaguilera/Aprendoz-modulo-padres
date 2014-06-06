@@ -14,5 +14,11 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Aprendizaje"/>
         </set>
+        <set name="aprendizajesAsignaturases" inverse="true" cascade="">
+            <key>
+                <column name="Nivel_Esperado_Id_Nivel_Esperado" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.AprendizajesAsignaturas"/>
+        </set>
     </class>
 </hibernate-mapping>

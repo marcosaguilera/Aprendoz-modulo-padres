@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.CalifEstCopyId
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:30
  * 
  */
 public class CalifEstCopyId

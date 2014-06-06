@@ -89,6 +89,12 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy"/>
         </set>
+        <set name="inscAlumAsigCopy3s" inverse="true" cascade="">
+            <key>
+                <column name="Asignatura_Id_Asignatura" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy3"/>
+        </set>
         <set name="inscAlumAsigs" inverse="true" cascade="">
             <key>
                 <column name="Asignatura_Id_Asignatura" not-null="true"/>
@@ -101,11 +107,23 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Sesion"/>
         </set>
+        <set name="inscCursoAsigCopies" inverse="true" cascade="">
+            <key>
+                <column name="Asignatura_Id_Asignatura" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsigCopy"/>
+        </set>
         <set name="unidads" inverse="true" cascade="">
             <key>
                 <column name="Asignatura_Id_Asignatura" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Unidad"/>
+        </set>
+        <set name="aprendizajesAsignaturases" inverse="true" cascade="">
+            <key>
+                <column name="Asignatura_Id_Asignatura"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.AprendizajesAsignaturas"/>
         </set>
         <set name="inscAlumAsigCopy2s" inverse="true" cascade="">
             <key>

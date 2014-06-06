@@ -44,8 +44,7 @@ _end: 0
 Login.widgets = {
 layoutBox: ["wm.Layout", {"styles":{},"width":"649px"}, {}, {
 spacer2: ["wm.Spacer", {"height":"80%","styles":{},"width":"96px"}, {}],
-loginMainPanel: ["wm.Panel", {"height":"344px","layoutKind":"left-to-right","styles":{}}, {}, {
-spacer5: ["wm.Spacer", {"width":"100%"}, {}],
+loginMainPanel: ["wm.Panel", {"height":"344px","horizontalAlign":"center","layoutKind":"left-to-right","styles":{}}, {}, {
 loginInputPanel: ["wm.Panel", {"_classes":{"domNode":["wm_Border_StyleFirefoxCurved4px","wm_Border_StyleSolid","wm_Border_Size1px","wm_Border_ColorLightGray","wm_FontSizePx_14px","wm_BackgroundColor_White"]},"borderColor":"#ffffff","height":"268px","padding":"10,55,10,55","styles":{},"verticalAlign":"middle","width":"450px"}, {}, {
 logo_: ["wm.Picture", {"aspect":"v","height":"86px","source":"resources/images/iconsmaster_v2/Aprendoz_03.jpg","styles":{}}, {}],
 label2: ["wm.Label", {"align":"center","caption":"Aprendoz Padres","height":"48px","padding":"4","width":"96px"}, {}, {
@@ -67,12 +66,11 @@ spacer3: ["wm.Spacer", {"height":"11px"}, {}],
 loginErrorMsg: ["wm.Label", {"align":"center","caption":" ","height":"100%","padding":"4","styles":{}}, {}, {
 format: ["wm.DataFormatter", {}, {}]
 }]
+}]
 }],
-spacer4: ["wm.Spacer", {"styles":{},"width":"100%"}, {}]
-}],
-spacer1: ["wm.Spacer", {"height":"513px","width":"96px"}, {}],
-panel2: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved12px","wm_BackgroundColor_White"]},"height":"48px","horizontalAlign":"center","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
-label1: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_16px"]},"align":"center","caption":"Colegio Rochester  • Aprendoz © Versión 0.0.8 ● 2013","height":"48px","padding":"4","width":"513px"}, {}, {
+spacer1: ["wm.Spacer", {"height":"100%","width":"96px"}, {}],
+panel2: ["wm.Panel", {"height":"48px","horizontalAlign":"center","layoutKind":"left-to-right","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"100%"}, {}, {
+label1: ["wm.Label", {"align":"center","caption":"Colegio Rochester - Aprendoz © Versión 0.0.8- 2013 - 2014","height":"48px","padding":"4","styles":{"fontSize":"13px"},"width":"513px"}, {}, {
 format: ["wm.DataFormatter", {}, {}]
 }]
 }]
@@ -96,19 +94,23 @@ margin: 10px 0 30px;\
 .Login .Login-passObject1{\
 font-size: 12px;\
 text-decoration: none;\
-}.Login .Login-layoutBox {\
-background:  #FAFAFA url(resources/images/gradients/subtle_dots.png);\
+}\
+.Login .Login-layoutBox {\
+background-image: url(http://aprendoz.rochester.edu.co/recursos/imagen_papas.jpg);\
 color: #000;\
 font: 14px Arial;\
 margin: 0 auto;\
 padding: 0;\
 position: relative;\
+background-repeat: no-repeat;\
+background-size: cover;\
 }\
 .Login .Login-panel_image {\
 border-top-left-radius: 25px;\
 }\
 .Login .Login-loginInputPanel {\
-border-bottom-right-radius: 25px;\
+border-radius: 5px;\
+opacity: 0.8;\
 }\
 .Login .Login-label2 {\
 font-family: "Scada", sans-serif;\
@@ -123,6 +125,9 @@ border: 1px solid #c8c8c8;\
 color: #777;\
 margin: 0 0 10px;\
 padding: 15px 10px 15px 40px;\
+}\
+.Login .Login-panel2 {\
+opacity: 0.8;\
 }\
 .Login .Login-loginButton {\
 background: rgb(247,249,250);\

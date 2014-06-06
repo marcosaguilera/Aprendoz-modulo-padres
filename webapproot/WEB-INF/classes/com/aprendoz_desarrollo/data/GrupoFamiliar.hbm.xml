@@ -35,5 +35,11 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar"/>
         </set>
+        <set name="gestionEncuestasGrupoFamiliars" inverse="true" cascade="">
+            <key>
+                <column name="grupo_familiar_id_grupo_familiar" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar"/>
+        </set>
     </class>
 </hibernate-mapping>

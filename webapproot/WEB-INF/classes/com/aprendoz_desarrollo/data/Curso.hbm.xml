@@ -59,6 +59,12 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Coordinacion"/>
         </set>
+        <set name="inscCursoAsigCopies" inverse="true" cascade="">
+            <key>
+                <column name="Curso_Id_Curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsigCopy"/>
+        </set>
         <set name="inscCoordinadoresCursos" inverse="true" cascade="">
             <key>
                 <column name="curso_id_curso" not-null="true"/>

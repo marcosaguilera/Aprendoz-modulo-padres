@@ -8,6 +8,12 @@
         <property name="dimensionComprension" type="string">
             <column name="Dimension_Comprension" length="45"/>
         </property>
+        <set name="aprendizajesAsignaturases" inverse="true" cascade="">
+            <key>
+                <column name="Dimension_Comprension_Id_Dimension" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.AprendizajesAsignaturas"/>
+        </set>
         <set name="aprendizajes" inverse="true" cascade="">
             <key>
                 <column name="Dimension_Comprension_Id_Dimension" not-null="true"/>

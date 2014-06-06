@@ -1,0 +1,87 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.GestionEncuestas" table="gestion_encuestas" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idPkEncuesta" type="integer">
+            <column name="id_pk_encuesta"/>
+            <generator class="identity"/>
+        </id>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="fecha_ingreso" length="19" not-null="true"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19" not-null="true"/>
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="20" not-null="true"/>
+        </property>
+        <property name="grado" type="string">
+            <column name="grado" length="100" not-null="true"/>
+        </property>
+        <property name="p1" type="integer">
+            <column name="p1" not-null="true"/>
+        </property>
+        <property name="p2" type="integer">
+            <column name="p2" not-null="true"/>
+        </property>
+        <property name="p3" type="integer">
+            <column name="p3" not-null="true"/>
+        </property>
+        <property name="p4" type="integer">
+            <column name="p4" not-null="true"/>
+        </property>
+        <property name="p5" type="integer">
+            <column name="p5" not-null="true"/>
+        </property>
+        <property name="p6" type="integer">
+            <column name="p6" not-null="true"/>
+        </property>
+        <property name="p7" type="integer">
+            <column name="p7" not-null="true"/>
+        </property>
+        <property name="p8" type="integer">
+            <column name="p8" not-null="true"/>
+        </property>
+        <property name="p9" type="integer">
+            <column name="p9" not-null="true"/>
+        </property>
+        <property name="p10" type="integer">
+            <column name="p10" not-null="true"/>
+        </property>
+        <property name="p11" type="integer">
+            <column name="p11" not-null="true"/>
+        </property>
+        <property name="p12" type="integer">
+            <column name="p12" not-null="true"/>
+        </property>
+        <property name="p13" type="integer">
+            <column name="p13" not-null="true"/>
+        </property>
+        <property name="p14" type="integer">
+            <column name="p14" not-null="true"/>
+        </property>
+        <property name="p15" type="integer">
+            <column name="p15" not-null="true"/>
+        </property>
+        <property name="p16" type="integer">
+            <column name="p16" not-null="true"/>
+        </property>
+        <property name="p17" type="integer">
+            <column name="p17" not-null="true"/>
+        </property>
+        <property name="p18" type="integer">
+            <column name="p18" not-null="true"/>
+        </property>
+        <property name="p19" type="integer">
+            <column name="p19" not-null="true"/>
+        </property>
+        <property name="p20" type="integer">
+            <column name="p20" not-null="true"/>
+        </property>
+        <property name="sugerencias" type="string">
+            <column name="sugerencias" length="65535"/>
+        </property>
+        <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona">
+            <column name="persona_id_persona" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

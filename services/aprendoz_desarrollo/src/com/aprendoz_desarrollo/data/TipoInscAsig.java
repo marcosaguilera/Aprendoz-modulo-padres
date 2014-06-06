@@ -7,13 +7,14 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.TipoInscAsig
- *  04/02/2014 11:03:06
+ *  06/05/2014 15:30:29
  * 
  */
 public class TipoInscAsig {
 
     private Integer idTipoInscAsig;
     private String tipo;
+    private Set<com.aprendoz_desarrollo.data.AsignaturaCopy> asignaturaCopies = new HashSet<com.aprendoz_desarrollo.data.AsignaturaCopy>();
     private Set<com.aprendoz_desarrollo.data.Asignatura> asignaturas = new HashSet<com.aprendoz_desarrollo.data.Asignatura>();
 
     public Integer getIdTipoInscAsig() {
@@ -30,6 +31,14 @@ public class TipoInscAsig {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.AsignaturaCopy> getAsignaturaCopies() {
+        return asignaturaCopies;
+    }
+
+    public void setAsignaturaCopies(Set<com.aprendoz_desarrollo.data.AsignaturaCopy> asignaturaCopies) {
+        this.asignaturaCopies = asignaturaCopies;
     }
 
     public Set<com.aprendoz_desarrollo.data.Asignatura> getAsignaturas() {

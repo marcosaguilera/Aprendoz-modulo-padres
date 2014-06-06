@@ -173,6 +173,14 @@
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetInscPersonaGrupoFamiliarRtnType]"
 	}, {
+		"name": "getLogEncuesta",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "idgp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetLogEncuestaRtnType]"
+	}, {
 		"name": "getNombreGrupoFamiliar",
 		"operationType": "hqlquery",
 		"parameters": [{

@@ -8,6 +8,12 @@
         <property name="tipo" type="string">
             <column name="Tipo" length="45"/>
         </property>
+        <set name="asignaturaCopies" inverse="true" cascade="">
+            <key>
+                <column name="Tipo_Insc_Asig_Id_Tipo_Insc_Asig"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.AsignaturaCopy"/>
+        </set>
         <set name="asignaturas" inverse="true" cascade="">
             <key>
                 <column name="Tipo_Insc_Asig_Id_Tipo_Insc_Asig"/>

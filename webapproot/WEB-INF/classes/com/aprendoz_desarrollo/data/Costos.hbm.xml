@@ -50,5 +50,11 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Educom"/>
         </set>
+        <set name="inscAlumCostoCopies" inverse="true" cascade="">
+            <key>
+                <column name="costo_Id_costo" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCostoCopy"/>
+        </set>
     </class>
 </hibernate-mapping>

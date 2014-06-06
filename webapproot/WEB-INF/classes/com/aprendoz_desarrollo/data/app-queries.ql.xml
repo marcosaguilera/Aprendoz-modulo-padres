@@ -114,6 +114,20 @@ curdate() as fecha_actual
 FROM
 Persona p WHERE p.nombreLdap=:usuario
     </query>
+    <query name="studentSujectActivities">
+        <query-param name="idp" type="java.lang.Integer"/>
+        <query-param name="idsy" type="java.lang.Integer"/>
+        SELECT
+act.idActividad as id,
+CONCAT(a.asignatura) as title,
+CONCAT(str(year( act.fecha)),&apos;-&apos;,str(month(act.fecha)),&apos;-&apos;,str(day( act.fecha))) as start,
+COUNT(*) as totalActividades
+FROM InscAlumAsig iaa
+INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy
+WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL
+GROUP BY a.idAsignatura, act.fecha
+ORDER BY act.fecha
+    </query>
     <query name="hqlGetTotalPagar">
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT SUM(c.valor) as totalPagar
@@ -222,6 +236,21 @@ c.calificacionNum as puntaje,
 c.fechaLogro as fechaLogro
 FROM CalificacionFinal c INNER JOIN c.aprendizaje a INNER JOIN c.persona p
 WHERE a.idAprendizaje=:idApr AND p.idPersona=:idPer
+    </query>
+    <query name="detailsActivitiesStudent">
+        <query-param name="idp" type="java.lang.Integer"/>
+        <query-param name="idsy" type="java.lang.Integer"/>
+        <query-param name="idact" type="java.lang.Integer"/>
+        SELECT
+act.idActividad as id,
+act.actividad  as actividad,
+a.idAsignatura as idasignatura,
+a.asignatura as title,
+act.fecha as fecha
+FROM InscAlumAsig iaa
+INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy
+WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL AND act.idActividad=:idact
+ORDER BY act.fecha desc
     </query>
     <query name="parentsCostosEduCom">
         <query-param name="f1" type="java.util.Date"/>
@@ -424,33 +453,10 @@ WHERE ipgf.idInscPersonaGrupoFamiliar=:idipgf
 FROM FichaMedica fm INNER JOIN fm.persona _p
 WHERE _p.idPersona=:idp
     </query>
-    <query name="studentSujectActivities">
-        <query-param name="idp" type="java.lang.Integer"/>
-        <query-param name="idsy" type="java.lang.Integer"/>
-        SELECT
-act.idActividad as id,
-CONCAT(a.asignatura) as title,
-CONCAT(str(year( act.fecha)),&apos;-&apos;,str(month(act.fecha)),&apos;-&apos;,str(day( act.fecha))) as start,
-COUNT(*) as totalActividades
-FROM InscAlumAsig iaa
-INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy
-WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL
-GROUP BY a.idAsignatura, act.fecha
-ORDER BY act.fecha
-    </query>
-    <query name="detailsActivitiesStudent">
-        <query-param name="idp" type="java.lang.Integer"/>
-        <query-param name="idsy" type="java.lang.Integer"/>
-        <query-param name="idact" type="java.lang.Integer"/>
-        SELECT
-act.idActividad as id,
-act.actividad  as actividad,
-a.idAsignatura as idasignatura,
-a.asignatura as title,
-act.fecha as fecha
-FROM InscAlumAsig iaa
-INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy
-WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL AND act.idActividad=:idact
-ORDER BY act.fecha desc
+    <query name="getLogEncuesta">
+        <query-param name="idgp" type="java.lang.Integer"/>
+        SELECT gegf.encuestaTerminada as terminado
+FROM GestionEncuestasGrupoFamiliar gegf INNER JOIN gegf.grupoFamiliar gp
+WHERE gp.idGrupoFamiliar=:idgp
     </query>
 </hibernate-mapping>
