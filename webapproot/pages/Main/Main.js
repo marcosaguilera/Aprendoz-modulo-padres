@@ -2069,6 +2069,8 @@ dojo.declare("Main", wm.Page, {
         var id= "1065952";
         var clave= "zombie2012+";
         var formatType= "PDF";
+        console.log(_codigo);
+
             $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
             failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
             httpMethod: "POST",
