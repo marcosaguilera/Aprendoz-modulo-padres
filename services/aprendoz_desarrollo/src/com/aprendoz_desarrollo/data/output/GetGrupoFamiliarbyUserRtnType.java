@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getGrupoFamiliarbyUser" on 06/05/2014 15:51:03
+ * Generated for query "getGrupoFamiliarbyUser" on 08/22/2014 12:53:32
  * 
  */
 public class GetGrupoFamiliarbyUserRtnType {
@@ -14,6 +14,8 @@ public class GetGrupoFamiliarbyUserRtnType {
     private String code;
     private String nombres;
     private String apellidos;
+    private String grado;
+    private Integer curso;
     private String tipo;
     private Integer idgrupo;
     private String familia;
@@ -57,6 +59,22 @@ public class GetGrupoFamiliarbyUserRtnType {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getGrado() {
+        return grado;
+    }
+
+    public void setGrado(String grado) {
+        this.grado = grado;
+    }
+
+    public Integer getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Integer curso) {
+        this.curso = curso;
     }
 
     public String getTipo() {

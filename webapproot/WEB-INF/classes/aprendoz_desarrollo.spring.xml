@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 06/05/2014 15:13:24
+<!-- Generated 06/12/2014 19:10:38
 
 Configuration for 'aprendoz_desarrollo' database service
 
@@ -112,6 +112,7 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/DimensionCurricular.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/SeguridadPermisosModulos.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Salon.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/ActualizacionGrupoFamiliarCopy.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/LogMatriculasAccionesUsuarios.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AprLogrados.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CostosAnualesCopy.hbm.xml</value>
@@ -201,6 +202,7 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/BimestreSy.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CafeteriaPostres.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/BisUsers.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/ActualizacionDatosPersonaCopy.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/PersonaEdad.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/EventualidadPersonas.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/DocentesVistaInscAlumnAsigDemografica.hbm.xml</value>

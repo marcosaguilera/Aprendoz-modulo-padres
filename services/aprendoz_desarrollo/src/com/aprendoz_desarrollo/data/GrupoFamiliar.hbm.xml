@@ -17,6 +17,12 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TransporteRutas"/>
         </set>
+        <set name="actualizacionGrupoFamiliarCopies" inverse="true" cascade="">
+            <key>
+                <column name="grupo_familiar_id_grupo_familiar" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy"/>
+        </set>
         <set name="personas" inverse="true" cascade="">
             <key>
                 <column name="Grupo_Familiar_ID_Grupo_Familiar" not-null="true"/>

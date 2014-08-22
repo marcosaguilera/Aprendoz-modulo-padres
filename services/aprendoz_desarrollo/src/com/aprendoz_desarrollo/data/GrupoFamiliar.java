@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.GrupoFamiliar
- *  06/05/2014 15:30:29
+ *  06/18/2014 11:04:58
  * 
  */
 public class GrupoFamiliar {
@@ -16,6 +16,7 @@ public class GrupoFamiliar {
     private String grupoFamiliar;
     private String grupoLdap;
     private Set<com.aprendoz_desarrollo.data.TransporteRutas> transporteRutases = new HashSet<com.aprendoz_desarrollo.data.TransporteRutas>();
+    private Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy> actualizacionGrupoFamiliarCopies = new HashSet<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy>();
     private Set<com.aprendoz_desarrollo.data.Persona> personas = new HashSet<com.aprendoz_desarrollo.data.Persona>();
     private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
     private Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar>();
@@ -51,6 +52,14 @@ public class GrupoFamiliar {
 
     public void setTransporteRutases(Set<com.aprendoz_desarrollo.data.TransporteRutas> transporteRutases) {
         this.transporteRutases = transporteRutases;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy> getActualizacionGrupoFamiliarCopies() {
+        return actualizacionGrupoFamiliarCopies;
+    }
+
+    public void setActualizacionGrupoFamiliarCopies(Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy> actualizacionGrupoFamiliarCopies) {
+        this.actualizacionGrupoFamiliarCopies = actualizacionGrupoFamiliarCopies;
     }
 
     public Set<com.aprendoz_desarrollo.data.Persona> getPersonas() {

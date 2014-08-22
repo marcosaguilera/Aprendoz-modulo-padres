@@ -117,6 +117,50 @@
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetCostosTransporteRtnType]"
 	}, {
+		"name": "getEducomAFR",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomAFRRtnType]"
+	}, {
+		"name": "getEducomCount",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomCountRtnType]"
+	}, {
+		"name": "getEducomEAD",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomEADRtnType]"
+	}, {
+		"name": "getEducomEPD",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomEPDRtnType]"
+	}, {
 		"name": "getFormulario5aById",
 		"operationType": "hqlquery",
 		"parameters": [{
@@ -180,6 +224,17 @@
 			"type": "java.lang.Integer"
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetLogEncuestaRtnType]"
+	}, {
+		"name": "getMaxEducom",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pideducom",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetMaxEducomRtnType]"
 	}, {
 		"name": "getNombreGrupoFamiliar",
 		"operationType": "hqlquery",

@@ -18,7 +18,7 @@ dojo.declare("Main", wm.Page, {
   "preferredDevice": "desktop",
 
   mySessionExpiredMethod: function(){
-   alert("Aviso importante: Sesión expirada \n\n"+ "Su sesión ha excedido el tiempo de inactividad permitido. Por favor ingrese nuevamente.");
+    alert("Aviso importante: Sesión finalizada \n\n"+ "Su sesión ha sido finalizada. Por favor ingrese nuevamente.");
     window.location.reload();  
   },    
   
@@ -1956,15 +1956,32 @@ dojo.declare("Main", wm.Page, {
 	},
     // selection and validation when the user tries to add a Curse
     // it shows a alert message
-    comunity_button_addClick: function(inSender) {
-    	var isCostSelected= main.comunity_costs_grid.isRowSelected;  
-        var isPeopleSelected= main.performance_family_grid.isRowSelected;
-        var isPaymentTypeSelected= main.comunity_payment_type.getDataValue();
-        if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
-           this.comunity_dialog_terms.show(); 
-        }else{
-           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
-        }
+    comunity_button_addClick: function(inSender) {   	
+        var idpersona= this.performance_family_grid.selectedItem.data.pid;
+        var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
+        var idsy=5;
+        var json= main.parents_global_currentSy.getItem(0);
+        var idsy= json.data.idsy;
+        //triggering MAXSubscriptions validator
+        main.getMaxEducom.input.setValue("pidsy", idsy);
+        main.getMaxEducom.input.setValue("pideducom", ideducom);
+        main.getMaxEducom.update();
+        //triggering AFR validator
+        this.getEducomAFR.input.setValue("pidsy", idsy);
+        this.getEducomAFR.input.setValue("pidpersona", idpersona); 
+        this.getEducomAFR.update();
+        //triggering EAD validator
+        this.getEducomEAD.input.setValue("pidsy", idsy);
+        this.getEducomEAD.input.setValue("pidpersona", idpersona);
+        this.getEducomEAD.update();
+        //triggering EPD validator
+        this.getEducomEPD.input.setValue("pidsy", idsy);
+        this.getEducomEPD.input.setValue("pidpersona", idpersona);
+        this.getEducomEPD.update();
+        //triggering counter serviceVariable
+        this.getEducomCount.input.setValue("pidsy", idsy);
+        this.getEducomCount.input.setValue("pidpersona", idpersona);         
+        this.getEducomCount.update();
 	},
 	// 1. show details when selection in learnings is ready
 	performance_student_details_learningsSelect: function(inSender) {
@@ -2258,7 +2275,7 @@ dojo.declare("Main", wm.Page, {
         this.getLogEncuesta.update();
 	},
 	getLogEncuestaSuccess: function(inSender, inDeprecated) {
-		var count= this.getLogEncuesta.getCount();
+		/*var count= this.getLogEncuesta.getCount();
         var tipo= main.parents_global_user_info.getItem(0).data.tipoId;
         console.log(count);
         if(count>0){
@@ -2273,7 +2290,91 @@ dojo.declare("Main", wm.Page, {
               this.estudiante.hide();
               this.wizardLayers1.show();
           }
-        }
+        }*/
 	},
+	parents_local_educomSuccess: function(inSender, inDeprecated) {
+		this.comunity_costs_grid.setSortIndex(2);
+	},
+    comunity_costs_gridSelect1: function(inSender) {
+        var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
+        var json= main.parents_global_currentSy.getItem(0);
+        var idsy= json.data.idsy;
+    	//triggering MAXSubscriptions validator
+        main.getMaxEducom.input.setValue("pidsy", idsy);
+        main.getMaxEducom.input.setValue("pideducom", ideducom);
+        main.getMaxEducom.update();
+	},
+	getEducomCountSuccess: function(inSender, inDeprecated) {
+        var cupoMax     = main.comunity_costs_grid.selectedItem.getData().cupoMaximo;
+        //var cupoInscritos = main.getMaxEducom.getItem(0).data.cupoInscritos;
+        var countCupoInscritos = main.getMaxEducom.getCount();
+        var count         = main.getEducomCount.getCount();
+		var isCostSelected= main.comunity_costs_grid.isRowSelected;  
+        var isPeopleSelected= main.performance_family_grid.isRowSelected;
+        var isPaymentTypeSelected= main.comunity_payment_type.getDataValue();
+        
+        var tipo= main.comunity_costs_grid.selectedItem.getData().tipoeducom;
+        var curso= main.comunity_costs_grid.selectedItem.getData().nombre;
+        var countEAD= main.getEducomEAD.getCount();
+        var countAFR= main.getEducomAFR.getCount();
+        var countEPD= main.getEducomEPD.getCount();
+        
+        console.log("--->"+countCupoInscritos+" inscritos de "+cupoMax+" permitidos");
+        if(countCupoInscritos < cupoMax){                // valida el cupo maximo y numero de inscritos, si inscritos es menor permite inscribir
+            console.log("podemos inscribir...");    
+            if(count < 2){                          // valida el numero de educom's inscritos por persona, si es menor a (2) permite inscribir
+                console.log("podemos continuar...");
+                if(tipo=="EAD"){
+                    console.log("EAD");
+                    if(countEAD<1){
+                        alert("se puede inscribir el curso EAD");
+                        if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+                           this.comunity_dialog_terms.show(); 
+                        }else{
+                           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
+                        }
+                    }else{
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+                    }
+                }
+                if(tipo=="AFR"){
+                    console.log("AFR");
+                    if(countAFR<1){
+                        alert("se puede inscribir el curso AFR");
+                        if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+                           this.comunity_dialog_terms.show(); 
+                        }else{
+                           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
+                        }
+                    }else{
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+                    }
+                }
+                if(tipo=="EPD"){
+                    console.log("EPD");
+                    if(countEPD<1){
+                        alert("se puede inscribir el curso EPD");
+                        if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+                           this.comunity_dialog_terms.show(); 
+                        }else{
+                           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
+                        }
+                    }else{
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+                    }
+                }            
+            }else{
+                alert("Los sentimos, usted ha alcanzado el máximo de cursos inscritos permitidos.");
+            }
+        }
+        if(countCupoInscritos === cupoMax || countCupoInscritos > cupoMax){
+            alert("Este curso ha alcanzado el cupo máximo de personas inscritas. Para mas información comuniquese con la coordinadora de Educación Comunitariá, Maria Juliana Ext. ");
+        }
+        /*if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+           this.comunity_dialog_terms.show(); 
+        }else{
+           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
+        }*/
+	},	
 	_end: 0
 });

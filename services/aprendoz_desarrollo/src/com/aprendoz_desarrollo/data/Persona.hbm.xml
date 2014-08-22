@@ -218,17 +218,17 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TransporteInscAlumTransporte"/>
         </set>
-        <set name="calificacionFinals" inverse="true" cascade="">
-            <key>
-                <column name="Persona_Id_Persona"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.CalificacionFinal"/>
-        </set>
         <set name="inscComentariosAlumnoses" inverse="true" cascade="">
             <key>
                 <column name="persona_id_persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscComentariosAlumnos"/>
+        </set>
+        <set name="calificacionFinals" inverse="true" cascade="">
+            <key>
+                <column name="Persona_Id_Persona"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.CalificacionFinal"/>
         </set>
         <set name="inscDirectorNivels" inverse="true" cascade="">
             <key>
@@ -247,6 +247,12 @@
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar"/>
+        </set>
+        <set name="actualizacionDatosPersonaCopies" inverse="true" cascade="">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.ActualizacionDatosPersonaCopy"/>
         </set>
         <set name="eventualidadPersonases" inverse="true" cascade="">
             <key>

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.PadresVistaPersonasPromocionId
- *  06/05/2014 15:30:29
+ *  06/18/2014 11:04:57
  * 
  */
 public class PadresVistaPersonasPromocionId
@@ -28,6 +28,7 @@ public class PadresVistaPersonasPromocionId
     private Boolean aprobado;
     private Boolean promovido;
     private Integer syIdSy;
+    private Boolean autorizadoCra;
 
     public boolean equals(Object o) {
         if (o == this) {
@@ -172,6 +173,15 @@ public class PadresVistaPersonasPromocionId
                 return false;
             }
         }
+        if (this.autorizadoCra == null) {
+            if (other.autorizadoCra!= null) {
+                return false;
+            }
+        } else {
+            if (!this.autorizadoCra.equals(other.autorizadoCra)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -236,6 +246,10 @@ public class PadresVistaPersonasPromocionId
         rtn = (rtn* 37);
         if (this.syIdSy!= null) {
             rtn = (rtn + this.syIdSy.hashCode());
+        }
+        rtn = (rtn* 37);
+        if (this.autorizadoCra!= null) {
+            rtn = (rtn + this.autorizadoCra.hashCode());
         }
         return rtn;
     }
@@ -358,6 +372,14 @@ public class PadresVistaPersonasPromocionId
 
     public void setSyIdSy(Integer syIdSy) {
         this.syIdSy = syIdSy;
+    }
+
+    public Boolean getAutorizadoCra() {
+        return autorizadoCra;
+    }
+
+    public void setAutorizadoCra(Boolean autorizadoCra) {
+        this.autorizadoCra = autorizadoCra;
     }
 
 }

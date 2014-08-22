@@ -7,6 +7,10 @@ import com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType;
 import com.aprendoz_desarrollo.data.output.GetCoordinatorInfoRtnType;
 import com.aprendoz_desarrollo.data.output.GetCostosRtnType;
 import com.aprendoz_desarrollo.data.output.GetCostosTransporteRtnType;
+import com.aprendoz_desarrollo.data.output.GetEducomAFRRtnType;
+import com.aprendoz_desarrollo.data.output.GetEducomCountRtnType;
+import com.aprendoz_desarrollo.data.output.GetEducomEADRtnType;
+import com.aprendoz_desarrollo.data.output.GetEducomEPDRtnType;
 import com.aprendoz_desarrollo.data.output.GetGradoUsuarioRtnType;
 import com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyIdPersonaRtnType;
 import com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType;
@@ -14,6 +18,7 @@ import com.aprendoz_desarrollo.data.output.GetIdPersonabyUserRtnType;
 import com.aprendoz_desarrollo.data.output.GetIdbyUserRtnType;
 import com.aprendoz_desarrollo.data.output.GetInscPersonaGrupoFamiliarRtnType;
 import com.aprendoz_desarrollo.data.output.GetLogEncuestaRtnType;
+import com.aprendoz_desarrollo.data.output.GetMaxEducomRtnType;
 import com.aprendoz_desarrollo.data.output.GetSubjectsByStudentRtnType;
 import com.aprendoz_desarrollo.data.output.GetSyByCurDateRtnType;
 import com.aprendoz_desarrollo.data.output.GetTodosCostosRtnType;
@@ -57,7 +62,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  06/05/2014 15:51:06
+ *  08/22/2014 12:53:35
  * 
  */
 @SuppressWarnings("unchecked")
@@ -126,6 +131,22 @@ public class Aprendoz_desarrollo
         return ((List<GetCostosTransporteRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getCostosTransporteQueryName), idg, cod, nuevo, pagingOptions));
     }
 
+    public List<GetEducomAFRRtnType> getEducomAFR(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomAFRRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomAFRQueryName), pidsy, pidpersona, pagingOptions));
+    }
+
+    public List<GetEducomCountRtnType> getEducomCount(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomCountRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomCountQueryName), pidsy, pidpersona, pagingOptions));
+    }
+
+    public List<GetEducomEADRtnType> getEducomEAD(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomEADRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomEADQueryName), pidsy, pidpersona, pagingOptions));
+    }
+
+    public List<GetEducomEPDRtnType> getEducomEPD(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomEPDRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomEPDQueryName), pidsy, pidpersona, pagingOptions));
+    }
+
     public com.aprendoz_desarrollo.data.Formulario5a getFormulario5aById(Integer idFormulario, PagingOptions pagingOptions) {
         List<com.aprendoz_desarrollo.data.Formulario5a> rtn = ((List<com.aprendoz_desarrollo.data.Formulario5a> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getFormulario5aByIdQueryName), idFormulario, pagingOptions));
         if (rtn.isEmpty()) {
@@ -161,6 +182,10 @@ public class Aprendoz_desarrollo
 
     public List<GetLogEncuestaRtnType> getLogEncuesta(Integer idgp, PagingOptions pagingOptions) {
         return ((List<GetLogEncuestaRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getLogEncuestaQueryName), idgp, pagingOptions));
+    }
+
+    public List<GetMaxEducomRtnType> getMaxEducom(Integer pideducom, Integer pidsy, PagingOptions pagingOptions) {
+        return ((List<GetMaxEducomRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getMaxEducomQueryName), pideducom, pidsy, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.GrupoFamiliar getNombreGrupoFamiliar(Integer id, PagingOptions pagingOptions) {

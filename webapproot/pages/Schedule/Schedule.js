@@ -37,7 +37,7 @@ dojo.declare("Schedule", wm.Page, {
 		var now= this.today();
         var json= this.activitiesServiceVar.getData();
         var cont= this.activitiesServiceVar.getCount();
-        if(cont==0){alert("Lo sentimos, no tenemos actividades/tareas relacionadas con la persona seleccionada.");}else{}
+        //if(cont==0){alert("Lo sentimos, no tenemos actividades/tareas relacionadas con la persona seleccionada.");}else{}
         var self= this;
         $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar( 'removeEventSource', json);
         $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar({

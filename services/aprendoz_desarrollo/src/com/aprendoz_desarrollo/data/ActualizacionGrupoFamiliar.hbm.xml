@@ -5,6 +5,9 @@
             <column name="id_actualizacion_grupo_familiar"/>
             <generator class="identity"/>
         </id>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
         <property name="fecha" type="timestamp">
             <column name="fecha" length="19" not-null="true"/>
         </property>

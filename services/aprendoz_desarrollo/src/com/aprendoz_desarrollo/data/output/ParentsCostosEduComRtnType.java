@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * Generated for query "parentsCostosEduCom" on 06/05/2014 15:51:03
+ * Generated for query "parentsCostosEduCom" on 08/22/2014 12:53:32
  * 
  */
 public class ParentsCostosEduComRtnType {
@@ -22,6 +22,7 @@ public class ParentsCostosEduComRtnType {
     private Date fecha1;
     private Date fecha2;
     private String tipoeducom;
+    private Integer cupoMaximo;
     private Double pagoAnticipado;
 
     public Integer getId() {
@@ -118,6 +119,14 @@ public class ParentsCostosEduComRtnType {
 
     public void setTipoeducom(String tipoeducom) {
         this.tipoeducom = tipoeducom;
+    }
+
+    public Integer getCupoMaximo() {
+        return cupoMaximo;
+    }
+
+    public void setCupoMaximo(Integer cupoMaximo) {
+        this.cupoMaximo = cupoMaximo;
     }
 
     public Double getPagoAnticipado() {

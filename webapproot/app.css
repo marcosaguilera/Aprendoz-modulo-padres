@@ -34,4 +34,10 @@
 div.wmCheckboxSetItem {
     width: 122px;
 	float: left;
+}html.WMApp body .red {
+    background-color: rgb(197, 53, 57) !important;
+    border: none !important;
+    color: #ffffff;
+    background: none;
 }
+

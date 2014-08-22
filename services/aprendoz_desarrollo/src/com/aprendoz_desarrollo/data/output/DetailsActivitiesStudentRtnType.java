@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * Generated for query "detailsActivitiesStudent" on 06/05/2014 15:51:03
+ * Generated for query "detailsActivitiesStudent" on 08/22/2014 12:53:32
  * 
  */
 public class DetailsActivitiesStudentRtnType {

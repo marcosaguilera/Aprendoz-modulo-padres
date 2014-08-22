@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.CafemuObservacionesClase
- *  06/05/2014 15:30:29
+ *  06/18/2014 11:04:56
  * 
  */
 public class CafemuObservacionesClase {

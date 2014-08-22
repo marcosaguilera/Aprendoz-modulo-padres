@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "hql_ls_pais" on 06/05/2014 15:51:03
+ * Generated for query "hql_ls_pais" on 08/22/2014 12:53:32
  * 
  */
 public class Hql_ls_paisRtnType {

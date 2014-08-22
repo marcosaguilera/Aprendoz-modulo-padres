@@ -102,18 +102,6 @@ WHERE _g.idGrado=:idg and _c.codigo=:cod
 FROM ActualizacionGrupoFamiliar agf INNER JOIN agf.grupoFamiliar as familia
 WHERE familia.idGrupoFamiliar=:idg
     </query>
-    <query name="trackingPersonas" comment="Quesry para realizar seguimiento a usuarios">
-        <query-param name="usuario" type="java.lang.String"/>
-        SELECT
-p.idPersona as id,
-p.nombre1 as nombre1,
-p.nombre2 as nombre2,
-p.apellido1 as apellido1,
-p.apellido2 as apellido2,
-curdate() as fecha_actual
-FROM
-Persona p WHERE p.nombreLdap=:usuario
-    </query>
     <query name="studentSujectActivities">
         <query-param name="idp" type="java.lang.Integer"/>
         <query-param name="idsy" type="java.lang.Integer"/>
@@ -127,6 +115,24 @@ INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INN
 WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL
 GROUP BY a.idAsignatura, act.fecha
 ORDER BY act.fecha
+    </query>
+    <query name="trackingPersonas" comment="Quesry para realizar seguimiento a usuarios">
+        <query-param name="usuario" type="java.lang.String"/>
+        SELECT
+p.idPersona as id,
+p.nombre1 as nombre1,
+p.nombre2 as nombre2,
+p.apellido1 as apellido1,
+p.apellido2 as apellido2,
+curdate() as fecha_actual
+FROM
+Persona p WHERE p.nombreLdap=:usuario
+    </query>
+    <query name="getLogEncuesta">
+        <query-param name="idgp" type="java.lang.Integer"/>
+        SELECT gegf.encuestaTerminada as terminado
+FROM GestionEncuestasGrupoFamiliar gegf INNER JOIN gegf.grupoFamiliar gp
+WHERE gp.idGrupoFamiliar=:idgp
     </query>
     <query name="hqlGetTotalPagar">
         <query-param name="idp" type="java.lang.Integer"/>
@@ -181,24 +187,6 @@ FROM Asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.
 WHERE a.idAsignatura=:ida
 ORDER BY apr.fechaEsperada asc
     </query>
-    <query name="parentsLearningsStructure">
-        <query-param name="ida2" type="java.lang.Integer"/>
-        <query-param name="idapr2" type="java.lang.Integer"/>
-        SELECT a.idAsignatura as idasignatura,
-u.idUnidad as idunidad,
-u.unidad as unidad,
-u.unit as unit,
-u.numeroUnidad as numunidad,
-s.idSubtopico as idsubtopico,
-s.subtopico as subtopico,
-s.numeroSubtopico as numsubtopico,
-s.subtopic as subtopic,
-apr.idAprendizaje as idaprendizaje,
-apr.aprendizaje as aprendizaje,
-apr.fechaEsperada as fecha
-FROM Asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.aprendizajes apr
-WHERE a.idAsignatura=:ida2 AND apr.idAprendizaje=:idapr2
-    </query>
     <query name="showInformationUser">
         <query-param name="user" type="java.lang.String"/>
         SELECT
@@ -217,6 +205,24 @@ tipo.idTipoPersona as idtipo
 FROM Persona AS p
 INNER JOIN p.tipoPersona AS tipo
 WHERE p.nombreLdap=:user
+    </query>
+    <query name="parentsLearningsStructure">
+        <query-param name="ida2" type="java.lang.Integer"/>
+        <query-param name="idapr2" type="java.lang.Integer"/>
+        SELECT a.idAsignatura as idasignatura,
+u.idUnidad as idunidad,
+u.unidad as unidad,
+u.unit as unit,
+u.numeroUnidad as numunidad,
+s.idSubtopico as idsubtopico,
+s.subtopico as subtopico,
+s.numeroSubtopico as numsubtopico,
+s.subtopic as subtopic,
+apr.idAprendizaje as idaprendizaje,
+apr.aprendizaje as aprendizaje,
+apr.fechaEsperada as fecha
+FROM Asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.aprendizajes apr
+WHERE a.idAsignatura=:ida2 AND apr.idAprendizaje=:idapr2
     </query>
     <query name="hql_dash_asignaturas">
         <query-param name="idsy" type="java.lang.Integer"/>
@@ -268,6 +274,7 @@ e.edadRequeridadFinal as edad2,
 e.fechaAperturaCurso as fecha1,
 e.fechaCierreCurso as fecha2,
 e.tipoEducom as tipoeducom,
+e.cupoMaximo as cupoMaximo,
 e.tarifaAnticipado as pagoAnticipado
 FROM Educom e INNER JOIN e.costos c
 WHERE (:f1 BETWEEN e.fechaAperturaCurso AND e.fechaCierreCurso) OR (e.edadRequeridaInicial&gt;=:y AND e.edadRequeridadFinal&lt;=:y)
@@ -336,6 +343,8 @@ p.idPersona as pid,
 p.codigo as code,
 CONCAT(p.nombre1,&apos; &apos;,p.nombre2) as nombres,
 CONCAT(p.apellido1,&apos; &apos;, p.apellido2) as apellidos,
+substring(p.inscAlumCursoIdInscAlumCurso, 1, 3) as grado,
+p.inscAlumCursoIdInscAlumCurso  as curso,
 UPPER(t.tipoPersona) as tipo,
 g.idGrupoFamiliar as idgrupo,
 g.grupoFamiliar as familia,
@@ -441,22 +450,68 @@ WHERE adp.persona IN(SELECT _p.idPersona FROM Persona _p WHERE _p.idPersona=:idp
 FROM FichaMedica fm INNER JOIN fm.persona p
 WHERE p.idPersona=:idp
     </query>
-    <query name="updateInscPersonaGrupoFamiliar">
-        <query-param name="responsable" type="java.lang.Boolean"/>
-        <query-param name="idipgf" type="java.lang.Integer"/>
-        UPDATE InscPersonaGrupoFamiliar ipgf SET ipgf.responsable=:responsable
-WHERE ipgf.idInscPersonaGrupoFamiliar=:idipgf
-    </query>
     <query name="hqlAlergiasByUser">
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT _p.idPersona as id, fm.alergias as alergias, fm.recomendacionesEspeciales as recomendaciones, fm.idfichaMedica as idficha
 FROM FichaMedica fm INNER JOIN fm.persona _p
 WHERE _p.idPersona=:idp
     </query>
-    <query name="getLogEncuesta">
-        <query-param name="idgp" type="java.lang.Integer"/>
-        SELECT gegf.encuestaTerminada as terminado
-FROM GestionEncuestasGrupoFamiliar gegf INNER JOIN gegf.grupoFamiliar gp
-WHERE gp.idGrupoFamiliar=:idgp
+    <query name="updateInscPersonaGrupoFamiliar">
+        <query-param name="responsable" type="java.lang.Boolean"/>
+        <query-param name="idipgf" type="java.lang.Integer"/>
+        UPDATE InscPersonaGrupoFamiliar ipgf SET ipgf.responsable=:responsable
+WHERE ipgf.idInscPersonaGrupoFamiliar=:idipgf
+    </query>
+    <query name="getEducomCount">
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        <query-param name="pidpersona" type="java.lang.Integer"/>
+        SELECT
+p.idPersona as idpersona,
+sy.idSy as idsy,
+e.tipoEducom as educom
+FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona
+    </query>
+    <query name="getEducomEAD">
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        <query-param name="pidpersona" type="java.lang.Integer"/>
+        SELECT
+p.idPersona as idpersona,
+sy.idSy as idsy,
+e.tipoEducom as educom
+FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;EAD&apos;
+    </query>
+    <query name="getEducomAFR">
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        <query-param name="pidpersona" type="java.lang.Integer"/>
+        SELECT
+p.idPersona as idpersona,
+sy.idSy as idsy,
+e.tipoEducom as educom
+FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;AFR&apos;
+    </query>
+    <query name="getEducomEPD">
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        <query-param name="pidpersona" type="java.lang.Integer"/>
+        SELECT
+p.idPersona as idpersona,
+sy.idSy as idsy,
+e.tipoEducom as educom
+FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;EPD&apos;
+    </query>
+    <query name="getMaxEducom">
+        <query-param name="pideducom" type="java.lang.Integer"/>
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        SELECT
+e.idEducom as ideducom,
+e.cupoMaximo as cupoMaximo,
+count(*) as cupoInscritos,
+sy.idSy as idsy
+FROM InscPersonaEduCom ipe INNER JOIN ipe.persona p INNER JOIN ipe.educom e INNER JOIN e.sy sy
+WHERE e.idEducom=:pideducom AND sy.idSy=:pidsy
+GROUP BY e.idEducom
     </query>
 </hibernate-mapping>

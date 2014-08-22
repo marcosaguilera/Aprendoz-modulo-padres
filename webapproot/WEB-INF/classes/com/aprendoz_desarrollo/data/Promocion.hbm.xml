@@ -20,6 +20,12 @@
         <property name="commentfinanc" type="string">
             <column name="commentfinanc" length="65535"/>
         </property>
+        <property name="autorizadoCra" type="boolean">
+            <column name="autorizado_cra" not-null="true"/>
+        </property>
+        <property name="commentCra" type="string">
+            <column name="comment_cra" length="65535"/>
+        </property>
         <property name="promovido" type="boolean">
             <column name="promovido" not-null="true"/>
         </property>
@@ -30,7 +36,7 @@
             <column name="commentpromovido" length="65535"/>
         </property>
         <property name="calificacion" type="float">
-            <column name="calificacion" precision="5"/>
+            <column name="calificacion" precision="10"/>
         </property>
         <property name="calificacionChar" type="string">
             <column name="calificacion_char" length="15"/>

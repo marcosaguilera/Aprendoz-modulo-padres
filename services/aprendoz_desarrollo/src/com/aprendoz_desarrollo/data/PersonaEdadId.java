@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.PersonaEdadId
- *  06/05/2014 15:30:29
+ *  06/18/2014 11:04:57
  * 
  */
 public class PersonaEdadId
@@ -14,7 +14,7 @@ public class PersonaEdadId
 {
 
     private Integer idPersona;
-    private Long edad_vistaAlumnosActivos_idPersona_;
+    private Integer edad_vistaAlumnosActivos_idPersona_;
 
     public boolean equals(Object o) {
         if (o == this) {
@@ -66,11 +66,11 @@ public class PersonaEdadId
         this.idPersona = idPersona;
     }
 
-    public Long getEdad_vistaAlumnosActivos_idPersona_() {
+    public Integer getEdad_vistaAlumnosActivos_idPersona_() {
         return edad_vistaAlumnosActivos_idPersona_;
     }
 
-    public void setEdad_vistaAlumnosActivos_idPersona_(Long edad_vistaAlumnosActivos_idPersona_) {
+    public void setEdad_vistaAlumnosActivos_idPersona_(Integer edad_vistaAlumnosActivos_idPersona_) {
         this.edad_vistaAlumnosActivos_idPersona_ = edad_vistaAlumnosActivos_idPersona_;
     }
 

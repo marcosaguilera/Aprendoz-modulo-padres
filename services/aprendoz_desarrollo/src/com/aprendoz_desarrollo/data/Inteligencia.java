@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Inteligencia
- *  06/05/2014 15:30:29
+ *  06/18/2014 11:04:58
  * 
  */
 public class Inteligencia {

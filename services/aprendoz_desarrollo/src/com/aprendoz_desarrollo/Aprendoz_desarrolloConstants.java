@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo;
 
 /**
  *  Query names for service "aprendoz_desarrollo"
- *  06/05/2014 15:51:06
+ *  08/22/2014 12:53:35
  * 
  */
 public class Aprendoz_desarrolloConstants {
@@ -22,6 +22,10 @@ public class Aprendoz_desarrolloConstants {
     public final static String getCoordinatorInfoQueryName = "getCoordinatorInfo";
     public final static String getCostosQueryName = "getCostos";
     public final static String getCostosTransporteQueryName = "getCostosTransporte";
+    public final static String getEducomAFRQueryName = "getEducomAFR";
+    public final static String getEducomCountQueryName = "getEducomCount";
+    public final static String getEducomEADQueryName = "getEducomEAD";
+    public final static String getEducomEPDQueryName = "getEducomEPD";
     public final static String getFormulario5aByIdQueryName = "getFormulario5aById";
     public final static String getGradoUsuarioQueryName = "getGradoUsuario";
     public final static String getGrupoFamiliarbyIdPersonaQueryName = "getGrupoFamiliarbyIdPersona";
@@ -30,6 +34,7 @@ public class Aprendoz_desarrolloConstants {
     public final static String getIdbyUserQueryName = "getIdbyUser";
     public final static String GetInscPersonaGrupoFamiliarQueryName = "GetInscPersonaGrupoFamiliar";
     public final static String getLogEncuestaQueryName = "getLogEncuesta";
+    public final static String getMaxEducomQueryName = "getMaxEducom";
     public final static String getNombreGrupoFamiliarQueryName = "getNombreGrupoFamiliar";
     public final static String getSubjectsByStudentQueryName = "getSubjectsByStudent";
     public final static String getSyByCurDateQueryName = "getSyByCurDate";

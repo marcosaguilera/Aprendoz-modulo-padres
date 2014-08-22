@@ -47,6 +47,9 @@
             <key-property name="syIdSy" type="integer">
                 <column name="SY_Id_Sy"/>
             </key-property>
+            <key-property name="autorizadoCra" type="boolean">
+                <column name="autorizado_cra"/>
+            </key-property>
         </composite-id>
     </class>
 </hibernate-mapping>

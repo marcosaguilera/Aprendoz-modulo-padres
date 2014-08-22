@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * Generated for query "_hqlFichaMedicaByUser" on 06/05/2014 15:51:03
+ * Generated for query "_hqlFichaMedicaByUser" on 08/22/2014 12:53:32
  * 
  */
 public class _hqlFichaMedicaByUserRtnType {

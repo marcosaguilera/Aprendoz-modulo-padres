@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Persona
- *  06/05/2014 15:30:29
+ *  06/18/2014 11:04:57
  * 
  */
 public class Persona {
@@ -81,11 +81,12 @@ public class Persona {
     private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
     private Set<com.aprendoz_desarrollo.data.PromocionCopy> promocionCopies = new HashSet<com.aprendoz_desarrollo.data.PromocionCopy>();
     private Set<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte> transporteInscAlumTransportes = new HashSet<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte>();
-    private Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals = new HashSet<com.aprendoz_desarrollo.data.CalificacionFinal>();
     private Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> inscComentariosAlumnoses = new HashSet<com.aprendoz_desarrollo.data.InscComentariosAlumnos>();
+    private Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals = new HashSet<com.aprendoz_desarrollo.data.CalificacionFinal>();
     private Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels = new HashSet<com.aprendoz_desarrollo.data.InscDirectorNivel>();
     private Set<com.aprendoz_desarrollo.data.InscAlumActividad> inscAlumActividads = new HashSet<com.aprendoz_desarrollo.data.InscAlumActividad>();
     private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
+    private Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersonaCopy> actualizacionDatosPersonaCopies = new HashSet<com.aprendoz_desarrollo.data.ActualizacionDatosPersonaCopy>();
     private Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases = new HashSet<com.aprendoz_desarrollo.data.EventualidadPersonas>();
     private Set<com.aprendoz_desarrollo.data.AccStudentCard> accStudentCards = new HashSet<com.aprendoz_desarrollo.data.AccStudentCard>();
     private Set<com.aprendoz_desarrollo.data.CoordinacionDeGrupo> coordinacionDeGrupos = new HashSet<com.aprendoz_desarrollo.data.CoordinacionDeGrupo>();
@@ -659,20 +660,20 @@ public class Persona {
         this.transporteInscAlumTransportes = transporteInscAlumTransportes;
     }
 
-    public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
-        return calificacionFinals;
-    }
-
-    public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
-        this.calificacionFinals = calificacionFinals;
-    }
-
     public Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> getInscComentariosAlumnoses() {
         return inscComentariosAlumnoses;
     }
 
     public void setInscComentariosAlumnoses(Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> inscComentariosAlumnoses) {
         this.inscComentariosAlumnoses = inscComentariosAlumnoses;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
+        return calificacionFinals;
+    }
+
+    public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
+        this.calificacionFinals = calificacionFinals;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscDirectorNivel> getInscDirectorNivels() {
@@ -697,6 +698,14 @@ public class Persona {
 
     public void setInscPersonaGrupoFamiliars(Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars) {
         this.inscPersonaGrupoFamiliars = inscPersonaGrupoFamiliars;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersonaCopy> getActualizacionDatosPersonaCopies() {
+        return actualizacionDatosPersonaCopies;
+    }
+
+    public void setActualizacionDatosPersonaCopies(Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersonaCopy> actualizacionDatosPersonaCopies) {
+        this.actualizacionDatosPersonaCopies = actualizacionDatosPersonaCopies;
     }
 
     public Set<com.aprendoz_desarrollo.data.EventualidadPersonas> getEventualidadPersonases() {

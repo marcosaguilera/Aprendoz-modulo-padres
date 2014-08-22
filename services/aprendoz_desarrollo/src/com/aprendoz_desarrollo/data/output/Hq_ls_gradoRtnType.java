@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "hq_ls_grado" on 06/05/2014 15:51:03
+ * Generated for query "hq_ls_grado" on 08/22/2014 12:53:32
  * 
  */
 public class Hq_ls_gradoRtnType {
