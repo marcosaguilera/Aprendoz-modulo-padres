@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getCoordinatorInfo" on 08/22/2014 12:53:32
+ * Generated for query "getCoordinatorInfo" on 08/25/2014 17:28:36
  * 
  */
 public class GetCoordinatorInfoRtnType {

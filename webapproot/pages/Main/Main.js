@@ -1860,10 +1860,15 @@ dojo.declare("Main", wm.Page, {
     // show the 'Cursos' related by Comunity Education
 	parents_comunity_comunicationClick: function(inSender) {
         var curdate = new Date().getTime();
-        this.parents_local_educom.input.setValue("f1", curdate);    
+        var gradostr= main.performance_family_grid.selectedItem.getData().grado;
+        console.log(gradostr);
+        var grado= parseInt(gradostr);
+        console.log(grado);
+        this.parents_local_educom.input.setValue("f1", curdate);   
+        this.parents_local_educom.input.setValue("y", grado);   
 		this.parents_local_educom.update();
         this.performance_top_header.setCaption("EDUCACIÓN COMUNITARIA");
-        this.comunity_payment_type.setDisplayValue("Anticipado");
+        this.comunity_payment_type.setDisplayValue("Un solo pago");
         this.comunity_transp_selection.setDataValue("1");
         this.performance_left_buttons_panel.hide();
 	},
@@ -1929,7 +1934,8 @@ dojo.declare("Main", wm.Page, {
         var valorSinDescuento= this.comunity_costs_grid.selectedItem.data.valor;
         var valorAnticipado= this.comunity_costs_grid.selectedItem.data.pagoAnticipado;
         var plazo= this.comunity_payment_type.getDataValue();
-        if(formaPago=="anticipado"){
+        console.log(formaPago);
+        if(formaPago=="un_solo_pago"){
             dtoActicipado= valorSinDescuento-valorAnticipado;
             this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
             this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
@@ -1953,36 +1959,7 @@ dojo.declare("Main", wm.Page, {
             this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription); 
             this.comunity_action_inscription_educom.insertData();   
         }     
-	},
-    // selection and validation when the user tries to add a Curse
-    // it shows a alert message
-    comunity_button_addClick: function(inSender) {   	
-        var idpersona= this.performance_family_grid.selectedItem.data.pid;
-        var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
-        var idsy=5;
-        var json= main.parents_global_currentSy.getItem(0);
-        var idsy= json.data.idsy;
-        //triggering MAXSubscriptions validator
-        main.getMaxEducom.input.setValue("pidsy", idsy);
-        main.getMaxEducom.input.setValue("pideducom", ideducom);
-        main.getMaxEducom.update();
-        //triggering AFR validator
-        this.getEducomAFR.input.setValue("pidsy", idsy);
-        this.getEducomAFR.input.setValue("pidpersona", idpersona); 
-        this.getEducomAFR.update();
-        //triggering EAD validator
-        this.getEducomEAD.input.setValue("pidsy", idsy);
-        this.getEducomEAD.input.setValue("pidpersona", idpersona);
-        this.getEducomEAD.update();
-        //triggering EPD validator
-        this.getEducomEPD.input.setValue("pidsy", idsy);
-        this.getEducomEPD.input.setValue("pidpersona", idpersona);
-        this.getEducomEPD.update();
-        //triggering counter serviceVariable
-        this.getEducomCount.input.setValue("pidsy", idsy);
-        this.getEducomCount.input.setValue("pidpersona", idpersona);         
-        this.getEducomCount.update();
-	},
+	},    
 	// 1. show details when selection in learnings is ready
 	performance_student_details_learningsSelect: function(inSender) {
     	var idasig = this.performance_student_subjects.selectedItem.data.idasignatura;
@@ -2304,77 +2281,154 @@ dojo.declare("Main", wm.Page, {
         main.getMaxEducom.input.setValue("pideducom", ideducom);
         main.getMaxEducom.update();
 	},
+    // selection and validation when the user tries to add a Curse
+    // it shows a alert message
+    comunity_button_addClick: function(inSender) {       
+        var idpersona= this.performance_family_grid.selectedItem.data.pid;
+        var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
+        var idsy=5;
+        var json= main.parents_global_currentSy.getItem(0);
+        var idsy= json.data.idsy;
+        //triggering MAXSubscriptions validator
+        main.getMaxEducom.input.setValue("pidsy", idsy);
+        main.getMaxEducom.input.setValue("pideducom", ideducom);
+        main.getMaxEducom.update();
+        //triggering EFA validator
+        this.getEducomEFA.input.setValue("pidsy", idsy);
+        this.getEducomEFA.input.setValue("pidpersona", idpersona); 
+        this.getEducomEFA.update();
+        //triggering EAD validator
+        this.getEducomEAD.input.setValue("pidsy", idsy);
+        this.getEducomEAD.input.setValue("pidpersona", idpersona);
+        this.getEducomEAD.update();
+        //triggering EPD validator
+        this.getEducomEPD.input.setValue("pidsy", idsy);
+        this.getEducomEPD.input.setValue("pidpersona", idpersona);
+        this.getEducomEPD.update(); 
+        //triggering ECR validator
+        this.getEducomECR.input.setValue("pidsy", idsy);
+        this.getEducomECR.input.setValue("pidpersona", idpersona); 
+        this.getEducomECR.update();
+        //triggering OLA validator
+        this.getEducomOLA.input.setValue("pidsy", idsy);
+        this.getEducomOLA.input.setValue("pidpersona", idpersona); 
+        this.getEducomOLA.update();
+        //triggering counter serviceVariable
+        this.getEducomCount.input.setValue("pidsy", idsy);
+        this.getEducomCount.input.setValue("pidpersona", idpersona);         
+        this.getEducomCount.update();
+	},    
 	getEducomCountSuccess: function(inSender, inDeprecated) {
         var cupoMax     = main.comunity_costs_grid.selectedItem.getData().cupoMaximo;
-        //var cupoInscritos = main.getMaxEducom.getItem(0).data.cupoInscritos;
-        var countCupoInscritos = main.getMaxEducom.getCount();
+        var _countCupoInscritos = main.getMaxEducom.getCount();
+        var countCupoInscritos = _countCupoInscritos;
         var count         = main.getEducomCount.getCount();
 		var isCostSelected= main.comunity_costs_grid.isRowSelected;  
         var isPeopleSelected= main.performance_family_grid.isRowSelected;
         var isPaymentTypeSelected= main.comunity_payment_type.getDataValue();
+        var nombre= main.performance_family_grid.selectedItem.getData().nombres;
         
         var tipo= main.comunity_costs_grid.selectedItem.getData().tipoeducom;
         var curso= main.comunity_costs_grid.selectedItem.getData().nombre;
         var countEAD= main.getEducomEAD.getCount();
-        var countAFR= main.getEducomAFR.getCount();
+        var countEFA= main.getEducomEFA.getCount();
         var countEPD= main.getEducomEPD.getCount();
-        
+        var countOLA= main.getEducomOLA.getCount();
+        var countECR= main.getEducomECR.getCount();
+        console.log(tipo);
         console.log("--->"+countCupoInscritos+" inscritos de "+cupoMax+" permitidos");
-        if(countCupoInscritos < cupoMax){                // valida el cupo maximo y numero de inscritos, si inscritos es menor permite inscribir
-            console.log("podemos inscribir...");    
+        if(countCupoInscritos < cupoMax){  
+            // valida el cupo maximo y numero de inscritos, si inscritos es menor permite inscribir
+            console.log("validando cupo...");    
             if(count < 2){                          // valida el numero de educom's inscritos por persona, si es menor a (2) permite inscribir
-                console.log("podemos continuar...");
+                console.log("validando maximo inscritos x persona...");
                 if(tipo=="EAD"){
                     console.log("EAD");
                     if(countEAD<1){
-                        alert("se puede inscribir el curso EAD");
+                        console.log("se puede inscribir el curso EAD");
                         if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
                            this.comunity_dialog_terms.show(); 
                         }else{
                            alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
                         }
                     }else{
-                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
                     }
                 }
-                if(tipo=="AFR"){
-                    console.log("AFR");
-                    if(countAFR<1){
-                        alert("se puede inscribir el curso AFR");
+                if(tipo=="EFA"){
+                    console.log("EFA");
+                    if(countEFA<1){
+                        console.log("se puede inscribir el curso AFR");
                         if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
                            this.comunity_dialog_terms.show(); 
                         }else{
                            alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
                         }
                     }else{
-                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
                     }
                 }
                 if(tipo=="EPD"){
                     console.log("EPD");
                     if(countEPD<1){
-                        alert("se puede inscribir el curso EPD");
+                        console.log("se puede inscribir el curso EPD");
                         if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
                            this.comunity_dialog_terms.show(); 
                         }else{
                            alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
                         }
                     }else{
-                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
                     }
-                }            
+                } 
+                if(tipo=="OLA"){
+                    console.log("OLA");
+                    if(countOLA<1){
+                        console.log("se puede inscribir el curso OLA");
+                        if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+                           this.comunity_dialog_terms.show(); 
+                        }else{
+                           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
+                        }
+                    }else{
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
+                    }
+                }
+                if(tipo=="ECR"){
+                    console.log("ECR");
+                    if(countECR<1){
+                        console.log("se puede inscribir el curso ECR");
+                        if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+                           this.comunity_dialog_terms.show(); 
+                        }else{
+                           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
+                        }
+                    }else{
+                        alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
+                    }
+                }
             }else{
-                alert("Los sentimos, usted ha alcanzado el máximo de cursos inscritos permitidos.");
+                alert("Lo sentimos, "+nombre+" ha alcanzado el máximo de cursos inscritos por persona.");
             }
         }
-        if(countCupoInscritos === cupoMax || countCupoInscritos > cupoMax){
-            alert("Este curso ha alcanzado el cupo máximo de personas inscritas. Para mas información comuniquese con la coordinadora de Educación Comunitariá, Maria Juliana Ext. ");
+        else if(countCupoInscritos == cupoMax || countCupoInscritos > cupoMax){
+            alert("Este curso ha alcanzado el cupo máximo de personas inscritas.\n\nLo invitamos a revisar las otras actividades disponibles.");
         }
-        /*if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
-           this.comunity_dialog_terms.show(); 
-        }else{
-           alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago"); 
-        }*/
 	},	
+	performance_family_gridSelect6: function(inSender) {
+        var curdate = new Date().getTime();
+		var gradostr= main.performance_family_grid.selectedItem.getData().grado;
+        console.log(gradostr);
+        var grado= parseInt(gradostr);
+        console.log(grado);
+        this.comunity_payment_type.setDisplayValue("Un solo pago");
+        this.comunity_transp_selection.setDataValue("1");
+        this.parents_local_educom.input.setValue("f1", curdate);   
+        this.parents_local_educom.input.setValue("y", grado);   
+    	this.parents_local_educom.update();        
+	},
+	parents_local_comunity_subscribed_cursesSuccess: function(inSender, inDeprecated) {
+		this.comunity_costs_grid1.setSortIndex(2);
+	},
 	_end: 0
 });

@@ -1646,10 +1646,15 @@ this.parents_local_students_learnings.update();
 // show the 'Cursos' related by Comunity Education
 parents_comunity_comunicationClick: function(inSender) {
 var curdate = new Date().getTime();
+var gradostr= main.performance_family_grid.selectedItem.getData().grado;
+console.log(gradostr);
+var grado= parseInt(gradostr);
+console.log(grado);
 this.parents_local_educom.input.setValue("f1", curdate);
+this.parents_local_educom.input.setValue("y", grado);
 this.parents_local_educom.update();
 this.performance_top_header.setCaption("EDUCACIÓN COMUNITARIA");
-this.comunity_payment_type.setDisplayValue("Anticipado");
+this.comunity_payment_type.setDisplayValue("Un solo pago");
 this.comunity_transp_selection.setDataValue("1");
 this.performance_left_buttons_panel.hide();
 },
@@ -1713,7 +1718,8 @@ var tipoPago= 5;
 var valorSinDescuento= this.comunity_costs_grid.selectedItem.data.valor;
 var valorAnticipado= this.comunity_costs_grid.selectedItem.data.pagoAnticipado;
 var plazo= this.comunity_payment_type.getDataValue();
-if(formaPago=="anticipado"){
+console.log(formaPago);
+if(formaPago=="un_solo_pago"){
 dtoActicipado= valorSinDescuento-valorAnticipado;
 this.parents_variable_insert_educom_subscription.setValue("persona.idPersona", idpersona);
 this.parents_variable_insert_educom_subscription.setValue("educom.idEducom", ideducom);
@@ -1737,35 +1743,6 @@ this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
 this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription);
 this.comunity_action_inscription_educom.insertData();
 }
-},
-// selection and validation when the user tries to add a Curse
-// it shows a alert message
-comunity_button_addClick: function(inSender) {
-var idpersona= this.performance_family_grid.selectedItem.data.pid;
-var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
-var idsy=5;
-var json= main.parents_global_currentSy.getItem(0);
-var idsy= json.data.idsy;
-//triggering MAXSubscriptions validator
-main.getMaxEducom.input.setValue("pidsy", idsy);
-main.getMaxEducom.input.setValue("pideducom", ideducom);
-main.getMaxEducom.update();
-//triggering AFR validator
-this.getEducomAFR.input.setValue("pidsy", idsy);
-this.getEducomAFR.input.setValue("pidpersona", idpersona);
-this.getEducomAFR.update();
-//triggering EAD validator
-this.getEducomEAD.input.setValue("pidsy", idsy);
-this.getEducomEAD.input.setValue("pidpersona", idpersona);
-this.getEducomEAD.update();
-//triggering EPD validator
-this.getEducomEPD.input.setValue("pidsy", idsy);
-this.getEducomEPD.input.setValue("pidpersona", idpersona);
-this.getEducomEPD.update();
-//triggering counter serviceVariable
-this.getEducomCount.input.setValue("pidsy", idsy);
-this.getEducomCount.input.setValue("pidpersona", idpersona);
-this.getEducomCount.update();
 },
 // 1. show details when selection in learnings is ready
 performance_student_details_learningsSelect: function(inSender) {
@@ -2084,75 +2061,153 @@ main.getMaxEducom.input.setValue("pidsy", idsy);
 main.getMaxEducom.input.setValue("pideducom", ideducom);
 main.getMaxEducom.update();
 },
+// selection and validation when the user tries to add a Curse
+// it shows a alert message
+comunity_button_addClick: function(inSender) {
+var idpersona= this.performance_family_grid.selectedItem.data.pid;
+var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
+var idsy=5;
+var json= main.parents_global_currentSy.getItem(0);
+var idsy= json.data.idsy;
+//triggering MAXSubscriptions validator
+main.getMaxEducom.input.setValue("pidsy", idsy);
+main.getMaxEducom.input.setValue("pideducom", ideducom);
+main.getMaxEducom.update();
+//triggering EFA validator
+this.getEducomEFA.input.setValue("pidsy", idsy);
+this.getEducomEFA.input.setValue("pidpersona", idpersona);
+this.getEducomEFA.update();
+//triggering EAD validator
+this.getEducomEAD.input.setValue("pidsy", idsy);
+this.getEducomEAD.input.setValue("pidpersona", idpersona);
+this.getEducomEAD.update();
+//triggering EPD validator
+this.getEducomEPD.input.setValue("pidsy", idsy);
+this.getEducomEPD.input.setValue("pidpersona", idpersona);
+this.getEducomEPD.update();
+//triggering ECR validator
+this.getEducomECR.input.setValue("pidsy", idsy);
+this.getEducomECR.input.setValue("pidpersona", idpersona);
+this.getEducomECR.update();
+//triggering OLA validator
+this.getEducomOLA.input.setValue("pidsy", idsy);
+this.getEducomOLA.input.setValue("pidpersona", idpersona);
+this.getEducomOLA.update();
+//triggering counter serviceVariable
+this.getEducomCount.input.setValue("pidsy", idsy);
+this.getEducomCount.input.setValue("pidpersona", idpersona);
+this.getEducomCount.update();
+},
 getEducomCountSuccess: function(inSender, inDeprecated) {
 var cupoMax     = main.comunity_costs_grid.selectedItem.getData().cupoMaximo;
-//var cupoInscritos = main.getMaxEducom.getItem(0).data.cupoInscritos;
-var countCupoInscritos = main.getMaxEducom.getCount();
+var _countCupoInscritos = main.getMaxEducom.getCount();
+var countCupoInscritos = _countCupoInscritos;
 var count         = main.getEducomCount.getCount();
 var isCostSelected= main.comunity_costs_grid.isRowSelected;
 var isPeopleSelected= main.performance_family_grid.isRowSelected;
 var isPaymentTypeSelected= main.comunity_payment_type.getDataValue();
+var nombre= main.performance_family_grid.selectedItem.getData().nombres;
 var tipo= main.comunity_costs_grid.selectedItem.getData().tipoeducom;
 var curso= main.comunity_costs_grid.selectedItem.getData().nombre;
 var countEAD= main.getEducomEAD.getCount();
-var countAFR= main.getEducomAFR.getCount();
+var countEFA= main.getEducomEFA.getCount();
 var countEPD= main.getEducomEPD.getCount();
+var countOLA= main.getEducomOLA.getCount();
+var countECR= main.getEducomECR.getCount();
+console.log(tipo);
 console.log("--->"+countCupoInscritos+" inscritos de "+cupoMax+" permitidos");
-if(countCupoInscritos < cupoMax){                // valida el cupo maximo y numero de inscritos, si inscritos es menor permite inscribir
-console.log("podemos inscribir...");
+if(countCupoInscritos < cupoMax){
+// valida el cupo maximo y numero de inscritos, si inscritos es menor permite inscribir
+console.log("validando cupo...");
 if(count < 2){                          // valida el numero de educom's inscritos por persona, si es menor a (2) permite inscribir
-console.log("podemos continuar...");
+console.log("validando maximo inscritos x persona...");
 if(tipo=="EAD"){
 console.log("EAD");
 if(countEAD<1){
-alert("se puede inscribir el curso EAD");
+console.log("se puede inscribir el curso EAD");
 if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
 this.comunity_dialog_terms.show();
 }else{
 alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago");
 }
 }else{
-alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
 }
 }
-if(tipo=="AFR"){
-console.log("AFR");
-if(countAFR<1){
-alert("se puede inscribir el curso AFR");
+if(tipo=="EFA"){
+console.log("EFA");
+if(countEFA<1){
+console.log("se puede inscribir el curso AFR");
 if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
 this.comunity_dialog_terms.show();
 }else{
 alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago");
 }
 }else{
-alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
 }
 }
 if(tipo=="EPD"){
 console.log("EPD");
 if(countEPD<1){
-alert("se puede inscribir el curso EPD");
+console.log("se puede inscribir el curso EPD");
 if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
 this.comunity_dialog_terms.show();
 }else{
 alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago");
 }
 }else{
-alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente.");
+alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
 }
 }
-}else{
-alert("Los sentimos, usted ha alcanzado el máximo de cursos inscritos permitidos.");
-}
-}
-if(countCupoInscritos === cupoMax || countCupoInscritos > cupoMax){
-alert("Este curso ha alcanzado el cupo máximo de personas inscritas. Para mas información comuniquese con la coordinadora de Educación Comunitariá, Maria Juliana Ext. ");
-}
-/*if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+if(tipo=="OLA"){
+console.log("OLA");
+if(countOLA<1){
+console.log("se puede inscribir el curso OLA");
+if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
 this.comunity_dialog_terms.show();
 }else{
 alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago");
-}*/
+}
+}else{
+alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
+}
+}
+if(tipo=="ECR"){
+console.log("ECR");
+if(countECR<1){
+console.log("se puede inscribir el curso ECR");
+if(isCostSelected==true && isPeopleSelected==true && isPaymentTypeSelected!=undefined){
+this.comunity_dialog_terms.show();
+}else{
+alert("Antes de inscribir asegurese de haber seleccionado la siguiente información: \n\n*Integrante del grupo familiar \n*Curso a inscribir \n*Forma de pago");
+}
+}else{
+alert("No se puede realizar la inscripción en el curso "+curso+" porque ya tiene inscrito un curso de tipo "+tipo+".\n\nRecomendamos elegir un curso diferente o comunicarse con el Área de Educación comunitaria Ext. 4818");
+}
+}
+}else{
+alert("Lo sentimos, "+nombre+" ha alcanzado el máximo de cursos inscritos por persona.");
+}
+}
+else if(countCupoInscritos == cupoMax || countCupoInscritos > cupoMax){
+alert("Este curso ha alcanzado el cupo máximo de personas inscritas.\n\nLo invitamos a revisar las otras actividades disponibles.");
+}
+},
+performance_family_gridSelect6: function(inSender) {
+var curdate = new Date().getTime();
+var gradostr= main.performance_family_grid.selectedItem.getData().grado;
+console.log(gradostr);
+var grado= parseInt(gradostr);
+console.log(grado);
+this.comunity_payment_type.setDisplayValue("Un solo pago");
+this.comunity_transp_selection.setDataValue("1");
+this.parents_local_educom.input.setValue("f1", curdate);
+this.parents_local_educom.input.setValue("y", grado);
+this.parents_local_educom.update();
+},
+parents_local_comunity_subscribed_cursesSuccess: function(inSender, inDeprecated) {
+this.comunity_costs_grid1.setSortIndex(2);
 },
 _end: 0
 });
@@ -2220,7 +2275,7 @@ input: ["wm.ServiceInput", {"type":"parentsScoreDetailsInputs"}, {}]
 }],
 parents_variable_insert_educom_subscription: ["wm.Variable", {"type":"com.aprendoz_desarrollo.data.InscPersonaEduCom"}, {}],
 parents_variable_transp_options: ["wm.Variable", {"isList":true,"json":"[{\"name\":\"Si\",\"dataValue\":\"1\"},{\"name\":\"No\",\"dataValue\":\"0\"}]","type":"EntryData"}, {}],
-parents_local_comunity_subscribed_curses: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","maxResults":20,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.InscPersonaEduCom"}, {}, {
+parents_local_comunity_subscribed_curses: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","maxResults":20,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.InscPersonaEduCom"}, {"onSuccess":"parents_local_comunity_subscribed_cursesSuccess"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"performance_family_grid.selectedItem.pid","targetProperty":"filter.persona.idPersona"}, {}]
 }],
@@ -2366,9 +2421,6 @@ input: ["wm.ServiceInput", {"type":"getLogEncuestaInputs"}, {}]
 getEducomCount: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomCount","service":"aprendoz_desarrollo"}, {"onSuccess":"getEducomCountSuccess"}, {
 input: ["wm.ServiceInput", {"type":"getEducomCountInputs"}, {}]
 }],
-getEducomAFR: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomAFR","service":"aprendoz_desarrollo"}, {}, {
-input: ["wm.ServiceInput", {"type":"getEducomAFRInputs"}, {}]
-}],
 getEducomEAD: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomEAD","service":"aprendoz_desarrollo"}, {}, {
 input: ["wm.ServiceInput", {"type":"getEducomEADInputs"}, {}]
 }],
@@ -2377,6 +2429,15 @@ input: ["wm.ServiceInput", {"type":"getEducomEPDInputs"}, {}]
 }],
 getMaxEducom: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getMaxEducom","service":"aprendoz_desarrollo"}, {}, {
 input: ["wm.ServiceInput", {"type":"getMaxEducomInputs"}, {}]
+}],
+getEducomOLA: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomOLA","service":"aprendoz_desarrollo"}, {}, {
+input: ["wm.ServiceInput", {"type":"getEducomOLAInputs"}, {}]
+}],
+getEducomECR: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomECR","service":"aprendoz_desarrollo"}, {}, {
+input: ["wm.ServiceInput", {"type":"getEducomECRInputs"}, {}]
+}],
+getEducomEFA: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomAFR","service":"aprendoz_desarrollo"}, {}, {
+input: ["wm.ServiceInput", {"type":"getEducomAFRInputs"}, {}]
 }],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
@@ -2401,7 +2462,7 @@ syCancelButton: ["wm.Button", {"caption":"Cancelar","margin":"4"}, {"onclick":"s
 }],
 comunity_dialog_terms: ["wm.DesignableDialog", {"buttonBarId":"buttonBar1","containerWidgetId":"containerWidget1","styles":{"backgroundColor":"#3752a3","color":"#ffffff"},"title":"Terminos y condiciones"}, {}, {
 containerWidget1: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"100%"}, {}, {
-comunity_terms_conditions: ["wm.LargeTextArea", {"border":"0","caption":undefined,"dataValue":"En el caso de estudiantes y padres del colegio, el costo de estas actividades se pagará con el mismo sistema de pago de las   mensualidades que tiene el padre de familia con el colegio. Si se paga por anticipado (bimestre o semestre), se otorgará un   descuento del 4%, de lo contrario el cargo será mensual. No se devolverá dinero por retiros antes de culminar la actividad   (bimestre o semestre).","displayValue":"En el caso de estudiantes y padres del colegio, el costo de estas actividades se pagará con el mismo sistema de pago de las   mensualidades que tiene el padre de familia con el colegio. Si se paga por anticipado (bimestre o semestre), se otorgará un   descuento del 4%, de lo contrario el cargo será mensual. No se devolverá dinero por retiros antes de culminar la actividad   (bimestre o semestre).","height":"100%","readonly":true,"styles":{"color":"#060606","fontSize":"14px"},"width":"100%"}, {}]
+comunity_terms_conditions: ["wm.LargeTextArea", {"border":"0","caption":undefined,"dataValue":"<p>Se requiere realizar la inscripci&oacute;n a trav&eacute;s de&nbsp;<strong>APRENDOZ</strong>, con su usuario y contrase&ntilde;a, en su m&oacute;dulo de&nbsp;<strong>Padres y Estudiantes</strong>, dentro de la pesta&ntilde;a de&nbsp;<strong>Educaci&oacute;n Comunitaria</strong>. No se genera cobro por dicha actividad.</p>  <p>Cada estudiante podr&aacute; inscribirse en una actividad deportiva (de EPD u OLA) y una actividad art&iacute;stica, cient&iacute;fica o recreativa (de EFA o ECR), siendo dos el m&aacute;ximo de actividades por estudiante. Solo se podr&aacute; incluir una tercera, si esta pertenece a las actividades adicionales de fin de semana de OLA. Recuerde que todas las actividades tienen cupos limitados.</p>  <p>Las actividades adicionales de fin de semana, publicadas en el folleto edu-com, se pagar&aacute;n de acuerdo con las tarifas que all&iacute; aparecen y su cobro se realizar&aacute; a trav&eacute;s de la tarjeta Diners-Davivienda. Para aquellos padres de familia que cancelaron el valor de las mensualidades de manera anticipada, el pago de las actividades deber&aacute;n realizarlo directamente en la tesorer&iacute;a del Colegio o consignando a nuestra cuenta de ahorros del Banco de Bogot&aacute; No. 085218527&nbsp;a nombre de Fundaci&oacute;n Educativa Rochester y registrando el c&oacute;digo del alumno en referencia 1.</p>  <p><strong>Fechas de inscripci&oacute;n:</strong>&nbsp;Martes 26 al Jueves 28 de Agosto de 2014</p>  <p><strong>Fecha de inicio de las actividades:</strong>&nbsp;1 de Septiembre de 2014.</p>  <p><strong>Fecha de finalizaci&oacute;n del semestre:</strong>&nbsp;10 de Diciembre de 2014.</p>  <p><strong>Transporte:</strong>&nbsp;Las rutas extracurriculares puerta a puerta saldr&aacute;n los lunes a las 3:00 p.m., y de martes a viernes a las 5:00 p.m.</p>  <p>Para los estudiantes que son recogidos en el colegio por sus padres o acudientes, les recordamos lo importante que es el recogerlos puntualmente, puesto que los lunes despu&eacute;s de las 3:00 p.m. y de martes a viernes despu&eacute;s de las 5:00 p.m., no hay personal que pueda hacerse cargo de ellos.</p>","displayValue":"<p>Se requiere realizar la inscripci&oacute;n a trav&eacute;s de&nbsp;<strong>APRENDOZ</strong>, con su usuario y contrase&ntilde;a, en su m&oacute;dulo de&nbsp;<strong>Padres y Estudiantes</strong>, dentro de la pesta&ntilde;a de&nbsp;<strong>Educaci&oacute;n Comunitaria</strong>. No se genera cobro por dicha actividad.</p>  <p>Cada estudiante podr&aacute; inscribirse en una actividad deportiva (de EPD u OLA) y una actividad art&iacute;stica, cient&iacute;fica o recreativa (de EFA o ECR), siendo dos el m&aacute;ximo de actividades por estudiante. Solo se podr&aacute; incluir una tercera, si esta pertenece a las actividades adicionales de fin de semana de OLA. Recuerde que todas las actividades tienen cupos limitados.</p>  <p>Las actividades adicionales de fin de semana, publicadas en el folleto edu-com, se pagar&aacute;n de acuerdo con las tarifas que all&iacute; aparecen y su cobro se realizar&aacute; a trav&eacute;s de la tarjeta Diners-Davivienda. Para aquellos padres de familia que cancelaron el valor de las mensualidades de manera anticipada, el pago de las actividades deber&aacute;n realizarlo directamente en la tesorer&iacute;a del Colegio o consignando a nuestra cuenta de ahorros del Banco de Bogot&aacute; No. 085218527&nbsp;a nombre de Fundaci&oacute;n Educativa Rochester y registrando el c&oacute;digo del alumno en referencia 1.</p>  <p><strong>Fechas de inscripci&oacute;n:</strong>&nbsp;Martes 26 al Jueves 28 de Agosto de 2014</p>  <p><strong>Fecha de inicio de las actividades:</strong>&nbsp;1 de Septiembre de 2014.</p>  <p><strong>Fecha de finalizaci&oacute;n del semestre:</strong>&nbsp;10 de Diciembre de 2014.</p>  <p><strong>Transporte:</strong>&nbsp;Las rutas extracurriculares puerta a puerta saldr&aacute;n los lunes a las 3:00 p.m., y de martes a viernes a las 5:00 p.m.</p>  <p>Para los estudiantes que son recogidos en el colegio por sus padres o acudientes, les recordamos lo importante que es el recogerlos puntualmente, puesto que los lunes despu&eacute;s de las 3:00 p.m. y de martes a viernes despu&eacute;s de las 5:00 p.m., no hay personal que pueda hacerse cargo de ellos.</p>","height":"100%","helpText":undefined,"readonly":true,"styles":{"color":"#060606","fontSize":"14px"},"width":"100%"}, {}]
 }],
 buttonBar1: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","horizontalAlign":"left","styles":{},"verticalAlign":"middle"}, {}, {
 comunity_iagree_radio: ["wm.RadioButton", {"caption":"<font color=\"white\">Acepto los terminos","captionAlign":"left","captionPosition":"right","captionSize":"50px","displayValue":"","groupValue":"WAR","styles":{},"width":"166px"}, {"onchange":"comunity_iagree_radioChange"}],
@@ -2553,6 +2614,11 @@ binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"layoutBox1","targetProperty":"widgetToCover"}, {}]
 }]
 }],
+educomLoadingDialog3: ["wm.LoadingDialog", {"caption":"Cargando...","serviceVariableToTrack":["parents_local_educom"]}, {}, {
+binding: ["wm.Binding", {}, {}, {
+wire: ["wm.Wire", {"expression":undefined,"source":"comunity_costs_grid","targetProperty":"widgetToCover"}, {}]
+}]
+}],
 layoutBox1: ["wm.Layout", {"autoScroll":false,"height":"817px","horizontalAlign":"center","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"740px"}, {}, {
 FancyCentered: ["wm.Template", {"height":"100%","horizontalAlign":"left","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"90%"}, {}, {
 FancyCentered1: ["wm.Template", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
@@ -2588,7 +2654,7 @@ parents_transportship: ["wm.Button", {"border":"0","borderColor":"","caption":"T
 }],
 parents_spacer2: ["wm.Spacer", {"height":"15px","styles":{},"width":"100%"}, {}],
 panel_main_contents: ["wm.Panel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-performance_left_details: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"top","width":"245px"}, {}, {
+performance_left_details: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"styles":{},"verticalAlign":"top","width":"245px"}, {}, {
 performance_top_header: ["wm.Label", {"caption":"CALIFICACIONES DEL ESTUDIANTE","height":"69px","padding":"4","singleLine":false,"styles":{"backgroundColor":"#63bb00"},"width":"100%"}, {}],
 performance_left_buttons_panel: ["wm.Panel", {"height":"29px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
 performance_general_button: ["wm.Button", {"border":"0","borderColor":"","caption":" General","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/general.png","iconWidth":"24px","margin":"0","styles":{"backgroundColor":"#63bb00"},"width":"100%"}, {"onclick":"performance_general_buttonClick","onclick1":"performance_general_buttonClick1","onclick2":"performance_general_buttonClick2"}],
@@ -2608,7 +2674,7 @@ performance_family_grid: ["wm.DojoGrid", {"_classes":{"domNode":["Striped"]},"bo
 {"show":false,"field":"idgrupo","title":"Idgrupo","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"curso","title":"Curso","width":"100%","displayType":"Java.lang.Integer","align":"left","formatFunc":""},
 {"show":false,"field":"grado","title":"Grado","width":"100%","displayType":"Java.lang.String","align":"left","formatFunc":""}
-],"dsType":"com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType","height":"110%","localizationStructure":{},"margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onSelect":"performance_family_gridSelect","onSelect1":"performance_family_gridSelect1","onSelect2":"performance_family_gridSelect2","onSelect3":"performance_family_gridSelect3","onSelect4":"performance_family_gridSelect4","onSelect5":"performance_family_gridSelect5"}, {
+],"dsType":"com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType","height":"110%","localizationStructure":{},"margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onSelect":"performance_family_gridSelect","onSelect1":"performance_family_gridSelect1","onSelect2":"performance_family_gridSelect2","onSelect3":"performance_family_gridSelect3","onSelect4":"performance_family_gridSelect4","onSelect5":"performance_family_gridSelect5","onSelect6":"performance_family_gridSelect6"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_performance_familyGroup","targetProperty":"dataSet"}, {}]
 }]
@@ -2616,33 +2682,33 @@ wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_performance_fa
 performance_spacer2: ["wm.Spacer", {"height":"15px","styles":{},"width":"100%"}, {}],
 performance_call_us: ["wm.Picture", {"aspect":"h","height":"30px","source":"resources/images/icons%20v2/Aprendoz_19.jpg","styles":{},"width":"178px"}, {}]
 }],
-panel_comunity_education: ["wm.Panel", {"height":"100%","horizontalAlign":"left","padding":"0,6,0,15","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_comunity_education: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"padding":"0,6,0,15","showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 panel4: ["wm.Panel", {"height":"32px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
 comunity_costs_label1: ["wm.Label", {"caption":"CURSOS OFERTADOS","height":"30px","padding":"4","styles":{"color":"#3752a3","fontSize":"15px","fontWeight":"bolder"},"width":"100%"}, {}],
-comunity_educom_age_filter: ["wm.Number", {"border":"0","caption":"Para filtrar los cursos ingrese edad","captionSize":"200px","changeOnKey":true,"dataValue":undefined,"desktopHeight":"30px","displayValue":"","height":"30px","helpText":"Ingrese una edad para filtrar los cursos correspondientes.","placeHolder":"#","styles":{},"width":"260px"}, {"onchange":"comunity_educom_age_filterChange"}]
+comunity_educom_age_filter: ["wm.Number", {"border":"0","caption":"Para filtrar los cursos ingrese edad","captionSize":"200px","changeOnKey":true,"dataValue":undefined,"desktopHeight":"30px","displayValue":"","height":"30px","helpText":"Ingrese una edad para filtrar los cursos correspondientes.","placeHolder":"#","showing":false,"styles":{},"width":"260px"}, {"onchange":"comunity_educom_age_filterChange"}]
 }],
 comunity_costs_grid: ["wm.DojoGrid", {"columns":[
 {"show":false,"field":"idcosto","title":"Idcosto","width":"80px","align":"left","formatFunc":"","formatProps":null,"editorProps":null,"mobileColumn":false},
 {"show":false,"field":"codigo","title":"Código","width":"60px","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
 {"show":true,"field":"tipoeducom","title":"Tipo","width":"50px","align":"left","formatFunc":"","formatProps":null,"editorProps":null,"mobileColumn":false},
 {"show":false,"field":"id","title":"Id","width":"50px","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
-{"show":true,"field":"edad1","title":"Edad","width":"90px","align":"left","formatFunc":"","editorProps":null,"expression":"${edad2}+\"-\"+${edad1}+\" año(s)\"","mobileColumn":false},
+{"show":false,"field":"edad1","title":"Edad","width":"90px","align":"left","formatFunc":"","editorProps":null,"expression":"${edad2}+\"-\"+${edad1}+\" año(s)\"","mobileColumn":false},
 {"show":true,"field":"nombre","title":"Curso","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":true,"field":"fechainicio","title":"Inicia","width":"90px","align":"left","formatFunc":"wm_date_formatter","editorProps":null,"mobileColumn":false},
 {"show":true,"field":"fechafin","title":"Finaliza","width":"90px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":true,"field":"pagoAnticipado","title":"Valor pago anticipado","width":"82px","align":"left","formatFunc":"wm_number_formatter","formatProps":null,"editorProps":null,"mobileColumn":false},
 {"show":true,"field":"valor","title":"Tarifa bim. sin descuento","width":"95px","align":"left","formatFunc":"wm_number_formatter","formatProps":{"currency":"COP","dijits":0},"expression":"","mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Tipo: \" + ${tipoeducom} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Edad: \" + ${wm.runtimeId}.formatCell(\"edad1\", ${edad1}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Curso: \" + ${nombre}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Inicia: \" + ${wm.runtimeId}.formatCell(\"fechainicio\", ${fechainicio}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Finaliza: \" + ${wm.runtimeId}.formatCell(\"fechafin\", ${fechafin}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Valor pago anticipado: \" + ${wm.runtimeId}.formatCell(\"pagoAnticipado\", ${pagoAnticipado}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Tarifa bim. sin descuento: \" + ${wm.runtimeId}.formatCell(\"valor\", ${valor}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n","mobileColumn":true},
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Tipo: \" + ${tipoeducom} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Curso: \" + ${nombre}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Inicia: \" + ${wm.runtimeId}.formatCell(\"fechainicio\", ${fechainicio}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Finaliza: \" + ${wm.runtimeId}.formatCell(\"fechafin\", ${fechafin}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Valor pago anticipado: \" + ${wm.runtimeId}.formatCell(\"pagoAnticipado\", ${pagoAnticipado}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Tarifa bim. sin descuento: \" + ${wm.runtimeId}.formatCell(\"valor\", ${valor}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n","mobileColumn":true},
 {"show":false,"field":"edad2","title":"Edad2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"fecha2","title":"Fecha2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"fecha1","title":"Fecha1","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"cupoMaximo","title":"CupoMaximo","width":"100%","displayType":"Java.lang.Integer","align":"left","formatFunc":""}
+{"show":false,"field":"cupoMaximo","title":"CupoMaximo","width":"100%","align":"left","formatFunc":"","mobileColumn":false}
 ],"height":"300px","margin":"0","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"12px"}}, {"onSelect":"comunity_costs_gridSelect","onSelect1":"comunity_costs_gridSelect1"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_local_educom","targetProperty":"dataSet"}, {}]
 }]
 }],
-comunity_guide_label: ["wm.Label", {"_classes":{"domNode":["red"]},"caption":"AFR = Actividades Formativas Recreativas |  EPD = Escuelas PreDeportivas | EAD = Equipos de Alto Desempeño","padding":"4","styles":{},"width":"100%"}, {}],
+comunity_guide_label: ["wm.Label", {"_classes":{"domNode":["red"]},"caption":"EFA = Escuelas Formación Artística |  EPD = Escuelas PreDeportivas | EAD = Equipos de Alto Desempeño |  OLA = Centro Acuático Olga León de Aljure  |  ECR = Científicas y Recreativas","height":"39px","padding":"4","singleLine":false,"styles":{},"width":"100%"}, {}],
 comunity_space1: ["wm.Spacer", {"height":"10px","styles":{},"width":"100%"}, {}],
 comunity_payment_type: ["wm.SelectMenu", {"caption":"Seleccione una forma de pago","captionSize":"180px","dataField":"dataValue","dataType":"EntryData","dataValue":undefined,"displayField":"name","displayValue":"","helpText":"¿Qué es esto? <br><br>Un solo pago: Se le cargará el total en una sola cuota en la siguiente mensualidad<br><br>Mensual: Usted realizará los pagos  de manera mensual.","styles":{},"width":"350px"}, {"onchange":"comunity_payment_typeChange"}, {
 binding: ["wm.Binding", {}, {}, {
@@ -2651,7 +2717,7 @@ wire: ["wm.Wire", {"expression":undefined,"source":"parents_variable_payment_typ
 }],
 comunity_action_liveForm: ["wm.LiveForm", {"height":"37px","horizontalAlign":"left","showing":false,"styles":{},"verticalAlign":"top"}, {"onError":"errorInsertion","onSuccess":"parents_local_comunity_subscribed_curses","onSuccess1":"recordInserted","onSuccess2":"comunity_dialog_terms.hide"}],
 comunity_top_panel: ["wm.Panel", {"height":"60px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
-comunity_transp_selection: ["wm.RadioSet", {"border":"1","borderColor":"#ffffff","caption":"¿Toma servicio de transporte?","captionSize":"180px","dataField":"dataValue","dataType":"EntryData","dataValue":undefined,"desktopHeight":"60px","displayField":"name","displayValue":"","height":"60px","helpText":"¿Que es esto?<br><br>Los cursos extracurriculares generalmente se extienden en horarios diferentes a los habituales, lo que en algunos casos dificulte el transporte de los estudiantes. En esta selección usted podrá definir si su hijo tomará el servicio de transporte ofrecido por el Colegio. En caso contrario se entenderá que el estudiante será recogido por un responsable.","styles":{},"width":"350px"}, {}, {
+comunity_transp_selection: ["wm.RadioSet", {"border":"1","borderColor":"#ffffff","caption":"¿Desea contratar transporte extracurricular?","captionSize":"180px","dataField":"dataValue","dataType":"EntryData","dataValue":undefined,"desktopHeight":"60px","displayField":"name","displayValue":"","height":"60px","helpText":"¿Que es esto?<br><br>En esta selección usted podrá definir si contratará el servicio de transporte extracurricular ofrecido por el Colegio para su hijo.<br><br>En caso contrario se entenderá que el estudiante será recogido por un responsable.","styles":{},"width":"350px"}, {}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"parents_variable_transp_options","targetProperty":"dataSet"}, {}]
 }]
@@ -2684,7 +2750,7 @@ comunity_top_panel2: ["wm.Panel", {"height":"40px","horizontalAlign":"right","la
 comunity_button_delete: ["wm.Button", {"caption":"[-] Retirar","disabled":true,"height":"100%","margin":"0","styles":{},"width":"90px"}, {"onclick":"comunity_button_deleteClick"}]
 }]
 }],
-panel_inicio: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"padding":"5,15,5,15","showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_inicio: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"padding":"5,15,5,15","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 parents_greetings_panel: ["wm.Panel", {"height":"50px","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 parents_hi_name: ["wm.Label", {"align":"center","caption":"BIENVENIDO, ","padding":"4","styles":{"color":"#2d2626","fontSize":"14px"},"width":"100%"}, {}],
 parents_hi_family: ["wm.Label", {"align":"center","caption":"GRUPO FAMILIAR,","padding":"4","styles":{"color":"#2d2929","fontSize":"14px","fontWeight":"bold"},"width":"100%"}, {}]

@@ -4,14 +4,14 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getMaxEducom" on 08/22/2014 12:53:32
+ * Generated for query "getMaxEducom" on 08/25/2014 17:28:36
  * 
  */
 public class GetMaxEducomRtnType {
 
     private Integer ideducom;
     private Integer cupoMaximo;
-    private Long cupoInscritos;
+    private Integer idpersona;
     private Integer idsy;
 
     public Integer getIdeducom() {
@@ -30,12 +30,12 @@ public class GetMaxEducomRtnType {
         this.cupoMaximo = cupoMaximo;
     }
 
-    public Long getCupoInscritos() {
-        return cupoInscritos;
+    public Integer getIdpersona() {
+        return idpersona;
     }
 
-    public void setCupoInscritos(Long cupoInscritos) {
-        this.cupoInscritos = cupoInscritos;
+    public void setIdpersona(Integer idpersona) {
+        this.idpersona = idpersona;
     }
 
     public Integer getIdsy() {

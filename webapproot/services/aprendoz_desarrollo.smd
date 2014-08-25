@@ -150,6 +150,17 @@
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomEADRtnType]"
 	}, {
+		"name": "getEducomECR",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomECRRtnType]"
+	}, {
 		"name": "getEducomEPD",
 		"operationType": "hqlquery",
 		"parameters": [{
@@ -160,6 +171,17 @@
 			"type": "java.lang.Integer"
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomEPDRtnType]"
+	}, {
+		"name": "getEducomOLA",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidsy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetEducomOLARtnType]"
 	}, {
 		"name": "getFormulario5aById",
 		"operationType": "hqlquery",

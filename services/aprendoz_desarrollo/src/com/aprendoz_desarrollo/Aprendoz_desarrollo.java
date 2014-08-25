@@ -10,7 +10,9 @@ import com.aprendoz_desarrollo.data.output.GetCostosTransporteRtnType;
 import com.aprendoz_desarrollo.data.output.GetEducomAFRRtnType;
 import com.aprendoz_desarrollo.data.output.GetEducomCountRtnType;
 import com.aprendoz_desarrollo.data.output.GetEducomEADRtnType;
+import com.aprendoz_desarrollo.data.output.GetEducomECRRtnType;
 import com.aprendoz_desarrollo.data.output.GetEducomEPDRtnType;
+import com.aprendoz_desarrollo.data.output.GetEducomOLARtnType;
 import com.aprendoz_desarrollo.data.output.GetGradoUsuarioRtnType;
 import com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyIdPersonaRtnType;
 import com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType;
@@ -62,7 +64,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/22/2014 12:53:35
+ *  08/25/2014 17:28:41
  * 
  */
 @SuppressWarnings("unchecked")
@@ -141,6 +143,10 @@ public class Aprendoz_desarrollo
 
     public List<GetEducomEADRtnType> getEducomEAD(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
         return ((List<GetEducomEADRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomEADQueryName), pidsy, pidpersona, pagingOptions));
+    }
+
+    public List<GetEducomECRRtnType> getEducomECR(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomECRRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomECRQueryName), pidsy, pidpersona, pagingOptions));
     }
 
     public List<GetEducomEPDRtnType> getEducomEPD(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
@@ -358,6 +364,10 @@ public class Aprendoz_desarrollo
         } else {
             return rtn.get(0);
         }
+    }
+
+    public List<GetEducomOLARtnType> getEducomOLA(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomOLARtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomOLAQueryName), pidsy, pidpersona, pagingOptions));
     }
 
     public Object insert(Object o) {

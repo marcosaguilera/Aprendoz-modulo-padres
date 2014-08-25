@@ -490,7 +490,7 @@ p.idPersona as idpersona,
 sy.idSy as idsy,
 e.tipoEducom as educom
 FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
-WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;AFR&apos;
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;EFA&apos;
     </query>
     <query name="getEducomEPD">
         <query-param name="pidsy" type="java.lang.Integer"/>
@@ -508,10 +508,29 @@ WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;EPD&apos
         SELECT
 e.idEducom as ideducom,
 e.cupoMaximo as cupoMaximo,
-count(*) as cupoInscritos,
+p.idPersona as idpersona,
 sy.idSy as idsy
 FROM InscPersonaEduCom ipe INNER JOIN ipe.persona p INNER JOIN ipe.educom e INNER JOIN e.sy sy
 WHERE e.idEducom=:pideducom AND sy.idSy=:pidsy
-GROUP BY e.idEducom
+    </query>
+    <query name="getEducomECR">
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        <query-param name="pidpersona" type="java.lang.Integer"/>
+        SELECT
+p.idPersona as idpersona,
+sy.idSy as idsy,
+e.tipoEducom as educom
+FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;ECR&apos;
+    </query>
+    <query name="getEducomOLA">
+        <query-param name="pidsy" type="java.lang.Integer"/>
+        <query-param name="pidpersona" type="java.lang.Integer"/>
+        SELECT
+p.idPersona as idpersona,
+sy.idSy as idsy,
+e.tipoEducom as educom
+FROM InscPersonaEduCom ipe INNER JOIN ipe.educom e INNER JOIN ipe.persona p INNER JOIN e.sy sy
+WHERE sy.idSy=:pidsy AND p.idPersona=:pidpersona and e.tipoEducom=&apos;OLA&apos;
     </query>
 </hibernate-mapping>

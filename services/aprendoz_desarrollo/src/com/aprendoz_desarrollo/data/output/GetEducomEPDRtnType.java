@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getEducomEPD" on 08/22/2014 12:53:32
+ * Generated for query "getEducomEPD" on 08/25/2014 17:28:37
  * 
  */
 public class GetEducomEPDRtnType {

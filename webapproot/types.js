@@ -23479,7 +23479,81 @@ wm.types = {
 			"liveService": false,
 			"service": "aprendoz_desarrollo"
 		},
+		"com.aprendoz_desarrollo.data.output.GetEducomECRRtnType": {
+			"fields": {
+				"educom": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"idpersona": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"idsy": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "aprendoz_desarrollo"
+		},
 		"com.aprendoz_desarrollo.data.output.GetEducomEPDRtnType": {
+			"fields": {
+				"educom": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"idpersona": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"idsy": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "aprendoz_desarrollo"
+		},
+		"com.aprendoz_desarrollo.data.output.GetEducomOLARtnType": {
 			"fields": {
 				"educom": {
 					"exclude": [],
@@ -24017,16 +24091,6 @@ wm.types = {
 		},
 		"com.aprendoz_desarrollo.data.output.GetMaxEducomRtnType": {
 			"fields": {
-				"cupoInscritos": {
-					"exclude": [],
-					"fieldOrder": 2,
-					"fieldSubType": null,
-					"include": [],
-					"isList": false,
-					"noChange": [],
-					"required": true,
-					"type": "java.lang.Long"
-				},
 				"cupoMaximo": {
 					"exclude": [],
 					"fieldOrder": 1,
@@ -24040,6 +24104,16 @@ wm.types = {
 				"ideducom": {
 					"exclude": [],
 					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"idpersona": {
+					"exclude": [],
+					"fieldOrder": 2,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
