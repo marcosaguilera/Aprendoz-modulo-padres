@@ -277,7 +277,7 @@ e.tipoEducom as tipoeducom,
 e.cupoMaximo as cupoMaximo,
 e.tarifaAnticipado as pagoAnticipado
 FROM Educom e INNER JOIN e.costos c
-WHERE (:f1 BETWEEN e.fechaAperturaCurso AND e.fechaCierreCurso) OR (e.edadRequeridaInicial&gt;=:y AND e.edadRequeridadFinal&lt;=:y)
+WHERE (:f1 BETWEEN e.fechaAperturaCurso AND e.fechaCierreCurso) AND (e.edadRequeridaInicial&gt;=:y AND e.edadRequeridadFinal&lt;=:y)
 ORDER BY c.nombreProducto asc
     </query>
     <query name="getCostosTransporte">

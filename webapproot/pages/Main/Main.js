@@ -1864,6 +1864,7 @@ dojo.declare("Main", wm.Page, {
         console.log(gradostr);
         var grado= parseInt(gradostr);
         console.log(grado);
+        //alert("Oferta de cursos extracurriculares finalizada.");
         this.parents_local_educom.input.setValue("f1", curdate);   
         this.parents_local_educom.input.setValue("y", grado);   
 		this.parents_local_educom.update();
@@ -2141,7 +2142,8 @@ dojo.declare("Main", wm.Page, {
 	parents_comunity_comunicationClick3: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow == true){
-          this.parents_local_comunity_subscribed_curses.update();
+          main.parents_local_comunity_subscribed_curses.filter.setValue("educom.sy.idSy", 5);
+          this.parents_local_comunity_subscribed_curses.update();  
         }else{
           alert("Por favor seleccione un integrante del grupo familiar para realizar la inscripción de Cursos.")
         }
@@ -2150,6 +2152,7 @@ dojo.declare("Main", wm.Page, {
 	performance_family_gridSelect1: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow== true){
+          main.parents_local_comunity_subscribed_curses.filter.setValue("educom.sy.idSy", 5);
           this.parents_local_comunity_subscribed_curses.update();
         }else{}
 	},
