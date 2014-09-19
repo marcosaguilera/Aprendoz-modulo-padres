@@ -68,12 +68,6 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscComentariosAlumnos"/>
         </set>
-        <set name="inscAlumCostoCopies" inverse="true" cascade="">
-            <key>
-                <column name="SY_Id_SY" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCostoCopy"/>
-        </set>
         <set name="horarios" inverse="true" cascade="">
             <key>
                 <column name="sy_id_sy" not-null="true"/>
@@ -115,6 +109,12 @@
                 <column name="SY_id_SY" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Coordinadores"/>
+        </set>
+        <set name="costosCopies" inverse="true" cascade="">
+            <key>
+                <column name="SY_Id_SY" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.CostosCopy"/>
         </set>
         <set name="costoses" inverse="true" cascade="">
             <key>

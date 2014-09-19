@@ -8,19 +8,19 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Unidad
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:13
  * 
  */
 public class Unidad {
 
     private Integer idUnidad;
+    private Asignatura asignatura;
     private String unidad;
     private String unit;
     private Date fechaInicio;
     private Date fechaFin;
     private Integer numeroUnidad;
     private Integer idSyIdIdSy;
-    private Asignatura asignatura;
     private Set<com.aprendoz_desarrollo.data.Subtopico> subtopicos = new HashSet<com.aprendoz_desarrollo.data.Subtopico>();
 
     public Integer getIdUnidad() {
@@ -29,6 +29,14 @@ public class Unidad {
 
     public void setIdUnidad(Integer idUnidad) {
         this.idUnidad = idUnidad;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
     }
 
     public String getUnidad() {
@@ -77,14 +85,6 @@ public class Unidad {
 
     public void setIdSyIdIdSy(Integer idSyIdIdSy) {
         this.idSyIdIdSy = idSyIdIdSy;
-    }
-
-    public Asignatura getAsignatura() {
-        return asignatura;
-    }
-
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
     }
 
     public Set<com.aprendoz_desarrollo.data.Subtopico> getSubtopicos() {

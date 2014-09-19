@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.ActualizacionDatosPersonaCopy
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:13
  * 
  */
 public class ActualizacionDatosPersonaCopy {
 
     private Integer idActualizacionDatosPersona;
+    private Persona persona;
     private Date fechaCreacion;
     private Date fecha;
     private Byte actualizado;
-    private Persona persona;
 
     public Integer getIdActualizacionDatosPersona() {
         return idActualizacionDatosPersona;
@@ -23,6 +23,14 @@ public class ActualizacionDatosPersonaCopy {
 
     public void setIdActualizacionDatosPersona(Integer idActualizacionDatosPersona) {
         this.idActualizacionDatosPersona = idActualizacionDatosPersona;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Date getFechaCreacion() {
@@ -47,14 +55,6 @@ public class ActualizacionDatosPersonaCopy {
 
     public void setActualizado(Byte actualizado) {
         this.actualizado = actualizado;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

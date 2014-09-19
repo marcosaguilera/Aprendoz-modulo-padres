@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.TablaSaldosMatriculas" table="tabla_saldos_matriculas" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.TablaSaldosMatriculasId">
+            <key-property name="ncodigo" type="string">
+                <column name="ncodigo"/>
+            </key-property>
+            <key-property name="totald" type="double">
+                <column name="totald" precision="22"/>
+            </key-property>
+            <key-property name="codigoAprendoz" type="string">
+                <column name="codigo_aprendoz"/>
+            </key-property>
+            <key-property name="nnombre" type="string">
+                <column name="nnombre"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

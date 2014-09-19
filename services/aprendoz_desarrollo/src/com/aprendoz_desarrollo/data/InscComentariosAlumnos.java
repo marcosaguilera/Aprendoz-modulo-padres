@@ -6,17 +6,17 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscComentariosAlumnos
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:13
  * 
  */
 public class InscComentariosAlumnos {
 
     private Integer idComentarioEstudiante;
+    private Sy sy;
+    private Persona persona;
     private Integer numeroBimestre;
     private String comentario;
     private Date fechaActual;
-    private Sy sy;
-    private Persona persona;
 
     public Integer getIdComentarioEstudiante() {
         return idComentarioEstudiante;
@@ -24,6 +24,22 @@ public class InscComentariosAlumnos {
 
     public void setIdComentarioEstudiante(Integer idComentarioEstudiante) {
         this.idComentarioEstudiante = idComentarioEstudiante;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Integer getNumeroBimestre() {
@@ -48,22 +64,6 @@ public class InscComentariosAlumnos {
 
     public void setFechaActual(Date fechaActual) {
         this.fechaActual = fechaActual;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

@@ -2212,6 +2212,20 @@ this.parents_local_educom.update();
 parents_local_comunity_subscribed_cursesSuccess: function(inSender, inDeprecated) {
 this.comunity_costs_grid1.setSortIndex(2);
 },
+parents_global_user_infoSuccess3: function(inSender, inDeprecated) {
+var log_usuario= main.parents_global_user_info.getItem(0).data.usuario;
+var log_accion= "ingreso";
+var log_tabla=  "log_acciones_padres";
+var log_fecha= new Date().getTime();
+this.log_acciones_padres.setValue("tablaAfectada", log_tabla);
+this.log_acciones_padres.setValue("usuario", log_usuario);
+this.log_acciones_padres.setValue("fechaCreacion", log_fecha);
+this.log_acciones_padres.setValue("accionRealizada", log_accion);
+this.LogIngresoLiveForm.setDataSet(this.log_acciones_padres);
+this.LogIngresoLiveForm.insertData();
+},
+updatePasswordButtonClick: function(inSender) {
+},
 _end: 0
 });
 
@@ -2232,7 +2246,7 @@ input: ["wm.ServiceInput", {"type":"hql_dash_asignaturasInputs"}, {}]
 parents_global_username: ["wm.ServiceVariable", {"autoUpdate":true,"inFlightBehavior":"executeLast","operation":"getUserName","service":"securityService","startUpdate":true}, {"onSuccess":"parents_global_usernameSuccess"}, {
 input: ["wm.ServiceInput", {"type":"getUserNameInputs"}, {}]
 }],
-parents_global_user_info: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"personaGetInfo","service":"aprendoz_desarrollo"}, {"onSuccess":"parents_global_user_infoSuccess","onSuccess1":"parents_global_user_infoSuccess1","onSuccess2":"parents_global_user_infoSuccess2"}, {
+parents_global_user_info: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"personaGetInfo","service":"aprendoz_desarrollo"}, {"onSuccess":"parents_global_user_infoSuccess","onSuccess1":"parents_global_user_infoSuccess1","onSuccess2":"parents_global_user_infoSuccess2","onSuccess3":"parents_global_user_infoSuccess3"}, {
 input: ["wm.ServiceInput", {"type":"personaGetInfoInputs"}, {}]
 }],
 parents_local_performance_familyGroup: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getGrupoFamiliarbyUser","service":"aprendoz_desarrollo","startUpdate":true}, {}, {
@@ -2443,6 +2457,10 @@ input: ["wm.ServiceInput", {"type":"getEducomECRInputs"}, {}]
 getEducomEFA: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getEducomAFR","service":"aprendoz_desarrollo"}, {}, {
 input: ["wm.ServiceInput", {"type":"getEducomAFRInputs"}, {}]
 }],
+log_acciones_padres: ["wm.Variable", {"type":"com.aprendoz_desarrollo.data.LogAccionesPadres"}, {}],
+updatePasswordSetter: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"updatePasswordProfile","service":"aprendoz_desarrollo"}, {}, {
+input: ["wm.ServiceInput", {"type":"updatePasswordProfileInputs"}, {}]
+}],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"112px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
@@ -2623,23 +2641,27 @@ binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"comunity_costs_grid","targetProperty":"widgetToCover"}, {}]
 }]
 }],
-SettingsDialog: ["wm.DesignableDialog", {"styles":{},"title":"Perfil de usuario","containerWidgetId":"containerWidget3","buttonBarId":"buttonBar"}, {}, {
+SettingsDialog: ["wm.DesignableDialog", {"buttonBarId":"","containerWidgetId":"containerWidget3","styles":{},"title":"Perfil de usuario"}, {}, {
 containerWidget3: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 leftPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{"backgroundColor":"#f7f7f7"},"verticalAlign":"middle","width":"60%"}, {}, {
-pictureSettings: ["wm.Picture", {"height":"150px","width":"150px"}, {}]
+pictureSettings: ["wm.Picture", {"_classes":{"domNode":["image_round"]},"aspect":"v","height":"140px","source":"https://diasporabrazil.org/assets/user/default.png","styles":{},"width":"150px"}, {}],
+LogIngresoLiveForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","verticalAlign":"top"}, {}]
 }],
 rightPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-changePassWordPanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
-text1: ["wm.Text", {"border":"0","caption":"Nueva clave","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","placeHolder":"******"}, {}],
-text2: ["wm.Text", {"border":"0","caption":"Re-Clave","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","placeHolder":"******"}, {}],
+changePasswordPanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
+text1: ["wm.Text", {"border":"0","caption":"Nueva clave","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","placeHolder":"******","styles":{}}, {}],
+text2: ["wm.Text", {"border":"0","caption":"Re-Clave","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","placeHolder":"******","styles":{}}, {}],
+passwordValidator: ["wm.Label", {"padding":"4","width":"300px"}, {}],
 panel6: ["wm.Panel", {"height":"40px","horizontalAlign":"right","layoutKind":"left-to-right","verticalAlign":"top","width":"300px"}, {}, {
-button2: ["wm.Button", {"caption":"Cancelar","height":"100%","margin":"4","width":"100px"}, {}],
-button1: ["wm.Button", {"caption":"Enviar","height":"100%","margin":"4","width":"100px"}, {}]
+cancelButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cancelar","height":"100%","margin":"4","styles":{},"width":"100px"}, {}],
+updatePasswordButton: ["wm.Button", {"caption":"Enviar","height":"100%","margin":"4","styles":{},"width":"100px"}, {"onclick":"updatePasswordButtonClick"}]
 }]
 }]
 }]
 }],
-buttonBar: ["wm.ButtonBarPanel", {"border":"1","height":"15px"}, {}]
+buttonBar3: ["wm.ButtonBarPanel", {"border":"1","height":"34px","styles":{"backgroundColor":"#e8e8e8"}}, {}, {
+closeSettings: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {}]
+}]
 }],
 layoutBox1: ["wm.Layout", {"autoScroll":false,"height":"817px","horizontalAlign":"center","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"740px"}, {}, {
 FancyCentered: ["wm.Template", {"height":"100%","horizontalAlign":"left","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"90%"}, {}, {

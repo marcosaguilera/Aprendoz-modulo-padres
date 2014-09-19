@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.LogIngresoCarne
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:12
  * 
  */
 public class LogIngresoCarne {
 
     private Integer idLogIngresoCarne;
-    private Date fechaCreacion;
-    private Date fechaActualizacion;
     private TipoFalla tipoFalla;
     private Persona persona;
+    private Date fechaCreacion;
+    private Date fechaActualizacion;
 
     public Integer getIdLogIngresoCarne() {
         return idLogIngresoCarne;
@@ -23,22 +23,6 @@ public class LogIngresoCarne {
 
     public void setIdLogIngresoCarne(Integer idLogIngresoCarne) {
         this.idLogIngresoCarne = idLogIngresoCarne;
-    }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public Date getFechaActualizacion() {
-        return fechaActualizacion;
-    }
-
-    public void setFechaActualizacion(Date fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
     }
 
     public TipoFalla getTipoFalla() {
@@ -55,6 +39,22 @@ public class LogIngresoCarne {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
 }

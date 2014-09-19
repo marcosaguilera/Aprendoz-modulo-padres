@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.Tarjetasdav050814" table="tarjetasdav050814" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="ncodigo" type="string">
+            <column name="ncodigo"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="nnombre" type="string">
+            <column name="nnombre" length="500" not-null="true"/>
+        </property>
+        <property name="numidres" type="string">
+            <column name="numidres" not-null="true"/>
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="500" not-null="true"/>
+        </property>
+        <property name="tarjedav" type="string">
+            <column name="tarjedav" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

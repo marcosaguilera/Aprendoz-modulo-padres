@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.GrupoFamiliar
- *  06/18/2014 11:04:58
+ *  09/18/2014 14:49:09
  * 
  */
 public class GrupoFamiliar {
@@ -19,8 +19,8 @@ public class GrupoFamiliar {
     private Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy> actualizacionGrupoFamiliarCopies = new HashSet<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliarCopy>();
     private Set<com.aprendoz_desarrollo.data.Persona> personas = new HashSet<com.aprendoz_desarrollo.data.Persona>();
     private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
-    private Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar>();
     private Set<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar> gestionEncuestasGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar>();
+    private Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar>();
 
     public Integer getIdGrupoFamiliar() {
         return idGrupoFamiliar;
@@ -78,20 +78,20 @@ public class GrupoFamiliar {
         this.inscPersonaGrupoFamiliars = inscPersonaGrupoFamiliars;
     }
 
-    public Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> getActualizacionGrupoFamiliars() {
-        return actualizacionGrupoFamiliars;
-    }
-
-    public void setActualizacionGrupoFamiliars(Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars) {
-        this.actualizacionGrupoFamiliars = actualizacionGrupoFamiliars;
-    }
-
     public Set<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar> getGestionEncuestasGrupoFamiliars() {
         return gestionEncuestasGrupoFamiliars;
     }
 
     public void setGestionEncuestasGrupoFamiliars(Set<com.aprendoz_desarrollo.data.GestionEncuestasGrupoFamiliar> gestionEncuestasGrupoFamiliars) {
         this.gestionEncuestasGrupoFamiliars = gestionEncuestasGrupoFamiliars;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> getActualizacionGrupoFamiliars() {
+        return actualizacionGrupoFamiliars;
+    }
+
+    public void setActualizacionGrupoFamiliars(Set<com.aprendoz_desarrollo.data.ActualizacionGrupoFamiliar> actualizacionGrupoFamiliars) {
+        this.actualizacionGrupoFamiliars = actualizacionGrupoFamiliars;
     }
 
 }

@@ -33,7 +33,7 @@
             <column name="Dimension_Comprension_Id_Dimension" not-null="true"/>
         </many-to-one>
         <many-to-one name="asignatura" class="com.aprendoz_desarrollo.data.Asignatura">
-            <column name="Asignatura_Id_Asignatura"/>
+            <column name="Asignatura_Id_Asignatura" not-null="true"/>
         </many-to-one>
         <many-to-one name="nivelEsperado" class="com.aprendoz_desarrollo.data.NivelEsperado">
             <column name="Nivel_Esperado_Id_Nivel_Esperado" not-null="true"/>

@@ -64,7 +64,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/29/2014 07:43:16
+ *  09/18/2014 14:49:56
  * 
  */
 @SuppressWarnings("unchecked")
@@ -151,6 +151,10 @@ public class Aprendoz_desarrollo
 
     public List<GetEducomEPDRtnType> getEducomEPD(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
         return ((List<GetEducomEPDRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomEPDQueryName), pidsy, pidpersona, pagingOptions));
+    }
+
+    public List<GetEducomOLARtnType> getEducomOLA(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
+        return ((List<GetEducomOLARtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomOLAQueryName), pidsy, pidpersona, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.Formulario5a getFormulario5aById(Integer idFormulario, PagingOptions pagingOptions) {
@@ -366,8 +370,13 @@ public class Aprendoz_desarrollo
         }
     }
 
-    public List<GetEducomOLARtnType> getEducomOLA(Integer pidsy, Integer pidpersona, PagingOptions pagingOptions) {
-        return ((List<GetEducomOLARtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getEducomOLAQueryName), pidsy, pidpersona, pagingOptions));
+    public Integer updatePasswordProfile(String pclave, Integer piduser, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updatePasswordProfileQueryName), pclave, piduser, pagingOptions));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
     }
 
     public Object insert(Object o) {

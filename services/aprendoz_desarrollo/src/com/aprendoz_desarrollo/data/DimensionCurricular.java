@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.DimensionCurricular
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:12
  * 
  */
 public class DimensionCurricular {

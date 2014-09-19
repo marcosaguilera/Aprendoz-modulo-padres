@@ -7,12 +7,15 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumCosto
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:12
  * 
  */
 public class InscAlumCosto {
 
     private Integer idInscAlumCosto;
+    private Sy sy;
+    private Persona persona;
+    private Costos costos;
     private Boolean inscrito;
     private BigDecimal descuentoPorcentaje;
     private Double descuentoValor;
@@ -20,9 +23,6 @@ public class InscAlumCosto {
     private Date fechaInicio;
     private Date fechaFin;
     private String observacion;
-    private Sy sy;
-    private Persona persona;
-    private Costos costos;
 
     public Integer getIdInscAlumCosto() {
         return idInscAlumCosto;
@@ -30,6 +30,30 @@ public class InscAlumCosto {
 
     public void setIdInscAlumCosto(Integer idInscAlumCosto) {
         this.idInscAlumCosto = idInscAlumCosto;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    public Costos getCostos() {
+        return costos;
+    }
+
+    public void setCostos(Costos costos) {
+        this.costos = costos;
     }
 
     public Boolean getInscrito() {
@@ -86,30 +110,6 @@ public class InscAlumCosto {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public Costos getCostos() {
-        return costos;
-    }
-
-    public void setCostos(Costos costos) {
-        this.costos = costos;
     }
 
 }

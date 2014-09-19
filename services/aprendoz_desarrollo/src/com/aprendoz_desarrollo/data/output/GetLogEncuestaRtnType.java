@@ -4,18 +4,18 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getLogEncuesta" on 08/29/2014 07:43:12
+ * Generated for query "getLogEncuesta" on 09/18/2014 14:49:52
  * 
  */
 public class GetLogEncuestaRtnType {
 
-    private Boolean terminado;
+    private Byte terminado;
 
-    public Boolean getTerminado() {
+    public Byte getTerminado() {
         return terminado;
     }
 
-    public void setTerminado(Boolean terminado) {
+    public void setTerminado(Byte terminado) {
         this.terminado = terminado;
     }
 

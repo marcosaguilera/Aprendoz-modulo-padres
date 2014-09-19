@@ -2433,5 +2433,21 @@ dojo.declare("Main", wm.Page, {
 	parents_local_comunity_subscribed_cursesSuccess: function(inSender, inDeprecated) {
 		this.comunity_costs_grid1.setSortIndex(2);
 	},
+	parents_global_user_infoSuccess3: function(inSender, inDeprecated) {
+		var log_usuario= main.parents_global_user_info.getItem(0).data.usuario;
+        var log_accion= "ingreso";
+        var log_tabla=  "log_acciones_padres";
+        var log_fecha= new Date().getTime();
+
+        this.log_acciones_padres.setValue("tablaAfectada", log_tabla);
+        this.log_acciones_padres.setValue("usuario", log_usuario);
+        this.log_acciones_padres.setValue("fechaCreacion", log_fecha);
+        this.log_acciones_padres.setValue("accionRealizada", log_accion);
+        this.LogIngresoLiveForm.setDataSet(this.log_acciones_padres);
+        this.LogIngresoLiveForm.insertData();
+	},
+	updatePasswordButtonClick: function(inSender) {
+		
+	},
 	_end: 0
 });

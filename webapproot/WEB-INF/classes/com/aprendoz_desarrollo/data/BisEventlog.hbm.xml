@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.BisEventlog" table="bis_eventlog" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="string">
+            <column name="ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="eventCreationTime" type="timestamp">
+            <column name="eventCreationTime" length="19" not-null="true"/>
+        </property>
+        <property name="addressTag" type="string">
+            <column name="AddressTag" length="500" not-null="true"/>
+        </property>
+        <property name="stateName" type="string">
+            <column name="stateName" not-null="true"/>
+        </property>
+        <property name="stringValue" type="string">
+            <column name="stringValue" not-null="true"/>
+        </property>
+        <property name="eventValueName" type="string">
+            <column name="eventValueName" length="500" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
