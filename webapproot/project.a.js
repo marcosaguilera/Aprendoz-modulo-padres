@@ -28192,5 +28192,10 @@ background: none;\
 border-radius: 50% 50%;\
 border-style: solid;\
 border-color: #bbb !important;\
+}html.WMApp body .blueButton {\
+background-color: #3652a4 !important;\
+background: none;\
+color: #fff;\
+border: none !important;\
 }\
 ';

@@ -2447,7 +2447,46 @@ dojo.declare("Main", wm.Page, {
         this.LogIngresoLiveForm.insertData();
 	},
 	updatePasswordButtonClick: function(inSender) {
-		
+		var clave1, clave2, idpersona;
+        clave1= this.text1.getDataValue(); 
+        clave2= this.text2.getDataValue();
+        idpersona= main.parents_global_user_info.getItem(0).data.idpersona;
+        
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14");
+            main.passwordValidator.setCaption("Comparación correcta.");
+            
+            this.updatePasswordSetter.input.setValue("pclave", clave2);
+            this.updatePasswordSetter.input.setValue("piduser", idpersona);
+            this.updatePasswordSetter.update();
+        }else{
+            main.passwordValidator.setBackgroundColor("#c53539");
+            main.passwordValidator.setCaption("Comparación erronea.");
+        }          
+	},
+	text2Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var clave1, clave2;
+        clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14");
+            main.passwordValidator.setCaption("Comparación correcta.");
+        }else{
+            main.passwordValidator.setBackgroundColor("#c53539");
+            main.passwordValidator.setCaption("Comparación erronea.");
+        }          
+	},
+	text1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var clave1, clave2;
+		clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14"); 
+            main.passwordValidator.setCaption("Comparación correcta.");
+        }else{
+            main.passwordValidator.setBackgroundColor("#c53539"); 
+            main.passwordValidator.setCaption("Comparación erronea.");
+        }
 	},
 	_end: 0
 });

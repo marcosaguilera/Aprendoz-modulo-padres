@@ -2225,6 +2225,44 @@ this.LogIngresoLiveForm.setDataSet(this.log_acciones_padres);
 this.LogIngresoLiveForm.insertData();
 },
 updatePasswordButtonClick: function(inSender) {
+var clave1, clave2, idpersona;
+clave1= this.text1.getDataValue();
+clave2= this.text2.getDataValue();
+idpersona= main.parents_global_user_info.getItem(0).data.idpersona;
+if(clave1==clave2){
+main.passwordValidator.setBackgroundColor("#56bd14");
+main.passwordValidator.setCaption("Comparación correcta.");
+this.updatePasswordSetter.input.setValue("pclave", clave2);
+this.updatePasswordSetter.input.setValue("piduser", idpersona);
+this.updatePasswordSetter.update();
+}else{
+main.passwordValidator.setBackgroundColor("#c53539");
+main.passwordValidator.setCaption("Comparación erronea.");
+}
+},
+text2Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+var clave1, clave2;
+clave1= this.passwordEditText.getDataValue();
+clave2= this.rePasswordEditText.getDataValue();
+if(clave1==clave2){
+main.passwordValidator.setBackgroundColor("#56bd14");
+main.passwordValidator.setCaption("Comparación correcta.");
+}else{
+main.passwordValidator.setBackgroundColor("#c53539");
+main.passwordValidator.setCaption("Comparación erronea.");
+}
+},
+text1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+var clave1, clave2;
+clave1= this.passwordEditText.getDataValue();
+clave2= this.rePasswordEditText.getDataValue();
+if(clave1==clave2){
+main.passwordValidator.setBackgroundColor("#56bd14");
+main.passwordValidator.setCaption("Comparación correcta.");
+}else{
+main.passwordValidator.setBackgroundColor("#c53539");
+main.passwordValidator.setCaption("Comparación erronea.");
+}
 },
 _end: 0
 });
@@ -2461,9 +2499,12 @@ log_acciones_padres: ["wm.Variable", {"type":"com.aprendoz_desarrollo.data.LogAc
 updatePasswordSetter: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"updatePasswordProfile","service":"aprendoz_desarrollo"}, {}, {
 input: ["wm.ServiceInput", {"type":"updatePasswordProfileInputs"}, {}]
 }],
+updatePassSV: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast"}, {}, {
+input: ["wm.ServiceInput", {"type":"Inputs"}, {}]
+}],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"112px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
+syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"syDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 }],
@@ -2641,25 +2682,8 @@ binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"comunity_costs_grid","targetProperty":"widgetToCover"}, {}]
 }]
 }],
-SettingsDialog: ["wm.DesignableDialog", {"buttonBarId":"","containerWidgetId":"containerWidget3","styles":{},"title":"Perfil de usuario"}, {}, {
-containerWidget3: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-leftPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{"backgroundColor":"#f7f7f7"},"verticalAlign":"middle","width":"60%"}, {}, {
-pictureSettings: ["wm.Picture", {"_classes":{"domNode":["image_round"]},"aspect":"v","height":"140px","source":"https://diasporabrazil.org/assets/user/default.png","styles":{},"width":"150px"}, {}],
-LogIngresoLiveForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","verticalAlign":"top"}, {}]
-}],
-rightPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-changePasswordPanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
-text1: ["wm.Text", {"border":"0","caption":"Nueva clave","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","placeHolder":"******","styles":{}}, {}],
-text2: ["wm.Text", {"border":"0","caption":"Re-Clave","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","placeHolder":"******","styles":{}}, {}],
-passwordValidator: ["wm.Label", {"padding":"4","width":"300px"}, {}],
-panel6: ["wm.Panel", {"height":"40px","horizontalAlign":"right","layoutKind":"left-to-right","verticalAlign":"top","width":"300px"}, {}, {
-cancelButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cancelar","height":"100%","margin":"4","styles":{},"width":"100px"}, {}],
-updatePasswordButton: ["wm.Button", {"caption":"Enviar","height":"100%","margin":"4","styles":{},"width":"100px"}, {"onclick":"updatePasswordButtonClick"}]
-}]
-}]
-}]
-}],
-buttonBar3: ["wm.ButtonBarPanel", {"border":"1","height":"34px","styles":{"backgroundColor":"#e8e8e8"}}, {}, {
+SettingsDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar3","containerWidgetId":"","styles":{},"title":"Perfil de usuario"}, {}, {
+buttonBar3: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{"backgroundColor":"#e8e8e8"}}, {}, {
 closeSettings: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {}]
 }]
 }],
@@ -2684,7 +2708,7 @@ parents_logo_aprendoz: ["wm.Picture", {"aspect":"h","height":"52px","source":"re
 spacer1: ["wm.Spacer", {"height":"48px","width":"100%"}, {}],
 parents_header_panel_sec: ["wm.Panel", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"96px"}, {}, {
 SecurityLogoutButton: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_10px"]},"border":"0","borderColor":"#666666","caption":"Salir","margin":"0","styles":{"color":"#ffffff"},"width":"100%"}, {"onclick":"templateLogoutVar"}],
-SecurityProfileButton: ["wm.Button", {"border":"0","caption":"Profile","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show"}]
+SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"Usuario","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show"}]
 }]
 }],
 parents_line_long: ["wm.Panel", {"height":"6px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundColor":"#3752a3"},"verticalAlign":"top","width":"100%"}, {}],
