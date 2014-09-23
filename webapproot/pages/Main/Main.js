@@ -2461,7 +2461,7 @@ dojo.declare("Main", wm.Page, {
             this.updatePasswordSetter.update();
         }else{
             main.passwordValidator.setBackgroundColor("#c53539");
-            main.passwordValidator.setCaption("Comparación erronea.");
+            main.passwordValidator.setCaption("Comparación incorrecta.");
         }          
 	},	
 	passwordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
@@ -2473,8 +2473,8 @@ dojo.declare("Main", wm.Page, {
             main.passwordValidator.setCaption("Comparación correcta.");
             this.updatePasswordButton.enable();
         }else{
-            main.passwordValidator.setBackgroundColor("#c53539"); 
-            main.passwordValidator.setCaption("Comparación erronea.");
+            main.passwordValidator.setBackgroundColor("#EEB422"); 
+            main.passwordValidator.setCaption("Comparación incorrecta.");
             this.updatePasswordButton.disable();
         }
 	},
@@ -2487,7 +2487,7 @@ dojo.declare("Main", wm.Page, {
             main.passwordValidator.setCaption("Comparación correcta.");
             this.updatePasswordButton.enable();
         }else{
-            main.passwordValidator.setBackgroundColor("#c53539");
+            main.passwordValidator.setBackgroundColor("#EEB422");
             main.passwordValidator.setCaption("Comparación erronea.");
             this.updatePasswordButton.disable();
         }          
