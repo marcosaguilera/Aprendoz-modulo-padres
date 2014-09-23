@@ -2226,8 +2226,8 @@ this.LogIngresoLiveForm.insertData();
 },
 updatePasswordButtonClick: function(inSender) {
 var clave1, clave2, idpersona;
-clave1= this.text1.getDataValue();
-clave2= this.text2.getDataValue();
+clave1= this.passwordEditText.getDataValue();
+clave2= this.rePasswordEditText.getDataValue();
 idpersona= main.parents_global_user_info.getItem(0).data.idpersona;
 if(clave1==clave2){
 main.passwordValidator.setBackgroundColor("#56bd14");
@@ -2240,28 +2240,32 @@ main.passwordValidator.setBackgroundColor("#c53539");
 main.passwordValidator.setCaption("Comparación erronea.");
 }
 },
-text2Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+passwordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
 var clave1, clave2;
 clave1= this.passwordEditText.getDataValue();
 clave2= this.rePasswordEditText.getDataValue();
 if(clave1==clave2){
 main.passwordValidator.setBackgroundColor("#56bd14");
 main.passwordValidator.setCaption("Comparación correcta.");
+this.updatePasswordButton.enable();
 }else{
 main.passwordValidator.setBackgroundColor("#c53539");
 main.passwordValidator.setCaption("Comparación erronea.");
+this.updatePasswordButton.disable();
 }
 },
-text1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+rePasswordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
 var clave1, clave2;
 clave1= this.passwordEditText.getDataValue();
 clave2= this.rePasswordEditText.getDataValue();
 if(clave1==clave2){
 main.passwordValidator.setBackgroundColor("#56bd14");
 main.passwordValidator.setCaption("Comparación correcta.");
+this.updatePasswordButton.enable();
 }else{
 main.passwordValidator.setBackgroundColor("#c53539");
 main.passwordValidator.setCaption("Comparación erronea.");
+this.updatePasswordButton.disable();
 }
 },
 _end: 0
@@ -2496,15 +2500,35 @@ getEducomEFA: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operatio
 input: ["wm.ServiceInput", {"type":"getEducomAFRInputs"}, {}]
 }],
 log_acciones_padres: ["wm.Variable", {"type":"com.aprendoz_desarrollo.data.LogAccionesPadres"}, {}],
-updatePasswordSetter: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"updatePasswordProfile","service":"aprendoz_desarrollo"}, {}, {
+updatePasswordSetter: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"updatePasswordProfile","service":"aprendoz_desarrollo"}, {"onSuccess":"updatePasswordSuccess","onError":"updatePasswordWarning"}, {
 input: ["wm.ServiceInput", {"type":"updatePasswordProfileInputs"}, {}]
 }],
 updatePassSV: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast"}, {}, {
 input: ["wm.ServiceInput", {"type":"Inputs"}, {}]
 }],
+updatePasswordSuccess: ["wm.NavigationCall", {"operation":"showToast"}, {}, {
+input: ["wm.ServiceInput", {"type":"showToastInputs"}, {}, {
+binding: ["wm.Binding", {}, {}, {
+wire: ["wm.Wire", {"expression":"3000","targetProperty":"duration"}, {}],
+wire1: ["wm.Wire", {"expression":"\"Success\"","targetProperty":"cssClasses"}, {}],
+wire2: ["wm.Wire", {"expression":"\"center center\"","targetProperty":"dialogPosition"}, {}],
+wire3: ["wm.Wire", {"expression":"\"¡Clave actualizada exitosamente!\"","targetProperty":"content"}, {}]
+}]
+}]
+}],
+updatePasswordWarning: ["wm.NavigationCall", {"operation":"showToast"}, {}, {
+input: ["wm.ServiceInput", {"type":"showToastInputs"}, {}, {
+binding: ["wm.Binding", {}, {}, {
+wire: ["wm.Wire", {"expression":"\"¡Acción no completada!, intente nuevamente\"","targetProperty":"content"}, {}],
+wire1: ["wm.Wire", {"expression":"3000","targetProperty":"duration"}, {}],
+wire2: ["wm.Wire", {"expression":"\"Warning\"","targetProperty":"cssClasses"}, {}],
+wire3: ["wm.Wire", {"expression":"\"center center\"","targetProperty":"dialogPosition"}, {}]
+}]
+}]
+}],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
+syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"112px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"syDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 }],
@@ -2683,6 +2707,23 @@ wire: ["wm.Wire", {"expression":undefined,"source":"comunity_costs_grid","target
 }]
 }],
 SettingsDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar3","containerWidgetId":"","styles":{},"title":"Perfil de usuario"}, {}, {
+containerWidget3: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+leftPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{"backgroundColor":"#f7f7f7"},"verticalAlign":"middle","width":"60%"}, {}, {
+pictureSettings: ["wm.Picture", {"_classes":{"domNode":["image_round"]},"aspect":"v","height":"140px","source":"https://diasporabrazil.org/assets/user/default.png","styles":{},"width":"150px"}, {}],
+LogIngresoLiveForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","verticalAlign":"top"}, {}]
+}],
+rightPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+changePasswordPanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
+passwordEditText: ["wm.Text", {"border":"0","caption":"Nueva clave","changeOnKey":true,"dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","password":true,"placeHolder":"******","required":true,"styles":{}}, {"onchange":"passwordEditTextChange"}],
+rePasswordEditText: ["wm.Text", {"border":"0","caption":"Re-Clave","changeOnKey":true,"dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","password":true,"placeHolder":"******","required":true,"styles":{}}, {"onchange":"rePasswordEditTextChange"}],
+passwordValidator: ["wm.Label", {"align":"center","caption":"","padding":"4","styles":{},"width":"300px"}, {}],
+panel6: ["wm.Panel", {"height":"40px","horizontalAlign":"right","layoutKind":"left-to-right","verticalAlign":"top","width":"300px"}, {}, {
+cancelButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cancelar","height":"100%","margin":"4","styles":{},"width":"100px"}, {}],
+updatePasswordButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Enviar","disabled":true,"height":"100%","margin":"4","styles":{},"width":"100px"}, {"onclick":"updatePasswordButtonClick"}]
+}]
+}]
+}]
+}],
 buttonBar3: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{"backgroundColor":"#e8e8e8"}}, {}, {
 closeSettings: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {}]
 }]

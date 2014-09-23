@@ -2448,8 +2448,8 @@ dojo.declare("Main", wm.Page, {
 	},
 	updatePasswordButtonClick: function(inSender) {
 		var clave1, clave2, idpersona;
-        clave1= this.text1.getDataValue(); 
-        clave2= this.text2.getDataValue();
+        clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
         idpersona= main.parents_global_user_info.getItem(0).data.idpersona;
         
         if(clave1==clave2){
@@ -2463,30 +2463,34 @@ dojo.declare("Main", wm.Page, {
             main.passwordValidator.setBackgroundColor("#c53539");
             main.passwordValidator.setCaption("Comparación erronea.");
         }          
-	},
-	text2Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
-        var clave1, clave2;
-        clave1= this.passwordEditText.getDataValue(); 
-        clave2= this.rePasswordEditText.getDataValue();
-        if(clave1==clave2){
-            main.passwordValidator.setBackgroundColor("#56bd14");
-            main.passwordValidator.setCaption("Comparación correcta.");
-        }else{
-            main.passwordValidator.setBackgroundColor("#c53539");
-            main.passwordValidator.setCaption("Comparación erronea.");
-        }          
-	},
-	text1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+	},	
+	passwordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
         var clave1, clave2;
 		clave1= this.passwordEditText.getDataValue(); 
         clave2= this.rePasswordEditText.getDataValue();
         if(clave1==clave2){
             main.passwordValidator.setBackgroundColor("#56bd14"); 
             main.passwordValidator.setCaption("Comparación correcta.");
+            this.updatePasswordButton.enable();
         }else{
             main.passwordValidator.setBackgroundColor("#c53539"); 
             main.passwordValidator.setCaption("Comparación erronea.");
+            this.updatePasswordButton.disable();
         }
 	},
+    rePasswordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var clave1, clave2;
+        clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14");
+            main.passwordValidator.setCaption("Comparación correcta.");
+            this.updatePasswordButton.enable();
+        }else{
+            main.passwordValidator.setBackgroundColor("#c53539");
+            main.passwordValidator.setCaption("Comparación erronea.");
+            this.updatePasswordButton.disable();
+        }          
+    },
 	_end: 0
 });
