@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.GestionEncuestasGrupoFamiliar
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:13
  * 
  */
 public class GestionEncuestasGrupoFamiliar {
 
     private Integer idGestionEncuestaGrupoFamiliar;
-    private Boolean encuestaTerminada;
+    private GrupoFamiliar grupoFamiliar;
+    private Byte encuestaTerminada;
     private Date fechaCreacion;
     private Date fechaActualizacion;
-    private GrupoFamiliar grupoFamiliar;
 
     public Integer getIdGestionEncuestaGrupoFamiliar() {
         return idGestionEncuestaGrupoFamiliar;
@@ -25,11 +25,19 @@ public class GestionEncuestasGrupoFamiliar {
         this.idGestionEncuestaGrupoFamiliar = idGestionEncuestaGrupoFamiliar;
     }
 
-    public Boolean getEncuestaTerminada() {
+    public GrupoFamiliar getGrupoFamiliar() {
+        return grupoFamiliar;
+    }
+
+    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
+        this.grupoFamiliar = grupoFamiliar;
+    }
+
+    public Byte getEncuestaTerminada() {
         return encuestaTerminada;
     }
 
-    public void setEncuestaTerminada(Boolean encuestaTerminada) {
+    public void setEncuestaTerminada(Byte encuestaTerminada) {
         this.encuestaTerminada = encuestaTerminada;
     }
 
@@ -47,14 +55,6 @@ public class GestionEncuestasGrupoFamiliar {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
-    }
-
-    public GrupoFamiliar getGrupoFamiliar() {
-        return grupoFamiliar;
-    }
-
-    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
-        this.grupoFamiliar = grupoFamiliar;
     }
 
 }

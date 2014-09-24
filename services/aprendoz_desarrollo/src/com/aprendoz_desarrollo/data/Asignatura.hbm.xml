@@ -48,13 +48,13 @@
             <column name="descrip_asig_ingles" length="65535"/>
         </property>
         <property name="ihA1" type="float">
-            <column name="ih_a1" precision="12" not-null="true"/>
+            <column name="ih_a1" precision="12"/>
         </property>
         <property name="ihA2" type="float">
-            <column name="ih_a2" precision="12" not-null="true"/>
+            <column name="ih_a2" precision="12"/>
         </property>
         <property name="ihA3" type="float">
-            <column name="ih_a3" precision="12" not-null="true"/>
+            <column name="ih_a3" precision="12"/>
         </property>
         <property name="meses" type="float">
             <column name="meses" precision="12"/>
@@ -121,7 +121,7 @@
         </set>
         <set name="aprendizajesAsignaturases" inverse="true" cascade="">
             <key>
-                <column name="Asignatura_Id_Asignatura"/>
+                <column name="Asignatura_Id_Asignatura" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.AprendizajesAsignaturas"/>
         </set>

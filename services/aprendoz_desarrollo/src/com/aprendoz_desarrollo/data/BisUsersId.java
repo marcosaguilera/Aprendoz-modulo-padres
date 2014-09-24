@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.BisUsersId
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:13
  * 
  */
 public class BisUsersId

@@ -20,5 +20,8 @@
         <property name="arp" type="string">
             <column name="ARP" not-null="true"/>
         </property>
+        <property name="ccosto" type="string">
+            <column name="CCOSTO"/>
+        </property>
     </class>
 </hibernate-mapping>

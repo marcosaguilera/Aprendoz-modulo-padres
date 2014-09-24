@@ -547,6 +547,17 @@
 		}],
 		"returnType": "java.lang.Integer"
 	}, {
+		"name": "updatePasswordProfile",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pclave",
+			"type": "java.lang.String"
+		}, {
+			"name": "piduser",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
 		"name": "updateServicios",
 		"operationType": "hqlquery",
 		"parameters": [{

@@ -6,17 +6,17 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.Logeventosaprendoz
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:13
  * 
  */
 public class Logeventosaprendoz {
 
     private Integer idLogEventos;
+    private Persona persona;
     private Date hora;
     private Date fecha;
     private String accion;
     private String tabla;
-    private Persona persona;
 
     public Integer getIdLogEventos() {
         return idLogEventos;
@@ -24,6 +24,14 @@ public class Logeventosaprendoz {
 
     public void setIdLogEventos(Integer idLogEventos) {
         this.idLogEventos = idLogEventos;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Date getHora() {
@@ -56,14 +64,6 @@ public class Logeventosaprendoz {
 
     public void setTabla(String tabla) {
         this.tabla = tabla;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

@@ -7,12 +7,15 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Asignatura
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:12
  * 
  */
 public class Asignatura {
 
     private Integer idAsignatura;
+    private Grado grado;
+    private TipoInscAsig tipoInscAsig;
+    private Sy sy;
     private String asignatura;
     private String subject;
     private Boolean electiva;
@@ -32,9 +35,6 @@ public class Asignatura {
     private Float ihA3;
     private Float meses;
     private Integer esperadostotal;
-    private Grado grado;
-    private TipoInscAsig tipoInscAsig;
-    private Sy sy;
     private Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsig>();
     private Set<com.aprendoz_desarrollo.data.Horario> horarios = new HashSet<com.aprendoz_desarrollo.data.Horario>();
     private Set<com.aprendoz_desarrollo.data.InscAlumAsigCopy> inscAlumAsigCopies = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsigCopy>();
@@ -52,6 +52,30 @@ public class Asignatura {
 
     public void setIdAsignatura(Integer idAsignatura) {
         this.idAsignatura = idAsignatura;
+    }
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+
+    public TipoInscAsig getTipoInscAsig() {
+        return tipoInscAsig;
+    }
+
+    public void setTipoInscAsig(TipoInscAsig tipoInscAsig) {
+        this.tipoInscAsig = tipoInscAsig;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
     }
 
     public String getAsignatura() {
@@ -204,30 +228,6 @@ public class Asignatura {
 
     public void setEsperadostotal(Integer esperadostotal) {
         this.esperadostotal = esperadostotal;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
-    public TipoInscAsig getTipoInscAsig() {
-        return tipoInscAsig;
-    }
-
-    public void setTipoInscAsig(TipoInscAsig tipoInscAsig) {
-        this.tipoInscAsig = tipoInscAsig;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscCursoAsig> getInscCursoAsigs() {

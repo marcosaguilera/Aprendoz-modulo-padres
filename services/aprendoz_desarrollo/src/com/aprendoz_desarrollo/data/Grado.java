@@ -7,18 +7,19 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Grado
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:12
  * 
  */
 public class Grado {
 
     private Integer idGrado;
+    private Nivel nivel;
     private String grado;
     private String grade;
     private String gradoSapiens;
-    private Nivel nivel;
     private Set<com.aprendoz_desarrollo.data.CostosAnualesCopy> costosAnualesCopies = new HashSet<com.aprendoz_desarrollo.data.CostosAnualesCopy>();
     private Set<com.aprendoz_desarrollo.data.Asignatura> asignaturas = new HashSet<com.aprendoz_desarrollo.data.Asignatura>();
+    private Set<com.aprendoz_desarrollo.data.CostosCopy> costosCopies = new HashSet<com.aprendoz_desarrollo.data.CostosCopy>();
     private Set<com.aprendoz_desarrollo.data.Costos> costoses = new HashSet<com.aprendoz_desarrollo.data.Costos>();
     private Set<com.aprendoz_desarrollo.data.AsignaturaCopy> asignaturaCopies = new HashSet<com.aprendoz_desarrollo.data.AsignaturaCopy>();
     private Set<com.aprendoz_desarrollo.data.AccAuthorization> accAuthorizations = new HashSet<com.aprendoz_desarrollo.data.AccAuthorization>();
@@ -31,6 +32,14 @@ public class Grado {
 
     public void setIdGrado(Integer idGrado) {
         this.idGrado = idGrado;
+    }
+
+    public Nivel getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
     }
 
     public String getGrado() {
@@ -57,14 +66,6 @@ public class Grado {
         this.gradoSapiens = gradoSapiens;
     }
 
-    public Nivel getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(Nivel nivel) {
-        this.nivel = nivel;
-    }
-
     public Set<com.aprendoz_desarrollo.data.CostosAnualesCopy> getCostosAnualesCopies() {
         return costosAnualesCopies;
     }
@@ -79,6 +80,14 @@ public class Grado {
 
     public void setAsignaturas(Set<com.aprendoz_desarrollo.data.Asignatura> asignaturas) {
         this.asignaturas = asignaturas;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.CostosCopy> getCostosCopies() {
+        return costosCopies;
+    }
+
+    public void setCostosCopies(Set<com.aprendoz_desarrollo.data.CostosCopy> costosCopies) {
+        this.costosCopies = costosCopies;
     }
 
     public Set<com.aprendoz_desarrollo.data.Costos> getCostoses() {

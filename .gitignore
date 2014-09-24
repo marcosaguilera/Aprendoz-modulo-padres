@@ -8,3 +8,5 @@
 *.zip
 
 webapproot/timestamp.txt
+
+dist/Aprendoz_Padres_v2.war

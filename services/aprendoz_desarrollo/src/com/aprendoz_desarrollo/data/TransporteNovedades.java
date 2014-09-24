@@ -6,12 +6,15 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.TransporteNovedades
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:12
  * 
  */
 public class TransporteNovedades {
 
     private Integer idNovedades;
+    private TransporteRutas transporteRutas;
+    private Persona persona;
+    private TipoSolicitud tipoSolicitud;
     private Date horaProgramada;
     private String observaciones;
     private Date horaActualSalida;
@@ -29,9 +32,6 @@ public class TransporteNovedades {
     private Boolean jueves;
     private Boolean viernes;
     private Boolean sabado;
-    private TransporteRutas transporteRutas;
-    private Persona persona;
-    private TipoSolicitud tipoSolicitud;
 
     public Integer getIdNovedades() {
         return idNovedades;
@@ -39,6 +39,30 @@ public class TransporteNovedades {
 
     public void setIdNovedades(Integer idNovedades) {
         this.idNovedades = idNovedades;
+    }
+
+    public TransporteRutas getTransporteRutas() {
+        return transporteRutas;
+    }
+
+    public void setTransporteRutas(TransporteRutas transporteRutas) {
+        this.transporteRutas = transporteRutas;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    public TipoSolicitud getTipoSolicitud() {
+        return tipoSolicitud;
+    }
+
+    public void setTipoSolicitud(TipoSolicitud tipoSolicitud) {
+        this.tipoSolicitud = tipoSolicitud;
     }
 
     public Date getHoraProgramada() {
@@ -175,30 +199,6 @@ public class TransporteNovedades {
 
     public void setSabado(Boolean sabado) {
         this.sabado = sabado;
-    }
-
-    public TransporteRutas getTransporteRutas() {
-        return transporteRutas;
-    }
-
-    public void setTransporteRutas(TransporteRutas transporteRutas) {
-        this.transporteRutas = transporteRutas;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public TipoSolicitud getTipoSolicitud() {
-        return tipoSolicitud;
-    }
-
-    public void setTipoSolicitud(TipoSolicitud tipoSolicitud) {
-        this.tipoSolicitud = tipoSolicitud;
     }
 
 }

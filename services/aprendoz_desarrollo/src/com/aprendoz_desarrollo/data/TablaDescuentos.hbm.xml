@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.TablaDescuentos" table="tabla_descuentos" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idTablaDescuentos" type="integer">
+            <column name="id_tabla_descuentos"/>
+            <generator class="identity"/>
+        </id>
+        <property name="codigo" type="string">
+            <column name="codigo" length="65535"/>
+        </property>
+        <property name="concepto" type="string">
+            <column name="concepto" length="65535"/>
+        </property>
+        <property name="nnombre" type="string">
+            <column name="nnombre" length="65535"/>
+        </property>
+        <property name="nconcepto" type="string">
+            <column name="nconcepto" length="65535"/>
+        </property>
+        <property name="valor" type="float">
+            <column name="valor" precision="12"/>
+        </property>
+        <property name="pordcto" type="float">
+            <column name="pordcto" precision="12"/>
+        </property>
+        <property name="valdcto" type="float">
+            <column name="valdcto" precision="12"/>
+        </property>
+        <property name="motivo" type="string">
+            <column name="motivo" length="65535"/>
+        </property>
+        <property name="nombreEmpleado" type="string">
+            <column name="nombre_empleado" length="65535"/>
+        </property>
+        <property name="nombrePapa" type="string">
+            <column name="nombre_papa" length="65535"/>
+        </property>
+        <property name="nombreMama" type="string">
+            <column name="nombre_mama" length="65535"/>
+        </property>
+        <property name="nombreHermano" type="string">
+            <column name="nombre_hermano" length="65535"/>
+        </property>
+        <property name="syIdSy" type="integer">
+            <column name="sy_id_sy" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

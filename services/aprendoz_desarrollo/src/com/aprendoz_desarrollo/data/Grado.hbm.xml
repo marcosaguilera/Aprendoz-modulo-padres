@@ -15,7 +15,7 @@
             <column name="Grado_sapiens" length="11"/>
         </property>
         <many-to-one name="nivel" class="com.aprendoz_desarrollo.data.Nivel">
-            <column name="Nivel_Id_Nivel"/>
+            <column name="Nivel_Id_Nivel" not-null="true"/>
         </many-to-one>
         <set name="costosAnualesCopies" inverse="true" cascade="">
             <key>
@@ -28,6 +28,12 @@
                 <column name="Grado_Id_Grado" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Asignatura"/>
+        </set>
+        <set name="costosCopies" inverse="true" cascade="">
+            <key>
+                <column name="Grado_Id_Grado" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.CostosCopy"/>
         </set>
         <set name="costoses" inverse="true" cascade="">
             <key>

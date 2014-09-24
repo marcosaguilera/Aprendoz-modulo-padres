@@ -36,7 +36,7 @@
             <column name="Nombre2" length="45"/>
         </property>
         <property name="nivelAcademico" type="string">
-            <column name="Nivel_Academico" length="45"/>
+            <column name="Nivel_Academico" length="500"/>
         </property>
         <property name="fechaNacimiento" type="date">
             <column name="Fecha_Nacimiento" length="10"/>
@@ -90,10 +90,10 @@
             <column name="Departamento" length="45"/>
         </property>
         <property name="saludPrepagada" type="string">
-            <column name="Salud_Prepagada" length="45"/>
+            <column name="Salud_Prepagada" length="500"/>
         </property>
         <property name="eps" type="string">
-            <column name="EPS" length="45"/>
+            <column name="EPS" length="500"/>
         </property>
         <property name="numeroContratoSalud" type="string">
             <column name="Numero_Contrato_Salud" length="45"/>
@@ -102,7 +102,7 @@
             <column name="Clinica_Emergencia" length="45"/>
         </property>
         <property name="viveCon" type="string">
-            <column name="Vive_Con" length="45"/>
+            <column name="Vive_Con" length="500"/>
         </property>
         <property name="tipoSangre" type="string">
             <column name="Tipo_Sangre" length="45"/>
@@ -144,13 +144,13 @@
             <column name="numero_tarjeta_credito"/>
         </property>
         <property name="profesion" type="string">
-            <column name="Profesion" length="45"/>
+            <column name="Profesion" length="500"/>
         </property>
         <property name="empresa" type="string">
-            <column name="Empresa" length="45"/>
+            <column name="Empresa" length="500"/>
         </property>
         <property name="cargo" type="string">
-            <column name="Cargo" length="45"/>
+            <column name="Cargo" length="500"/>
         </property>
         <property name="celular" type="string">
             <column name="Celular" length="45"/>
@@ -218,17 +218,17 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TransporteInscAlumTransporte"/>
         </set>
-        <set name="inscComentariosAlumnoses" inverse="true" cascade="">
-            <key>
-                <column name="persona_id_persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscComentariosAlumnos"/>
-        </set>
         <set name="calificacionFinals" inverse="true" cascade="">
             <key>
                 <column name="Persona_Id_Persona"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.CalificacionFinal"/>
+        </set>
+        <set name="inscComentariosAlumnoses" inverse="true" cascade="">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscComentariosAlumnos"/>
         </set>
         <set name="inscDirectorNivels" inverse="true" cascade="">
             <key>
@@ -319,12 +319,6 @@
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsigCopy"/>
-        </set>
-        <set name="inscAlumCostoCopies" inverse="true" cascade="">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCostoCopy"/>
         </set>
         <set name="actualizacionDatosPersonas" inverse="true" cascade="">
             <key>

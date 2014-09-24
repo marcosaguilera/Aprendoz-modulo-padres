@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.TipoPeriodo
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:13
  * 
  */
 public class TipoPeriodo {

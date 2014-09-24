@@ -6,17 +6,17 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.SeguridadPersonasAccesos
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:12
  * 
  */
 public class SeguridadPersonasAccesos {
 
     private Integer idSeguridadPersonasAccesos;
+    private Persona persona;
     private Byte accesoTemp;
     private Date createdDate;
     private Date updatedDate;
     private String asignadoPor;
-    private Persona persona;
 
     public Integer getIdSeguridadPersonasAccesos() {
         return idSeguridadPersonasAccesos;
@@ -24,6 +24,14 @@ public class SeguridadPersonasAccesos {
 
     public void setIdSeguridadPersonasAccesos(Integer idSeguridadPersonasAccesos) {
         this.idSeguridadPersonasAccesos = idSeguridadPersonasAccesos;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Byte getAccesoTemp() {
@@ -56,14 +64,6 @@ public class SeguridadPersonasAccesos {
 
     public void setAsignadoPor(String asignadoPor) {
         this.asignadoPor = asignadoPor;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

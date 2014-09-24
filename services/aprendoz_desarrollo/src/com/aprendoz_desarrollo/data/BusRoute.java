@@ -6,20 +6,20 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.BusRoute
- *  06/18/2014 11:04:58
+ *  09/18/2014 12:11:13
  * 
  */
 public class BusRoute {
 
     private Integer id;
+    private BusBus busBus;
+    private BusDriver busDriver;
     private Date date;
     private String startingPoint;
     private String endingPoint;
     private Date startingTime;
     private Date endingTime;
     private Date created;
-    private BusBus busBus;
-    private BusDriver busDriver;
 
     public Integer getId() {
         return id;
@@ -27,6 +27,22 @@ public class BusRoute {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public BusBus getBusBus() {
+        return busBus;
+    }
+
+    public void setBusBus(BusBus busBus) {
+        this.busBus = busBus;
+    }
+
+    public BusDriver getBusDriver() {
+        return busDriver;
+    }
+
+    public void setBusDriver(BusDriver busDriver) {
+        this.busDriver = busDriver;
     }
 
     public Date getDate() {
@@ -75,22 +91,6 @@ public class BusRoute {
 
     public void setCreated(Date created) {
         this.created = created;
-    }
-
-    public BusBus getBusBus() {
-        return busBus;
-    }
-
-    public void setBusBus(BusBus busBus) {
-        this.busBus = busBus;
-    }
-
-    public BusDriver getBusDriver() {
-        return busDriver;
-    }
-
-    public void setBusDriver(BusDriver busDriver) {
-        this.busDriver = busDriver;
     }
 
 }

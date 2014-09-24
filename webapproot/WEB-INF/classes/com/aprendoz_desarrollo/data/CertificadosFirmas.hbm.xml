@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.CertificadosFirmas" table="certificados_firmas" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idCertificadosFirmas" type="integer">
+            <column name="id_certificados_firmas"/>
+            <generator class="identity"/>
+        </id>
+        <property name="syIdSy" type="integer">
+            <column name="SY_id_SY"/>
+        </property>
+        <property name="firmaDirector" type="string">
+            <column name="firma_director" length="250"/>
+        </property>
+        <property name="firmaSecretario" type="string">
+            <column name="firma_secretario" length="250"/>
+        </property>
+    </class>
+</hibernate-mapping>

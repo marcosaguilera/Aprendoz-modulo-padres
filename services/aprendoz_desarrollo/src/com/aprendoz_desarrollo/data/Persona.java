@@ -8,12 +8,15 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Persona
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:12
  * 
  */
 public class Persona {
 
     private Integer idPersona;
+    private Pais pais;
+    private TipoPersona tipoPersona;
+    private GrupoFamiliar grupoFamiliar;
     private String nombreLdap;
     private String clave;
     private String codigo;
@@ -74,15 +77,12 @@ public class Persona {
     private Boolean tomaSeguroAccidentes;
     private String noPlaqueta;
     private Integer inscAlumCursoIdInscAlumCurso;
-    private Pais pais;
-    private TipoPersona tipoPersona;
-    private GrupoFamiliar grupoFamiliar;
     private Set<com.aprendoz_desarrollo.data.SeguridadPersonasAccesos> seguridadPersonasAccesoses = new HashSet<com.aprendoz_desarrollo.data.SeguridadPersonasAccesos>();
     private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
     private Set<com.aprendoz_desarrollo.data.PromocionCopy> promocionCopies = new HashSet<com.aprendoz_desarrollo.data.PromocionCopy>();
     private Set<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte> transporteInscAlumTransportes = new HashSet<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte>();
-    private Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> inscComentariosAlumnoses = new HashSet<com.aprendoz_desarrollo.data.InscComentariosAlumnos>();
     private Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals = new HashSet<com.aprendoz_desarrollo.data.CalificacionFinal>();
+    private Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> inscComentariosAlumnoses = new HashSet<com.aprendoz_desarrollo.data.InscComentariosAlumnos>();
     private Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels = new HashSet<com.aprendoz_desarrollo.data.InscDirectorNivel>();
     private Set<com.aprendoz_desarrollo.data.InscAlumActividad> inscAlumActividads = new HashSet<com.aprendoz_desarrollo.data.InscAlumActividad>();
     private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
@@ -98,7 +98,6 @@ public class Persona {
     private Set<com.aprendoz_desarrollo.data.Promocion> promocions = new HashSet<com.aprendoz_desarrollo.data.Promocion>();
     private Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsig>();
     private Set<com.aprendoz_desarrollo.data.InscCursoAsigCopy> inscCursoAsigCopies = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsigCopy>();
-    private Set<com.aprendoz_desarrollo.data.InscAlumCostoCopy> inscAlumCostoCopies = new HashSet<com.aprendoz_desarrollo.data.InscAlumCostoCopy>();
     private Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersona> actualizacionDatosPersonas = new HashSet<com.aprendoz_desarrollo.data.ActualizacionDatosPersona>();
     private Set<com.aprendoz_desarrollo.data.FichaMedica> fichaMedicas = new HashSet<com.aprendoz_desarrollo.data.FichaMedica>();
     private Set<com.aprendoz_desarrollo.data.TransporteNovedades> transporteNovedadeses = new HashSet<com.aprendoz_desarrollo.data.TransporteNovedades>();
@@ -122,6 +121,30 @@ public class Persona {
 
     public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public void setTipoPersona(TipoPersona tipoPersona) {
+        this.tipoPersona = tipoPersona;
+    }
+
+    public GrupoFamiliar getGrupoFamiliar() {
+        return grupoFamiliar;
+    }
+
+    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
+        this.grupoFamiliar = grupoFamiliar;
     }
 
     public String getNombreLdap() {
@@ -604,30 +627,6 @@ public class Persona {
         this.inscAlumCursoIdInscAlumCurso = inscAlumCursoIdInscAlumCurso;
     }
 
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
-    public TipoPersona getTipoPersona() {
-        return tipoPersona;
-    }
-
-    public void setTipoPersona(TipoPersona tipoPersona) {
-        this.tipoPersona = tipoPersona;
-    }
-
-    public GrupoFamiliar getGrupoFamiliar() {
-        return grupoFamiliar;
-    }
-
-    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
-        this.grupoFamiliar = grupoFamiliar;
-    }
-
     public Set<com.aprendoz_desarrollo.data.SeguridadPersonasAccesos> getSeguridadPersonasAccesoses() {
         return seguridadPersonasAccesoses;
     }
@@ -660,20 +659,20 @@ public class Persona {
         this.transporteInscAlumTransportes = transporteInscAlumTransportes;
     }
 
-    public Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> getInscComentariosAlumnoses() {
-        return inscComentariosAlumnoses;
-    }
-
-    public void setInscComentariosAlumnoses(Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> inscComentariosAlumnoses) {
-        this.inscComentariosAlumnoses = inscComentariosAlumnoses;
-    }
-
     public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
         return calificacionFinals;
     }
 
     public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
         this.calificacionFinals = calificacionFinals;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> getInscComentariosAlumnoses() {
+        return inscComentariosAlumnoses;
+    }
+
+    public void setInscComentariosAlumnoses(Set<com.aprendoz_desarrollo.data.InscComentariosAlumnos> inscComentariosAlumnoses) {
+        this.inscComentariosAlumnoses = inscComentariosAlumnoses;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscDirectorNivel> getInscDirectorNivels() {
@@ -794,14 +793,6 @@ public class Persona {
 
     public void setInscCursoAsigCopies(Set<com.aprendoz_desarrollo.data.InscCursoAsigCopy> inscCursoAsigCopies) {
         this.inscCursoAsigCopies = inscCursoAsigCopies;
-    }
-
-    public Set<com.aprendoz_desarrollo.data.InscAlumCostoCopy> getInscAlumCostoCopies() {
-        return inscAlumCostoCopies;
-    }
-
-    public void setInscAlumCostoCopies(Set<com.aprendoz_desarrollo.data.InscAlumCostoCopy> inscAlumCostoCopies) {
-        this.inscAlumCostoCopies = inscAlumCostoCopies;
     }
 
     public Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersona> getActualizacionDatosPersonas() {

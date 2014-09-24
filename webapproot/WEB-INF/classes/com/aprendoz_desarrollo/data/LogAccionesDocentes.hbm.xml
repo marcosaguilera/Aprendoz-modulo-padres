@@ -5,17 +5,17 @@
             <column name="id_log_acciones_docentes"/>
             <generator class="identity"/>
         </id>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" not-null="true"/>
+        </property>
+        <property name="tablaAfectada" type="string">
+            <column name="tabla_afectada" length="20" not-null="true"/>
+        </property>
         <property name="usuario" type="string">
             <column name="usuario" length="20" not-null="true"/>
         </property>
         <property name="accionRealizada" type="string">
             <column name="accion_realizada" length="65535" not-null="true"/>
-        </property>
-        <property name="tablaAfectada" type="string">
-            <column name="tabla_afectada" length="20" not-null="true"/>
-        </property>
-        <property name="fechaCreacion" type="timestamp">
-            <column name="fecha_creacion" length="19" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

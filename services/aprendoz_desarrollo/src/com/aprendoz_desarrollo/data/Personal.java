@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.Personal
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:12
  * 
  */
 public class Personal {
@@ -16,6 +16,7 @@ public class Personal {
     private String eps;
     private String afp;
     private String arp;
+    private String ccosto;
 
     public String getCodigo() {
         return codigo;
@@ -63,6 +64,14 @@ public class Personal {
 
     public void setArp(String arp) {
         this.arp = arp;
+    }
+
+    public String getCcosto() {
+        return ccosto;
+    }
+
+    public void setCcosto(String ccosto) {
+        this.ccosto = ccosto;
     }
 
 }

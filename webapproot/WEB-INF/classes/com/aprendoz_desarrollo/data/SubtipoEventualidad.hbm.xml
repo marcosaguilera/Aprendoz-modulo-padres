@@ -8,6 +8,9 @@
         <property name="subtipoEventualidad" type="string">
             <column name="Subtipo_Eventualidad" length="65535"/>
         </property>
+        <property name="syIdSy" type="integer">
+            <column name="SY_Id_SY"/>
+        </property>
         <many-to-one name="tipoEventualidad" class="com.aprendoz_desarrollo.data.TipoEventualidad">
             <column name="Tipo_Eventualidad_Id_Tipo_Eventualidad" not-null="true"/>
         </many-to-one>

@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.LogAccionesDocentes
- *  06/18/2014 11:04:57
+ *  09/18/2014 12:11:12
  * 
  */
 public class LogAccionesDocentes {
 
     private Integer idLogAccionesDocentes;
+    private Date fechaCreacion;
+    private String tablaAfectada;
     private String usuario;
     private String accionRealizada;
-    private String tablaAfectada;
-    private Date fechaCreacion;
 
     public Integer getIdLogAccionesDocentes() {
         return idLogAccionesDocentes;
@@ -23,6 +23,22 @@ public class LogAccionesDocentes {
 
     public void setIdLogAccionesDocentes(Integer idLogAccionesDocentes) {
         this.idLogAccionesDocentes = idLogAccionesDocentes;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getTablaAfectada() {
+        return tablaAfectada;
+    }
+
+    public void setTablaAfectada(String tablaAfectada) {
+        this.tablaAfectada = tablaAfectada;
     }
 
     public String getUsuario() {
@@ -39,22 +55,6 @@ public class LogAccionesDocentes {
 
     public void setAccionRealizada(String accionRealizada) {
         this.accionRealizada = accionRealizada;
-    }
-
-    public String getTablaAfectada() {
-        return tablaAfectada;
-    }
-
-    public void setTablaAfectada(String tablaAfectada) {
-        this.tablaAfectada = tablaAfectada;
-    }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
     }
 
 }

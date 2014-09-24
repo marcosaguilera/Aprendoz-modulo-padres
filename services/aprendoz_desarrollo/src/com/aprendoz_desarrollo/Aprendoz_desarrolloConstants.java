@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo;
 
 /**
  *  Query names for service "aprendoz_desarrollo"
- *  08/25/2014 17:28:41
+ *  09/18/2014 14:49:57
  * 
  */
 public class Aprendoz_desarrolloConstants {
@@ -27,6 +27,7 @@ public class Aprendoz_desarrolloConstants {
     public final static String getEducomEADQueryName = "getEducomEAD";
     public final static String getEducomECRQueryName = "getEducomECR";
     public final static String getEducomEPDQueryName = "getEducomEPD";
+    public final static String getEducomOLAQueryName = "getEducomOLA";
     public final static String getFormulario5aByIdQueryName = "getFormulario5aById";
     public final static String getGradoUsuarioQueryName = "getGradoUsuario";
     public final static String getGrupoFamiliarbyIdPersonaQueryName = "getGrupoFamiliarbyIdPersona";
@@ -69,6 +70,6 @@ public class Aprendoz_desarrolloConstants {
     public final static String updateDatosPersonaQueryName = "updateDatosPersona";
     public final static String updateInscPersonaGrupoFamiliarQueryName = "updateInscPersonaGrupoFamiliar";
     public final static String updateServiciosQueryName = "updateServicios";
-    public final static String getEducomOLAQueryName = "getEducomOLA";
+    public final static String updatePasswordProfileQueryName = "updatePasswordProfile";
 
 }

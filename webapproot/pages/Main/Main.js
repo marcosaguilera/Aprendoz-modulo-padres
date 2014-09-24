@@ -1864,6 +1864,7 @@ dojo.declare("Main", wm.Page, {
         console.log(gradostr);
         var grado= parseInt(gradostr);
         console.log(grado);
+        //alert("Oferta de cursos extracurriculares finalizada.");
         this.parents_local_educom.input.setValue("f1", curdate);   
         this.parents_local_educom.input.setValue("y", grado);   
 		this.parents_local_educom.update();
@@ -2141,7 +2142,8 @@ dojo.declare("Main", wm.Page, {
 	parents_comunity_comunicationClick3: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow == true){
-          this.parents_local_comunity_subscribed_curses.update();
+          main.parents_local_comunity_subscribed_curses.filter.setValue("educom.sy.idSy", 5);
+          this.parents_local_comunity_subscribed_curses.update();  
         }else{
           alert("Por favor seleccione un integrante del grupo familiar para realizar la inscripción de Cursos.")
         }
@@ -2150,6 +2152,7 @@ dojo.declare("Main", wm.Page, {
 	performance_family_gridSelect1: function(inSender) {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow== true){
+          main.parents_local_comunity_subscribed_curses.filter.setValue("educom.sy.idSy", 5);
           this.parents_local_comunity_subscribed_curses.update();
         }else{}
 	},
@@ -2430,5 +2433,64 @@ dojo.declare("Main", wm.Page, {
 	parents_local_comunity_subscribed_cursesSuccess: function(inSender, inDeprecated) {
 		this.comunity_costs_grid1.setSortIndex(2);
 	},
+	parents_global_user_infoSuccess3: function(inSender, inDeprecated) {
+		var log_usuario= main.parents_global_user_info.getItem(0).data.usuario;
+        var log_accion= "ingreso";
+        var log_tabla=  "log_acciones_padres";
+        var log_fecha= new Date().getTime();
+
+        this.log_acciones_padres.setValue("tablaAfectada", log_tabla);
+        this.log_acciones_padres.setValue("usuario", log_usuario);
+        this.log_acciones_padres.setValue("fechaCreacion", log_fecha);
+        this.log_acciones_padres.setValue("accionRealizada", log_accion);
+        this.LogIngresoLiveForm.setDataSet(this.log_acciones_padres);
+        this.LogIngresoLiveForm.insertData();
+	},
+	updatePasswordButtonClick: function(inSender) {
+		var clave1, clave2, idpersona;
+        clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
+        idpersona= main.parents_global_user_info.getItem(0).data.idpersona;
+        
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14");
+            main.passwordValidator.setCaption("Comparación correcta.");
+            
+            this.updatePasswordSetter.input.setValue("pclave", clave2);
+            this.updatePasswordSetter.input.setValue("piduser", idpersona);
+            this.updatePasswordSetter.update();
+        }else{
+            main.passwordValidator.setBackgroundColor("#c53539");
+            main.passwordValidator.setCaption("Comparación incorrecta.");
+        }          
+	},	
+	passwordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var clave1, clave2;
+		clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14"); 
+            main.passwordValidator.setCaption("Comparación correcta.");
+            this.updatePasswordButton.enable();
+        }else{
+            main.passwordValidator.setBackgroundColor("#EEB422"); 
+            main.passwordValidator.setCaption("Comparación incorrecta.");
+            this.updatePasswordButton.disable();
+        }
+	},
+    rePasswordEditTextChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var clave1, clave2;
+        clave1= this.passwordEditText.getDataValue(); 
+        clave2= this.rePasswordEditText.getDataValue();
+        if(clave1==clave2){
+            main.passwordValidator.setBackgroundColor("#56bd14");
+            main.passwordValidator.setCaption("Comparación correcta.");
+            this.updatePasswordButton.enable();
+        }else{
+            main.passwordValidator.setBackgroundColor("#EEB422");
+            main.passwordValidator.setCaption("Comparación erronea.");
+            this.updatePasswordButton.disable();
+        }          
+    },
 	_end: 0
 });

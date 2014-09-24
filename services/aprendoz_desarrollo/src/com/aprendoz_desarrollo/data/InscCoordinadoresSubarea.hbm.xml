@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.InscCoordinadoresSubarea" table="insc_coordinadores_subarea" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idCoordinadorSubarea" type="integer">
+            <column name="id_coordinador_subarea"/>
+            <generator class="identity"/>
+        </id>
+        <property name="personaIdPersona" type="integer">
+            <column name="persona_id_persona"/>
+        </property>
+        <property name="syIdSy" type="integer">
+            <column name="sy_id_sy"/>
+        </property>
+        <property name="subareaIdSubarea" type="integer">
+            <column name="subarea_id_subarea"/>
+        </property>
+        <property name="activo" type="integer">
+            <column name="activo"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19"/>
+        </property>
+    </class>
+</hibernate-mapping>
