@@ -2492,5 +2492,11 @@ dojo.declare("Main", wm.Page, {
             this.updatePasswordButton.disable();
         }          
     },
+	transportes_autorizacionesClick1: function(inSender) {
+		var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+        main.pageContainer1.page.transporterutasLiveVariable1.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+        main.pageContainer1.page.transporterutasLiveVariable1.update();
+        main.pageContainer1.page.transporterutasDojoGrid.setSortIndex(0);
+	},
 	_end: 0
 });

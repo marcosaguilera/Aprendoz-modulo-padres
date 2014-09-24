@@ -255,7 +255,7 @@ Main.widgets = {
 	}],
 	syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 		containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-			syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
+			syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"112px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"expression":undefined,"source":"syDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 				}],
@@ -455,11 +455,13 @@ Main.widgets = {
 			closeSettings: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"SettingsDialog.hide"}]
 		}]
 	}],
-	designableDialog2: ["wm.DesignableDialog", {"buttonBarId":"","containerWidgetId":"containerWidget4","desktopHeight":"600px","height":"600px"}, {}, {
-		containerWidget4: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-			pageContainer1: ["wm.PageContainer", {"deferLoad":true,"pageName":"Transporte_autorizaciones","subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {}]
+	autorizacionesDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar4","containerWidgetId":"containerWidget4","desktopHeight":"600px","height":"600px","styles":{},"title":"Autorizaciones de Rutas"}, {}, {
+		containerWidget4: ["wm.Container", {"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+			pageContainer1: ["wm.PageContainer", {"deferLoad":true,"pageName":"Transporte_autorizaciones","styles":{},"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {}]
 		}],
-		buttonBar4: ["wm.ButtonBarPanel", {"border":"1","height":"15px"}, {}]
+		buttonBar4: ["wm.ButtonBarPanel", {"border":"1","height":"34px","styles":{}}, {}, {
+			autorizacionCloseButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"autorizacionesDialog.hide"}]
+		}]
 	}],
 	layoutBox1: ["wm.Layout", {"autoScroll":false,"height":"817px","horizontalAlign":"center","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"740px"}, {}, {
 		FancyCentered: ["wm.Template", {"height":"100%","horizontalAlign":"left","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"90%"}, {}, {
@@ -682,10 +684,10 @@ Main.widgets = {
 											estado_cuenta_boton_descarga: ["wm.Button", {"caption":"Descargar extracto","desktopHeight":"55px","height":"55px","iconHeight":"20px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/download.png","iconWidth":"32px","margin":"4","width":"155px"}, {"onclick":"estado_cuenta_boton_descargaClick"}]
 										}]
 									}],
-									panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","verticalAlign":"top","width":"100%"}, {}, {
-										transportes_autorizaciones: ["wm.Button", {"caption":"Autorizaciones","desktopHeight":"60px","height":"60px","margin":"4","width":"120px"}, {}],
-										transportes_rutas: ["wm.Button", {"caption":"Rutas","desktopHeight":"60px","height":"60px","margin":"4","width":"120px"}, {}],
-										transportes_solicitudes: ["wm.Button", {"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","width":"120px"}, {}]
+									panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+										transportes_autorizaciones: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Autorizaciones","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {"onclick":"autorizacionesDialog.show","onclick1":"transportes_autorizacionesClick1"}],
+										transportes_rutas: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Rutas","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {}],
+										transportes_solicitudes: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {}]
 									}],
 									panel_actividades: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 										schedule_page_container: ["wm.PageContainer", {"loadParentFirst":false,"pageName":"Schedule","styles":{},"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {"onPageChanged":"schedule_page_containerPageChanged","onStart":"schedule_page_containerStart"}]
