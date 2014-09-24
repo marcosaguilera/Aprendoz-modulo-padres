@@ -28180,6 +28180,14 @@ border: none !important;\
 color: #ffffff;\
 background: none;\
 }\
+div#main_autorizacionesDialog_titleBar {\
+background-color: #3652a4 !important;\
+color: #fff;\
+}\
+div#main_buttonBar4 {\
+background-color: #D3D3D3 !important;\
+color: #fff;\
+}\
 div.wmCheckboxSetItem {\
 width: 122px;\
 float: left;\
@@ -28197,5 +28205,7 @@ background-color: #3652a4 !important;\
 background: none;\
 color: #fff;\
 border: none !important;\
+}html.WMApp body .pointer {\
+cursor: pointer !important;\
 }\
 ';
