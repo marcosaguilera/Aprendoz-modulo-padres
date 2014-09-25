@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.TransporteNovedades
- *  09/18/2014 12:11:12
+ *  09/25/2014 12:54:24
  * 
  */
 public class TransporteNovedades {
@@ -15,23 +15,21 @@ public class TransporteNovedades {
     private TransporteRutas transporteRutas;
     private Persona persona;
     private TipoSolicitud tipoSolicitud;
-    private Date horaProgramada;
-    private String observaciones;
-    private Date horaActualSalida;
-    private Boolean aprobacionDirNivel;
-    private Boolean aprobacionCoordinador;
-    private Boolean aprobacionTransporte;
-    private Integer numeroPuerta;
-    private Date fechaProgramada;
     private Date fechaSolicitudInicio;
     private Date fechaSolicitudFin;
-    private String tipoSolicitud_1;
-    private Boolean lunes;
-    private Boolean martes;
-    private Boolean miercoles;
-    private Boolean jueves;
-    private Boolean viernes;
-    private Boolean sabado;
+    private Date horaProgramada;
+    private Integer numeroPuerta;
+    private Boolean aprobacionDirNivel;
+    private String comentarioDirNivel;
+    private Boolean aprobacionCoordinador;
+    private String comentarioCoordinador;
+    private Boolean aprobacionTransporte;
+    private String comentarioTransporte;
+    private Boolean aprobacionEnfermeria;
+    private String comentarioEnfermeria;
+    private String observaciones;
+    private Date fechaCreacion;
+    private Date fechaActualizacion;
 
     public Integer getIdNovedades() {
         return idNovedades;
@@ -65,70 +63,6 @@ public class TransporteNovedades {
         this.tipoSolicitud = tipoSolicitud;
     }
 
-    public Date getHoraProgramada() {
-        return horaProgramada;
-    }
-
-    public void setHoraProgramada(Date horaProgramada) {
-        this.horaProgramada = horaProgramada;
-    }
-
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
-    public Date getHoraActualSalida() {
-        return horaActualSalida;
-    }
-
-    public void setHoraActualSalida(Date horaActualSalida) {
-        this.horaActualSalida = horaActualSalida;
-    }
-
-    public Boolean getAprobacionDirNivel() {
-        return aprobacionDirNivel;
-    }
-
-    public void setAprobacionDirNivel(Boolean aprobacionDirNivel) {
-        this.aprobacionDirNivel = aprobacionDirNivel;
-    }
-
-    public Boolean getAprobacionCoordinador() {
-        return aprobacionCoordinador;
-    }
-
-    public void setAprobacionCoordinador(Boolean aprobacionCoordinador) {
-        this.aprobacionCoordinador = aprobacionCoordinador;
-    }
-
-    public Boolean getAprobacionTransporte() {
-        return aprobacionTransporte;
-    }
-
-    public void setAprobacionTransporte(Boolean aprobacionTransporte) {
-        this.aprobacionTransporte = aprobacionTransporte;
-    }
-
-    public Integer getNumeroPuerta() {
-        return numeroPuerta;
-    }
-
-    public void setNumeroPuerta(Integer numeroPuerta) {
-        this.numeroPuerta = numeroPuerta;
-    }
-
-    public Date getFechaProgramada() {
-        return fechaProgramada;
-    }
-
-    public void setFechaProgramada(Date fechaProgramada) {
-        this.fechaProgramada = fechaProgramada;
-    }
-
     public Date getFechaSolicitudInicio() {
         return fechaSolicitudInicio;
     }
@@ -145,60 +79,108 @@ public class TransporteNovedades {
         this.fechaSolicitudFin = fechaSolicitudFin;
     }
 
-    public String getTipoSolicitud_1() {
-        return tipoSolicitud_1;
+    public Date getHoraProgramada() {
+        return horaProgramada;
     }
 
-    public void setTipoSolicitud_1(String tipoSolicitud_1) {
-        this.tipoSolicitud_1 = tipoSolicitud_1;
+    public void setHoraProgramada(Date horaProgramada) {
+        this.horaProgramada = horaProgramada;
     }
 
-    public Boolean getLunes() {
-        return lunes;
+    public Integer getNumeroPuerta() {
+        return numeroPuerta;
     }
 
-    public void setLunes(Boolean lunes) {
-        this.lunes = lunes;
+    public void setNumeroPuerta(Integer numeroPuerta) {
+        this.numeroPuerta = numeroPuerta;
     }
 
-    public Boolean getMartes() {
-        return martes;
+    public Boolean getAprobacionDirNivel() {
+        return aprobacionDirNivel;
     }
 
-    public void setMartes(Boolean martes) {
-        this.martes = martes;
+    public void setAprobacionDirNivel(Boolean aprobacionDirNivel) {
+        this.aprobacionDirNivel = aprobacionDirNivel;
     }
 
-    public Boolean getMiercoles() {
-        return miercoles;
+    public String getComentarioDirNivel() {
+        return comentarioDirNivel;
     }
 
-    public void setMiercoles(Boolean miercoles) {
-        this.miercoles = miercoles;
+    public void setComentarioDirNivel(String comentarioDirNivel) {
+        this.comentarioDirNivel = comentarioDirNivel;
     }
 
-    public Boolean getJueves() {
-        return jueves;
+    public Boolean getAprobacionCoordinador() {
+        return aprobacionCoordinador;
     }
 
-    public void setJueves(Boolean jueves) {
-        this.jueves = jueves;
+    public void setAprobacionCoordinador(Boolean aprobacionCoordinador) {
+        this.aprobacionCoordinador = aprobacionCoordinador;
     }
 
-    public Boolean getViernes() {
-        return viernes;
+    public String getComentarioCoordinador() {
+        return comentarioCoordinador;
     }
 
-    public void setViernes(Boolean viernes) {
-        this.viernes = viernes;
+    public void setComentarioCoordinador(String comentarioCoordinador) {
+        this.comentarioCoordinador = comentarioCoordinador;
     }
 
-    public Boolean getSabado() {
-        return sabado;
+    public Boolean getAprobacionTransporte() {
+        return aprobacionTransporte;
     }
 
-    public void setSabado(Boolean sabado) {
-        this.sabado = sabado;
+    public void setAprobacionTransporte(Boolean aprobacionTransporte) {
+        this.aprobacionTransporte = aprobacionTransporte;
+    }
+
+    public String getComentarioTransporte() {
+        return comentarioTransporte;
+    }
+
+    public void setComentarioTransporte(String comentarioTransporte) {
+        this.comentarioTransporte = comentarioTransporte;
+    }
+
+    public Boolean getAprobacionEnfermeria() {
+        return aprobacionEnfermeria;
+    }
+
+    public void setAprobacionEnfermeria(Boolean aprobacionEnfermeria) {
+        this.aprobacionEnfermeria = aprobacionEnfermeria;
+    }
+
+    public String getComentarioEnfermeria() {
+        return comentarioEnfermeria;
+    }
+
+    public void setComentarioEnfermeria(String comentarioEnfermeria) {
+        this.comentarioEnfermeria = comentarioEnfermeria;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
 }

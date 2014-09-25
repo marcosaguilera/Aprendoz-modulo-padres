@@ -2450,5 +2450,10 @@ dojo.declare("Main", wm.Page, {
         main.pageContainer1.page.transporterutasLiveVariable1.update();
         main.pageContainer1.page.transporterutasDojoGrid.setSortIndex(0);
 	},
+	transportenovedadesLiveForm1BeginInsert: function(inSender) {
+		var now= new Date().getTime();
+        this.fechaCreacionEditor1.setDataValue(now);
+        this.fechaActualizacionEditor1.setDataValue(now);
+	},
 	_end: 0
 });
