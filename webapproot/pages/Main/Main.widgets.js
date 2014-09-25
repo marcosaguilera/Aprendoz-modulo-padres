@@ -169,7 +169,7 @@ Main.widgets = {
 {"caption":"Sugerencias","sortable":true,"dataIndex":"sugerencias","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":25,"subType":null}
 ]}, {}]
 	}],
-	gestionencuestasLiveVariable2: ["wm.LiveVariable", {"type":"com.aprendoz_desarrollo.data.GestionEncuestas"}, {}, {
+	gestionencuestasLiveVariable2: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.GestionEncuestas"}, {}, {
 		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.GestionEncuestas","related":["persona"],"view":[
 {"caption":"IdPkEncuesta","sortable":true,"dataIndex":"idPkEncuesta","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
 {"caption":"FechaIngreso","sortable":true,"dataIndex":"fechaIngreso","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1,"subType":null},
@@ -463,6 +463,12 @@ Main.widgets = {
 			autorizacionCloseButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"autorizacionesDialog.hide"}]
 		}]
 	}],
+	permisosDialog: ["wm.DesignableDialog", {"desktopHeight":"640px","height":"640px","title":"Solicitud de Permisos","width":"720px","containerWidgetId":"containerWidget5","buttonBarId":"buttonBar"}, {}, {
+		containerWidget5: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}],
+		buttonBar: ["wm.ButtonBarPanel", {"border":"1","height":"34px"}, {}, {
+			permisosCloseButton: ["wm.Button", {"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"permisosDialog.hide"}]
+		}]
+	}],
 	layoutBox1: ["wm.Layout", {"autoScroll":false,"height":"817px","horizontalAlign":"center","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"740px"}, {}, {
 		FancyCentered: ["wm.Template", {"height":"100%","horizontalAlign":"left","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"90%"}, {}, {
 			FancyCentered1: ["wm.Template", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
@@ -477,14 +483,14 @@ Main.widgets = {
 						panel2: ["wm.Panel", {"freeze":true,"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
 							templateLeft: ["wm.Panel", {"_classes":{"domNode":["template-left"]},"freeze":true,"height":"100%","horizontalAlign":"left","showing":false,"verticalAlign":"top","width":"24px"}, {}],
 							templateContent: ["wm.Panel", {"_classes":{"domNode":["template-content"]},"height":"100%","horizontalAlign":"right","verticalAlign":"top","width":"100%"}, {}, {
-								aprendoz_header: ["wm.Panel", {"height":"90px","horizontalAlign":"left","layoutKind":"left-to-right","lock":true,"styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
+								aprendoz_header: ["wm.Panel", {"height":"90px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
 									parents_top_image_parents: ["wm.Picture", {"aspect":"h","height":"100%","source":"resources/images/icons%20v2/Aprendoz_padres.jpg","width":"110px"}, {}],
 									parents_spacer1: ["wm.Spacer", {"height":"48px","width":"38px"}, {}],
 									parents_logo_aprendoz: ["wm.Picture", {"aspect":"h","height":"52px","source":"resources/images/icons%20v2/Aprendoz_03.jpg","styles":{},"width":"265px"}, {}],
 									spacer1: ["wm.Spacer", {"height":"48px","width":"100%"}, {}],
 									parents_header_panel_sec: ["wm.Panel", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"96px"}, {}, {
 										SecurityLogoutButton: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_10px"]},"border":"0","borderColor":"#666666","caption":"Salir","margin":"0","styles":{"color":"#ffffff"},"width":"100%"}, {"onclick":"templateLogoutVar"}],
-										SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"Usuario","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show"}]
+										SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"Configuración <br>de Usuario","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show"}]
 									}]
 								}],
 								parents_line_long: ["wm.Panel", {"height":"6px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundColor":"#3752a3"},"verticalAlign":"top","width":"100%"}, {}],
@@ -687,7 +693,7 @@ Main.widgets = {
 									panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 										transportes_autorizaciones: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Autorizaciones","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {"onclick":"autorizacionesDialog.show","onclick1":"transportes_autorizacionesClick1"}],
 										transportes_rutas: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Rutas","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {}],
-										transportes_solicitudes: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {}]
+										transportes_solicitudes: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {"onclick":"permisosDialog.show"}]
 									}],
 									panel_actividades: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 										schedule_page_container: ["wm.PageContainer", {"loadParentFirst":false,"pageName":"Schedule","styles":{},"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {"onPageChanged":"schedule_page_containerPageChanged","onStart":"schedule_page_containerStart"}]

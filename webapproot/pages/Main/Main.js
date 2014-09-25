@@ -100,25 +100,9 @@ dojo.declare("Main", wm.Page, {
   *                                  *
   ************************************/
 
-  paisLookup1Change: function(inSender, inDisplayValue, inDataValue) {
-    try {
-      var idp= this.paisLookup1.getDataValue().idPais;
-      this.idpCodigo.setDataValue(idp);
-
-    } catch(e) {
-      console.error('ERROR IN paisLookup1Change: ' + e); 
-    } 
-  },
+ 
   
-  idpCodigoChange: function(inSender, inDisplayValue, inDataValue) {
-    try {
-      this.estados.update();
-      this.estados.filter.clearData();
-      
-    } catch(e) {
-      console.error('ERROR IN idpCodigoChange: ' + e); 
-    } 
-  },
+
  
   gradoIngresoEditor1Change: function(inSender, inDisplayValue, inDataValue) {
     try {
@@ -312,39 +296,7 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN sendMail_requestError: ' + e); 
     } 
   },
-  
-  transporte_menu_rutasClick: function(inSender) {
-    try {
-      this.transporte_enviar_solicitudes.hide();
-      this.transporte_enviar_none.hide();
-      this.transporte_enviar_programacion.hide();
-      this.transporte_enviar_rutas.show();
-      /*paneles*/
-      this.transporte_panel_novedades.hide(); 
-      this.transporte_panel_solicitudes.hide();      
-      this.transporte_panel_rutas.show();
-      //this.spacer1.setWidth("100%");
-      
-    } catch(e) {
-      console.error('ERROR IN transporte_menu_rutasClick: ' + e); 
-    } 
-  },
-  transporte_menu_programacionClick: function(inSender) {
-    try {
-      this.transporte_enviar_solicitudes.hide();
-      this.transporte_enviar_none.hide();    
-      this.transporte_enviar_rutas.hide();
-      this.transporte_enviar_programacion.show();
-      
-      /*acciones en paneles*/     
-      this.transporte_panel_rutas.hide();
-      this.transporte_panel_solicitudes.hide();
-      this.transporte_panel_novedades.show();
-      
-    } catch(e) {
-      console.error('ERROR IN transporte_menu_novedadesClick: ' + e); 
-    } 
-  },
+
   novedadesLiveForm1BeginInsert: function(inSender) {
     try {
       this.personaLookup2.setValue("dataValue", this.transporte_alumnos.selectedItem.getData().id.idPersona);
