@@ -2454,6 +2454,39 @@ dojo.declare("Main", wm.Page, {
 		var now= new Date().getTime();
         this.fechaCreacionEditor1.setDataValue(now);
         this.fechaActualizacionEditor1.setDataValue(now);
+        this.tipoSolicitudLiveVariable.filter.setValue("disponiblePadres", 1);
+        this.tipoSolicitudLiveVariable.update();
 	},
+    transportes_solicitudesClick: function(inSender) {
+        var seleccion = main.performance_family_grid.isRowSelected;
+        if(seleccion == true){
+            var idpersona = main.performance_family_grid.selectedItem.getData().pid;
+            this.transportenovedadesLiveVariable1.filter.setValue("persona.idPersona", idpersona);
+            this.transportenovedadesLiveVariable1.update();
+        }else{
+            alert("Antes de continuar con la Solicitud de Permiso, seleccione un estudiante.");
+        }                        
+	},
+	transportes_solicitudesClick1: function(inSender) {		
+        var seleccion = main.performance_family_grid.isRowSelected;
+        if(seleccion == true){
+            var idfamilia = main.performance_family_grid.selectedItem.getData().idgrupo;
+            var idpersona = main.performance_family_grid.selectedItem.getData().pid;
+            this.permisosDialog.show();
+            
+            this.autorizadosLiveVariable.filter.setValue("tipoTransporte.idtipoTransporte", 100);
+            this.autorizadosLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+            this.solicitudPersonaLiveVariable.filter.setValue("idPersona", idpersona);
+            this.autorizadosLiveVariable.update();
+            this.solicitudPersonaLiveVariable.update();
+        }else{
+            alert("Antes de continuar con la Solicitud de Permiso, seleccione un estudiante.");
+        }                
+	},
+	transportenovedadesLiveForm1BeginInsert1: function(inSender) {
+		var idpersona = main.solicitudPersonaLiveVariable.getItem(0).data.idPersona;
+        this.personaLookup1.setDisplayValue(idpersona);
+	},
+	
 	_end: 0
 });

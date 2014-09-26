@@ -20386,6 +20386,26 @@ wm.types = {
 		},
 		"com.aprendoz_desarrollo.data.TipoSolicitud": {
 			"fields": {
+				"disponibleAdmon": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.Integer"
+				},
+				"disponiblePadres": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.Integer"
+				},
 				"idTipoSolicitud": {
 					"exclude": ["insert"],
 					"fieldOrder": 0,
@@ -20408,7 +20428,7 @@ wm.types = {
 				},
 				"transporteNovedadeses": {
 					"exclude": [],
-					"fieldOrder": 2,
+					"fieldOrder": 4,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,

@@ -20615,6 +20615,26 @@ wm.types = {
 		},
 		"com.aprendoz_desarrollo.data.TipoSolicitud": {
 			"fields": {
+				"disponibleAdmon": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.Integer"
+				},
+				"disponiblePadres": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.Integer"
+				},
 				"idTipoSolicitud": {
 					"exclude": ["insert"],
 					"fieldOrder": 0,
@@ -20637,7 +20657,7 @@ wm.types = {
 				},
 				"transporteNovedadeses": {
 					"exclude": [],
-					"fieldOrder": 2,
+					"fieldOrder": 4,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -28790,7 +28810,7 @@ dojo.declare("Aprendoz_Padres_v2", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha47", 
+	"projectSubVersion": "Alpha48", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"studioVersion": "6.6.0.RELEASE", 
@@ -28845,6 +28865,14 @@ div#main_buttonBar4 {\
 background-color: #D3D3D3 !important;\
 color: #fff;\
 }\
+div#main_permisosDialog_titleBar {\
+background-color: #3652a4 !important;\
+color: #fff;\
+}\
+div#main_buttonBar5 {\
+background-color: #D3D3D3 !important;\
+color: #fff;\
+}\
 div.wmCheckboxSetItem {\
 width: 122px;\
 float: left;\
@@ -28864,5 +28892,10 @@ color: #fff;\
 border: none !important;\
 }html.WMApp body .pointer {\
 cursor: pointer !important;\
+}html.WMApp body .Green {\
+background-color: #63bb00 !important;\
+border: none !important;\
+color: #ffffff;\
+background: none;\
 }\
 ';

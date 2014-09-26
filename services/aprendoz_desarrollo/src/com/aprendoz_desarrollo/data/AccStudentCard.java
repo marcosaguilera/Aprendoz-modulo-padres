@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.AccStudentCard
- *  09/25/2014 12:54:25
+ *  09/25/2014 15:43:06
  * 
  */
 public class AccStudentCard {
