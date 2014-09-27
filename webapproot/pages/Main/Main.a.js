@@ -2862,7 +2862,7 @@ permisosDialog: ["wm.DesignableDialog", {"buttonBarId":"","containerWidgetId":"c
 containerWidget5: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 transportenovedadesLivePanel1: ["wm.LivePanel", {"horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
 transportenovedadesDojoGrid: ["wm.DojoGrid", {"_classes":{"domNode":["pointer"]},"border":"1","columns":[
-{"show":true,"field":"idNovedades","title":"Historial de Solicitudes","width":"80px","align":"left","formatFunc":"","expression":"\"No. Solicitud: \"+${idNovedades}+\"<br>\"+\n\"Fecha creación: \"+\"<br>\"+\n\"Fecha programada: \"+\"<br>\"+\n\"Hora programada: \"+\"<br>\"+\n\"Ruta seleccionada: \"+${transporteRutas.nombreConductor}","mobileColumn":false},
+{"show":true,"field":"idNovedades","title":"Historial de Solicitudes","width":"80px","align":"left","formatFunc":"","expression":"\"<br>\"+\n\"No. Solicitud: \"+${idNovedades}+\"<br>\"+\n\"Ruta seleccionada: \"+${transporteRutas.nombreConductor}+\"<br>\"+\n\"Placa vehículo: \"+${transporteRutas.placaVehiculo}+\"<br>\"+\n\"<br>\"","mobileColumn":false},
 {"show":false,"field":"fechaSolicitudInicio","title":"FechaSolicitudInicio","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"fechaSolicitudFin","title":"FechaSolicitudFin","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"horaProgramada","title":"HoraProgramada","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
