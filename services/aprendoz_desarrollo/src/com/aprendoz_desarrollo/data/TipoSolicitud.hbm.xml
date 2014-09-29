@@ -8,6 +8,12 @@
         <property name="solicitud" type="string">
             <column name="solicitud" length="80" not-null="true"/>
         </property>
+        <property name="disponiblePadres" type="integer">
+            <column name="disponible_padres"/>
+        </property>
+        <property name="disponibleAdmon" type="integer">
+            <column name="disponible_admon"/>
+        </property>
         <set name="transporteNovedadeses" inverse="true" cascade="">
             <key>
                 <column name="tipo_solicitud_id_tipo_solucitud" not-null="true"/>

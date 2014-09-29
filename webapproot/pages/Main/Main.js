@@ -100,25 +100,9 @@ dojo.declare("Main", wm.Page, {
   *                                  *
   ************************************/
 
-  paisLookup1Change: function(inSender, inDisplayValue, inDataValue) {
-    try {
-      var idp= this.paisLookup1.getDataValue().idPais;
-      this.idpCodigo.setDataValue(idp);
-
-    } catch(e) {
-      console.error('ERROR IN paisLookup1Change: ' + e); 
-    } 
-  },
+ 
   
-  idpCodigoChange: function(inSender, inDisplayValue, inDataValue) {
-    try {
-      this.estados.update();
-      this.estados.filter.clearData();
-      
-    } catch(e) {
-      console.error('ERROR IN idpCodigoChange: ' + e); 
-    } 
-  },
+
  
   gradoIngresoEditor1Change: function(inSender, inDisplayValue, inDataValue) {
     try {
@@ -312,39 +296,7 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN sendMail_requestError: ' + e); 
     } 
   },
-  
-  transporte_menu_rutasClick: function(inSender) {
-    try {
-      this.transporte_enviar_solicitudes.hide();
-      this.transporte_enviar_none.hide();
-      this.transporte_enviar_programacion.hide();
-      this.transporte_enviar_rutas.show();
-      /*paneles*/
-      this.transporte_panel_novedades.hide(); 
-      this.transporte_panel_solicitudes.hide();      
-      this.transporte_panel_rutas.show();
-      //this.spacer1.setWidth("100%");
-      
-    } catch(e) {
-      console.error('ERROR IN transporte_menu_rutasClick: ' + e); 
-    } 
-  },
-  transporte_menu_programacionClick: function(inSender) {
-    try {
-      this.transporte_enviar_solicitudes.hide();
-      this.transporte_enviar_none.hide();    
-      this.transporte_enviar_rutas.hide();
-      this.transporte_enviar_programacion.show();
-      
-      /*acciones en paneles*/     
-      this.transporte_panel_rutas.hide();
-      this.transporte_panel_solicitudes.hide();
-      this.transporte_panel_novedades.show();
-      
-    } catch(e) {
-      console.error('ERROR IN transporte_menu_novedadesClick: ' + e); 
-    } 
-  },
+
   novedadesLiveForm1BeginInsert: function(inSender) {
     try {
       this.personaLookup2.setValue("dataValue", this.transporte_alumnos.selectedItem.getData().id.idPersona);
@@ -1635,7 +1587,9 @@ dojo.declare("Main", wm.Page, {
           $('#main_parents_homework')
             .css('background-color', '#a3a3a3'); 
           $('#main_schoolar_schedule')
-            .css('background-color', '#a3a3a3');      
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_transportship')
+            .css('background-color', '#a3a3a3');
 	},
     // mouse click parents_homework change color
     parents_homeworkClick: function(inSender) {
@@ -1650,7 +1604,9 @@ dojo.declare("Main", wm.Page, {
           $('#main_parents_comunity_comunication')
             .css('background-color', '#a3a3a3');
           $('#main_schoolar_schedule')
-            .css('background-color', '#a3a3a3');      
+            .css('background-color', '#a3a3a3');  
+          $('#main_parents_transportship')
+            .css('background-color', '#a3a3a3');
 	},
     // mouse click parents_update_data change color
     parents_update_dataClick: function(inSender) {
@@ -1665,7 +1621,9 @@ dojo.declare("Main", wm.Page, {
           $('#main_parents_comunity_comunication')
             .css('background-color', '#a3a3a3');
           $('#main_schoolar_schedule')
-            .css('background-color', '#a3a3a3');      
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_transportship')
+            .css('background-color', '#a3a3a3');
 	},   
     // mouse click parents_account_state change color
     parents_account_stateClick: function(inSender) {
@@ -1680,7 +1638,9 @@ dojo.declare("Main", wm.Page, {
           $('#main_parents_comunity_comunication')
             .css('background-color', '#a3a3a3');
           $('#main_schoolar_schedule')
-            .css('background-color', '#a3a3a3');      
+            .css('background-color', '#a3a3a3');  
+          $('#main_parents_transportship')
+            .css('background-color', '#a3a3a3');
 	},
     // mouse click parents_comunity_comunication change color
     parents_comunity_comunicationClick2: function(inSender) {
@@ -1695,11 +1655,13 @@ dojo.declare("Main", wm.Page, {
           $('#main_parents_homework')
             .css('background-color', '#a3a3a3');
           $('#main_schoolar_schedule')
-            .css('background-color', '#a3a3a3');    
+            .css('background-color', '#a3a3a3');  
+          $('#main_parents_transportship')
+            .css('background-color', '#a3a3a3');
 	},
     // mouse click schoolar_schedule change color
     schoolar_scheduleClick: function(inSender) {
-    	   $('#main_schoolar_schedule')
+    	  $('#main_schoolar_schedule')
             .css('background-color', '#3652a4');
           $('#main_parents_estudents_performance')
             .css('background-color', '#a3a3a3');             
@@ -1711,6 +1673,23 @@ dojo.declare("Main", wm.Page, {
             .css('background-color', '#a3a3a3');
           $('#main_parents_homework')
             .css('background-color', '#a3a3a3'); 
+          $('#main_parents_transportship')
+            .css('background-color', '#a3a3a3');
+	},
+    // mouse click permissions change color
+    parents_transportshipClick: function(inSender) {
+          $('#main_parents_transportship')
+            .css('background-color', '#3652a4');
+          $('#main_parents_estudents_performance')
+            .css('background-color', '#a3a3a3');             
+          $('#main_parents_update_data')
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_account_state')
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_comunity_comunication')
+            .css('background-color', '#a3a3a3');
+          $('#main_parents_homework')
+            .css('background-color', '#a3a3a3');
 	},
     // mouse click performance_general_tracking change color
     performance_general_trackingClick2: function(inSender) {
@@ -1753,6 +1732,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_comunity_education.hide();
         this.panel_estado_cuenta.hide();
         this.panel_actividades.hide();
+        this.panel_transporte.hide();
         this.panel_inicio.show();
         this.performance_left_buttons_panel.show();
         this.performance_general_buttonClick1();
@@ -1763,6 +1743,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_performance.hide();
         this.panel_estado_cuenta.hide();
         this.panel_actividades.hide();
+        this.panel_transporte.hide();
         this.panel_comunity_education.show();
 	},   
     //getData from selection in dojoGrid
@@ -2051,13 +2032,6 @@ dojo.declare("Main", wm.Page, {
 	comunity_costs_gridSelect: function(inSender) {
 		this.comunity_button_add.enable();
 	},
-    // passing idgrupofamiliar to Transporte page, it's soo cool!
-	parents_transportshipClick: function(inSender) {
-        var json= main.parents_local_performance_familyGroup.getItem(0);
-        var idgrupo= json.data.idgrupo;
-        console.log(idgrupo);
-	    wm.Page.getPage("Transporte").idGrupoFamiliar.setDataValue(idgrupo);
-	},
     // genereat download reponse for report  
     estado_cuenta_boton_descargaClick: function(inSender) {
 	    var _codigo = this.performance_family_grid.selectedItem.data.code;
@@ -2095,6 +2069,7 @@ dojo.declare("Main", wm.Page, {
         this.performance_left_buttons_panel.hide();
 		this.panel_performance.hide();
         this.panel_actividades.hide();
+        this.panel_transporte.hide();
         this.panel_estado_cuenta.show();
 	},
     //re-renderin' google charts
@@ -2497,6 +2472,80 @@ dojo.declare("Main", wm.Page, {
         main.pageContainer1.page.transporterutasLiveVariable1.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
         main.pageContainer1.page.transporterutasLiveVariable1.update();
         main.pageContainer1.page.transporterutasDojoGrid.setSortIndex(0);
+	},
+	transportenovedadesLiveForm1BeginInsert: function(inSender) {
+		var now= new Date().getTime();
+        this.fechaCreacionEditor1.setDataValue(now);
+        this.fechaActualizacionEditor1.setDataValue(now);
+        this.personaLookup1.setReadonly(true);
+        this.tipoSolicitudLiveVariable.filter.setValue("disponiblePadres", 1);
+        this.tipoSolicitudLiveVariable.update();
+	},
+    transportes_solicitudesClick: function(inSender) {
+        var seleccion = main.performance_family_grid.isRowSelected;
+        if(seleccion == true){
+            var idpersona = main.performance_family_grid.selectedItem.getData().pid;
+            this.transportenovedadesLiveVariable1.filter.setValue("persona.idPersona", idpersona);
+            this.transportenovedadesLiveVariable1.update();
+        }else{
+            alert("Antes de continuar con la Solicitud de Permiso, seleccione un estudiante.");
+        }                        
+	},
+	transportes_solicitudesClick1: function(inSender) {		
+        var seleccion = main.performance_family_grid.isRowSelected;
+        if(seleccion == true){
+            var idfamilia = main.performance_family_grid.selectedItem.getData().idgrupo;
+            var idpersona = main.performance_family_grid.selectedItem.getData().pid;
+            this.permisosDialog.show();
+            
+            this.autorizadosLiveVariable.filter.setValue("tipoTransporte.idtipoTransporte", 100);
+            this.autorizadosLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+            this.solicitudPersonaLiveVariable.filter.setValue("idPersona", idpersona);
+            this.autorizadosLiveVariable.update();
+            this.solicitudPersonaLiveVariable.update();
+        }else{
+            alert("Antes de continuar con la Solicitud de Permiso, seleccione un estudiante.");
+        }                
+	},
+	transportenovedadesLiveForm1BeginInsert1: function(inSender) {
+		var idpersona = main.solicitudPersonaLiveVariable.getItem(0).data.idPersona;
+        this.personaLookup1.setDisplayValue(idpersona);
+	},	
+	permisosTemporalClick: function(inSender) {
+		this.idNovedadesEditor1.show();
+        this.personaLookup1.show();
+        this.tipoSolicitudLookup1.show();
+        this.personaLookup1.setReadonly(true);
+        this.transporteRutasLookup1.show();
+        this.fechaSolicitudInicioEditor1.show();
+        this.fechaSolicitudFinEditor1.hide();
+        this.horaProgramadaEditor1.show();
+        this.observacionesEditor1.show();
+        this.transportenovedadesLiveForm1EditPanel.show();
+	},
+	permisosPermanenteClick: function(inSender) {
+		this.idNovedadesEditor1.show();
+        this.personaLookup1.show();
+        this.personaLookup1.setReadonly(true);
+        this.tipoSolicitudLookup1.show();
+        this.transporteRutasLookup1.show();
+        this.fechaSolicitudInicioEditor1.show();
+        this.fechaSolicitudFinEditor1.show();
+        this.horaProgramadaEditor1.show();
+        this.observacionesEditor1.show();
+        this.transportenovedadesLiveForm1EditPanel.show();
+	},
+	parents_transportshipClick1: function(inSender) {
+		this.panel_comunity_education.hide();
+        this.panel_inicio.hide();
+        this.performance_left_buttons_panel.hide();
+    	this.panel_performance.hide();
+        this.panel_actividades.hide();
+        this.panel_estado_cuenta.hide();
+        this.panel_transporte.show();             
+	},
+	transportenovedadesLiveForm1BeginUpdate: function(inSender) {
+		this.personaLookup1.setReadonly(true);
 	},
 	_end: 0
 });

@@ -116,6 +116,11 @@ AND curso.idCurso = docente.idCurso and year.idSy = asignatura_sy.idSy AND asign
 FROM Costos _c INNER JOIN _c.grado _g
 WHERE _g.idGrado=:idg and _c.codigo=:cod
     </query>
+    <query name="updatePasswordProfile">
+        <query-param name="pclave" type="java.lang.String"/>
+        <query-param name="piduser" type="java.lang.Integer"/>
+        UPDATE Persona p SET p.clave=:pclave WHERE p.idPersona=:piduser
+    </query>
     <query name="getEducomAFR">
         <query-param name="pidsy" type="java.lang.Integer"/>
         <query-param name="pidpersona" type="java.lang.Integer"/>
@@ -532,10 +537,5 @@ WHERE ipgf.idInscPersonaGrupoFamiliar=:idipgf
         SELECT _p.idPersona as id, fm.alergias as alergias, fm.recomendacionesEspeciales as recomendaciones, fm.idfichaMedica as idficha
 FROM FichaMedica fm INNER JOIN fm.persona _p
 WHERE _p.idPersona=:idp
-    </query>
-    <query name="updatePasswordProfile">
-        <query-param name="pclave" type="java.lang.String"/>
-        <query-param name="piduser" type="java.lang.Integer"/>
-        UPDATE Persona p SET p.clave=:pclave WHERE p.idPersona=:piduser
     </query>
 </hibernate-mapping>

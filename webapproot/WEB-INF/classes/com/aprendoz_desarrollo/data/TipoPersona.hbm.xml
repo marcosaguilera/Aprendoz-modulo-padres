@@ -20,6 +20,12 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar"/>
         </set>
+        <set name="personaCopies" inverse="true" cascade="">
+            <key>
+                <column name="Tipo_Persona_Id_Tipo_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.PersonaCopy"/>
+        </set>
         <set name="personas" inverse="true" cascade="">
             <key>
                 <column name="Tipo_Persona_Id_Tipo_Persona" not-null="true"/>

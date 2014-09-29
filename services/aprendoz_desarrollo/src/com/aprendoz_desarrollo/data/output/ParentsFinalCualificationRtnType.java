@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * Generated for query "parentsFinalCualification" on 09/18/2014 14:49:52
+ * Generated for query "parentsFinalCualification" on 09/25/2014 15:43:27
  * 
  */
 public class ParentsFinalCualificationRtnType {

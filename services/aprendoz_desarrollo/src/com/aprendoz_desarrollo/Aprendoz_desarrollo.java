@@ -64,7 +64,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  09/24/2014 15:55:47
+ *  09/25/2014 15:43:34
  * 
  */
 @SuppressWarnings("unchecked")
@@ -361,8 +361,8 @@ public class Aprendoz_desarrollo
         }
     }
 
-    public Integer updateServicios(Integer idiac, Boolean inscribir, PagingOptions pagingOptions) {
-        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updateServiciosQueryName), idiac, inscribir, pagingOptions));
+    public Integer updatePasswordProfile(String pclave, Integer piduser, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updatePasswordProfileQueryName), pclave, piduser, pagingOptions));
         if (rtn.isEmpty()) {
             return null;
         } else {
@@ -370,8 +370,8 @@ public class Aprendoz_desarrollo
         }
     }
 
-    public Integer updatePasswordProfile(String pclave, Integer piduser, PagingOptions pagingOptions) {
-        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updatePasswordProfileQueryName), pclave, piduser, pagingOptions));
+    public Integer updateServicios(Integer idiac, Boolean inscribir, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updateServiciosQueryName), idiac, inscribir, pagingOptions));
         if (rtn.isEmpty()) {
             return null;
         } else {

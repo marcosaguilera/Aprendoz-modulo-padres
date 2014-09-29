@@ -41,6 +41,16 @@ div#main_buttonBar4 {
     color: #fff; 
 }
 
+div#main_permisosDialog_titleBar {
+    background-color: #3652a4 !important;
+    color: #fff;    
+}
+
+div#main_buttonBar5 {
+    background-color: #D3D3D3 !important;
+    color: #fff; 
+}
+
 
 div.wmCheckboxSetItem {
     width: 122px;
@@ -61,4 +71,9 @@ div.wmCheckboxSetItem {
     border: none !important;
 }html.WMApp body .pointer {
     cursor: pointer !important;
+}html.WMApp body .Green {
+    background-color: #63bb00 !important;
+    border: none !important;
+    color: #ffffff;
+    background: none;
 }
