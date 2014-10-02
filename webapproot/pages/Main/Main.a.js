@@ -636,98 +636,11 @@ console.error('ERROR IN a_sv_sendMailCordinators_requestBeforeUpdate: ' + e);
 }
 },
 tipoSolicitudLookup1Change: function(inSender, inDisplayValue, inDataValue) {
-try {
 var idtipo=  this.tipoSolicitudLookup1.getDataValue().idTipoSolicitud;
-if(idtipo == 1 ){
-this.transporte_lista_rutas_dias.filter.clearData();
-this.transporte_lista_rutas_dias.update();
-this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-this.horaProgramadaEditor1.show();
-this.relatedEditor3.hide();
-this.panel_dias.hide();
-this.observacionesEditor1.show();
-this.horaActualSalidaEditor1.hide();
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.rutasLookup1.setDisplayValue("[...] - ...");
-}
 if(idtipo == 2 ){
-var valueToFilter = this.transporte_alumnos.selectedItem.getData().id.grupoFamiliarIdGrupoFamiliar;
-this.transporte_lista_rutas_dias.filter.setValue("grupoFamiliar.idGrupoFamiliar", valueToFilter);
-this.transporte_lista_rutas_dias.update();
-this.horaProgramadaEditor1.hide();
-this.panel_dias.show();
-this.relatedEditor3.show();
-this.observacionesEditor1.show();
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.horaProgramadaEditor1.setDataValue(new Date());
-}
-if(idtipo == 3 ){
-this.horaProgramadaEditor1.hide();
-this.relatedEditor3.hide();
-this.panel_dias.hide();
-this.horaActualSalidaEditor1.hide();
-this.transporte_lista_rutas_dias.filter.clearData();
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.horaProgramadaEditor1.setDataValue(new Date());
-this.observacionesEditor1.show();
-this.transporte_lista_rutas_dias.update();
-this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-this.rutasLookup1.setDisplayValue("[...] - ...");
-}
-if(idtipo == 4 ){
-this.transporte_lista_rutas_dias.filter.clearData();
-this.transporte_lista_rutas_dias.update();
-this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-this.horaProgramadaEditor1.hide();
-this.relatedEditor3.hide();
-this.panel_dias.hide();
-this.observacionesEditor1.show();
-this.horaActualSalidaEditor1.hide();
-this.horaProgramadaEditor1.setDataValue(new Date());
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.rutasLookup1.setDisplayValue("[...] - ...");
-}
-if(idtipo == 5 ){
-this.transporte_lista_rutas_dias.filter.clearData();
-this.transporte_lista_rutas_dias.update();
-this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-this.horaProgramadaEditor1.hide();
-this.relatedEditor3.hide();
-this.panel_dias.hide();
-this.observacionesEditor1.show();
-this.horaActualSalidaEditor1.hide();
-this.horaProgramadaEditor1.setDataValue(new Date());
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.rutasLookup1.setDisplayValue("[...] - ...");
-}
-if(idtipo == 6 ){
-this.transporte_lista_rutas_dias.filter.clearData();
-this.transporte_lista_rutas_dias.update();
-this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-this.horaProgramadaEditor1.hide();
-this.relatedEditor3.hide();
-this.panel_dias.hide();
-this.observacionesEditor1.show();
-this.horaActualSalidaEditor1.hide();
-this.horaProgramadaEditor1.setDataValue(new Date());
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.rutasLookup1.setDisplayValue("[...] - ...");
-}
-if(idtipo == 7 ){
-this.transporte_lista_rutas_dias.filter.clearData();
-this.transporte_lista_rutas_dias.update();
-this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-this.horaProgramadaEditor1.hide();
-this.relatedEditor3.hide();
-this.panel_dias.hide();
-this.observacionesEditor1.show();
-this.horaActualSalidaEditor1.hide();
-this.horaProgramadaEditor1.setDataValue(new Date());
-this.horaActualSalidaEditor1.setDataValue(new Date());
-this.rutasLookup1.setDisplayValue("[...] - ...");
-}
-} catch(e) {
-console.error('ERROR IN tipoSolicitudLookup1Change: ' + e);
+this.transporteRutasLookup1.hide();
+}else{
+this.transporteRutasLookup1.show();
 }
 },
 fechaFinProgramadaEditor2Change: function(inSender, inDisplayValue, inDataValue) {
@@ -2325,6 +2238,49 @@ this.panel_transporte.show();
 transportenovedadesLiveForm1BeginUpdate: function(inSender) {
 this.personaLookup1.setReadonly(true);
 },
+SecurityProfileButtonClick1: function(inSender) {
+var nombre1 = main.parents_global_user_info.getItem(0).data.n1;
+var nombre2 = main.parents_global_user_info.getItem(0).data.n2;
+var apellido1 = main.parents_global_user_info.getItem(0).data.a1;
+var apellido2 = main.parents_global_user_info.getItem(0).data.a2;
+var rol = main.parents_global_user_info.getItem(0).data.tipoPe;
+var idrol = main.parents_global_user_info.getItem(0).data.tipoId;
+var code = main.parents_global_user_info.getItem(0).data.codigo;
+this.profile_name.setCaption(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
+this.profile_rol.setCaption(rol);
+if(idrol > 1){
+this.pictureSettings.setSource("http://images.amcnetworks.com/ifc.com/wp-content/uploads/2011/09/mitm_cast_bryan_cranston_cast_mini_gallery_thumb_03.jpg");
+}else{
+this.pictureSettings.setSource("http://www.rochester.edu.co/fotosestudiantes/"+code+".Jpeg");
+}
+},
+profile_changePicClick: function(inSender) {
+this.profileFileUpload.show();
+this.profile_changePic.hide();
+},
+profileFileUploadSuccess: function(inSender, fileList) {
+this.profile_changePic.show();
+var name = main.profileFileUpload.variable.getItemData(0).name;
+var now = new Date().getTime();
+var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+this.insertImgUser.setValue("imgName", name);
+this.insertImgUser.setValue("fechaCreacion", now);
+this.insertImgUser.setValue("fechaActualizacion", now);
+this.insertImgUser.setValue("persona.idPersona", idpersona);
+this.profileImgForm.setDataSet(this.insertImgUser);
+this.profileImgForm.insertData();
+},
+profileImgFormSuccess: function(inSender, inData) {
+},
+transportenovedadesDojoGridSelect: function(inSender) {
+var idtipo = main.transportenovedadesDojoGrid.selectedItem.getData().tipoSolicitud.idTipoSolicitud;
+if(idtipo == 2 ){
+this.transporteRutasLookup1.hide();
+}else{
+this.transporteRutasLookup1.show();
+}
+this.tipoSolicitudLiveVariable.update();
+},
 _end: 0
 });
 
@@ -2585,31 +2541,24 @@ wire3: ["wm.Wire", {"expression":"\"center center\"","targetProperty":"dialogPos
 }],
 transportenovedadesLiveVariable1: ["wm.LiveVariable", {"autoUpdate":false,"orderBy":"desc: idNovedades","startUpdate":false,"type":"com.aprendoz_desarrollo.data.TransporteNovedades"}, {}, {
 liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.TransporteNovedades","related":["transporteRutas","persona","tipoSolicitud"],"view":[
-{"caption":"NumeroPuerta","sortable":true,"dataIndex":"numeroPuerta","type":"java.lang.Integer","displayType":"Number","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":4,"subType":null},
-{"caption":"AprobacionDirNivel","sortable":true,"dataIndex":"aprobacionDirNivel","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":5,"subType":null},
-{"caption":"ComentarioDirNivel","sortable":true,"dataIndex":"comentarioDirNivel","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":6,"subType":null},
-{"caption":"AprobacionCoordinador","sortable":true,"dataIndex":"aprobacionCoordinador","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":7,"subType":null},
-{"caption":"ComentarioCoordinador","sortable":true,"dataIndex":"comentarioCoordinador","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":8,"subType":null},
-{"caption":"AprobacionTransporte","sortable":true,"dataIndex":"aprobacionTransporte","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":9,"subType":null},
-{"caption":"ComentarioTransporte","sortable":true,"dataIndex":"comentarioTransporte","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":10,"subType":null},
-{"caption":"AprobacionEnfermeria","sortable":true,"dataIndex":"aprobacionEnfermeria","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":11,"subType":null},
-{"caption":"ComentarioEnfermeria","sortable":true,"dataIndex":"comentarioEnfermeria","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":12,"subType":null},
-{"caption":"Observaciones","sortable":true,"dataIndex":"observaciones","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13,"subType":null},
-{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":15,"subType":null},
-{"caption":"IdNovedades","sortable":true,"dataIndex":"idNovedades","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":24000,"subType":null,"widthUnits":"px"},
-{"caption":"FechaSolicitudInicio","sortable":true,"dataIndex":"fechaSolicitudInicio","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":24001,"subType":null,"widthUnits":"px"},
-{"caption":"FechaSolicitudFin","sortable":true,"dataIndex":"fechaSolicitudFin","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":24002,"subType":null,"widthUnits":"px"},
-{"caption":"HoraProgramada","sortable":true,"dataIndex":"horaProgramada","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":24003,"subType":null,"widthUnits":"px"},
-{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":24014,"subType":null,"widthUnits":"px"},
-{"caption":"IdRuta","sortable":true,"dataIndex":"transporteRutas.idRuta","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":25000,"subType":null,"widthUnits":"px"},
-{"caption":"NumeroRuta","sortable":true,"dataIndex":"transporteRutas.numeroRuta","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":25001,"subType":null,"widthUnits":"px"},
-{"caption":"PlacaVehiculo","sortable":true,"dataIndex":"transporteRutas.placaVehiculo","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":25002,"subType":null,"widthUnits":"px"},
-{"caption":"NombreConductor","sortable":true,"dataIndex":"transporteRutas.nombreConductor","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":25003,"subType":null,"widthUnits":"px"},
-{"caption":"TelefonoConductor","sortable":true,"dataIndex":"transporteRutas.telefonoConductor","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":25004,"subType":null,"widthUnits":"px"},
-{"caption":"MovilConductor","sortable":true,"dataIndex":"transporteRutas.movilConductor","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":25005,"subType":null,"widthUnits":"px"},
-{"caption":"IdTipoSolicitud","sortable":true,"dataIndex":"tipoSolicitud.idTipoSolicitud","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":26000,"subType":null,"widthUnits":"px"},
-{"caption":"Solicitud","sortable":true,"dataIndex":"tipoSolicitud.solicitud","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":26001,"subType":null,"widthUnits":"px"},
-{"caption":"IdPersona","sortable":true,"dataIndex":"persona.idPersona","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":27000}
+{"caption":"IdNovedades","sortable":true,"dataIndex":"idNovedades","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},
+{"caption":"FechaSolicitudInicio","sortable":true,"dataIndex":"fechaSolicitudInicio","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},
+{"caption":"FechaSolicitudFin","sortable":true,"dataIndex":"fechaSolicitudFin","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},
+{"caption":"HoraProgramada","sortable":true,"dataIndex":"horaProgramada","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},
+{"caption":"NumeroPuerta","sortable":true,"dataIndex":"numeroPuerta","type":"java.lang.Integer","displayType":"Number","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"},
+{"caption":"AprobacionDirNivel","sortable":true,"dataIndex":"aprobacionDirNivel","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1005,"subType":null,"widthUnits":"px"},
+{"caption":"ComentarioDirNivel","sortable":true,"dataIndex":"comentarioDirNivel","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1006,"subType":null,"widthUnits":"px"},
+{"caption":"AprobacionCoordinador","sortable":true,"dataIndex":"aprobacionCoordinador","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1007,"subType":null,"widthUnits":"px"},
+{"caption":"ComentarioCoordinador","sortable":true,"dataIndex":"comentarioCoordinador","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1008,"subType":null,"widthUnits":"px"},
+{"caption":"AprobacionTransporte","sortable":true,"dataIndex":"aprobacionTransporte","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1009,"subType":null,"widthUnits":"px"},
+{"caption":"ComentarioTransporte","sortable":true,"dataIndex":"comentarioTransporte","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1010,"subType":null,"widthUnits":"px"},
+{"caption":"AprobacionEnfermeria","sortable":true,"dataIndex":"aprobacionEnfermeria","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1011,"subType":null,"widthUnits":"px"},
+{"caption":"ComentarioEnfermeria","sortable":true,"dataIndex":"comentarioEnfermeria","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1012,"subType":null,"widthUnits":"px"},
+{"caption":"Observaciones","sortable":true,"dataIndex":"observaciones","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1013,"subType":null,"widthUnits":"px"},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1014,"subType":null,"widthUnits":"px"},
+{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1015,"subType":null,"widthUnits":"px"},
+{"caption":"IdTipoSolicitud","sortable":true,"dataIndex":"tipoSolicitud.idTipoSolicitud","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4000},
+{"caption":"Solicitud","sortable":true,"dataIndex":"tipoSolicitud.solicitud","type":"java.lang.String","displayType":"Text","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4001}
 ]}, {}]
 }],
 tipoSolicitudLiveVariable: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","startUpdate":false,"type":"com.aprendoz_desarrollo.data.TipoSolicitud"}, {}, {
@@ -2708,6 +2657,7 @@ liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.Persona","vi
 {"caption":"Nombre2","sortable":true,"dataIndex":"nombre2","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":18010,"subType":null,"widthUnits":"px"}
 ]}, {}]
 }],
+insertImgUser: ["wm.Variable", {"type":"com.aprendoz_desarrollo.data.PerfilPersonaImg"}, {}],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
@@ -2888,11 +2838,18 @@ binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"comunity_costs_grid","targetProperty":"widgetToCover"}, {}]
 }]
 }],
-SettingsDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar3","containerWidgetId":"","styles":{},"title":"Perfil de usuario"}, {}, {
+SettingsDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar3","containerWidgetId":"","desktopHeight":"560px","height":"560px","styles":{},"title":"Perfil de usuario","width":"680px"}, {}, {
 containerWidget3: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 leftPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{"backgroundColor":"#f7f7f7"},"verticalAlign":"middle","width":"60%"}, {}, {
-pictureSettings: ["wm.Picture", {"_classes":{"domNode":["image_round"]},"aspect":"v","height":"140px","source":"https://diasporabrazil.org/assets/user/default.png","styles":{},"width":"150px"}, {}],
-LogIngresoLiveForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","verticalAlign":"top"}, {}]
+pictureSettings: ["wm.Picture", {"_classes":{"domNode":["image_round"]},"aspect":"h","height":"153px","source":"https://diasporabrazil.org/assets/user/default.png","styles":{},"width":"150px"}, {}],
+LogIngresoLiveForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","showing":false,"verticalAlign":"top"}, {}],
+profile_name: ["wm.Label", {"_classes":{"domNode":["text-color-red"]},"align":"center","caption":"Nombre completo","height":"28px","padding":"4","styles":{},"width":"100%"}, {}],
+profile_rol: ["wm.Label", {"_classes":{"domNode":["text-color-red"]},"align":"center","caption":"Tipo","height":"28px","padding":"4","styles":{"fontWeight":"bold"},"width":"100%"}, {}],
+profileFileUpload: ["wm.DojoFileUpload", {"showing":false,"styles":{},"width":"95%"}, {"onSuccess":"profileFileUploadSuccess"}, {
+input: ["wm.ServiceInput", {"type":"uploadFileInputs"}, {}]
+}],
+profile_changePic: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Cambiar foto","margin":"4","styles":{},"width":"80%"}, {"onclick":"profile_changePicClick"}],
+profileImgForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","showing":false,"verticalAlign":"top"}, {"onSuccess":"profileImgFormSuccess"}]
 }],
 rightPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 changePasswordPanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
@@ -2918,11 +2875,11 @@ buttonBar4: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":
 autorizacionCloseButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"autorizacionesDialog.hide"}]
 }]
 }],
-permisosDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar5","containerWidgetId":"containerWidget5","desktopHeight":"640px","height":"640px","title":"Solicitud de Permisos","width":"720px"}, {}, {
+permisosDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar5","containerWidgetId":"containerWidget5","desktopHeight":"680px","height":"680px","title":"Solicitud de Permisos","width":"720px"}, {}, {
 containerWidget5: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 transportenovedadesLivePanel1: ["wm.LivePanel", {"horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
 transportenovedadesDojoGrid: ["wm.DojoGrid", {"_classes":{"domNode":["pointer"]},"border":"1","columns":[
-{"show":true,"field":"idNovedades","title":"Historial de Solicitudes","width":"80px","align":"left","formatFunc":"","expression":"\"<br>\"+\n\"No. Solicitud: \"+${idNovedades}+\"<br>\"+\n\"Ruta seleccionada: \"+${transporteRutas.nombreConductor}+\"<br>\"+\n\"Placa vehículo: \"+${transporteRutas.placaVehiculo}+\"<br>\"+\n\"<br>\"","mobileColumn":false},
+{"show":true,"field":"idNovedades","title":"Historial de Solicitudes","width":"80px","align":"left","formatFunc":"","expression":"\"<br>\"+\n\"No. Solicitud: \"+${idNovedades}+\"<br>\"+\n\"Tipo solicitud: \"+${tipoSolicitud.solicitud}+\"<br>\"+\n\"Observaciones:<br>\"+${observaciones}+\"<br>\"+\n\"<br>\"","mobileColumn":false},
 {"show":false,"field":"fechaSolicitudInicio","title":"FechaSolicitudInicio","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"fechaSolicitudFin","title":"FechaSolicitudFin","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"horaProgramada","title":"HoraProgramada","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
@@ -2938,17 +2895,10 @@ transportenovedadesDojoGrid: ["wm.DojoGrid", {"_classes":{"domNode":["pointer"]}
 {"show":false,"field":"observaciones","title":"Observaciones","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
 {"show":false,"field":"fechaCreacion","title":"FechaCreacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"fechaActualizacion","title":"FechaActualizacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":false,"field":"transporteRutas.idRuta","title":"IdRuta","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"transporteRutas.numeroRuta","title":"NumeroRuta","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"transporteRutas.placaVehiculo","title":"PlacaVehiculo","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"transporteRutas.nombreConductor","title":"NombreConductor","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"transporteRutas.telefonoConductor","title":"TelefonoConductor","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"transporteRutas.movilConductor","title":"MovilConductor","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"tipoSolicitud.idTipoSolicitud","title":"IdTipoSolicitud","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"tipoSolicitud.solicitud","title":"Solicitud","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"persona.idPersona","title":"IdPersona","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Historial de Solicitudes: \" + ${wm.runtimeId}.formatCell(\"idNovedades\", ${idNovedades}, ${this}, ${wm.rowId}) +\n\"</div>\"\n\n","mobileColumn":true}
-],"dsType":"com.aprendoz_desarrollo.data.TransporteNovedades","height":"100%","localizationStructure":{},"margin":"4","minDesktopHeight":60,"styles":{"fontSize":"11px"},"width":"210px"}, {}, {
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Historial de Solicitudes: \" + ${wm.runtimeId}.formatCell(\"idNovedades\", ${idNovedades}, ${this}, ${wm.rowId}) +\n\"</div>\"\n\n","mobileColumn":true},
+{"show":false,"field":"tipoSolicitud.idTipoSolicitud","title":"TipoSolicitud.idTipoSolicitud","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"tipoSolicitud.solicitud","title":"TipoSolicitud.solicitud","width":"100%","align":"left","formatFunc":"","mobileColumn":false}
+],"dsType":"com.aprendoz_desarrollo.data.TransporteNovedades","height":"100%","localizationStructure":{},"margin":"4","minDesktopHeight":60,"styles":{"fontSize":"11px"},"width":"210px"}, {"onSelect":"transportenovedadesDojoGridSelect"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"source":"transportenovedadesLiveVariable1","targetProperty":"dataSet"}, {}]
 }]
@@ -2969,13 +2919,13 @@ dataFieldWire: ["wm.Wire", {"source":"personaLookup1.liveVariable","targetProper
 wire: ["wm.Wire", {"expression":undefined,"source":"solicitudPersonaLiveVariable","targetProperty":"dataSet"}, {}]
 }]
 }],
-tipoSolicitudLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Tipo de Solicitud","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TipoSolicitud","desktopHeight":"32px","displayField":"solicitud","formField":"tipoSolicitud","height":"32px","placeHolder":"Tipo de solicitud. Ej. Cambio Ruta ","readonly":true,"required":true,"showing":false,"width":"100%"}, {}, {
+tipoSolicitudLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Tipo de Solicitud","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TipoSolicitud","desktopHeight":"32px","displayField":"solicitud","formField":"tipoSolicitud","height":"32px","placeHolder":"Tipo de solicitud. Ej. Cambio Ruta ","readonly":true,"required":true,"showing":false,"width":"100%"}, {"onchange":"tipoSolicitudLookup1Change"}, {
 binding: ["wm.Binding", {}, {}, {
 dataFieldWire: ["wm.Wire", {"source":"tipoSolicitudLookup1.liveVariable","targetProperty":"dataSet"}, {}],
 wire: ["wm.Wire", {"expression":undefined,"source":"tipoSolicitudLiveVariable","targetProperty":"dataSet"}, {}]
 }]
 }],
-transporteRutasLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Autorizados","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TransporteRutas","desktopHeight":"32px","displayField":"nombreConductor","formField":"transporteRutas","height":"32px","readonly":true,"required":true,"showing":false,"styles":{},"width":"100%"}, {}, {
+transporteRutasLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Autorizados","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TransporteRutas","desktopHeight":"32px","displayField":"nombreConductor","formField":"transporteRutas","height":"32px","readonly":true,"showing":false,"styles":{},"width":"100%"}, {}, {
 binding: ["wm.Binding", {}, {}, {
 dataFieldWire: ["wm.Wire", {"source":"transporteRutasLookup1.liveVariable","targetProperty":"dataSet"}, {}],
 wire: ["wm.Wire", {"expression":undefined,"source":"autorizadosLiveVariable","targetProperty":"dataSet"}, {}]
@@ -3041,14 +2991,14 @@ templateTopRight: ["wm.Panel", {"_classes":{"domNode":["template-top-right"]},"h
 panel2: ["wm.Panel", {"freeze":true,"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
 templateLeft: ["wm.Panel", {"_classes":{"domNode":["template-left"]},"freeze":true,"height":"100%","horizontalAlign":"left","showing":false,"verticalAlign":"top","width":"24px"}, {}],
 templateContent: ["wm.Panel", {"_classes":{"domNode":["template-content"]},"height":"100%","horizontalAlign":"right","verticalAlign":"top","width":"100%"}, {}, {
-aprendoz_header: ["wm.Panel", {"height":"90px","horizontalAlign":"left","layoutKind":"left-to-right","lock":true,"styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
+aprendoz_header: ["wm.Panel", {"height":"90px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
 parents_top_image_parents: ["wm.Picture", {"aspect":"h","height":"100%","source":"resources/images/icons%20v2/Aprendoz_padres.jpg","width":"110px"}, {}],
 parents_spacer1: ["wm.Spacer", {"height":"48px","width":"38px"}, {}],
 parents_logo_aprendoz: ["wm.Picture", {"aspect":"h","height":"52px","source":"resources/images/icons%20v2/Aprendoz_03.jpg","styles":{},"width":"265px"}, {}],
 spacer1: ["wm.Spacer", {"height":"48px","width":"100%"}, {}],
 parents_header_panel_sec: ["wm.Panel", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"96px"}, {}, {
-SecurityLogoutButton: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_10px"]},"border":"0","borderColor":"#666666","caption":"Salir","margin":"0","styles":{"color":"#ffffff"},"width":"100%"}, {"onclick":"templateLogoutVar"}],
-SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"Configuración <br>de Usuario","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show"}]
+SecurityLogoutButton: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_10px","red"]},"border":"0","borderColor":"#666666","caption":"Salir","margin":"0","styles":{"color":"#ffffff"},"width":"100%"}, {"onclick":"templateLogoutVar"}],
+SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"Configuración <br>de Usuario","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show","onclick1":"SecurityProfileButtonClick1"}]
 }]
 }],
 parents_line_long: ["wm.Panel", {"height":"6px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundColor":"#3752a3"},"verticalAlign":"top","width":"100%"}, {}],
@@ -3059,7 +3009,7 @@ parents_update_data: ["wm.Button", {"border":"0","borderColor":"","caption":"Act
 schoolar_schedule: ["wm.Button", {"border":"0","borderColor":"","caption":"Trabajos y activiades","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/schedule.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"137.5px"}, {"onclick":"schoolar_scheduleClick","onclick1":"schoolar_scheduleClick1","onclick2":"schoolar_scheduleClick2"}],
 parents_comunity_comunication: ["wm.Button", {"border":"0","borderColor":"","caption":"Educación comunitaria","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/extracurricular.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_comunity_comunicationClick","onclick1":"parents_comunity_comunicationClick1","onclick2":"parents_comunity_comunicationClick2","onclick3":"parents_comunity_comunicationClick3"}],
 parents_account_state: ["wm.Button", {"border":"0","borderColor":"","caption":"Estado de cuenta","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/money.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px"},"width":"110undefined"}, {"onclick":"parents_account_stateClick","onclick1":"parents_account_stateClick1","onclick2":"parents_account_stateClick2"}],
-parents_transportship: ["wm.Button", {"border":"0","borderColor":"","caption":"Transporte","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/bus.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_transportshipClick","onclick1":"parents_transportshipClick1"}]
+parents_transportship: ["wm.Button", {"border":"0","borderColor":"","caption":"Permisos","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/bus.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_transportshipClick","onclick1":"parents_transportshipClick1"}]
 }],
 parents_spacer2: ["wm.Spacer", {"height":"15px","styles":{},"width":"100%"}, {}],
 panel_main_contents: ["wm.Panel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
@@ -3160,7 +3110,7 @@ comunity_top_panel2: ["wm.Panel", {"height":"40px","horizontalAlign":"right","la
 comunity_button_delete: ["wm.Button", {"caption":"[-] Retirar","disabled":true,"height":"100%","margin":"0","styles":{},"width":"90px"}, {"onclick":"comunity_button_deleteClick"}]
 }]
 }],
-panel_inicio: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"padding":"5,15,5,15","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_inicio: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"center","lock":true,"padding":"5,15,5,15","showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 parents_greetings_panel: ["wm.Panel", {"height":"50px","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 parents_hi_name: ["wm.Label", {"align":"center","caption":"BIENVENIDO, ","padding":"4","styles":{"color":"#2d2626","fontSize":"14px"},"width":"100%"}, {}],
 parents_hi_family: ["wm.Label", {"align":"center","caption":"GRUPO FAMILIAR,","padding":"4","styles":{"color":"#2d2929","fontSize":"14px","fontWeight":"bold"},"width":"100%"}, {}]
@@ -3248,10 +3198,16 @@ estado_cuenta_panel_button: ["wm.Panel", {"height":"55px","horizontalAlign":"cen
 estado_cuenta_boton_descarga: ["wm.Button", {"caption":"Descargar extracto","desktopHeight":"55px","height":"55px","iconHeight":"20px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/download.png","iconWidth":"32px","margin":"4","width":"155px"}, {"onclick":"estado_cuenta_boton_descargaClick"}]
 }]
 }],
-panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","lock":true,"showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-transportes_autorizaciones: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Autorizaciones","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {"onclick":"autorizacionesDialog.show","onclick1":"transportes_autorizacionesClick1"}],
+panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","margin":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 transportes_rutas: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Rutas","desktopHeight":"60px","height":"60px","margin":"4","showing":false,"styles":{},"width":"120px"}, {}],
+panel7: ["wm.Panel", {"height":"90px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+label6: ["wm.Label", {"caption":"Para realizar permisos y solicitud de salidas para un estudiante","height":"60px","padding":"4","singleLine":false,"styles":{"color":"#000000"}}, {}],
 transportes_solicitudes: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {"onclick":"transportes_solicitudesClick","onclick1":"transportes_solicitudesClick1"}]
+}],
+panel8: ["wm.Panel", {"height":"90px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+label7: ["wm.Label", {"caption":"Para registrar las personas que pueden recoger a un estudiante.","height":"60px","padding":"4","singleLine":false,"styles":{"color":"#050505"}}, {}],
+transportes_autorizaciones: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Autorizaciones","desktopHeight":"60px","height":"60px","margin":"4","styles":{},"width":"120px"}, {"onclick":"autorizacionesDialog.show","onclick1":"transportes_autorizacionesClick1"}]
+}]
 }],
 panel_actividades: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 schedule_page_container: ["wm.PageContainer", {"loadParentFirst":false,"pageName":"Schedule","styles":{},"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {"onPageChanged":"schedule_page_containerPageChanged","onStart":"schedule_page_containerStart"}]

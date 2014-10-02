@@ -51,13 +51,13 @@
             <column name="fecha_actualizacion" length="19"/>
         </property>
         <many-to-one name="transporteRutas" class="com.aprendoz_desarrollo.data.TransporteRutas">
-            <column name="ruta_id_ruta" not-null="true"/>
+            <column name="ruta_id_ruta"/>
         </many-to-one>
         <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona">
             <column name="Persona_Id_Persona" not-null="true"/>
         </many-to-one>
         <many-to-one name="tipoSolicitud" class="com.aprendoz_desarrollo.data.TipoSolicitud">
-            <column name="tipo_solicitud_id_tipo_solucitud" not-null="true"/>
+            <column name="tipo_solicitud_id_tipo_solucitud"/>
         </many-to-one>
     </class>
 </hibernate-mapping>

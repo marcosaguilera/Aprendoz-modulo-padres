@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * Generated for query "parentsSubjectStructure" on 09/25/2014 15:43:27
+ * Generated for query "parentsSubjectStructure" on 10/02/2014 07:48:56
  * 
  */
 public class ParentsSubjectStructureRtnType {

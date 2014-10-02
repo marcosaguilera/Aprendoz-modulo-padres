@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "personaGetInfo" on 09/25/2014 15:43:27
+ * Generated for query "personaGetInfo" on 10/02/2014 07:48:56
  * 
  */
 public class PersonaGetInfoRtnType {
@@ -24,6 +24,7 @@ public class PersonaGetInfoRtnType {
     private String grupoFamilia;
     private Integer idpersona2;
     private String documento;
+    private String codigo;
 
     public Integer getIdpersona() {
         return idpersona;
@@ -143,6 +144,14 @@ public class PersonaGetInfoRtnType {
 
     public void setDocumento(String documento) {
         this.documento = documento;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
 }

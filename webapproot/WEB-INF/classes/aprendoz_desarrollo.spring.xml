@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 09/25/2014 15:43:00
+<!-- Generated 10/02/2014 07:48:15
 
 Configuration for 'aprendoz_desarrollo' database service
 
@@ -128,9 +128,9 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/InscPersonaEduCom.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/LogAccionesDocentes.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Eje.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/VProfesorAsignatura.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CafemuObservacionesClase.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Inteligencia.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/VProfesorAsignatura.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CostosAnuales.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/PersonaCopy.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Cronograma.hbm.xml</value>
@@ -220,6 +220,7 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/Tarjetasdav050814.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/FichaMedica.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaAsignaturaEstudiantes.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/Meses.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/OtrasMetas.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/DocentesVistaCalificacionFinal.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CertificadosFirmas.hbm.xml</value>

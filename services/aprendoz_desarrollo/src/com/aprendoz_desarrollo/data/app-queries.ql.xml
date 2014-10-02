@@ -510,7 +510,7 @@ ORDER BY _sy.idSy DESC
     <query name="personaGetInfo">
         <query-param name="username" type="java.lang.String"/>
         SELECT p.idPersona as idpersona, p.tipoDocumento AS tipoDocumento,p.noDocumento AS numeroDocumento,p.nombre1 AS n1,p.nombre2 AS n2,p.apellido1 AS a1, p.apellido2 AS a2, p.nombreLdap AS usuario, p.sexo AS sexo1, tipo.tipoPersona AS tipoPe, tipo.idTipoPersona AS tipoId, familia.idGrupoFamiliar as idFamilia, familia.grupoFamiliar as grupoFamilia, p.idPersona as idpersona,
-p.noDocumento as documento
+p.noDocumento as documento, p.codigo as codigo
 FROM Persona AS p INNER JOIN p.tipoPersona AS tipo INNER JOIN p.grupoFamiliar as familia
 WHERE   p.nombreLdap=:username
     </query>

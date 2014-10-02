@@ -16,7 +16,7 @@
         </property>
         <set name="transporteNovedadeses" inverse="true" cascade="">
             <key>
-                <column name="tipo_solicitud_id_tipo_solucitud" not-null="true"/>
+                <column name="tipo_solicitud_id_tipo_solucitud"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TransporteNovedades"/>
         </set>

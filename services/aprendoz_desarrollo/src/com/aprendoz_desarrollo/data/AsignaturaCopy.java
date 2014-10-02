@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.AsignaturaCopy
- *  09/25/2014 15:43:05
+ *  10/02/2014 07:48:24
  * 
  */
 public class AsignaturaCopy {

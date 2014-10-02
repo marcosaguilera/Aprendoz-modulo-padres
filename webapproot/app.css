@@ -4,18 +4,15 @@
     color: #ffffff;
     background: none;
 }
-
 #main_estado_cuenta_codigo{
     color: rgb(197, 53, 57) !important;
-}
-    
+}   
 #main_estado_cuenta_codigo {
     color: rgb(197, 53, 57) !important;
     font-size: xx-large;
     font-weight: 500;
     font-family: 'Source Sans Pro', sans-serif;
-}  
-    
+}     
 #main_estado_cuenta_title {
     color: rgb(54, 82, 164) !important;
     font-size: 14px;
@@ -30,28 +27,28 @@
     color: #ffffff;
     background: none; 
 }
-
 div#main_autorizacionesDialog_titleBar {
     background-color: #3652a4 !important;
     color: #fff;    
 }
-
 div#main_buttonBar4 {
     background-color: #D3D3D3 !important;
     color: #fff; 
 }
-
 div#main_permisosDialog_titleBar {
     background-color: #3652a4 !important;
     color: #fff;    
 }
-
 div#main_buttonBar5 {
     background-color: #D3D3D3 !important;
     color: #fff; 
 }
-
-
+div#main_SettingsDialog_titleBar {
+    background-color: #3652a4 !important;
+    background: none;
+    color: #fff;
+    border: none !important;
+}
 div.wmCheckboxSetItem {
     width: 122px;
 	float: left;
@@ -76,4 +73,8 @@ div.wmCheckboxSetItem {
     border: none !important;
     color: #ffffff;
     background: none;
+}html.WMApp body .text-color-red {
+    color: rgb(197, 53, 57) !important;
+    font-size: 14px;
 }
+

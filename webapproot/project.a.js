@@ -229,6 +229,53 @@ wm.JsonRpcService.smdCache['waveMakerService.smd'] = {
 };
 wm.types = {
 	"types": {
+		"FileUploadDownload.WMFile": {
+			"fields": {
+				"name": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"path": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"size": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "long"
+				},
+				"type": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "FileUploadDownload"
+		},
 		"boolean": {
 			"internal": true,
 			"primitiveType": "Boolean"
@@ -14432,6 +14479,43 @@ wm.types = {
 			"liveService": true,
 			"service": "aprendoz_desarrollo"
 		},
+		"com.aprendoz_desarrollo.data.Meses": {
+			"fields": {
+				"id": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"mes": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"mesnumero": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "aprendoz_desarrollo"
+		},
 		"com.aprendoz_desarrollo.data.Nacionalidades": {
 			"fields": {
 				"idNacionalidad": {
@@ -21405,7 +21489,7 @@ wm.types = {
 					"include": [],
 					"isList": false,
 					"noChange": [],
-					"required": true,
+					"required": false,
 					"type": "com.aprendoz_desarrollo.data.TipoSolicitud"
 				},
 				"transporteRutas": {
@@ -21415,7 +21499,7 @@ wm.types = {
 					"include": [],
 					"isList": false,
 					"noChange": [],
-					"required": true,
+					"required": false,
 					"type": "com.aprendoz_desarrollo.data.TransporteRutas"
 				}
 			},
@@ -27987,6 +28071,16 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.String"
 				},
+				"codigo": {
+					"exclude": [],
+					"fieldOrder": 15,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
 				"documento": {
 					"exclude": [],
 					"fieldOrder": 14,
@@ -28709,6 +28803,100 @@ wm.types = {
 			"liveService": false,
 			"service": "aprendoz_desarrollo"
 		},
+		"com.wavemaker.runtime.server.DownloadResponse": {
+			"fields": {
+				"contentLength": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"contentType": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"contents": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.io.InputStream"
+				},
+				"fileName": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "FileUploadDownload"
+		},
+		"com.wavemaker.runtime.server.FileUploadResponse": {
+			"fields": {
+				"error": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"height": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"path": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"width": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "FileUploadDownload"
+		},
 		"double": {
 			"internal": true,
 			"primitiveType": "Number"
@@ -28789,6 +28977,83 @@ wm.types = {
 			"internal": true,
 			"primitiveType": "Number"
 		},
+		"org.springframework.web.multipart.MultipartFile": {
+			"fields": {
+				"bytes": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": true,
+					"type": "byte"
+				},
+				"contentType": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"empty": {
+					"exclude": [],
+					"fieldOrder": 6,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "boolean"
+				},
+				"inputStream": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.io.InputStream"
+				},
+				"name": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"originalFilename": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"size": {
+					"exclude": [],
+					"fieldOrder": 5,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "long"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "FileUploadDownload"
+		},
 		"short": {
 			"internal": true,
 			"primitiveType": "Number"
@@ -28810,7 +29075,7 @@ dojo.declare("Aprendoz_Padres_v2", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha51", 
+	"projectSubVersion": "Alpha53", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"studioVersion": "6.6.0.RELEASE", 
@@ -28873,6 +29138,12 @@ div#main_buttonBar5 {\
 background-color: #D3D3D3 !important;\
 color: #fff;\
 }\
+div#main_SettingsDialog_titleBar {\
+background-color: #3652a4 !important;\
+background: none;\
+color: #fff;\
+border: none !important;\
+}\
 div.wmCheckboxSetItem {\
 width: 122px;\
 float: left;\
@@ -28897,5 +29168,8 @@ background-color: #63bb00 !important;\
 border: none !important;\
 color: #ffffff;\
 background: none;\
+}html.WMApp body .text-color-red {\
+color: rgb(197, 53, 57) !important;\
+font-size: 14px;\
 }\
 ';

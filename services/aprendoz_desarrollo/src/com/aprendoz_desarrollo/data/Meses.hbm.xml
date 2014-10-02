@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.Meses" table="meses" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="mes" type="string">
+            <column name="mes" length="65535"/>
+        </property>
+        <property name="mesnumero" type="string">
+            <column name="mesnumero" length="65535"/>
+        </property>
+    </class>
+</hibernate-mapping>

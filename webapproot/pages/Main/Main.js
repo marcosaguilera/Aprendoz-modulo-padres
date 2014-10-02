@@ -748,107 +748,12 @@ dojo.declare("Main", wm.Page, {
   },
 
   tipoSolicitudLookup1Change: function(inSender, inDisplayValue, inDataValue) {
-    try {
-     var idtipo=  this.tipoSolicitudLookup1.getDataValue().idTipoSolicitud;
-     
-      if(idtipo == 1 ){
-        this.transporte_lista_rutas_dias.filter.clearData();
-        this.transporte_lista_rutas_dias.update();
-        this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-        this.horaProgramadaEditor1.show();  
-        this.relatedEditor3.hide();
-        this.panel_dias.hide();
-        this.observacionesEditor1.show();
-        this.horaActualSalidaEditor1.hide();
-        this.horaActualSalidaEditor1.setDataValue(new Date());
-        this.rutasLookup1.setDisplayValue("[...] - ...");
-        
-      }
+      var idtipo=  this.tipoSolicitudLookup1.getDataValue().idTipoSolicitud;         
       if(idtipo == 2 ){
-        var valueToFilter = this.transporte_alumnos.selectedItem.getData().id.grupoFamiliarIdGrupoFamiliar;
-        this.transporte_lista_rutas_dias.filter.setValue("grupoFamiliar.idGrupoFamiliar", valueToFilter);
-        this.transporte_lista_rutas_dias.update(); 
-        this.horaProgramadaEditor1.hide();
-        this.panel_dias.show();         
-        this.relatedEditor3.show();
-        this.observacionesEditor1.show();
-        this.horaActualSalidaEditor1.setDataValue(new Date());
-        this.horaProgramadaEditor1.setDataValue(new Date());
-
+         this.transporteRutasLookup1.hide();
+      }else{
+         this.transporteRutasLookup1.show(); 
       }
-      if(idtipo == 3 ){
-        this.horaProgramadaEditor1.hide();  
-        this.relatedEditor3.hide();
-        this.panel_dias.hide(); 
-        this.horaActualSalidaEditor1.hide();  
-        this.transporte_lista_rutas_dias.filter.clearData();          
-        this.horaActualSalidaEditor1.setDataValue(new Date());
-        this.horaProgramadaEditor1.setDataValue(new Date());
-        this.observacionesEditor1.show();
-        this.transporte_lista_rutas_dias.update();
-        this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);  
-        this.rutasLookup1.setDisplayValue("[...] - ...");    
-        
-      }
-      if(idtipo == 4 ){
-        this.transporte_lista_rutas_dias.filter.clearData();
-        this.transporte_lista_rutas_dias.update();
-        this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-        this.horaProgramadaEditor1.hide();  
-        this.relatedEditor3.hide();
-        this.panel_dias.hide();
-        this.observacionesEditor1.show();   
-        this.horaActualSalidaEditor1.hide();
-        this.horaProgramadaEditor1.setDataValue(new Date());
-        this.horaActualSalidaEditor1.setDataValue(new Date());        
-        this.rutasLookup1.setDisplayValue("[...] - ...");  
-             
-      }
-      if(idtipo == 5 ){ 
-        this.transporte_lista_rutas_dias.filter.clearData();
-        this.transporte_lista_rutas_dias.update();
-        this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-        this.horaProgramadaEditor1.hide();  
-        this.relatedEditor3.hide();
-        this.panel_dias.hide();
-        this.observacionesEditor1.show();
-        this.horaActualSalidaEditor1.hide();
-        this.horaProgramadaEditor1.setDataValue(new Date());
-        this.horaActualSalidaEditor1.setDataValue(new Date());        
-        this.rutasLookup1.setDisplayValue("[...] - ...");  
-              
-      }
-      if(idtipo == 6 ){ 
-        this.transporte_lista_rutas_dias.filter.clearData();
-        this.transporte_lista_rutas_dias.update();
-        this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-        this.horaProgramadaEditor1.hide();  
-        this.relatedEditor3.hide();
-        this.panel_dias.hide();
-        this.observacionesEditor1.show();        
-        this.horaActualSalidaEditor1.hide();
-        this.horaProgramadaEditor1.setDataValue(new Date());
-        this.horaActualSalidaEditor1.setDataValue(new Date());
-        this.rutasLookup1.setDisplayValue("[...] - ...");  
-            
-      }
-      if(idtipo == 7 ){
-        this.transporte_lista_rutas_dias.filter.clearData();
-        this.transporte_lista_rutas_dias.update();
-        this.transporte_lista_rutas_dias.setValue("grupoFamiliar.idGrupoFamiliar", undefined);
-        this.horaProgramadaEditor1.hide();  
-        this.relatedEditor3.hide();
-        this.panel_dias.hide();
-        this.observacionesEditor1.show();
-        this.horaActualSalidaEditor1.hide();
-        this.horaProgramadaEditor1.setDataValue(new Date());
-        this.horaActualSalidaEditor1.setDataValue(new Date());
-        this.rutasLookup1.setDisplayValue("[...] - ...");       
-      }
-      
-    } catch(e) {
-      console.error('ERROR IN tipoSolicitudLookup1Change: ' + e); 
-    } 
   },
   
   fechaFinProgramadaEditor2Change: function(inSender, inDisplayValue, inDataValue) {
@@ -2546,6 +2451,52 @@ dojo.declare("Main", wm.Page, {
 	},
 	transportenovedadesLiveForm1BeginUpdate: function(inSender) {
 		this.personaLookup1.setReadonly(true);
+	},
+	SecurityProfileButtonClick1: function(inSender) {
+		var nombre1 = main.parents_global_user_info.getItem(0).data.n1;
+        var nombre2 = main.parents_global_user_info.getItem(0).data.n2;
+        var apellido1 = main.parents_global_user_info.getItem(0).data.a1;
+        var apellido2 = main.parents_global_user_info.getItem(0).data.a2;
+        var rol = main.parents_global_user_info.getItem(0).data.tipoPe;
+        var idrol = main.parents_global_user_info.getItem(0).data.tipoId;
+        var code = main.parents_global_user_info.getItem(0).data.codigo;
+        
+        this.profile_name.setCaption(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
+        this.profile_rol.setCaption(rol);
+        if(idrol > 1){
+            this.pictureSettings.setSource("http://images.amcnetworks.com/ifc.com/wp-content/uploads/2011/09/mitm_cast_bryan_cranston_cast_mini_gallery_thumb_03.jpg");
+        }else{
+            this.pictureSettings.setSource("http://www.rochester.edu.co/fotosestudiantes/"+code+".Jpeg");
+        }
+	},
+	profile_changePicClick: function(inSender) {
+		this.profileFileUpload.show();
+        this.profile_changePic.hide();
+	},
+	profileFileUploadSuccess: function(inSender, fileList) {
+		this.profile_changePic.show();
+        var name = main.profileFileUpload.variable.getItemData(0).name;
+        var now = new Date().getTime();
+        var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+
+        this.insertImgUser.setValue("imgName", name);
+        this.insertImgUser.setValue("fechaCreacion", now);
+        this.insertImgUser.setValue("fechaActualizacion", now);
+        this.insertImgUser.setValue("persona.idPersona", idpersona);
+        this.profileImgForm.setDataSet(this.insertImgUser);
+        this.profileImgForm.insertData();
+	},
+	profileImgFormSuccess: function(inSender, inData) {
+		
+	},
+	transportenovedadesDojoGridSelect: function(inSender) {
+		var idtipo = main.transportenovedadesDojoGrid.selectedItem.getData().tipoSolicitud.idTipoSolicitud;
+        if(idtipo == 2 ){
+          this.transporteRutasLookup1.hide();
+        }else{
+          this.transporteRutasLookup1.show(); 
+        }     
+        this.tipoSolicitudLiveVariable.update();
 	},
 	_end: 0
 });

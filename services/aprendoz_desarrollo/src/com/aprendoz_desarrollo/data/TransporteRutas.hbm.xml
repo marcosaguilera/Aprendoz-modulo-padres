@@ -91,7 +91,7 @@
         </set>
         <set name="transporteNovedadeses" inverse="true" cascade="">
             <key>
-                <column name="ruta_id_ruta" not-null="true"/>
+                <column name="ruta_id_ruta"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TransporteNovedades"/>
         </set>
