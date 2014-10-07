@@ -2249,7 +2249,9 @@ var code = main.parents_global_user_info.getItem(0).data.codigo;
 this.profile_name.setCaption(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
 this.profile_rol.setCaption(rol);
 if(idrol > 1){
-this.pictureSettings.setSource("http://images.amcnetworks.com/ifc.com/wp-content/uploads/2011/09/mitm_cast_bryan_cranston_cast_mini_gallery_thumb_03.jpg");
+var user = main.parents_global_user_info.getItem(0).data.usuario;
+this.getImgNameService.input.setValue("pidpersona", user);
+this.getImgNameService.update();
 }else{
 this.pictureSettings.setSource("http://www.rochester.edu.co/fotosestudiantes/"+code+".Jpeg");
 }
@@ -2263,14 +2265,30 @@ this.profile_changePic.show();
 var name = main.profileFileUpload.variable.getItemData(0).name;
 var now = new Date().getTime();
 var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+var count = main.getImgNameService.getCount();
+if(count == 0){
 this.insertImgUser.setValue("imgName", name);
 this.insertImgUser.setValue("fechaCreacion", now);
 this.insertImgUser.setValue("fechaActualizacion", now);
 this.insertImgUser.setValue("persona.idPersona", idpersona);
 this.profileImgForm.setDataSet(this.insertImgUser);
 this.profileImgForm.insertData();
+}else{
+var id = main.getImgNameService.getItem(0).data.id;
+this.getImgUpdate.input.setValue("pimageName",name);
+this.getImgUpdate.input.setValue("id", id);
+this.getImgUpdate.update();
+}
 },
 profileImgFormSuccess: function(inSender, inData) {
+var user = main.parents_global_user_info.getItem(0).data.usuario;
+this.getImgNameService.input.setValue("pidpersona", user);
+this.getImgNameService.update();
+},
+getImgNameServiceSuccess: function(inSender, inDeprecated) {
+var imgurl = "resources/data";
+var img = main.getImgNameService.getItem(0).data.imageName;
+this.pictureSettings.setSource(imgurl+"/"+img);
 },
 transportenovedadesDojoGridSelect: function(inSender) {
 var idtipo = main.transportenovedadesDojoGrid.selectedItem.getData().tipoSolicitud.idTipoSolicitud;
@@ -2280,6 +2298,9 @@ this.transporteRutasLookup1.hide();
 this.transporteRutasLookup1.show();
 }
 this.tipoSolicitudLiveVariable.update();
+},
+getImgUpdateSuccess: function(inSender, inDeprecated) {
+this.getImgNameService.update(); // triggered the image show function
 },
 _end: 0
 });
@@ -2658,6 +2679,12 @@ liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.Persona","vi
 ]}, {}]
 }],
 insertImgUser: ["wm.Variable", {"type":"com.aprendoz_desarrollo.data.PerfilPersonaImg"}, {}],
+getImgNameService: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"imgNameByUser","service":"aprendoz_desarrollo"}, {"onSuccess":"getImgNameServiceSuccess"}, {
+input: ["wm.ServiceInput", {"type":"imgNameByUserInputs"}, {}]
+}],
+getImgUpdate: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"imgUpdateNameByUser","service":"aprendoz_desarrollo"}, {"onSuccess":"getImgUpdateSuccess"}, {
+input: ["wm.ServiceInput", {"type":"imgUpdateNameByUserInputs"}, {}]
+}],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
@@ -2848,7 +2875,7 @@ profile_rol: ["wm.Label", {"_classes":{"domNode":["text-color-red"]},"align":"ce
 profileFileUpload: ["wm.DojoFileUpload", {"showing":false,"styles":{},"width":"95%"}, {"onSuccess":"profileFileUploadSuccess"}, {
 input: ["wm.ServiceInput", {"type":"uploadFileInputs"}, {}]
 }],
-profile_changePic: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Cambiar foto","margin":"4","styles":{},"width":"80%"}, {"onclick":"profile_changePicClick"}],
+profile_changePic: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Cambiar foto","margin":"4","styles":{},"width":"180px"}, {"onclick":"profile_changePicClick"}],
 profileImgForm: ["wm.LiveForm", {"height":"49px","horizontalAlign":"left","showing":false,"verticalAlign":"top"}, {"onSuccess":"profileImgFormSuccess"}]
 }],
 rightPanelSettings: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
@@ -2998,7 +3025,7 @@ parents_logo_aprendoz: ["wm.Picture", {"aspect":"h","height":"52px","source":"re
 spacer1: ["wm.Spacer", {"height":"48px","width":"100%"}, {}],
 parents_header_panel_sec: ["wm.Panel", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"96px"}, {}, {
 SecurityLogoutButton: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_10px","red"]},"border":"0","borderColor":"#666666","caption":"Salir","margin":"0","styles":{"color":"#ffffff"},"width":"100%"}, {"onclick":"templateLogoutVar"}],
-SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"Configuración <br>de Usuario","height":"100%","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show","onclick1":"SecurityProfileButtonClick1"}]
+SecurityProfileButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"border":"0","caption":"<br>Perfil de usuario","height":"100%","iconHeight":"32px","iconMargin":"0 0px 0 0","iconUrl":"resources/images/iconsmaster_v2/profile.png","iconWidth":"32px","margin":"0","styles":{},"width":"100%"}, {"onclick":"SettingsDialog.show","onclick1":"SecurityProfileButtonClick1"}]
 }]
 }],
 parents_line_long: ["wm.Panel", {"height":"6px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundColor":"#3752a3"},"verticalAlign":"top","width":"100%"}, {}],

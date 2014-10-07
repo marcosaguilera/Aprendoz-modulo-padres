@@ -20,11 +20,5 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Persona"/>
         </set>
-        <set name="personaCopies" inverse="true" cascade="">
-            <key>
-                <column name="PAIS_NAC_ID" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.PersonaCopy"/>
-        </set>
     </class>
 </hibernate-mapping>

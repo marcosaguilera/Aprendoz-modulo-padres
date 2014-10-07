@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "_typeUserByUsername" on 10/02/2014 07:48:56
+ * Generated for query "_typeUserByUsername" on 10/06/2014 12:40:38
  * 
  */
 public class _typeUserByUsernameRtnType {

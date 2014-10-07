@@ -31,6 +31,7 @@ import com.aprendoz_desarrollo.data.output.HqlAlergiasByUserRtnType;
 import com.aprendoz_desarrollo.data.output.HqlGetTotalPagarRtnType;
 import com.aprendoz_desarrollo.data.output.Hql_dash_asignaturasRtnType;
 import com.aprendoz_desarrollo.data.output.Hql_ls_paisRtnType;
+import com.aprendoz_desarrollo.data.output.ImgNameByUserRtnType;
 import com.aprendoz_desarrollo.data.output.ListadoEstudiantesGrupoFamiliarRtnType;
 import com.aprendoz_desarrollo.data.output.MailAcudienteRtnType;
 import com.aprendoz_desarrollo.data.output.MailMadreRtnType;
@@ -64,7 +65,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  10/02/2014 07:49:07
+ *  10/06/2014 12:40:43
  * 
  */
 @SuppressWarnings("unchecked")
@@ -263,6 +264,19 @@ public class Aprendoz_desarrollo
 
     public List<Hql_ls_paisRtnType> hql_ls_pais(PagingOptions pagingOptions) {
         return ((List<Hql_ls_paisRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.hql_ls_paisQueryName), pagingOptions));
+    }
+
+    public List<ImgNameByUserRtnType> imgNameByUser(String pidpersona, PagingOptions pagingOptions) {
+        return ((List<ImgNameByUserRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.imgNameByUserQueryName), pidpersona, pagingOptions));
+    }
+
+    public Integer imgUpdateNameByUser(String pimageName, Integer id, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.imgUpdateNameByUserQueryName), pimageName, id, pagingOptions));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
     }
 
     public List<ListadoEstudiantesGrupoFamiliarRtnType> listadoEstudiantesGrupoFamiliar(Integer idg, PagingOptions pagingOptions) {

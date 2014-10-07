@@ -374,6 +374,25 @@
 		"parameters": null,
 		"returnType": "[com.aprendoz_desarrollo.data.output.Hql_ls_paisRtnType]"
 	}, {
+		"name": "imgNameByUser",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidpersona",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.ImgNameByUserRtnType]"
+	}, {
+		"name": "imgUpdateNameByUser",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pimageName",
+			"type": "java.lang.String"
+		}, {
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
 		"name": "listadoEstudiantesGrupoFamiliar",
 		"operationType": "hqlquery",
 		"parameters": [{
