@@ -1674,7 +1674,7 @@ dojo.declare("Main", wm.Page, {
 	},
     renderChart_dash1: function() {
         var asignaturas= ["Año"];
-        var puntajes= ['2013-2014'];
+        var puntajes= ['2014-2015'];
         var _count= main.parents_local_student_chart.getCount();
         for (var i = 0; i < _count; i++) {
              var _item= main.parents_local_student_chart.getItem(i).data;

@@ -30,7 +30,9 @@ if(selectedRow== true){
 this.activitiesServiceVar.input.setValue("idp", idp);
 this.activitiesServiceVar.input.setValue("idsy", idsy);
 this.activitiesServiceVar.update();
-}else{alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.")}
+}else{
+alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.");
+}
 },
 activitiesServiceVarSuccess: function(inSender, inDeprecated) {
 var now= this.today();
