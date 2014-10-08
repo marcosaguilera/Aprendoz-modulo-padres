@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.TipoCosto
- *  10/02/2014 07:48:25
+ *  10/08/2014 08:54:32
  * 
  */
 public class TipoCosto {

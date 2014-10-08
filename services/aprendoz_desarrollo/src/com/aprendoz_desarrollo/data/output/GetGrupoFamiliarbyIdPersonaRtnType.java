@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getGrupoFamiliarbyIdPersona" on 10/06/2014 12:40:38
+ * Generated for query "getGrupoFamiliarbyIdPersona" on 10/08/2014 08:54:53
  * 
  */
 public class GetGrupoFamiliarbyIdPersonaRtnType {

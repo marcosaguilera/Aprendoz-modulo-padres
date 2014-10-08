@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Sesion
- *  10/02/2014 07:48:25
+ *  10/08/2014 08:54:32
  * 
  */
 public class Sesion {
