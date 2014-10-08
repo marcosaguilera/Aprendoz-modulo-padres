@@ -77,4 +77,8 @@ div.wmCheckboxSetItem {
     color: rgb(197, 53, 57) !important;
     font-size: 14px;
 }
+div#main_schedule_page_container_schedule_logActivities_titleBar {
+    color: #fff;
+    background-color: rgb(197, 53, 57) !important;
+}
 

@@ -28435,7 +28435,7 @@ dojo.declare("Aprendoz_Padres_v2", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha55", 
+	"projectSubVersion": "Alpha56", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"studioVersion": "6.6.0.RELEASE", 
@@ -28531,5 +28531,9 @@ background: none;\
 }html.WMApp body .text-color-red {\
 color: rgb(197, 53, 57) !important;\
 font-size: 14px;\
+}\
+div#main_schedule_page_container_schedule_logActivities_titleBar {\
+color: #fff;\
+background-color: rgb(197, 53, 57) !important;\
 }\
 ';
