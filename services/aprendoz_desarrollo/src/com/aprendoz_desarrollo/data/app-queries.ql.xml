@@ -538,4 +538,18 @@ WHERE ipgf.idInscPersonaGrupoFamiliar=:idipgf
 FROM FichaMedica fm INNER JOIN fm.persona _p
 WHERE _p.idPersona=:idp
     </query>
+    <query name="imgNameByUser">
+        <query-param name="pidpersona" type="java.lang.String"/>
+        SELECT
+img.idPersonaImg as id,
+p.nombreLdap as user,
+img.imgName as imageName
+FROM  PerfilPersonaImg img INNER JOIN img.persona p
+WHERE p.nombreLdap=:pidpersona
+    </query>
+    <query name="imgUpdateNameByUser" comment="This hql update the name of image">
+        <query-param name="pimageName" type="java.lang.String"/>
+        <query-param name="id" type="java.lang.Integer"/>
+        UPDATE PerfilPersonaImg AS img SET img.imgName=:pimageName WHERE img.idPersonaImg=:id
+    </query>
 </hibernate-mapping>

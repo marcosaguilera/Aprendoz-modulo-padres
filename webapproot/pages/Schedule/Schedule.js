@@ -16,8 +16,8 @@ dojo.declare("Schedule", wm.Page, {
             this.parents_global_currentSy2.update();
         }else{alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.")}    
 	},
-    today: function(){
-        var date = new Date();
+    today: function(){                           
+        var date = new Date();                   
         var yyyy = date.getFullYear().toString();        
         var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based  
         var dd  = date.getDate().toString();                           
@@ -31,7 +31,9 @@ dojo.declare("Schedule", wm.Page, {
             this.activitiesServiceVar.input.setValue("idp", idp);
             this.activitiesServiceVar.input.setValue("idsy", idsy);
             this.activitiesServiceVar.update();
-        }else{alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.")}	
+        }else{
+            alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.");
+        }	
 	},
 	activitiesServiceVarSuccess: function(inSender, inDeprecated) {
 		var now= this.today();
@@ -58,7 +60,8 @@ dojo.declare("Schedule", wm.Page, {
 	detallesClick: function(calEvent, jsEvent, view) {
         var id= calEvent.id;
         console.log("idactividad -->"+id);
-        $(this).css('border-color', '#c0392b');                          
+        $(this).css('border-color', '#c53539');  
+        $(this).css('background-color', '#c53539');
 		var idp = wm.Page.getPage("Main").performance_family_grid.selectedItem.data.pid;
         var idsy= wm.Page.getPage("Schedule").parents_global_currentSy2.getItem(0).data.idsy;
         console.log(idsy);
@@ -69,6 +72,16 @@ dojo.declare("Schedule", wm.Page, {
             wm.Page.getPage("Schedule").details_activities_estudent.update(); 
             wm.Page.getPage("Schedule").logActivities.show();
 	},
-
+	details_activities_estudentSuccess: function(inSender, inDeprecated) {
+		var title = this.details_activities_estudent.getItem(0).data.title;    
+        var fecha = this.details_activities_estudent.getItem(0).data.fecha;
+        var id = this.details_activities_estudent.getItem(0).data.id;
+        var actividad = this.details_activities_estudent.getItem(0).data.actividad;
+        
+        this.asignatura_editor.setDataValue(title);
+        this.fecha_editor.setDataValue(fecha);
+        this.no_actividad_editor.setDataValue(id);
+        this.descripcion_actividad.setDataValue(actividad);
+	},
 	_end: 0
 });

@@ -30,7 +30,9 @@ if(selectedRow== true){
 this.activitiesServiceVar.input.setValue("idp", idp);
 this.activitiesServiceVar.input.setValue("idsy", idsy);
 this.activitiesServiceVar.update();
-}else{alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.")}
+}else{
+alert("Por favor seleccione un estudiante para visualizar el Calendario de Actividades.");
+}
 },
 activitiesServiceVarSuccess: function(inSender, inDeprecated) {
 var now= this.today();
@@ -57,7 +59,8 @@ $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalen
 detallesClick: function(calEvent, jsEvent, view) {
 var id= calEvent.id;
 console.log("idactividad -->"+id);
-$(this).css('border-color', '#c0392b');
+$(this).css('border-color', '#c53539');
+$(this).css('background-color', '#c53539');
 var idp = wm.Page.getPage("Main").performance_family_grid.selectedItem.data.pid;
 var idsy= wm.Page.getPage("Schedule").parents_global_currentSy2.getItem(0).data.idsy;
 console.log(idsy);
@@ -67,6 +70,16 @@ wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idsy", i
 wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idact", id);
 wm.Page.getPage("Schedule").details_activities_estudent.update();
 wm.Page.getPage("Schedule").logActivities.show();
+},
+details_activities_estudentSuccess: function(inSender, inDeprecated) {
+var title = this.details_activities_estudent.getItem(0).data.title;
+var fecha = this.details_activities_estudent.getItem(0).data.fecha;
+var id = this.details_activities_estudent.getItem(0).data.id;
+var actividad = this.details_activities_estudent.getItem(0).data.actividad;
+this.asignatura_editor.setDataValue(title);
+this.fecha_editor.setDataValue(fecha);
+this.no_actividad_editor.setDataValue(id);
+this.descripcion_actividad.setDataValue(actividad);
 },
 _end: 0
 });
@@ -78,25 +91,19 @@ input: ["wm.ServiceInput", {"type":"studentSujectActivitiesInputs"}, {}]
 parents_global_currentSy2: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getSyByCurDate","service":"aprendoz_desarrollo"}, {"onSuccess":"parents_global_currentSy2Success"}, {
 input: ["wm.ServiceInput", {"type":"getSyByCurDateInputs"}, {}]
 }],
-details_activities_estudent: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"detailsActivitiesStudent","service":"aprendoz_desarrollo"}, {}, {
+details_activities_estudent: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"detailsActivitiesStudent","service":"aprendoz_desarrollo"}, {"onSuccess":"details_activities_estudentSuccess"}, {
 input: ["wm.ServiceInput", {"type":"detailsActivitiesStudentInputs"}, {}]
 }],
-logActivities: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"480px","height":"480px","styles":{"backgroundColor":"#ecf0f1"},"title":"Detalles de Actividades y tareas","titlebarBorderColor":"#fbfbfb","titlebarHeight":"26"}, {}, {
+logActivities: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"450px","height":"450px","styles":{},"title":"Detalles de Actividades y tareas","titlebarBorderColor":"#fbfbfb","titlebarHeight":"26"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"1","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-detallesDojoGrid: ["wm.DojoGrid", {"columns":[
-{"show":true,"field":"title","title":"Asignatura","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":true,"field":"id","title":"#Actividad","width":"80px","align":"left","formatFunc":"","editorProps":null,"mobileColumn":false},
-{"show":true,"field":"fecha","title":"Fecha","width":"90px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":true,"field":"actividad","title":"Actividad","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"idasignatura","title":"Idasignatura","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"Asignatura: \" + ${title} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"#Actividad: \" + ${id}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Fecha: \" + ${wm.runtimeId}.formatCell(\"fecha\", ${fecha}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Actividad: \" + ${actividad}\n + \"</div>\"\n\n","mobileColumn":true}
-],"dsType":"com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType","height":"100%","margin":"4","minDesktopHeight":60,"singleClickEdit":true,"styles":{"fontSize":"13px"}}, {}, {
-binding: ["wm.Binding", {}, {}, {
-wire: ["wm.Wire", {"expression":undefined,"source":"details_activities_estudent","targetProperty":"dataSet"}, {}]
-}]
+detalles_actividad: ["wm.Panel", {"height":"365px","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
+asignatura_editor: ["wm.Text", {"border":"0","caption":"Asignatura","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
+fecha_editor: ["wm.Date", {"border":"0","caption":"Fecha","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
+no_actividad_editor: ["wm.Text", {"border":"0","caption":"Código Actividad","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
+descripcion_actividad: ["wm.LargeTextArea", {"border":"0","caption":"Descripción Actividad","dataValue":undefined,"desktopHeight":"225px","displayValue":"","height":"225px","mobileHeight":"100%","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}]
 }]
 }],
-buttonBar: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px"}, {}, {
+buttonBar: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{}}, {}, {
 cerrar_dialog_box: ["wm.Button", {"_classes":{"domNode":["detalles"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"logActivities.hide"}]
 }]
 }],

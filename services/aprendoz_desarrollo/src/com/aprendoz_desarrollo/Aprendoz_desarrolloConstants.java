@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo;
 
 /**
  *  Query names for service "aprendoz_desarrollo"
- *  10/02/2014 07:49:07
+ *  10/06/2014 12:40:43
  * 
  */
 public class Aprendoz_desarrolloConstants {
@@ -50,6 +50,8 @@ public class Aprendoz_desarrolloConstants {
     public final static String hqlGetTotalPagarQueryName = "hqlGetTotalPagar";
     public final static String hql_dash_asignaturasQueryName = "hql_dash_asignaturas";
     public final static String hql_ls_paisQueryName = "hql_ls_pais";
+    public final static String imgNameByUserQueryName = "imgNameByUser";
+    public final static String imgUpdateNameByUserQueryName = "imgUpdateNameByUser";
     public final static String listadoEstudiantesGrupoFamiliarQueryName = "listadoEstudiantesGrupoFamiliar";
     public final static String mailAcudienteQueryName = "mailAcudiente";
     public final static String mailMadreQueryName = "mailMadre";

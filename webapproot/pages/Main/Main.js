@@ -1674,7 +1674,7 @@ dojo.declare("Main", wm.Page, {
 	},
     renderChart_dash1: function() {
         var asignaturas= ["Año"];
-        var puntajes= ['2013-2014'];
+        var puntajes= ['2014-2015'];
         var _count= main.parents_local_student_chart.getCount();
         for (var i = 0; i < _count; i++) {
              var _item= main.parents_local_student_chart.getItem(i).data;
@@ -2464,7 +2464,9 @@ dojo.declare("Main", wm.Page, {
         this.profile_name.setCaption(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
         this.profile_rol.setCaption(rol);
         if(idrol > 1){
-            this.pictureSettings.setSource("http://images.amcnetworks.com/ifc.com/wp-content/uploads/2011/09/mitm_cast_bryan_cranston_cast_mini_gallery_thumb_03.jpg");
+            var user = main.parents_global_user_info.getItem(0).data.usuario;
+        	this.getImgNameService.input.setValue("pidpersona", user);
+            this.getImgNameService.update();   
         }else{
             this.pictureSettings.setSource("http://www.rochester.edu.co/fotosestudiantes/"+code+".Jpeg");
         }
@@ -2478,16 +2480,31 @@ dojo.declare("Main", wm.Page, {
         var name = main.profileFileUpload.variable.getItemData(0).name;
         var now = new Date().getTime();
         var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
-
-        this.insertImgUser.setValue("imgName", name);
-        this.insertImgUser.setValue("fechaCreacion", now);
-        this.insertImgUser.setValue("fechaActualizacion", now);
-        this.insertImgUser.setValue("persona.idPersona", idpersona);
-        this.profileImgForm.setDataSet(this.insertImgUser);
-        this.profileImgForm.insertData();
+        var count = main.getImgNameService.getCount();
+        
+        if(count == 0){
+            this.insertImgUser.setValue("imgName", name);
+            this.insertImgUser.setValue("fechaCreacion", now);
+            this.insertImgUser.setValue("fechaActualizacion", now);
+            this.insertImgUser.setValue("persona.idPersona", idpersona);
+            this.profileImgForm.setDataSet(this.insertImgUser);
+            this.profileImgForm.insertData();
+        }else{
+            var id = main.getImgNameService.getItem(0).data.id;
+            this.getImgUpdate.input.setValue("pimageName",name);
+            this.getImgUpdate.input.setValue("id", id);
+            this.getImgUpdate.update();
+        } 
 	},
 	profileImgFormSuccess: function(inSender, inData) {
-		
+        var user = main.parents_global_user_info.getItem(0).data.usuario;
+		this.getImgNameService.input.setValue("pidpersona", user);
+        this.getImgNameService.update();
+	},
+    getImgNameServiceSuccess: function(inSender, inDeprecated) {
+        var imgurl = "resources/data";
+    	var img = main.getImgNameService.getItem(0).data.imageName;
+        this.pictureSettings.setSource(imgurl+"/"+img);
 	},
 	transportenovedadesDojoGridSelect: function(inSender) {
 		var idtipo = main.transportenovedadesDojoGrid.selectedItem.getData().tipoSolicitud.idTipoSolicitud;
@@ -2497,6 +2514,9 @@ dojo.declare("Main", wm.Page, {
           this.transporteRutasLookup1.show(); 
         }     
         this.tipoSolicitudLiveVariable.update();
+	},   	
+	getImgUpdateSuccess: function(inSender, inDeprecated) {
+		this.getImgNameService.update(); // triggered the image show function
 	},
 	_end: 0
 });
