@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.Tarjetasdav050814
- *  10/02/2014 07:48:25
+ *  10/08/2014 08:54:33
  * 
  */
 public class Tarjetasdav050814 {

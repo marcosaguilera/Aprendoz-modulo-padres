@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.TramiteTipoTramite" table="tramite_tipo_tramite" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idTipoTramite" type="integer">
+            <column name="id_tipo_tramite"/>
+            <generator class="identity"/>
+        </id>
+        <property name="tramite" type="string">
+            <column name="tramite" not-null="true"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19"/>
+        </property>
+        <set name="tramiteTipoTramiteRols" inverse="true" cascade="">
+            <key>
+                <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.TramiteTipoTramiteRol"/>
+        </set>
+        <set name="tramites" inverse="true" cascade="">
+            <key>
+                <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Tramite"/>
+        </set>
+    </class>
+</hibernate-mapping>

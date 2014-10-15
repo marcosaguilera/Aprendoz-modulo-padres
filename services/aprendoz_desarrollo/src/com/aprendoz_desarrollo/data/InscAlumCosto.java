@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumCosto
- *  10/02/2014 07:48:24
+ *  10/08/2014 08:54:33
  * 
  */
 public class InscAlumCosto {

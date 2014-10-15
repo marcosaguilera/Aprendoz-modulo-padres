@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.TramiteTipoTramiteRol" table="tramite_tipo_tramite_rol" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="tramiteTipoRolId" type="integer">
+            <column name="tramite_tipo_rol_id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="tipoPersonaIdTipoPersona" type="integer">
+            <column name="tipo_persona_id_tipo_persona" not-null="true"/>
+        </property>
+        <property name="requerido" type="boolean">
+            <column name="requerido"/>
+        </property>
+        <property name="valorDefecto" type="boolean">
+            <column name="valor_defecto"/>
+        </property>
+        <property name="apruebaSolicita" type="boolean">
+            <column name="aprueba_solicita"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19"/>
+        </property>
+        <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite">
+            <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

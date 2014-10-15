@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.GrupoFamiliar
- *  10/06/2014 10:45:15
+ *  10/08/2014 08:54:33
  * 
  */
 public class GrupoFamiliar {

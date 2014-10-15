@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.Tramite" table="tramite" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idTramite" type="integer">
+            <column name="id_tramite"/>
+            <generator class="identity"/>
+        </id>
+        <property name="idSolicitante" type="integer">
+            <column name="id_solicitante" not-null="true"/>
+        </property>
+        <property name="idReferenciado" type="integer">
+            <column name="id_referenciado"/>
+        </property>
+        <property name="fechaTramite" type="date">
+            <column name="fecha_tramite" length="10"/>
+        </property>
+        <property name="horaTramite" type="time">
+            <column name="hora_tramite" length="8"/>
+        </property>
+        <property name="comentarios" type="string">
+            <column name="comentarios" length="65535"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19"/>
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fecha_modificacion" length="19"/>
+        </property>
+        <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite">
+            <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
+        </many-to-one>
+        <set name="tramiteAutorizacioneses" inverse="true" cascade="">
+            <key>
+                <column name="tramite_id_tramite" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.TramiteAutorizaciones"/>
+        </set>
+    </class>
+</hibernate-mapping>

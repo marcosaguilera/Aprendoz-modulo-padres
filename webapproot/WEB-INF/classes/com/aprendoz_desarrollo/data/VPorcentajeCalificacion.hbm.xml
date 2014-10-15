@@ -1,0 +1,58 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.VPorcentajeCalificacion" table="v_porcentaje_calificacion" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.VPorcentajeCalificacionId">
+            <key-property name="schoolYear" type="string">
+                <column name="School_year" length="45"/>
+            </key-property>
+            <key-property name="idNivel" type="integer">
+                <column name="Id_Nivel"/>
+            </key-property>
+            <key-property name="nivel" type="string">
+                <column name="Nivel" length="45"/>
+            </key-property>
+            <key-property name="idGrado" type="integer">
+                <column name="Id_Grado"/>
+            </key-property>
+            <key-property name="grado" type="string">
+                <column name="Grado" length="45"/>
+            </key-property>
+            <key-property name="idCurso" type="integer">
+                <column name="Id_Curso"/>
+            </key-property>
+            <key-property name="curso" type="string">
+                <column name="Curso" length="45"/>
+            </key-property>
+            <key-property name="idPersona" type="integer">
+                <column name="Id_Persona"/>
+            </key-property>
+            <key-property name="apellido1" type="string">
+                <column name="Apellido1" length="45"/>
+            </key-property>
+            <key-property name="apellido2" type="string">
+                <column name="Apellido2" length="45"/>
+            </key-property>
+            <key-property name="nombre1" type="string">
+                <column name="Nombre1" length="45"/>
+            </key-property>
+            <key-property name="nombre2" type="string">
+                <column name="Nombre2" length="45"/>
+            </key-property>
+            <key-property name="idAsignatura" type="integer">
+                <column name="Id_Asignatura"/>
+            </key-property>
+            <key-property name="asignatura" type="string">
+                <column name="Asignatura" length="300"/>
+            </key-property>
+            <key-property name="esperadosFecha" type="integer">
+                <column name="esperados_fecha"/>
+            </key-property>
+            <key-property name="nameExp16" type="string">
+                <column name="Name_exp_16" length="11"/>
+            </key-property>
+            <key-property name="porcentaje" type="string">
+                <column name="porcentaje" length="26"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>
