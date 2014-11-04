@@ -76,6 +76,17 @@
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType]"
 	}, {
+		"name": "getActivityScoreByIdUser",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "pidpersona",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "pidactividad",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetActivityScoreByIdUserRtnType]"
+	}, {
 		"name": "getAsignaturasMalas",
 		"operationType": "hqlquery",
 		"parameters": [{

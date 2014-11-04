@@ -3,6 +3,7 @@
 		"service_invalid_ActualizaDatos": true, 
 		"service_invalid_EnviarMailPermanente": true, 
 		"service_invalid_EnviarMail": true, 
-		"service_invalid_reciboMatricula": true
+		"service_invalid_reciboMatricula": true, 
+		"service_invalid_FileUploadDownload": false
 	}
 }

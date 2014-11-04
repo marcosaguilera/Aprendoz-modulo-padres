@@ -9,6 +9,8 @@ import com.wavemaker.runtime.server.DojoFileUploaderResponse;
 import com.wavemaker.common.util.IOUtils;
 import java.util.Random;
 import java.util.Vector;
+import java.util.Calendar;
+import java.util.Date;
 import com.wavemaker.runtime.server.FileUploadResponse;
 import com.wavemaker.runtime.RuntimeAccess;
 import javax.activation.MimetypesFileTypeMap;
@@ -28,9 +30,7 @@ import com.wavemaker.runtime.service.annotations.ExposeToClient;
  */
 @ExposeToClient
 public class FileUploadDownload extends JavaServiceSuperClass {
-    /* Pass in one of FATAL, ERROR, WARN,  INFO and DEBUG to modify your log level;
-     *  recommend changing this to FATAL or ERROR before deploying.  For info on these levels, look for tomcat/log4j documentation
-     */
+    private String fileNameReal;
     public FileUploadDownload() {
        super(INFO);
     }
@@ -130,7 +130,9 @@ protected File getUploadDir() {
      ********************************************************************************/
     public FileUploadResponse uploadFile(MultipartFile file) throws IOException
     {
-
+        String realName = "";
+        long timemili = new Date().getTime();
+        String strMili = Long.toString(timemili);
         // Create our return object
         FileUploadResponse ret = new FileUploadResponse();
         try {
@@ -148,9 +150,13 @@ protected File getUploadDir() {
             String ext  = (hasExtension) ? 
               filename.substring(filename.lastIndexOf(".")) : "";
             File outputFile = new File(dir, filename);
-            for (int i = 0; i < 10000 && outputFile.exists(); i++) {
-              outputFile = new File(dir, name + i + ext);
+            for (int i = 0; i < 100; i++) {
+              System.out.println("============> iteration: "+i);
+              outputFile = new File(dir, name + strMili + ext);
+              fileNameReal= name + strMili + ext;              
             }
+            System.out.println("============> output: "+outputFile);
+            System.out.println("============> name: "+fileNameReal);
             
             /* Write the file to the filesystem */
             FileOutputStream fos = new FileOutputStream(outputFile);            
@@ -169,7 +175,10 @@ protected File getUploadDir() {
         }
         return ret;
     }
-
+    
+    public String getRealFileName(){
+       return this.fileNameReal;        
+    }
 
 
     /********************************************************************************

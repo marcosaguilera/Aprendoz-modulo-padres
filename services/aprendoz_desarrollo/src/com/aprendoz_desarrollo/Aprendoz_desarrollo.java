@@ -4,6 +4,7 @@ package com.aprendoz_desarrollo;
 import java.util.Date;
 import java.util.List;
 import com.aprendoz_desarrollo.data.output.DetailsActivitiesStudentRtnType;
+import com.aprendoz_desarrollo.data.output.GetActivityScoreByIdUserRtnType;
 import com.aprendoz_desarrollo.data.output.GetCoordinatorInfoRtnType;
 import com.aprendoz_desarrollo.data.output.GetCostosRtnType;
 import com.aprendoz_desarrollo.data.output.GetCostosTransporteRtnType;
@@ -65,7 +66,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  10/08/2014 08:55:00
+ *  10/29/2014 07:46:53
  * 
  */
 @SuppressWarnings("unchecked")
@@ -111,6 +112,10 @@ public class Aprendoz_desarrollo
 
     public List<DetailsActivitiesStudentRtnType> detailsActivitiesStudent(Integer idp, Integer idsy, Integer idact, PagingOptions pagingOptions) {
         return ((List<DetailsActivitiesStudentRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.detailsActivitiesStudentQueryName), idp, idsy, idact, pagingOptions));
+    }
+
+    public List<GetActivityScoreByIdUserRtnType> getActivityScoreByIdUser(Integer pidpersona, Integer pidactividad, PagingOptions pagingOptions) {
+        return ((List<GetActivityScoreByIdUserRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getActivityScoreByIdUserQueryName), pidpersona, pidactividad, pagingOptions));
     }
 
     public com.aprendoz_desarrollo.data.output.GetAsignaturasMalasRtnType getAsignaturasMalas(Integer id, PagingOptions pagingOptions) {

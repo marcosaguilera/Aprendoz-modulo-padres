@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 10/08/2014 08:54:20
+<!-- Generated 10/16/2014 11:51:31
 
 Configuration for 'aprendoz_desarrollo' database service
 
@@ -194,8 +194,6 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/CafeteriaSopas.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AdministracionVistaInscAlumAsig.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscAlumAsigCurso.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/InscAlumAsigCopy2.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/InscAlumAsigCopy3.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaMatriculasGraficasTotalDia.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/GestionEncuestasGrupoFamiliar.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TramiteTipoTramiteRol.hbm.xml</value>
@@ -245,8 +243,8 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/GradoSiguiente.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscDirectorNivel.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/DirectoresDocentesListadoReportes.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/AccStudentCardAuthorization.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AccStudentCard.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/AccStudentCardAuthorization.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Sesion.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaAlumnosActivos.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AdministracionVistaInscAlumnCurso.hbm.xml</value>
@@ -293,7 +291,6 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/InscCoordinadoresSubarea.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/DocentesVistaAsignaturaGrado.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AdministracionVistaAsignaturasCurso.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/InscAlumAsigCopy.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Anticiposfact050814.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/ReporteDavivienda.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/NivelEsperado.hbm.xml</value>

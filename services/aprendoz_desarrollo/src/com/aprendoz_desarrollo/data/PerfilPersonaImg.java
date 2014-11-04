@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.PerfilPersonaImg
- *  10/08/2014 08:54:32
+ *  10/16/2014 12:01:13
  * 
  */
 public class PerfilPersonaImg {
 
     private Integer idPersonaImg;
-    private Persona persona;
     private String imgName;
     private Date fechaCreacion;
     private Date fechaActualizacion;
+    private Persona persona;
 
     public Integer getIdPersonaImg() {
         return idPersonaImg;
@@ -23,14 +23,6 @@ public class PerfilPersonaImg {
 
     public void setIdPersonaImg(Integer idPersonaImg) {
         this.idPersonaImg = idPersonaImg;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     public String getImgName() {
@@ -55,6 +47,14 @@ public class PerfilPersonaImg {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

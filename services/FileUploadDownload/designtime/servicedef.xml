@@ -11,6 +11,9 @@
         <parameter name="returnname" typeRef="java.lang.String" isList="false"/>
         <return typeRef="com.wavemaker.runtime.server.DownloadResponse" isList="false"/>
     </operation>
+    <operation name="getRealFileName">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
     <operation name="listFiles">
         <return typeRef="FileUploadDownload.WMFile" isList="true"/>
     </operation>

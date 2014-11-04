@@ -53,11 +53,13 @@ dojo.declare("Schedule", wm.Page, {
             slotEventOverlap: true,
 			defaultDate: now,
 			editable: true,
-			events: json
+			events: json,
+            eventColor: '#378006'
 		});  
         $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar( 'refetchEvents');
 	},        
 	detallesClick: function(calEvent, jsEvent, view) {
+        
         var id= calEvent.id;
         console.log("idactividad -->"+id);
         $(this).css('border-color', '#c53539');  
@@ -70,18 +72,34 @@ dojo.declare("Schedule", wm.Page, {
             wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idsy", idsy);
             wm.Page.getPage("Schedule").details_activities_estudent.input.setValue("idact", id);
             wm.Page.getPage("Schedule").details_activities_estudent.update(); 
-            wm.Page.getPage("Schedule").logActivities.show();
+            wm.Page.getPage("Schedule").logActivities.show();        
 	},
 	details_activities_estudentSuccess: function(inSender, inDeprecated) {
 		var title = this.details_activities_estudent.getItem(0).data.title;    
         var fecha = this.details_activities_estudent.getItem(0).data.fecha;
-        var id = this.details_activities_estudent.getItem(0).data.id;
+        var id = this.details_activities_estudent.getItem(0).data.id;        
         var actividad = this.details_activities_estudent.getItem(0).data.actividad;
-        
+        var idpersona = wm.Page.getPage("Main").performance_family_grid.selectedItem.data.pid;
+       
         this.asignatura_editor.setDataValue(title);
         this.fecha_editor.setDataValue(fecha);
         this.no_actividad_editor.setDataValue(id);
         this.descripcion_actividad.setDataValue(actividad);
+
+        this.scoreServiceVariable.input.setValue("pidpersona", idpersona);
+        this.scoreServiceVariable.input.setValue("pidactividad", id);
+        this.scoreServiceVariable.update();
+	},
+	scoreServiceVariableSuccess: function(inSender, inDeprecated) {
+		var count = this.scoreServiceVariable.getCount();
+        var comentario = main.schedule_page_container.page.scoreServiceVariable.getItem(0).data.comentario;
+        if( count == 0 ){
+            this.result.setCaption("Actividad por completar");
+            this.comentario.setCaption("Comentario del docente: ");
+        }else{            
+            this.result.setCaption("Actividad completada");
+            this.comentario.setCaption("Comentario del docente: " + comentario);
+        }
 	},
 	_end: 0
 });

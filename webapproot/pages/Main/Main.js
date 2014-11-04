@@ -18,7 +18,7 @@ dojo.declare("Main", wm.Page, {
   "preferredDevice": "desktop",
 
   mySessionExpiredMethod: function(){
-    alert("Aviso importante: Sesión finalizada \n\n"+ "Su sesión ha sido finalizada. Por favor ingrese nuevamente.");
+    //alert("Aviso importante: Sesión finalizada \n\n"+ "Su sesión ha sido finalizada. Por favor ingrese nuevamente.");
     window.location.reload();  
   },    
   
@@ -1323,12 +1323,15 @@ dojo.declare("Main", wm.Page, {
         this.profile_changePic.hide();
 	},
 	profileFileUploadSuccess: function(inSender, fileList) {
-		this.profile_changePic.show();
-        var name = main.profileFileUpload.variable.getItemData(0).name;
+        this.profileFileUpload.hide();
+		this.profile_changePic.show();       
+        this.getRealNameService.update(); 
+	},
+    getRealNameServiceSuccess: function(inSender, inDeprecated) {
+        var name = this.getRealNameService.getData().dataValue;
         var now = new Date().getTime();
         var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
         var count = main.getImgNameService.getCount();
-        
         if(count == 0){
             this.insertImgUser.setValue("imgName", name);
             this.insertImgUser.setValue("fechaCreacion", now);
@@ -1341,7 +1344,7 @@ dojo.declare("Main", wm.Page, {
             this.getImgUpdate.input.setValue("pimageName",name);
             this.getImgUpdate.input.setValue("id", id);
             this.getImgUpdate.update();
-        } 
+        }
 	},
 	profileImgFormSuccess: function(inSender, inData) {
         var user = main.parents_global_user_info.getItem(0).data.usuario;
@@ -1364,6 +1367,73 @@ dojo.declare("Main", wm.Page, {
 	},   	
 	getImgUpdateSuccess: function(inSender, inDeprecated) {
 		this.getImgNameService.update(); // triggered the image show function
+	},
+	tramiteLiveForm1BeginInsert: function(inSender) {
+		var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+        var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+        var now = new Date().getTime();
+        this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
+        this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+        this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+        this.solicitanteLiveVariable.update();
+        this.referenciadoLiveVariable.update();
+        
+        this.fechaCreacionEditor2.setDataValue(now);
+        this.fechaModificacionEditor1.setDataValue(now);
+	},
+	tramiteLiveForm1BeginUpdate: function(inSender) {
+		var now = new Date().getTime();
+        var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+        var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+        this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
+        this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+        this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+        this.referenciadoLiveVariable.update();
+        this.solicitanteLiveVariable.update();
+        this.fechaModificacionEditor1.setDataValue(now);
+	},
+	solicitanteLiveVariableSuccess: function(inSender, inDeprecated) {
+        var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+		this.persona_id_referenciadoLookup1.setDisplayValue(idpersona);
+	},
+	parents_transportshipClick2: function(inSender) {
+        var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+		this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+        this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+        this.referenciadoLiveVariable.update();
+	},
+	parents_transportshipClick3: function(inSender) {
+		this.tramiteLiveVariable1.update();
+        this.tramiteautorizacionesLiveVariable1.update();
+	},
+	tramiteLiveVariable1Success: function(inSender, inDeprecated) {
+		this.tramiteDojoGrid.setSortIndex(0);
+	},
+	tramiteautorizacionesLiveVariable1Success: function(inSender, inDeprecated) {
+		this.tramiteautorizacionesDojoGrid.setSortIndex(0);
+	},
+	tramiteautorizacionesLiveForm1BeginUpdate: function(inSender) {
+        var now = new Date().getTime();
+        this.fechaActualizacionEditor2.setDataValue(now);
+	},
+	tramiteautorizacionesDojoGridSelect: function(inSender) {
+		var idtramite = main.tramiteautorizacionesDojoGrid.selectedItem.getData().tramite.idTramite;
+        this.TramitesAuxLiveVariable.filter.setValue("idTramite", idtramite);
+        this.TramitesAuxLiveVariable.update();
+	},
+
+	performance_family_gridSelect7: function(inSender) {
+		var perfil = main.parents_global_user_info.getItem(0).data.usuario;
+        this.getUserImg.input.setValue("pidpersona", perfil);
+        this.getUserImg.update();
+	},
+	getUserImgSuccess: function(inSender, inDeprecated) {
+		var id = main.performance_family_grid.selectedItem.getData().idtipo;
+        if(id == 1){
+            
+        }else{
+        
+        }
 	},
 	_end: 0
 });
