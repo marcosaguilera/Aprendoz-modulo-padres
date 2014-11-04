@@ -80,5 +80,26 @@ div.wmCheckboxSetItem {
 div#main_schedule_page_container_schedule_logActivities_titleBar {
     color: #fff;
     background-color: rgb(197, 53, 57) !important;
+}html.WMApp body .blue_bootstrap {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #428bca !important;
+    border-color: #357ebd !important;
 }
 

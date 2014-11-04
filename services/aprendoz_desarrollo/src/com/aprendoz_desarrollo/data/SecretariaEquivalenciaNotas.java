@@ -6,18 +6,18 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.SecretariaEquivalenciaNotas
- *  10/08/2014 08:54:31
+ *  10/16/2014 12:01:11
  * 
  */
 public class SecretariaEquivalenciaNotas {
 
     private Integer idSecretariaEquivalenciaNotas;
-    private Sy sy;
     private String calificacion;
     private String qualification;
     private Double puntaje;
     private Date fechaCreacion;
     private Date fechaActualizacion;
+    private Sy sy;
 
     public Integer getIdSecretariaEquivalenciaNotas() {
         return idSecretariaEquivalenciaNotas;
@@ -25,14 +25,6 @@ public class SecretariaEquivalenciaNotas {
 
     public void setIdSecretariaEquivalenciaNotas(Integer idSecretariaEquivalenciaNotas) {
         this.idSecretariaEquivalenciaNotas = idSecretariaEquivalenciaNotas;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public String getCalificacion() {
@@ -73,6 +65,14 @@ public class SecretariaEquivalenciaNotas {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
     }
 
 }

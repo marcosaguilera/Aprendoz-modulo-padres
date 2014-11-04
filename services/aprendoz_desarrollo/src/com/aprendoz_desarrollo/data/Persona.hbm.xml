@@ -230,17 +230,17 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscComentariosAlumnos"/>
         </set>
-        <set name="inscDirectorNivels" inverse="true" cascade="">
-            <key>
-                <column name="persona_id_persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscDirectorNivel"/>
-        </set>
         <set name="inscAlumActividads" inverse="true" cascade="">
             <key>
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumActividad"/>
+        </set>
+        <set name="inscDirectorNivels" inverse="true" cascade="">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscDirectorNivel"/>
         </set>
         <set name="inscPersonaGrupoFamiliars" inverse="true" cascade="">
             <key>
@@ -350,23 +350,11 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.PersonaCarne"/>
         </set>
-        <set name="inscAlumAsigCopies" inverse="true" cascade="">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy"/>
-        </set>
         <set name="perfilPersonaImgs" inverse="true" cascade="">
             <key>
                 <column name="persona_id_persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.PerfilPersonaImg"/>
-        </set>
-        <set name="inscPersonaEduComs" inverse="true" cascade="">
-            <key>
-                <column name="persona_id_persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaEduCom"/>
         </set>
         <set name="coordinadoreses" inverse="true" cascade="">
             <key>
@@ -374,17 +362,17 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Coordinadores"/>
         </set>
+        <set name="inscPersonaEduComs" inverse="true" cascade="">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaEduCom"/>
+        </set>
         <set name="matriculas" inverse="true" cascade="">
             <key>
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Matricula"/>
-        </set>
-        <set name="inscAlumAsigCopy3s" inverse="true" cascade="">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy3"/>
         </set>
         <set name="inscAlumAsigs" inverse="true" cascade="">
             <key>
@@ -404,17 +392,17 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCosto"/>
         </set>
-        <set name="inscAlumAsigCopy2s" inverse="true" cascade="">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy2"/>
-        </set>
         <set name="coordinacions" inverse="true" cascade="">
             <key>
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Coordinacion"/>
+        </set>
+        <set name="tramites" inverse="true" cascade="">
+            <key>
+                <column name="id_referenciado" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Tramite"/>
         </set>
     </class>
 </hibernate-mapping>

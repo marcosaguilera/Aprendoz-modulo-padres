@@ -27,6 +27,11 @@
 		}],
 		"returnType": "com.wavemaker.runtime.server.DownloadResponse"
 	}, {
+		"name": "getRealFileName",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
 		"name": "listFiles",
 		"operationType": null,
 		"parameters": null,

@@ -52,7 +52,8 @@ right: 'month,agendaWeek,agendaDay'
 slotEventOverlap: true,
 defaultDate: now,
 editable: true,
-events: json
+events: json,
+eventColor: '#378006'
 });
 $('#main_schedule_page_container_schedule_schedule_builder_container').fullCalendar( 'refetchEvents');
 },
@@ -76,10 +77,25 @@ var title = this.details_activities_estudent.getItem(0).data.title;
 var fecha = this.details_activities_estudent.getItem(0).data.fecha;
 var id = this.details_activities_estudent.getItem(0).data.id;
 var actividad = this.details_activities_estudent.getItem(0).data.actividad;
+var idpersona = wm.Page.getPage("Main").performance_family_grid.selectedItem.data.pid;
 this.asignatura_editor.setDataValue(title);
 this.fecha_editor.setDataValue(fecha);
 this.no_actividad_editor.setDataValue(id);
 this.descripcion_actividad.setDataValue(actividad);
+this.scoreServiceVariable.input.setValue("pidpersona", idpersona);
+this.scoreServiceVariable.input.setValue("pidactividad", id);
+this.scoreServiceVariable.update();
+},
+scoreServiceVariableSuccess: function(inSender, inDeprecated) {
+var count = this.scoreServiceVariable.getCount();
+var comentario = main.schedule_page_container.page.scoreServiceVariable.getItem(0).data.comentario;
+if( count == 0 ){
+this.result.setCaption("Actividad por completar");
+this.comentario.setCaption("Comentario del docente: ");
+}else{
+this.result.setCaption("Actividad completada");
+this.comentario.setCaption("Comentario del docente: " + comentario);
+}
 },
 _end: 0
 });
@@ -94,13 +110,21 @@ input: ["wm.ServiceInput", {"type":"getSyByCurDateInputs"}, {}]
 details_activities_estudent: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"detailsActivitiesStudent","service":"aprendoz_desarrollo"}, {"onSuccess":"details_activities_estudentSuccess"}, {
 input: ["wm.ServiceInput", {"type":"detailsActivitiesStudentInputs"}, {}]
 }],
+liveVariable1: ["wm.LiveVariable", {"inFlightBehavior":"executeLast"}, {}, {
+liveView: ["wm.LiveView", {}, {}]
+}],
+scoreServiceVariable: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getActivityScoreByIdUser","service":"aprendoz_desarrollo"}, {"onSuccess":"scoreServiceVariableSuccess"}, {
+input: ["wm.ServiceInput", {"type":"getActivityScoreByIdUserInputs"}, {}]
+}],
 logActivities: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"450px","height":"450px","styles":{},"title":"Detalles de Actividades y tareas","titlebarBorderColor":"#fbfbfb","titlebarHeight":"26"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"1","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 detalles_actividad: ["wm.Panel", {"height":"365px","horizontalAlign":"center","styles":{},"verticalAlign":"middle","width":"100%"}, {}, {
 asignatura_editor: ["wm.Text", {"border":"0","caption":"Asignatura","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
 fecha_editor: ["wm.Date", {"border":"0","caption":"Fecha","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
 no_actividad_editor: ["wm.Text", {"border":"0","caption":"Código Actividad","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
-descripcion_actividad: ["wm.LargeTextArea", {"border":"0","caption":"Descripción Actividad","dataValue":undefined,"desktopHeight":"225px","displayValue":"","height":"225px","mobileHeight":"100%","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}]
+descripcion_actividad: ["wm.LargeTextArea", {"border":"0","caption":"Descripción Actividad","dataValue":undefined,"desktopHeight":"163px","displayValue":"","height":"163px","mobileHeight":"100%","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
+result: ["wm.Label", {"align":"center","caption":"","height":"35px","padding":"4","styles":{"backgroundColor":"#d3d3d3"},"width":"404px"}, {}],
+comentario: ["wm.Label", {"caption":"Comentario del docente:","height":"65px","padding":"4","singleLine":false,"styles":{"color":"#000000"},"width":"404px"}, {}]
 }]
 }],
 buttonBar: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{}}, {}, {
@@ -116,7 +140,7 @@ layoutBox1: ["wm.Layout", {"horizontalAlign":"left","padding":"10","styles":{"ba
 schedule_main_panel: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{"backgroundColor":"#d2c9c9"},"verticalAlign":"top","width":"100%"}, {}, {
 schedule_builder: ["wm.Panel", {"height":"100%","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"100%"}, {}, {
 panel1: ["wm.Panel", {"height":"48px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundColor":"#ecf0f1"},"verticalAlign":"middle","width":"100%"}, {}, {
-detalles: ["wm.Button", {"_classes":{"domNode":["detalles"]},"caption":"Ver detalles","desktopHeight":"43px","height":"43px","margin":"4","styles":{},"width":"136px"}, {"onclick":"detallesClick"}],
+detalles: ["wm.Button", {"_classes":{"domNode":["blue_bootstrap"]},"caption":"Ver detalles","desktopHeight":"43px","height":"43px","iconHeight":"24px","iconUrl":"resources/images/iconsmaster_v2/schedule.png","iconWidth":"24px","margin":"4","styles":{},"width":"155px"}, {"onclick":"detallesClick"}],
 fire: ["wm.Button", {"caption":"fire_button","margin":"4","showing":false}, {"onclick":"fireClick"}]
 }],
 schedule_builder_container: ["wm.Panel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","styles":{},"verticalAlign":"top","width":"100%"}, {}]

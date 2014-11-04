@@ -20,18 +20,6 @@
         <many-to-one name="sy" class="com.aprendoz_desarrollo.data.Sy">
             <column name="SY_Id_SY" not-null="true"/>
         </many-to-one>
-        <set name="inscAlumAsigCopies" inverse="true" cascade="">
-            <key>
-                <column name="Periodo_Id_Periodo" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy"/>
-        </set>
-        <set name="inscAlumAsigCopy2s" inverse="true" cascade="">
-            <key>
-                <column name="Periodo_Id_Periodo" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy2"/>
-        </set>
         <set name="inscCursoAsigs" inverse="true" cascade="">
             <key>
                 <column name="Periodo_Id_Periodo" not-null="true"/>
@@ -49,12 +37,6 @@
                 <column name="Periodo_Id_Periodo" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsigCopy"/>
-        </set>
-        <set name="inscAlumAsigCopy3s" inverse="true" cascade="">
-            <key>
-                <column name="Periodo_Id_Periodo" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsigCopy3"/>
         </set>
     </class>
 </hibernate-mapping>
