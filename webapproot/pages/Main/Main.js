@@ -678,6 +678,7 @@ dojo.declare("Main", wm.Page, {
             this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
             this.parents_variable_insert_educom_subscription.setValue("tipoPago.idTipoPago", tipoPago);
             this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
+            this.parents_variable_insert_educom_subscription.setValue("activoRetirado", true);
             this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription); 
             this.comunity_action_inscription_educom.insertData();    
         }
@@ -690,6 +691,7 @@ dojo.declare("Main", wm.Page, {
             this.parents_variable_insert_educom_subscription.setValue("tomaTransporte", tr);
             this.parents_variable_insert_educom_subscription.setValue("tipoPago.idTipoPago", tipoPago);
             this.parents_variable_insert_educom_subscription.setValue("plazo", plazo);
+            this.parents_variable_insert_educom_subscription.setValue("activoRetirado", true);
             this.comunity_action_inscription_educom.setDataSet(this.parents_variable_insert_educom_subscription); 
             this.comunity_action_inscription_educom.insertData();   
         }     
@@ -870,6 +872,7 @@ dojo.declare("Main", wm.Page, {
 		var selectedRow= main.performance_family_grid.isRowSelected;
         if(selectedRow == true){
           main.parents_local_comunity_subscribed_curses.filter.setValue("educom.sy.idSy", 5);
+          main.parents_local_comunity_subscribed_curses.filter.setValue("activoRetirado", true);
           this.parents_local_comunity_subscribed_curses.update();  
         }else{
           alert("Por favor seleccione un integrante del grupo familiar para realizar la inscripción de Cursos.")
@@ -1394,7 +1397,7 @@ dojo.declare("Main", wm.Page, {
 	},
 	solicitanteLiveVariableSuccess: function(inSender, inDeprecated) {
         var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
-		this.persona_id_referenciadoLookup1.setDisplayValue(idpersona);
+		this.persona_id_solicitanteLookup1.setDisplayValue(idpersona);
 	},
 	parents_transportshipClick2: function(inSender) {
         var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
@@ -1434,6 +1437,9 @@ dojo.declare("Main", wm.Page, {
         }else{
         
         }
+	},
+	comunity_terms_acceptClick: function(inSender) {
+		
 	},
 	_end: 0
 });
