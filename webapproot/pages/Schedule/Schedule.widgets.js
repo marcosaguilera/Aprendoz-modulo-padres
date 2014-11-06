@@ -21,7 +21,7 @@ Schedule.widgets = {
 				fecha_editor: ["wm.Date", {"border":"0","caption":"Fecha","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
 				no_actividad_editor: ["wm.Text", {"border":"0","caption":"Código Actividad","captionSize":"110px","dataValue":undefined,"desktopHeight":"32px","displayValue":"","height":"32px","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
 				descripcion_actividad: ["wm.LargeTextArea", {"border":"0","caption":"Descripción Actividad","dataValue":undefined,"desktopHeight":"163px","displayValue":"","height":"163px","mobileHeight":"100%","readonly":true,"styles":{"fontSize":"12px"},"width":"360px"}, {}],
-				result: ["wm.Label", {"align":"center","caption":"","height":"35px","padding":"4","styles":{"backgroundColor":"#d3d3d3"},"width":"404px"}, {}],
+				result: ["wm.Label", {"align":"center","caption":"","height":"35px","padding":"4","styles":{"backgroundColor":"#d3d3d3","color":"#ffffff"},"width":"404px"}, {}],
 				comentario: ["wm.Label", {"caption":"Comentario del docente:","height":"65px","padding":"4","singleLine":false,"styles":{"color":"#000000"},"width":"404px"}, {}]
 			}]
 		}],

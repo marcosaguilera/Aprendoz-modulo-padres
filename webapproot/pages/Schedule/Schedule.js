@@ -91,14 +91,18 @@ dojo.declare("Schedule", wm.Page, {
         this.scoreServiceVariable.update();
 	},
 	scoreServiceVariableSuccess: function(inSender, inDeprecated) {
-		var count = this.scoreServiceVariable.getCount();
-        var comentario = main.schedule_page_container.page.scoreServiceVariable.getItem(0).data.comentario;
-        if( count == 0 ){
+		var count = this.scoreServiceVariable.getCount();      
+        if( count == 0 ){           
             this.result.setCaption("Actividad por completar");
             this.comentario.setCaption("Comentario del docente: ");
-        }else{            
+            $('#main_schedule_page_container_schedule_result')
+                    .css('background-color', '#c53539');
+        }else{    
+            var comentario = this.scoreServiceVariable.getItem(0).data.comentario;
             this.result.setCaption("Actividad completada");
             this.comentario.setCaption("Comentario del docente: " + comentario);
+            $('#main_schedule_page_container_schedule_result')
+                    .css('background-color', '#63bb00');
         }
 	},
 	_end: 0
