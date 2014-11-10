@@ -146,8 +146,9 @@ CONCAT(a.asignatura) as title,
 CONCAT(str(year( act.fecha)),&apos;-&apos;,str(month(act.fecha)),&apos;-&apos;,str(day( act.fecha))) as start,
 COUNT(*) as totalActividades
 FROM InscAlumAsig iaa
-INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy
-WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL
+INNER JOIN iaa.asignatura a INNER JOIN a.unidads u INNER JOIN u.subtopicos s INNER JOIN s.actividads act INNER JOIN iaa.persona p INNER JOIN iaa.periodo per INNER JOIN per.sy _sy INNER JOIN act.tipoDesempeno tipod
+INNER JOIN act.tipoActividad tipoa
+WHERE p.idPersona=:idp AND _sy.idSy=:idsy AND act.fecha IS NOT NULL AND act.requeridoAlternativo=true AND (tipod.idTipoDesempeno=3 OR tipoa.idTipoActividad=2)
 GROUP BY a.idAsignatura, act.fecha
 ORDER BY act.fecha
     </query>

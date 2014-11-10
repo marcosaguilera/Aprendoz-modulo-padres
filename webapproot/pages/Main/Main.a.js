@@ -1937,7 +1937,7 @@ input: ["wm.ServiceInput", {"type":"imgNameByUserInputs"}, {}]
 }],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"112px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
+syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"syDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 }],
@@ -2543,9 +2543,9 @@ estado_cuenta_panel_button: ["wm.Panel", {"height":"55px","horizontalAlign":"cen
 estado_cuenta_boton_descarga: ["wm.Button", {"caption":"Descargar extracto","desktopHeight":"55px","height":"55px","iconHeight":"20px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/download.png","iconWidth":"32px","margin":"4","width":"155px"}, {"onclick":"estado_cuenta_boton_descargaClick"}]
 }]
 }],
-panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","lock":true,"margin":"5","showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","margin":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 transportes_rutas: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Rutas","desktopHeight":"60px","height":"60px","margin":"4","showing":false,"styles":{},"width":"120px"}, {}],
-panel7: ["wm.Panel", {"_classes":{"domNode":["blueButton"]},"height":"48px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
+panel7: ["wm.Panel", {"_classes":{"domNode":["blueButton"]},"height":"36px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
 transportes_solicitudes: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","showing":false,"styles":{},"width":"120px"}, {"onclick":"transportes_solicitudesClick","onclick1":"transportes_solicitudesClick1"}],
 Solicitud_de_Tramite: ["wm.Label", {"caption":"Solicitud de Tramite","height":"100%","padding":"4","styles":{"fontSize":"15px"},"width":"359px"}, {}]
 }],
@@ -2594,7 +2594,7 @@ wire: ["wm.Wire", {"source":"tramiteDojoGrid.emptySelection","targetId":null,"ta
 }]
 }],
 pendientes_autorizacion: ["wm.Panel", {"height":"50%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-panel8: ["wm.Panel", {"_classes":{"domNode":["red"]},"height":"48px","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
+panel8: ["wm.Panel", {"_classes":{"domNode":["red"]},"height":"36px","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
 autorizar_butt: ["wm.Button", {"_classes":{"domNode":["Green"]},"border":"0","caption":"Autorizar","height":"100%","margin":"0","showing":false,"styles":{},"width":"110px"}, {}],
 Solicitud_de_Tramite1: ["wm.Label", {"caption":"Autorizaciones","height":"100%","padding":"4","styles":{"fontSize":"15px"},"width":"359px"}, {}]
 }],
@@ -2634,7 +2634,7 @@ wire: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid.emptySelection","targ
 }]
 }]
 }],
-panel_actividades: ["wm.Panel", {"height":"100%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+panel_actividades: ["wm.Panel", {"height":"100%","horizontalAlign":"left","lock":true,"showing":false,"styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 schedule_page_container: ["wm.PageContainer", {"loadParentFirst":false,"pageName":"Schedule","styles":{},"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {"onPageChanged":"schedule_page_containerPageChanged","onStart":"schedule_page_containerStart"}]
 }]
 }]

@@ -1435,7 +1435,7 @@ dojo.declare("Main", wm.Page, {
         if(id == 1){
             
         }else{
-        
+            
         }
 	},
 	comunity_terms_acceptClick: function(inSender) {

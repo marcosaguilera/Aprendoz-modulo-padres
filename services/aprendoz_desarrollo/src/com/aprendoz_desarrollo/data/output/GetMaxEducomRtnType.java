@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getMaxEducom" on 10/29/2014 07:46:48
+ * Generated for query "getMaxEducom" on 11/07/2014 07:43:20
  * 
  */
 public class GetMaxEducomRtnType {
