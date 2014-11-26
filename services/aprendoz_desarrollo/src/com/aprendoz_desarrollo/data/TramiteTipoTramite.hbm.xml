@@ -8,6 +8,9 @@
         <property name="tramite" type="string">
             <column name="tramite" not-null="true"/>
         </property>
+        <property name="disponibleUi" type="boolean">
+            <column name="disponible_ui"/>
+        </property>
         <property name="fechaCreacion" type="timestamp">
             <column name="fecha_creacion" length="19"/>
         </property>

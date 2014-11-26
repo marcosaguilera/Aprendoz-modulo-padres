@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Tramite
- *  10/16/2014 12:01:12
+ *  11/24/2014 08:53:35
  * 
  */
 public class Tramite {
@@ -18,12 +18,13 @@ public class Tramite {
     private Date horaTramite;
     private Date fechaEsperada;
     private Date fechaEntrega;
+    private String url_file;
     private String comentarios;
     private Date fechaCreacion;
     private Date fechaModificacion;
     private TramiteTipoTramite tramiteTipoTramite;
-    private com.aprendoz_desarrollo.data.Persona persona_id_solicitante;
-    private com.aprendoz_desarrollo.data.Persona persona_id_referenciado;
+    private com.aprendoz_desarrollo.data.Persona solicitante;
+    private com.aprendoz_desarrollo.data.Persona referenciado;
     private Set<com.aprendoz_desarrollo.data.TramiteAutorizaciones> tramiteAutorizacioneses = new HashSet<com.aprendoz_desarrollo.data.TramiteAutorizaciones>();
 
     public Integer getIdTramite() {
@@ -66,6 +67,14 @@ public class Tramite {
         this.fechaEntrega = fechaEntrega;
     }
 
+    public String getUrl_file() {
+        return url_file;
+    }
+
+    public void setUrl_file(String url_file) {
+        this.url_file = url_file;
+    }
+
     public String getComentarios() {
         return comentarios;
     }
@@ -98,20 +107,20 @@ public class Tramite {
         this.tramiteTipoTramite = tramiteTipoTramite;
     }
 
-    public com.aprendoz_desarrollo.data.Persona getPersona_id_solicitante() {
-        return persona_id_solicitante;
+    public com.aprendoz_desarrollo.data.Persona getSolicitante() {
+        return solicitante;
     }
 
-    public void setPersona_id_solicitante(com.aprendoz_desarrollo.data.Persona persona_id_solicitante) {
-        this.persona_id_solicitante = persona_id_solicitante;
+    public void setSolicitante(com.aprendoz_desarrollo.data.Persona solicitante) {
+        this.solicitante = solicitante;
     }
 
-    public com.aprendoz_desarrollo.data.Persona getPersona_id_referenciado() {
-        return persona_id_referenciado;
+    public com.aprendoz_desarrollo.data.Persona getReferenciado() {
+        return referenciado;
     }
 
-    public void setPersona_id_referenciado(com.aprendoz_desarrollo.data.Persona persona_id_referenciado) {
-        this.persona_id_referenciado = persona_id_referenciado;
+    public void setReferenciado(com.aprendoz_desarrollo.data.Persona referenciado) {
+        this.referenciado = referenciado;
     }
 
     public Set<com.aprendoz_desarrollo.data.TramiteAutorizaciones> getTramiteAutorizacioneses() {

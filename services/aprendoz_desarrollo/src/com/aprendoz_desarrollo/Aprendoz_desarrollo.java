@@ -30,6 +30,7 @@ import com.aprendoz_desarrollo.data.output.HaveNewIntegrantsRtnType;
 import com.aprendoz_desarrollo.data.output.Hq_ls_gradoRtnType;
 import com.aprendoz_desarrollo.data.output.HqlAlergiasByUserRtnType;
 import com.aprendoz_desarrollo.data.output.HqlGetTotalPagarRtnType;
+import com.aprendoz_desarrollo.data.output.HqlTipoTramiteRtnType;
 import com.aprendoz_desarrollo.data.output.Hql_dash_asignaturasRtnType;
 import com.aprendoz_desarrollo.data.output.Hql_ls_paisRtnType;
 import com.aprendoz_desarrollo.data.output.ImgNameByUserRtnType;
@@ -66,7 +67,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  11/07/2014 07:43:59
+ *  11/24/2014 08:53:51
  * 
  */
 @SuppressWarnings("unchecked")
@@ -261,6 +262,10 @@ public class Aprendoz_desarrollo
 
     public List<HqlGetTotalPagarRtnType> hqlGetTotalPagar(Integer idp, PagingOptions pagingOptions) {
         return ((List<HqlGetTotalPagarRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.hqlGetTotalPagarQueryName), idp, pagingOptions));
+    }
+
+    public List<HqlTipoTramiteRtnType> hqlTipoTramite(PagingOptions pagingOptions) {
+        return ((List<HqlTipoTramiteRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.hqlTipoTramiteQueryName), pagingOptions));
     }
 
     public List<Hql_dash_asignaturasRtnType> hql_dash_asignaturas(Integer idsy, Integer idpersona, PagingOptions pagingOptions) {

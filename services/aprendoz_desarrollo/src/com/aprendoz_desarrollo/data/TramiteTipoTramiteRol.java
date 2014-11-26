@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.TramiteTipoTramiteRol
- *  10/16/2014 12:01:13
+ *  11/24/2014 08:53:35
  * 
  */
 public class TramiteTipoTramiteRol {
@@ -18,6 +18,7 @@ public class TramiteTipoTramiteRol {
     private Boolean apruebaSolicita;
     private Date fechaCreacion;
     private Date fechaActualizacion;
+    private Boolean notificacion;
     private TramiteTipoTramite tramiteTipoTramite;
 
     public Integer getTramiteTipoRolId() {
@@ -74,6 +75,14 @@ public class TramiteTipoTramiteRol {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public Boolean getNotificacion() {
+        return notificacion;
+    }
+
+    public void setNotificacion(Boolean notificacion) {
+        this.notificacion = notificacion;
     }
 
     public TramiteTipoTramite getTramiteTipoTramite() {

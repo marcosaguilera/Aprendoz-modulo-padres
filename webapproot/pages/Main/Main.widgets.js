@@ -373,26 +373,6 @@ Main.widgets = {
 	uploadCustom: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"listFiles","service":"FileUploadDownload"}, {}, {
 		input: ["wm.ServiceInput", {"type":"listFilesInputs"}, {}]
 	}],
-	tramiteLiveVariable1: ["wm.LiveVariable", {"autoUpdate":false,"orderBy":"desc: idTramite","startUpdate":false,"type":"com.aprendoz_desarrollo.data.Tramite"}, {"onSuccess":"tramiteLiveVariable1Success"}, {
-		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.Tramite","related":["tramiteTipoTramite","persona_id_solicitante","persona_id_referenciado"],"view":[
-{"caption":"IdTramite","sortable":true,"dataIndex":"idTramite","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},
-{"caption":"FechaTramite","sortable":true,"dataIndex":"fechaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},
-{"caption":"HoraTramite","sortable":true,"dataIndex":"horaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},
-{"caption":"FechaEsperada","sortable":true,"dataIndex":"fechaEsperada","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},
-{"caption":"FechaEntrega","sortable":true,"dataIndex":"fechaEntrega","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"},
-{"caption":"Comentarios","sortable":true,"dataIndex":"comentarios","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1005,"subType":null,"widthUnits":"px"},
-{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1006,"subType":null,"widthUnits":"px"},
-{"caption":"FechaModificacion","sortable":true,"dataIndex":"fechaModificacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1007,"subType":null,"widthUnits":"px"},
-{"caption":"Apellido1","sortable":true,"dataIndex":"persona_id_solicitante.apellido1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3007},
-{"caption":"Apellido2","sortable":true,"dataIndex":"persona_id_solicitante.apellido2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3008},
-{"caption":"Nombre1","sortable":true,"dataIndex":"persona_id_solicitante.nombre1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3009},
-{"caption":"Nombre2","sortable":true,"dataIndex":"persona_id_solicitante.nombre2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3010},
-{"caption":"Apellido1","sortable":true,"dataIndex":"persona_id_referenciado.apellido1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4007},
-{"caption":"Apellido2","sortable":true,"dataIndex":"persona_id_referenciado.apellido2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4008},
-{"caption":"Nombre1","sortable":true,"dataIndex":"persona_id_referenciado.nombre1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4009},
-{"caption":"Nombre2","sortable":true,"dataIndex":"persona_id_referenciado.nombre2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4010}
-]}, {}]
-	}],
 	solicitanteLiveVariable: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","maxResults":10,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.Persona"}, {"onSuccess":"solicitanteLiveVariableSuccess"}, {
 		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.Persona","view":[
 {"caption":"IdPersona","sortable":true,"dataIndex":"idPersona","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
@@ -524,7 +504,7 @@ Main.widgets = {
 ]}, {}]
 	}],
 	tramiteautorizacionesLiveVariable1: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.TramiteAutorizaciones"}, {"onSuccess":"tramiteautorizacionesLiveVariable1Success"}, {
-		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.TramiteAutorizaciones","related":["tramite","tramite.tramiteTipoTramite","tramite.persona_id_solicitante"],"view":[
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.TramiteAutorizaciones","related":["tramite","tramite.tramiteTipoTramite","tramite.persona_id_solicitante","persona_id_persona"],"view":[
 {"caption":"IdAutorizacion","sortable":true,"dataIndex":"idAutorizacion","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
 {"caption":"PersonaIdPersona","sortable":true,"dataIndex":"personaIdPersona","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1,"subType":null},
 {"caption":"Aprobacion","sortable":true,"dataIndex":"aprobacion","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":2,"subType":null},
@@ -533,9 +513,6 @@ Main.widgets = {
 {"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":5,"subType":null}
 ]}, {}]
 	}],
-	liveVariable1: ["wm.LiveVariable", {"inFlightBehavior":"executeLast"}, {}, {
-		liveView: ["wm.LiveView", {}, {}]
-	}],
 	TramitesAuxLiveVariable: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","maxResults":5,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.Tramite"}, {}, {
 		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.Tramite","view":[
 {"caption":"IdTramite","sortable":true,"dataIndex":"idTramite","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
@@ -543,9 +520,10 @@ Main.widgets = {
 {"caption":"HoraTramite","sortable":true,"dataIndex":"horaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":2,"subType":null},
 {"caption":"FechaEsperada","sortable":true,"dataIndex":"fechaEsperada","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":3,"subType":null},
 {"caption":"FechaEntrega","sortable":true,"dataIndex":"fechaEntrega","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":4,"subType":null},
-{"caption":"Comentarios","sortable":true,"dataIndex":"comentarios","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":5,"subType":null},
-{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":6,"subType":null},
-{"caption":"FechaModificacion","sortable":true,"dataIndex":"fechaModificacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":7,"subType":null}
+{"caption":"Url_file","sortable":true,"dataIndex":"url_file","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":5,"subType":null},
+{"caption":"Comentarios","sortable":true,"dataIndex":"comentarios","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":6,"subType":null},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":7,"subType":null},
+{"caption":"FechaModificacion","sortable":true,"dataIndex":"fechaModificacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":8,"subType":null}
 ]}, {}]
 	}],
 	getRealNameService: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"getRealFileName","service":"FileUploadDownload"}, {"onSuccess":"getRealNameServiceSuccess"}, {
@@ -553,6 +531,119 @@ Main.widgets = {
 	}],
 	getUserImg: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"imgNameByUser","service":"aprendoz_desarrollo"}, {"onSuccess":"getUserImgSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"imgNameByUserInputs"}, {}]
+	}],
+	tramiteTipoTramite: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","matchMode":"anywhere","startUpdate":false,"type":"com.aprendoz_desarrollo.data.TramiteTipoTramite"}, {}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.TramiteTipoTramite","view":[
+{"caption":"IdTipoTramite","sortable":true,"dataIndex":"idTipoTramite","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
+{"caption":"Tramite","sortable":true,"dataIndex":"tramite","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1,"subType":null},
+{"caption":"DisponibleUi","sortable":true,"dataIndex":"disponibleUi","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":2,"subType":null},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":3,"subType":null},
+{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":4,"subType":null}
+]}, {}]
+	}],
+	tramiteLiveVariable2: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.Tramite"}, {"onSuccess":"tramiteLiveVariable2Success"}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.Tramite","related":["tramiteTipoTramite","solicitante","referenciado"],"view":[
+{"caption":"IdTramite","sortable":true,"dataIndex":"idTramite","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},
+{"caption":"FechaTramite","sortable":true,"dataIndex":"fechaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},
+{"caption":"HoraTramite","sortable":true,"dataIndex":"horaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},
+{"caption":"FechaEsperada","sortable":true,"dataIndex":"fechaEsperada","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},
+{"caption":"FechaEntrega","sortable":true,"dataIndex":"fechaEntrega","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"},
+{"caption":"Url_file","sortable":true,"dataIndex":"url_file","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1005,"subType":null,"widthUnits":"px"},
+{"caption":"Comentarios","sortable":true,"dataIndex":"comentarios","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1006,"subType":null,"widthUnits":"px"},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1007,"subType":null,"widthUnits":"px"},
+{"caption":"FechaModificacion","sortable":true,"dataIndex":"fechaModificacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1008,"subType":null,"widthUnits":"px"},
+{"caption":"IdTipoTramite","sortable":true,"dataIndex":"tramiteTipoTramite.idTipoTramite","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":2000},
+{"caption":"Tramite","sortable":true,"dataIndex":"tramiteTipoTramite.tramite","type":"java.lang.String","displayType":"Text","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":2001},
+{"caption":"IdPersona","sortable":true,"dataIndex":"solicitante.idPersona","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3000},
+{"caption":"Apellido1","sortable":true,"dataIndex":"solicitante.apellido1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3007},
+{"caption":"Apellido2","sortable":true,"dataIndex":"solicitante.apellido2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3008},
+{"caption":"Nombre1","sortable":true,"dataIndex":"solicitante.nombre1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3009},
+{"caption":"Nombre2","sortable":true,"dataIndex":"solicitante.nombre2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":3010},
+{"caption":"IdPersona","sortable":true,"dataIndex":"referenciado.idPersona","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4000},
+{"caption":"Apellido1","sortable":true,"dataIndex":"referenciado.apellido1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4007},
+{"caption":"Apellido2","sortable":true,"dataIndex":"referenciado.apellido2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4008},
+{"caption":"Nombre1","sortable":true,"dataIndex":"referenciado.nombre1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4009},
+{"caption":"Nombre2","sortable":true,"dataIndex":"referenciado.nombre2","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":4010}
+]}, {}]
+	}],
+	correosCoordinadoresLv: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","maxResults":10,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.PadresCorreoCoordinador"}, {}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.PadresCorreoCoordinador","view":[
+{"caption":"Id","sortable":true,"dataIndex":"id","type":"com.aprendoz_desarrollo.data.PadresCorreoCoordinadorId","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
+{"caption":"IdCurso","sortable":true,"dataIndex":"id.idCurso","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
+{"caption":"Curso","sortable":true,"dataIndex":"id.curso","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1,"subType":null},
+{"caption":"NombreLdap","sortable":true,"dataIndex":"id.nombreLdap","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":2,"subType":null},
+{"caption":"Email","sortable":true,"dataIndex":"id.email","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":3,"subType":null},
+{"caption":"Apellido1","sortable":true,"dataIndex":"id.apellido1","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":4,"subType":null},
+{"caption":"Apellido2","sortable":true,"dataIndex":"id.apellido2","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":5,"subType":null},
+{"caption":"Nombre1","sortable":true,"dataIndex":"id.nombre1","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6,"subType":null},
+{"caption":"Nombre2","sortable":true,"dataIndex":"id.nombre2","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":7,"subType":null}
+]}, {}]
+	}],
+	tipoTramiteLv: ["wm.LiveVariable", {"inFlightBehavior":"executeLast","maxResults":20,"type":"com.aprendoz_desarrollo.data.TramiteTipoTramite"}, {}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.TramiteTipoTramite","view":[
+{"caption":"IdTipoTramite","sortable":true,"dataIndex":"idTipoTramite","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},
+{"caption":"Tramite","sortable":true,"dataIndex":"tramite","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},
+{"caption":"DisponibleUi","sortable":true,"dataIndex":"disponibleUi","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},
+{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"}
+]}, {}]
+	}],
+	tramites_correoCoordinadorLv: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","maxResults":10,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.PadresCorreoCoordinador"}, {}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.PadresCorreoCoordinador","related":["id"],"view":[
+{"caption":"IdCurso","sortable":true,"dataIndex":"id.idCurso","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6000,"subType":null,"widthUnits":"px"},
+{"caption":"Curso","sortable":true,"dataIndex":"id.curso","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6001,"subType":null,"widthUnits":"px"},
+{"caption":"NombreLdap","sortable":true,"dataIndex":"id.nombreLdap","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6002,"subType":null,"widthUnits":"px"},
+{"caption":"Email","sortable":true,"dataIndex":"id.email","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6003,"subType":null,"widthUnits":"px"},
+{"caption":"Apellido1","sortable":true,"dataIndex":"id.apellido1","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6004,"subType":null,"widthUnits":"px"},
+{"caption":"Apellido2","sortable":true,"dataIndex":"id.apellido2","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6005,"subType":null,"widthUnits":"px"},
+{"caption":"Nombre1","sortable":true,"dataIndex":"id.nombre1","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6006,"subType":null,"widthUnits":"px"},
+{"caption":"Nombre2","sortable":true,"dataIndex":"id.nombre2","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6007,"subType":null,"widthUnits":"px"},
+{"caption":"PersonaIdPersona","sortable":true,"dataIndex":"id.personaIdPersona","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":6008}
+]}, {}]
+	}],
+	tramites_correoPadresLv: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","startUpdate":false,"type":"com.aprendoz_desarrollo.data.PadresCorreosPadres"}, {}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.PadresCorreosPadres","view":[
+{"caption":"Id","sortable":true,"dataIndex":"id","type":"com.aprendoz_desarrollo.data.PadresCorreosPadresId","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
+{"caption":"IdPersona","sortable":true,"dataIndex":"id.idPersona","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},
+{"caption":"Codigo","sortable":true,"dataIndex":"id.codigo","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1,"subType":null},
+{"caption":"Matriculado","sortable":true,"dataIndex":"id.matriculado","type":"java.lang.Boolean","displayType":"CheckBox","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":2,"subType":null},
+{"caption":"ActivoRetirado","sortable":true,"dataIndex":"id.activoRetirado","type":"java.lang.Boolean","displayType":"CheckBox","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":3,"subType":null},
+{"caption":"Apellido1","sortable":true,"dataIndex":"id.apellido1","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":4,"subType":null},
+{"caption":"Apellido2","sortable":true,"dataIndex":"id.apellido2","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":5,"subType":null},
+{"caption":"Nombre1","sortable":true,"dataIndex":"id.nombre1","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":6,"subType":null},
+{"caption":"Nombre2","sortable":true,"dataIndex":"id.nombre2","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":7,"subType":null},
+{"caption":"CorreoPapa","sortable":true,"dataIndex":"id.correoPapa","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":8,"subType":null},
+{"caption":"CorreoMama","sortable":true,"dataIndex":"id.correoMama","type":"java.lang.String","displayType":"Text","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":9,"subType":null},
+{"caption":"GrupoFamiliarIdGrupoFamiliar","sortable":true,"dataIndex":"id.grupoFamiliarIdGrupoFamiliar","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":10,"subType":null},
+{"caption":"SyIdSy","sortable":true,"dataIndex":"id.syIdSy","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":11,"subType":null}
+]}, {}]
+	}],
+	tramites_enviarNotificacion: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionCoordinador"}, {}, {
+		input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+	}],
+	tramiteautorizacionesLiveVariable2: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"type":"com.aprendoz_desarrollo.data.TramiteAutorizaciones"}, {"onSuccess":"tramiteautorizacionesLiveVariable2Success"}, {
+		liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.TramiteAutorizaciones","related":["tramite","tramite.tramiteTipoTramite","tramite.referenciado"],"view":[
+{"caption":"IdAutorizacion","sortable":true,"dataIndex":"idAutorizacion","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":12000,"subType":null,"widthUnits":"px"},
+{"caption":"PersonaIdPersona","sortable":true,"dataIndex":"personaIdPersona","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":12001,"subType":null,"widthUnits":"px"},
+{"caption":"Aprobacion","sortable":true,"dataIndex":"aprobacion","type":"java.lang.Boolean","displayType":"CheckBox","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":12002,"subType":null,"widthUnits":"px"},
+{"caption":"Comentario","sortable":true,"dataIndex":"comentario","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":12003,"subType":null,"widthUnits":"px"},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":12004,"subType":null,"widthUnits":"px"},
+{"caption":"FechaActualizacion","sortable":true,"dataIndex":"fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":12005,"subType":null,"widthUnits":"px"},
+{"caption":"IdTramite","sortable":true,"dataIndex":"tramite.idTramite","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":13000,"subType":null,"widthUnits":"px"},
+{"caption":"FechaTramite","sortable":true,"dataIndex":"tramite.fechaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13001,"subType":null,"widthUnits":"px"},
+{"caption":"HoraTramite","sortable":true,"dataIndex":"tramite.horaTramite","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13002,"subType":null,"widthUnits":"px"},
+{"caption":"FechaEsperada","sortable":true,"dataIndex":"tramite.fechaEsperada","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13003,"subType":null,"widthUnits":"px"},
+{"caption":"FechaEntrega","sortable":true,"dataIndex":"tramite.fechaEntrega","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13004,"subType":null,"widthUnits":"px"},
+{"caption":"Url_file","sortable":true,"dataIndex":"tramite.url_file","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13005,"subType":null,"widthUnits":"px"},
+{"caption":"Comentarios","sortable":true,"dataIndex":"tramite.comentarios","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13006,"subType":null,"widthUnits":"px"},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"tramite.fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13007,"subType":null,"widthUnits":"px"},
+{"caption":"FechaModificacion","sortable":true,"dataIndex":"tramite.fechaModificacion","type":"java.util.Date","displayType":"Date","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":13008,"subType":null,"widthUnits":"px"},
+{"caption":"IdTipoTramite","sortable":true,"dataIndex":"tramite.tramiteTipoTramite.idTipoTramite","type":"java.lang.Integer","displayType":"Number","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":14000},
+{"caption":"Tramite","sortable":true,"dataIndex":"tramite.tramiteTipoTramite.tramite","type":"java.lang.String","displayType":"Text","required":true,"widthUnits":"px","includeLists":true,"includeForms":true,"order":14001},
+{"caption":"FechaCreacion","sortable":true,"dataIndex":"tramite.tramiteTipoTramite.fechaCreacion","type":"java.util.Date","displayType":"Date","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":14003},
+{"caption":"FechaActualizacion","sortable":true,"dataIndex":"tramite.tramiteTipoTramite.fechaActualizacion","type":"java.util.Date","displayType":"Date","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":14004},
+{"caption":"Apellido1","sortable":true,"dataIndex":"tramite.referenciado.apellido1","type":"java.lang.String","displayType":"Text","required":false,"widthUnits":"px","includeLists":true,"includeForms":true,"order":15007}
+]}, {}]
 	}],
 	syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 		containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
@@ -871,35 +962,47 @@ Main.widgets = {
 			permisosCloseButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cerrar","margin":"4","styles":{}}, {"onclick":"permisosDialog.hide"}]
 		}]
 	}],
-	tramiteDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar6","containerWidgetId":"containerWidget6","desktopHeight":"410px","height":"410px","styles":{},"title":"tramite","width":"550px"}, {}, {
-		containerWidget6: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-			tramiteLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"height":"100%","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onBeginInsert":"tramiteLiveForm1BeginInsert","onBeginUpdate":"tramiteLiveForm1BeginUpdate","onSuccess":"tramiteLivePanel1.popupLiveFormSuccess"}, {
+	loadingDialog3: ["wm.LoadingDialog", {"caption":"Cargando tramites y autorizaciones...","serviceVariableToTrack":["tramiteautorizacionesLiveVariable1","tramiteLiveVariable1"]}, {}, {
+		binding: ["wm.Binding", {}, {}, {
+			wire: ["wm.Wire", {"expression":undefined,"source":"panel_transporte","targetProperty":"widgetToCover"}, {}]
+		}]
+	}],
+	tramiteDialog: ["wm.DesignableDialog", {"buttonBarId":"","containerWidgetId":"containerWidget6","desktopHeight":"350px","height":"350px","styles":{},"title":"tramite","width":"500px"}, {}, {
+		containerWidget6: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"middle","width":"100%"}, {}, {
+			tramiteLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"248px","horizontalAlign":"left","liveEditing":false,"margin":"4","styles":{},"verticalAlign":"top"}, {"onBeginInsert":"tramiteLiveForm1BeginInsert","onBeginUpdate":"tramiteLiveForm1BeginUpdate","onSuccess":"tramiteLivePanel1.popupLiveFormSuccess","onSuccess1":"tramiteLiveForm1Success1","onInsertData":"tramiteLiveForm1InsertData"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"expression":undefined,"source":"tramiteDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 				}],
-				idTramiteEditor1: ["wm.Number", {"border":"0","caption":"No. tramite","captionSize":"140px","changeOnKey":true,"desktopHeight":"32px","emptyValue":"zero","formField":"idTramite","height":"32px","required":true,"width":"100%"}, {}],
-				tramiteTipoTramiteLookup1: ["wm.Lookup", {"caption":"Tipo","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TramiteTipoTramite","desktopHeight":"32px","displayField":"tramite","formField":"tramiteTipoTramite","height":"32px","required":true,"styles":{},"width":"100%"}, {}],
-				persona_id_referenciadoLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Tramite para","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayExpression":"${nombre1}+\" \"+${nombre2}+\" \"+${apellido1}+\" \"+${apellido2}","displayField":"idPersona","formField":"persona_id_referenciado","height":"32px","required":true,"styles":{},"width":"100%"}, {}, {
+				idTramiteEditor1: ["wm.Number", {"border":"0","caption":"No. unico","captionSize":"140px","changeOnKey":true,"desktopHeight":"32px","emptyValue":"zero","formField":"idTramite","height":"32px","required":true,"width":"100%"}, {}],
+				referenciadoLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Referenciado","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayExpression":"${nombre1}+\" \"+${nombre2}+\" \"+${apellido1}+\" \"+${apellido2}","displayField":"idPersona","formField":"referenciado","height":"32px","required":true,"width":"100%"}, {"onchange":"referenciadoLookup1Change"}, {
 					binding: ["wm.Binding", {}, {}, {
-						dataFieldWire: ["wm.Wire", {"source":"persona_id_referenciadoLookup1.liveVariable","targetProperty":"dataSet"}, {}],
+						dataFieldWire: ["wm.Wire", {"source":"referenciadoLookup1.liveVariable","targetProperty":"dataSet"}, {}],
 						wire: ["wm.Wire", {"expression":undefined,"source":"referenciadoLiveVariable","targetProperty":"dataSet"}, {}]
 					}]
 				}],
-				persona_id_solicitanteLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Solicitante","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","disabled":true,"displayExpression":undefined,"displayField":"idPersona","formField":"persona_id_solicitante","height":"32px","required":true,"showing":false,"styles":{},"width":"100%"}, {}, {
+				tramiteTipoTramiteLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TramiteTipoTramite","desktopHeight":"32px","displayField":"tramite","formField":"tramiteTipoTramite","height":"32px","required":true,"width":"100%"}, {}, {
 					binding: ["wm.Binding", {}, {}, {
-						wire: ["wm.Wire", {"expression":undefined,"source":"solicitanteLiveVariable","targetProperty":"dataSet"}, {}]
+						dataFieldWire: ["wm.Wire", {"source":"tramiteTipoTramiteLookup1.liveVariable","targetProperty":"dataSet"}, {}],
+						wire: ["wm.Wire", {"expression":undefined,"source":"tipoTramiteLv","targetProperty":"dataSet"}, {}]
 					}]
 				}],
-				fechaTramiteEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fechaTramite","height":"32px","styles":{},"width":"100%"}, {}],
-				horaTramiteEditor1: ["wm.Time", {"border":"0","caption":"Hora","captionSize":"140px","desktopHeight":"32px","emptyValue":"zero","formField":"horaTramite","height":"32px","styles":{},"width":"100%"}, {}],
-				fechaEsperadaEditor1: ["wm.DateTime", {"border":"0","caption":"FechaEsperada","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fechaEsperada","height":"32px","showing":false,"width":"100%"}, {}],
-				fechaEntregaEditor1: ["wm.DateTime", {"border":"0","caption":"FechaEntrega","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fechaEntrega","height":"32px","showing":false,"width":"100%"}, {}],
-				comentariosEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Recomendaciones/<br>Solicitudes","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"emptyValue":"emptyString","formField":"comentarios","height":"100%","maxChars":65535,"styles":{},"width":"100%"}, {}],
+				fechaTramiteEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha de tramite","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fechaTramite","height":"32px","width":"100%"}, {}],
+				horaTramiteEditor1: ["wm.Time", {"border":"0","caption":"Hora de tramite","captionSize":"140px","desktopHeight":"32px","emptyValue":"zero","formField":"horaTramite","height":"32px","width":"100%"}, {}],
+				fechaEsperadaEditor1: ["wm.DateTime", {"border":"0","caption":"FechaEsperada","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaEsperada","height":"26px","showing":false,"width":"100%"}, {}],
+				fechaEntregaEditor1: ["wm.DateTime", {"border":"0","caption":"FechaEntrega","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaEntrega","height":"26px","showing":false,"width":"100%"}, {}],
+				url_fileEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Url_file","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"desktopHeight":"80px","emptyValue":"emptyString","formField":"url_file","height":"80px","maxChars":200,"showing":false,"width":"100%"}, {}],
+				comentariosEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Comentarios","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"desktopHeight":"80px","emptyValue":"emptyString","formField":"comentarios","height":"80px","maxChars":65535,"width":"100%"}, {}],
 				fechaCreacionEditor2: ["wm.DateTime", {"border":"0","caption":"FechaCreacion","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaCreacion","height":"26px","showing":false,"width":"100%"}, {}],
-				fechaModificacionEditor1: ["wm.DateTime", {"border":"0","caption":"FechaModificacion","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaModificacion","height":"26px","showing":false,"width":"100%"}, {}]
+				fechaModificacionEditor1: ["wm.DateTime", {"border":"0","caption":"FechaModificacion","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaModificacion","height":"26px","showing":false,"width":"100%"}, {}],
+				solicitanteLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Solicitante","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayField":"idPersona","formField":"solicitante","height":"32px","required":true,"showing":false,"width":"100%"}, {}, {
+					binding: ["wm.Binding", {}, {}, {
+						dataFieldWire: ["wm.Wire", {"source":"solicitanteLookup1.liveVariable","targetProperty":"dataSet"}, {}],
+						wire: ["wm.Wire", {"expression":undefined,"source":"solicitanteLiveVariable","targetProperty":"dataSet"}, {}]
+					}]
+				}]
 			}]
 		}],
-		buttonBar6: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{"backgroundColor":"#dedede"}}, {}, {
+		buttonBar6: ["wm.ButtonBarPanel", {"border":"1","height":"34px"}, {}, {
 			tramiteSaveButton: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Guardar","margin":"4","styles":{}}, {"onclick":"tramiteLiveForm1.saveDataIfValid"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"source":"tramiteLiveForm1.invalid","targetId":null,"targetProperty":"disabled"}, {}]
@@ -908,38 +1011,33 @@ Main.widgets = {
 			tramiteCancelButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cancelar","margin":"4","styles":{}}, {"onclick":"tramiteDialog.hide","onclick1":"tramiteLiveForm1.cancelEdit"}]
 		}]
 	}],
-	tramiteautorizacionesDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar7","containerWidgetId":"containerWidget7","desktopHeight":"310px","height":"310px","title":"Autorizaciones","width":"500px"}, {}, {
+	tramiteautorizacionesDialog: ["wm.DesignableDialog", {"height":"310px","styles":{},"title":"tramiteautorizaciones","width":"500px","containerWidgetId":"containerWidget7","buttonBarId":"buttonBar"}, {}, {
 		containerWidget7: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
-			tramiteautorizacionesLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"height":"100%","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onBeginUpdate":"tramiteautorizacionesLiveForm1BeginUpdate","onSuccess":"tramiteautorizacionesLivePanel1.popupLiveFormSuccess"}, {
+			tramiteautorizacionesLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"140px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"tramiteautorizacionesLivePanel2.popupLiveFormSuccess","onBeginUpdate":"tramiteautorizacionesLiveForm1BeginUpdate","onBeginInsert":"tramiteautorizacionesLiveForm1BeginInsert"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"expression":undefined,"source":"tramiteautorizacionesDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 				}],
-				idAutorizacionEditor1: ["wm.Number", {"border":"0","caption":"No. Autorización","captionSize":"140px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"zero","formField":"idAutorizacion","height":"26px","required":true,"width":"100%"}, {}],
-				personaIdPersonaEditor1: ["wm.Number", {"border":"0","caption":"PersonaIdPersona","captionSize":"140px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"zero","formField":"personaIdPersona","height":"26px","required":true,"showing":false,"width":"100%"}, {}],
-				aprobacionEditor1: ["wm.Checkbox", {"caption":"Autorizar","captionSize":"140px","desktopHeight":"26px","displayValue":false,"formField":"aprobacion","height":"26px","width":"100%"}, {}],
-				tramiteLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Tramite","desktopHeight":"26px","displayField":"comentarios","formField":"tramite","height":"26px","readonly":true,"required":true,"showing":false,"width":"100%"}, {}, {
+				idAutorizacionEditor1: ["wm.Number", {"border":"0","caption":"No. autorización","captionSize":"140px","changeOnKey":true,"emptyValue":"zero","formField":"idAutorizacion","height":"26px","required":true,"width":"100%"}, {}],
+				personaIdPersonaEditor1: ["wm.Number", {"border":"0","caption":"Autoriza","captionSize":"140px","changeOnKey":true,"emptyValue":"zero","formField":"personaIdPersona","height":"26px","required":true,"showing":false,"width":"100%"}, {}],
+				aprobacionEditor1: ["wm.Checkbox", {"caption":"Aprobación","captionSize":"140px","displayValue":false,"formField":"aprobacion","height":"26px","width":"100%"}, {}],
+				comentarioEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Comentario","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"desktopHeight":"80px","emptyValue":"emptyString","formField":"comentario","height":"80px","maxChars":65535,"width":"100%"}, {}],
+				fechaCreacionEditor3: ["wm.DateTime", {"border":"0","caption":"FechaCreacion","captionSize":"140px","dateMode":"Date","emptyValue":"zero","formField":"fechaCreacion","height":"26px","showing":false,"width":"100%"}, {}],
+				fechaActualizacionEditor2: ["wm.DateTime", {"border":"0","caption":"FechaActualizacion","captionSize":"140px","dateMode":"Date","emptyValue":"zero","formField":"fechaActualizacion","height":"26px","showing":false,"width":"100%"}, {}],
+				tramiteLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Tramite","displayField":"idTramite","formField":"tramite","required":true,"showing":false,"styles":{},"width":"100%"}, {}, {
 					binding: ["wm.Binding", {}, {}, {
 						dataFieldWire: ["wm.Wire", {"source":"tramiteLookup1.liveVariable","targetProperty":"dataSet"}, {}],
 						wire: ["wm.Wire", {"expression":undefined,"source":"TramitesAuxLiveVariable","targetProperty":"dataSet"}, {}]
 					}]
-				}],
-				comentarioEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Comentario","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"emptyValue":"emptyString","formField":"comentario","height":"100%","maxChars":65535,"width":"100%"}, {}],
-				fechaCreacionEditor3: ["wm.DateTime", {"border":"0","caption":"FechaCreacion","captionSize":"140px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"fechaCreacion","height":"26px","showing":false,"width":"100%"}, {}],
-				fechaActualizacionEditor2: ["wm.DateTime", {"border":"0","caption":"FechaActualizacion","captionSize":"140px","desktopHeight":"26px","emptyValue":"zero","formField":"fechaActualizacion","height":"26px","showing":false,"width":"100%"}, {}]
+				}]
 			}]
 		}],
-		buttonBar7: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px"}, {}, {
+		buttonBar: ["wm.ButtonBarPanel", {"border":"1","height":"34px","styles":{}}, {}, {
 			tramiteautorizacionesSaveButton: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Guardar","margin":"4","styles":{}}, {"onclick":"tramiteautorizacionesLiveForm1.saveDataIfValid"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"source":"tramiteautorizacionesLiveForm1.invalid","targetId":null,"targetProperty":"disabled"}, {}]
 				}]
 			}],
 			tramiteautorizacionesCancelButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Cancelar","margin":"4","styles":{}}, {"onclick":"tramiteautorizacionesDialog.hide","onclick1":"tramiteautorizacionesLiveForm1.cancelEdit"}]
-		}]
-	}],
-	loadingDialog3: ["wm.LoadingDialog", {"caption":"Cargando tramites y autorizaciones...","serviceVariableToTrack":["tramiteautorizacionesLiveVariable1","tramiteLiveVariable1"]}, {}, {
-		binding: ["wm.Binding", {}, {}, {
-			wire: ["wm.Wire", {"expression":undefined,"source":"panel_transporte","targetProperty":"widgetToCover"}, {}]
 		}]
 	}],
 	layoutBox1: ["wm.Layout", {"autoScroll":false,"height":"1134px","horizontalAlign":"center","styles":{"backgroundColor":"#ffffff"},"verticalAlign":"top","width":"740px"}, {}, {
@@ -971,7 +1069,7 @@ Main.widgets = {
 									parents_estudents_performance: ["wm.Button", {"border":"0","borderColor":"","caption":"Calificaciones","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/students.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px","backgroundColor":"#3652a4"},"width":"145.5px"}, {"onclick":"parents_estudents_performanceClick","onclick3":"parents_estudents_performanceClick3","onclick4":"parents_estudents_performanceClick4"}],
 									parents_homework: ["wm.Button", {"border":"0","borderColor":"","caption":"Tareas y trabajos","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/homework.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"120undefined"}, {"onclick":"parents_homeworkClick"}],
 									parents_update_data: ["wm.Button", {"border":"0","borderColor":"","caption":"Actualizar datos","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/update.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"120undefined"}, {"onclick":"parents_update_dataClick"}],
-									schoolar_schedule: ["wm.Button", {"border":"0","borderColor":"","caption":"Trabajos y activiades","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/schedule.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px"},"width":"137.5px"}, {"onclick":"schoolar_scheduleClick","onclick1":"schoolar_scheduleClick1","onclick2":"schoolar_scheduleClick2"}],
+									schoolar_schedule: ["wm.Button", {"border":"0","borderColor":"","caption":"Trabajos y activiades","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/schedule.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","showing":false,"styles":{"borderRadius":"0px"},"width":"137.5px"}, {"onclick":"schoolar_scheduleClick","onclick1":"schoolar_scheduleClick1","onclick2":"schoolar_scheduleClick2"}],
 									parents_comunity_comunication: ["wm.Button", {"border":"0","borderColor":"","caption":"Educación comunitaria","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/extracurricular.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_comunity_comunicationClick","onclick1":"parents_comunity_comunicationClick1","onclick2":"parents_comunity_comunicationClick2","onclick3":"parents_comunity_comunicationClick3"}],
 									parents_account_state: ["wm.Button", {"border":"0","borderColor":"","caption":"Estado de cuenta","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/money.png","iconWidth":"24px","margin":"0,6,0,0","padding":"4,12,4,12","styles":{"borderRadius":"0px"},"width":"110undefined"}, {"onclick":"parents_account_stateClick","onclick1":"parents_account_stateClick1","onclick2":"parents_account_stateClick2"}],
 									parents_transportship: ["wm.Button", {"border":"0","borderColor":"","caption":"Tramites y Autorizaciones","height":"100%","iconHeight":"24px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/bus.png","iconWidth":"24px","margin":"0,4,0,0","padding":"4,12,4,12","roles":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],"styles":{"borderRadius":"0px"},"width":"140px"}, {"onclick":"parents_transportshipClick","onclick1":"parents_transportshipClick1","onclick2":"parents_transportshipClick2","onclick3":"parents_transportshipClick3"}]
@@ -1162,58 +1260,65 @@ Main.widgets = {
 											estado_cuenta_boton_descarga: ["wm.Button", {"caption":"Descargar extracto","desktopHeight":"55px","height":"55px","iconHeight":"20px","iconMargin":"0 5px 0 0","iconUrl":"resources/images/iconsmaster_v2/download.png","iconWidth":"32px","margin":"4","width":"155px"}, {"onclick":"estado_cuenta_boton_descargaClick"}]
 										}]
 									}],
-									panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","margin":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+									panel_transporte: ["wm.Panel", {"height":"100%","horizontalAlign":"center","lock":true,"margin":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
 										transportes_rutas: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Rutas","desktopHeight":"60px","height":"60px","margin":"4","showing":false,"styles":{},"width":"120px"}, {}],
 										panel7: ["wm.Panel", {"_classes":{"domNode":["blueButton"]},"height":"36px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
 											transportes_solicitudes: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Solicitud de <br>Permisos","desktopHeight":"60px","height":"60px","margin":"4","showing":false,"styles":{},"width":"120px"}, {"onclick":"transportes_solicitudesClick","onclick1":"transportes_solicitudesClick1"}],
 											Solicitud_de_Tramite: ["wm.Label", {"caption":"Solicitud de Tramite","height":"100%","padding":"4","styles":{"fontSize":"15px"},"width":"359px"}, {}]
 										}],
-										tramiteLivePanel1: ["wm.LivePanel", {"autoScroll":false,"height":"50%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-											binding: ["wm.Binding", {}, {}, {
-												wire: ["wm.Wire", {"source":"tramiteDialog","targetId":null,"targetProperty":"dialog"}, {}],
-												wire1: ["wm.Wire", {"source":"tramiteLiveForm1","targetId":null,"targetProperty":"liveForm"}, {}],
-												wire2: ["wm.Wire", {"source":"tramiteDojoGrid","targetId":null,"targetProperty":"dataGrid"}, {}],
-												wire3: ["wm.Wire", {"source":"tramiteSaveButton","targetId":null,"targetProperty":"saveButton"}, {}]
-											}],
-											tramiteDojoGrid: ["wm.DojoGrid", {"_classes":{"domNode":["pointer"]},"columns":[
-{"show":true,"field":"idTramite","title":"No. tramite","width":"50px","align":"center","formatFunc":"","mobileColumn":false},
-{"show":true,"field":"fechaTramite","title":"Fecha tramite","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":true,"field":"horaTramite","title":"Hora tramite","width":"50px","align":"left","formatFunc":"wm_date_formatter","formatProps":{"dateType":"time"},"mobileColumn":false},
-{"show":true,"field":"persona_id_solicitante.apellido1","title":"Solicita","width":"100%","align":"left","formatFunc":"","editorProps":null,"expression":"${persona_id_solicitante.apellido1}+\" \"+${persona_id_solicitante.apellido1}\n+\" \"+${persona_id_solicitante.nombre1}\n+\" \"+${persona_id_solicitante.nombre2}","mobileColumn":false},
-{"show":true,"field":"persona_id_referenciado.apellido1","title":"Para","width":"100%","align":"left","formatFunc":"","editorProps":null,"expression":"${persona_id_referenciado.apellido1}+\" \"+${persona_id_referenciado.apellido1}+\" \"+${persona_id_referenciado.nombre1}+\" \"+${persona_id_referenciado.nombre2}","mobileColumn":false},
+										panel9: ["wm.Panel", {"height":"50%","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+											tramiteLivePanel1: ["wm.LivePanel", {"autoScroll":false,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+												binding: ["wm.Binding", {}, {}, {
+													wire: ["wm.Wire", {"source":"tramiteDialog","targetId":null,"targetProperty":"dialog"}, {}],
+													wire1: ["wm.Wire", {"source":"tramiteLiveForm1","targetId":null,"targetProperty":"liveForm"}, {}],
+													wire2: ["wm.Wire", {"source":"tramiteDojoGrid","targetId":null,"targetProperty":"dataGrid"}, {}],
+													wire3: ["wm.Wire", {"source":"tramiteSaveButton","targetId":null,"targetProperty":"saveButton"}, {}]
+												}],
+												tramiteDojoGrid: ["wm.DojoGrid", {"_classes":{"domNode":["pointer"]},"columns":[
+{"show":true,"field":"idTramite","title":"#","width":"50px","align":"center","formatFunc":"","mobileColumn":false},
+{"show":true,"field":"fechaTramite","title":"Fecha","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":true,"field":"horaTramite","title":"Hora","width":"80px","align":"center","formatFunc":"wm_date_formatter","formatProps":{"dateType":"time"},"mobileColumn":false},
 {"show":false,"field":"fechaEsperada","title":"FechaEsperada","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"fechaEntrega","title":"FechaEntrega","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"comentarios","title":"Comentarios","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":true,"field":"fechaCreacion","title":"Fecha<br>creación","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"fechaCreacion","title":"FechaCreacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
 {"show":false,"field":"fechaModificacion","title":"FechaModificacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"No. tramite: \" + ${idTramite} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Fecha tramite: \" + ${wm.runtimeId}.formatCell(\"fechaTramite\", ${fechaTramite}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Hora tramite: \" + ${wm.runtimeId}.formatCell(\"horaTramite\", ${horaTramite}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Solicita: \" + ${wm.runtimeId}.formatCell(\"persona_id_solicitante.apellido1\", ${persona_id_solicitante.apellido1}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Para: \" + ${wm.runtimeId}.formatCell(\"persona_id_referenciado.apellido1\", ${persona_id_referenciado.apellido1}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Fecha<br>creación: \" + ${wm.runtimeId}.formatCell(\"fechaCreacion\", ${fechaCreacion}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n","mobileColumn":true},
-{"show":false,"field":"persona_id_referenciado.apellido2","title":"Persona_id_referenciado.apellido2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"persona_id_referenciado.nombre1","title":"Persona_id_referenciado.nombre1","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"persona_id_referenciado.nombre2","title":"Persona_id_referenciado.nombre2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"persona_id_solicitante.apellido2","title":"Persona_id_solicitante.apellido2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"persona_id_solicitante.nombre1","title":"Persona_id_solicitante.nombre1","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"persona_id_solicitante.nombre2","title":"Persona_id_solicitante.nombre2","width":"100%","align":"left","formatFunc":"","mobileColumn":false}
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"#: \" + ${idTramite} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Fecha: \" + ${wm.runtimeId}.formatCell(\"fechaTramite\", ${fechaTramite}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Hora: \" + ${wm.runtimeId}.formatCell(\"horaTramite\", ${horaTramite}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Tramite: \" + ${tramiteTipoTramite.tramite}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Solicitante: \" + ${wm.runtimeId}.formatCell(\"solicitante.apellido1\", ${solicitante.apellido1}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Estudiante: \" + ${wm.runtimeId}.formatCell(\"referenciado.apellido1\", ${referenciado.apellido1}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n","mobileColumn":true},
+{"show":false,"field":"url_file","title":"Url_file","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":true,"field":"tramiteTipoTramite.tramite","title":"Tramite","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"tramiteTipoTramite.idTipoTramite","title":"Tramite","width":"80px","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"solicitante.idPersona","title":"Solicitante.idPersona","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
+{"show":true,"field":"solicitante.apellido1","title":"Solicitante","width":"100%","align":"left","formatFunc":"","expression":"${solicitante.nombre1}+\" \"+\n${solicitante.nombre2}+\" \"+\n${solicitante.apellido1}+\" \"+\n${solicitante.apellido2}","mobileColumn":false},
+{"show":false,"field":"solicitante.apellido2","title":"Solicitante.apellido2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"solicitante.nombre1","title":"Solicitante.nombre1","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"solicitante.nombre2","title":"Solicitante.nombre2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"referenciado.idPersona","title":"Referenciado.idPersona","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
+{"show":true,"field":"referenciado.apellido1","title":"Estudiante","width":"100%","align":"left","formatFunc":"","expression":"${referenciado.nombre1}+\" \"+\n${referenciado.nombre2}+\" \"+\n${referenciado.apellido1}+\" \"+\n${referenciado.apellido2}","mobileColumn":false},
+{"show":false,"field":"referenciado.apellido2","title":"Referenciado.apellido2","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"referenciado.nombre1","title":"Referenciado.nombre1","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"referenciado.nombre2","title":"Referenciado.nombre2","width":"100%","align":"left","formatFunc":"","mobileColumn":false}
 ],"dsType":"com.aprendoz_desarrollo.data.Tramite","height":"100%","margin":"4","minDesktopHeight":60,"styles":{"fontSize":"12px"}}, {"onCellDblClick":"tramiteLivePanel1.popupLivePanelEdit"}, {
-												binding: ["wm.Binding", {}, {}, {
-													wire: ["wm.Wire", {"expression":undefined,"source":"tramiteLiveVariable1","targetProperty":"dataSet"}, {}]
-												}]
-											}],
-											tramiteGridButtonPanel: ["wm.Panel", {"desktopHeight":"40px","enableTouchHeight":true,"height":"40px","horizontalAlign":"right","layoutKind":"left-to-right","mobileHeight":"40px","styles":{"backgroundColor":"#ebebeb"},"verticalAlign":"middle","width":"100%"}, {}, {
-												tramiteNewButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Nuevo","desktopHeight":"36px","height":"36px","margin":"4","styles":{},"width":"90px"}, {"onclick":"tramiteLivePanel1.popupLivePanelInsert"}],
-												tramiteUpdateButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Modificar","desktopHeight":"36px","height":"36px","margin":"4","styles":{},"width":"90px"}, {"onclick":"tramiteLivePanel1.popupLivePanelEdit"}, {
 													binding: ["wm.Binding", {}, {}, {
-														wire: ["wm.Wire", {"source":"tramiteDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+														wire: ["wm.Wire", {"expression":undefined,"source":"tramiteLiveVariable2","targetProperty":"dataSet"}, {}]
 													}]
 												}],
-												tramiteDeleteButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Eliminar","desktopHeight":"36px","height":"36px","margin":"4","styles":{},"width":"90px"}, {"onclick":"tramiteLiveForm1.deleteData"}, {
-													binding: ["wm.Binding", {}, {}, {
-														wire: ["wm.Wire", {"source":"tramiteDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+												tramiteGridButtonPanel: ["wm.Panel", {"desktopHeight":"37px","enableTouchHeight":true,"height":"37px","horizontalAlign":"right","layoutKind":"left-to-right","mobileHeight":"40px","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+													tramiteNewButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Nuevo","margin":"4","styles":{}}, {"onclick":"tramiteLivePanel1.popupLivePanelInsert"}],
+													tramiteUpdateButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Modificar","margin":"4","styles":{}}, {"onclick":"tramiteLivePanel1.popupLivePanelEdit"}, {
+														binding: ["wm.Binding", {}, {}, {
+															wire: ["wm.Wire", {"source":"tramiteDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+														}]
+													}],
+													tramiteDeleteButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Eliminar","margin":"4","styles":{}}, {"onclick":"tramiteLiveForm1.deleteData"}, {
+														binding: ["wm.Binding", {}, {}, {
+															wire: ["wm.Wire", {"source":"tramiteDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+														}]
 													}]
 												}]
 											}]
 										}],
 										pendientes_autorizacion: ["wm.Panel", {"height":"50%","horizontalAlign":"left","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-											panel8: ["wm.Panel", {"_classes":{"domNode":["red"]},"height":"36px","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
+											panel8: ["wm.Panel", {"_classes":{"domNode":["red"]},"height":"40px","horizontalAlign":"left","padding":"5","styles":{"backgroundColor":"#ededed"},"verticalAlign":"top","width":"100%"}, {}, {
 												autorizar_butt: ["wm.Button", {"_classes":{"domNode":["Green"]},"border":"0","caption":"Autorizar","height":"100%","margin":"0","showing":false,"styles":{},"width":"110px"}, {}],
 												Solicitud_de_Tramite1: ["wm.Label", {"caption":"Autorizaciones","height":"100%","padding":"4","styles":{"fontSize":"15px"},"width":"359px"}, {}]
 											}],
@@ -1224,29 +1329,46 @@ Main.widgets = {
 													wire2: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid","targetId":null,"targetProperty":"dataGrid"}, {}],
 													wire3: ["wm.Wire", {"source":"tramiteautorizacionesSaveButton","targetId":null,"targetProperty":"saveButton"}, {}]
 												}],
-												tramiteautorizacionesDojoGrid: ["wm.DojoGrid", {"_classes":{"domNode":["pointer"]},"columns":[
-{"show":true,"field":"idAutorizacion","title":"# Autorización","width":"120px","align":"center","formatFunc":"","mobileColumn":false},
-{"show":false,"field":"personaIdPersona","title":"PersonaIdPersona","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
-{"show":true,"field":"aprobacion","title":"Autorizado","width":"110px","align":"center","formatFunc":"","fieldType":"dojox.grid.cells.Bool","mobileColumn":false},
-{"show":true,"field":"fechaCreacion","title":"Fecha creación","width":"120px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":false,"field":"fechaActualizacion","title":"FechaActualizacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
-{"show":true,"field":"comentario","title":"Comentario","width":"100%","align":"center","formatFunc":"","editorProps":null,"mobileColumn":false},
-{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"# Autorización: \" + ${idAutorizacion} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Autorizado: \" + ${aprobacion}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Fecha creación: \" + ${wm.runtimeId}.formatCell(\"fechaCreacion\", ${fechaCreacion}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Comentario: \" + ${comentario}\n + \"</div>\"\n\n","mobileColumn":true}
-],"dsType":"com.aprendoz_desarrollo.data.TramiteAutorizaciones","height":"100%","margin":"4","minDesktopHeight":60,"styles":{"fontSize":"12px"}}, {"onCellDblClick":"tramiteautorizacionesLivePanel1.popupLivePanelEdit","onSelect":"tramiteautorizacionesDojoGridSelect"}, {
+												tramiteautorizacionesLivePanel2: ["wm.LivePanel", {"autoScroll":false,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 													binding: ["wm.Binding", {}, {}, {
-														wire: ["wm.Wire", {"expression":undefined,"source":"tramiteautorizacionesLiveVariable1","targetProperty":"dataSet"}, {}]
-													}]
-												}],
-												tramiteautorizacionesGridButtonPanel: ["wm.Panel", {"desktopHeight":"32px","enableTouchHeight":true,"height":"32px","horizontalAlign":"right","layoutKind":"left-to-right","mobileHeight":"40px","styles":{"backgroundColor":"#ebebeb"},"verticalAlign":"top","width":"100%"}, {}, {
-													tramiteautorizacionesNewButton: ["wm.Button", {"caption":"Nuevo","margin":"4","showing":false}, {"onclick":"tramiteautorizacionesLivePanel1.popupLivePanelInsert"}],
-													tramiteautorizacionesUpdateButton: ["wm.Button", {"_classes":{"domNode":["blueButton"]},"caption":"Modificar","margin":"4","styles":{}}, {"onclick":"tramiteautorizacionesLivePanel1.popupLivePanelEdit"}, {
+														wire: ["wm.Wire", {"source":"tramiteautorizacionesDialog","targetId":null,"targetProperty":"dialog"}, {}],
+														wire1: ["wm.Wire", {"source":"tramiteautorizacionesLiveForm1","targetId":null,"targetProperty":"liveForm"}, {}],
+														wire2: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid","targetId":null,"targetProperty":"dataGrid"}, {}],
+														wire3: ["wm.Wire", {"source":"tramiteautorizacionesSaveButton","targetId":null,"targetProperty":"saveButton"}, {}]
+													}],
+													tramiteautorizacionesDojoGrid: ["wm.DojoGrid", {"columns":[
+{"show":true,"field":"idAutorizacion","title":"No. Autorización","width":"120px","align":"center","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"personaIdPersona","title":"PersonaIdPersona","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
+{"show":true,"field":"aprobacion","title":"Aprobación","width":"100px","align":"center","formatFunc":"","fieldType":"dojox.grid.cells.Bool","mobileColumn":false},
+{"show":true,"field":"fechaActualizacion","title":"Fecha actualizacion","width":"120px","align":"left","formatFunc":"wm_date_formatter","formatProps":null,"editorProps":null,"mobileColumn":false},
+{"show":true,"field":"comentario","title":"Comentario","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"fechaCreacion","title":"FechaCreacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"tramite.idTramite","title":"IdTramite","width":"80px","align":"right","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"tramite.fechaTramite","title":"FechaTramite","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"tramite.horaTramite","title":"HoraTramite","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"tramite.fechaEsperada","title":"FechaEsperada","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"tramite.fechaEntrega","title":"FechaEntrega","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"tramite.url_file","title":"Url_file","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"tramite.comentarios","title":"Comentarios","width":"100%","align":"left","formatFunc":"","mobileColumn":false},
+{"show":false,"field":"tramite.fechaCreacion","title":"FechaCreacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"tramite.fechaModificacion","title":"FechaModificacion","width":"80px","align":"left","formatFunc":"wm_date_formatter","mobileColumn":false},
+{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>\" +\n\"No. Autorización: \" + ${idAutorizacion} +\n\"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Aprobación: \" + ${aprobacion}\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Fecha actualizacion: \" + ${wm.runtimeId}.formatCell(\"fechaActualizacion\", ${fechaActualizacion}, ${this}, ${wm.rowId})\n + \"</div>\"\n\n+ \"<div class='MobileRow'>\" +\n\"Comentario: \" + ${comentario}\n + \"</div>\"\n\n","mobileColumn":true}
+],"dsType":"com.aprendoz_desarrollo.data.TramiteAutorizaciones","height":"100%","margin":"4","styles":{"fontSize":"12px"}}, {"onCellDblClick":"tramiteautorizacionesLivePanel2.popupLivePanelEdit","onSelect":"tramiteautorizacionesDojoGridSelect"}, {
 														binding: ["wm.Binding", {}, {}, {
-															wire: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+															wire: ["wm.Wire", {"expression":undefined,"source":"tramiteautorizacionesLiveVariable2","targetProperty":"dataSet"}, {}]
 														}]
 													}],
-													tramiteautorizacionesDeleteButton: ["wm.Button", {"caption":"Eliminar","margin":"4","showing":false}, {"onclick":"tramiteautorizacionesLiveForm1.deleteData"}, {
-														binding: ["wm.Binding", {}, {}, {
-															wire: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+													tramiteautorizacionesGridButtonPanel: ["wm.Panel", {"desktopHeight":"32px","enableTouchHeight":true,"height":"32px","horizontalAlign":"right","layoutKind":"left-to-right","mobileHeight":"40px","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
+														tramiteautorizacionesNewButton: ["wm.Button", {"caption":"Nuevo","margin":"4","showing":false}, {"onclick":"tramiteautorizacionesLivePanel2.popupLivePanelInsert"}],
+														tramiteautorizacionesUpdateButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Modificar","margin":"4","styles":{},"width":"127px"}, {"onclick":"tramiteautorizacionesLivePanel2.popupLivePanelEdit"}, {
+															binding: ["wm.Binding", {}, {}, {
+																wire: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+															}]
+														}],
+														tramiteautorizacionesDeleteButton: ["wm.Button", {"_classes":{"domNode":["red"]},"caption":"Eliminar","margin":"4","showing":false,"styles":{}}, {"onclick":"tramiteautorizacionesLiveForm1.deleteData"}, {
+															binding: ["wm.Binding", {}, {}, {
+																wire: ["wm.Wire", {"source":"tramiteautorizacionesDojoGrid.emptySelection","targetId":null,"targetProperty":"disabled"}, {}]
+															}]
 														}]
 													}]
 												}]
