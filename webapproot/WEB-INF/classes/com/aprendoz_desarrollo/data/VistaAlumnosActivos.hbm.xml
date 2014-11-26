@@ -108,10 +108,10 @@
                 <column name="EPS" length="500"/>
             </key-property>
             <key-property name="numeroContratoSalud" type="string">
-                <column name="Numero_Contrato_Salud" length="45"/>
+                <column name="Numero_Contrato_Salud"/>
             </key-property>
             <key-property name="clinicaEmergencia" type="string">
-                <column name="Clinica_Emergencia" length="45"/>
+                <column name="Clinica_Emergencia"/>
             </key-property>
             <key-property name="viveCon" type="string">
                 <column name="Vive_Con" length="500"/>

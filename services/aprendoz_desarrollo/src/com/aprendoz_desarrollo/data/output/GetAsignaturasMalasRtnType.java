@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 
 /**
- * Generated for query "getAsignaturasMalas" on 10/29/2014 07:46:48
+ * Generated for query "getAsignaturasMalas" on 11/24/2014 08:53:42
  * 
  */
 public class GetAsignaturasMalasRtnType {

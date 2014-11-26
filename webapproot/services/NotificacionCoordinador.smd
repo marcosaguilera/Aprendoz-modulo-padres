@@ -1,0 +1,31 @@
+{
+	"methods": [{
+		"name": "sendEmailNotification",
+		"operationType": null,
+		"parameters": [{
+			"name": "correocoordinador",
+			"type": "java.lang.String"
+		}, {
+			"name": "correopadre",
+			"type": "java.lang.String"
+		}, {
+			"name": "correomadre",
+			"type": "java.lang.String"
+		}, {
+			"name": "tramite",
+			"type": "java.lang.String"
+		}, {
+			"name": "std",
+			"type": "java.lang.String"
+		}, {
+			"name": "fechahora",
+			"type": "java.lang.String"
+		}, {
+			"name": "comentario",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "NotificacionCoordinador.json"
+}

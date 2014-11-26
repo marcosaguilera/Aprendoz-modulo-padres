@@ -218,8 +218,7 @@ dojo.declare("Main", wm.Page, {
       this.a_sv_sendMailPermanent.input.setValue("maildocente", c);
       this.a_sv_sendMailPermanent.update();
     }
-      
-      
+    
     } catch(e) {
       console.error('ERROR IN novedadesLiveForm1InsertData: ' + e); 
     } 
@@ -984,8 +983,8 @@ dojo.declare("Main", wm.Page, {
         this.getLogEncuesta.input.setValue("idgp",idgrupofamiliar);
         this.getLogEncuesta.update();
 	},
-	getLogEncuestaSuccess: function(inSender, inDeprecated) {
-		/*var count= this.getLogEncuesta.getCount();
+	/*getLogEncuestaSuccess: function(inSender, inDeprecated) {
+		var count= this.getLogEncuesta.getCount();
         var tipo= main.parents_global_user_info.getItem(0).data.tipoId;
         console.log(count);
         if(count>0){
@@ -1000,8 +999,8 @@ dojo.declare("Main", wm.Page, {
               this.estudiante.hide();
               this.wizardLayers1.show();
           }
-        }*/
-	},
+        }
+	},*/
 	parents_local_educomSuccess: function(inSender, inDeprecated) {
 		this.comunity_costs_grid.setSortIndex(2);
 	},
@@ -1378,9 +1377,10 @@ dojo.declare("Main", wm.Page, {
         this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
         this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
         this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+        this.tipoTramiteLv.filter.setValue("disponibleUi", true);
         this.solicitanteLiveVariable.update();
         this.referenciadoLiveVariable.update();
-        
+        this.tipoTramiteLv.update();
         this.fechaCreacionEditor2.setDataValue(now);
         this.fechaModificacionEditor1.setDataValue(now);
 	},
@@ -1391,13 +1391,16 @@ dojo.declare("Main", wm.Page, {
         this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
         this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
         this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+        this.tipoTramiteLv.filter.setValue("disponibleUi", true);
+        
         this.referenciadoLiveVariable.update();
         this.solicitanteLiveVariable.update();
+        this.tipoTramiteLv.update();
         this.fechaModificacionEditor1.setDataValue(now);
 	},
 	solicitanteLiveVariableSuccess: function(inSender, inDeprecated) {
         var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
-		this.persona_id_solicitanteLookup1.setDisplayValue(idpersona);
+		this.solicitanteLookup1.setDisplayValue(idpersona);
 	},
 	parents_transportshipClick2: function(inSender) {
         var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
@@ -1406,16 +1409,21 @@ dojo.declare("Main", wm.Page, {
         this.referenciadoLiveVariable.update();
 	},
 	parents_transportshipClick3: function(inSender) {
-		this.tramiteLiveVariable1.update();
-        this.tramiteautorizacionesLiveVariable1.update();
+        var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+        this.tramiteLiveVariable2.filter.setValue("referenciado.grupoFamiliar.idGrupoFamiliar", idfamilia);
+		this.tramiteLiveVariable2.update();
+        this.tramiteautorizacionesLiveVariable2.update();
 	},
-	tramiteLiveVariable1Success: function(inSender, inDeprecated) {
+	tramiteLiveVariable2Success: function(inSender, inDeprecated) {
 		this.tramiteDojoGrid.setSortIndex(0);
 	},
 	tramiteautorizacionesLiveVariable1Success: function(inSender, inDeprecated) {
 		this.tramiteautorizacionesDojoGrid.setSortIndex(0);
 	},
 	tramiteautorizacionesLiveForm1BeginUpdate: function(inSender) {
+        var idtramite = main.tramiteautorizacionesDojoGrid.selectedItem.getData().tramite.idTramite;
+        this.TramitesAuxLiveVariable.filter.setValue("idTramite", idtramite);
+        this.TramitesAuxLiveVariable.update();
         var now = new Date().getTime();
         this.fechaActualizacionEditor2.setDataValue(now);
 	},
@@ -1424,7 +1432,6 @@ dojo.declare("Main", wm.Page, {
         this.TramitesAuxLiveVariable.filter.setValue("idTramite", idtramite);
         this.TramitesAuxLiveVariable.update();
 	},
-
 	performance_family_gridSelect7: function(inSender) {
 		var perfil = main.parents_global_user_info.getItem(0).data.usuario;
         this.getUserImg.input.setValue("pidpersona", perfil);
@@ -1435,11 +1442,55 @@ dojo.declare("Main", wm.Page, {
         if(id == 1){
             
         }else{
-        
+            
         }
 	},
 	comunity_terms_acceptClick: function(inSender) {
 		
+	},   
+    referenciadoLookup1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+    	var id = main.referenciadoLookup1.getDataValue().idPersona;
+        this.tramites_correoCoordinadorLv.filter.setValue("id.personaIdPersona", id);
+        this.tramites_correoPadresLv.filter.setValue("id.idPersona", id);
+        this.tramites_correoCoordinadorLv.update();
+        this.tramites_correoPadresLv.update();
+	},
+	tramiteLiveForm1Success1: function(inSender, inData) {
+	    
+	},	
+    sendEmailNotification: function(nombrecoordinador, correocoordinador, correopadre, correomadre, tramite, std, fechahora, comentario){
+        console.log("->"+correocoordinador+" ->"+correopadre+" ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+        this.tramites_enviarNotificacion.input.setValue("correocoordinador", correocoordinador);
+        this.tramites_enviarNotificacion.input.setValue("correopadre", correopadre);
+        this.tramites_enviarNotificacion.input.setValue("correomadre", correomadre);
+        this.tramites_enviarNotificacion.input.setValue("tramite", tramite);
+        this.tramites_enviarNotificacion.input.setValue("std", std);
+        this.tramites_enviarNotificacion.input.setValue("fechahora", fechahora);
+        this.tramites_enviarNotificacion.input.setValue("comentario", comentario);
+        this.tramites_enviarNotificacion.update();
+    },
+      
+	tramiteLiveForm1InsertData: function(inSender) {
+		var jsoncoordinador     = main.tramites_correoCoordinadorLv.getItem(0).data.id.data;
+        var jsoncorreopadres    = main.tramites_correoPadresLv.getItem(0).data.id.data;
+        var email               = jsoncoordinador.email;
+        var nombrecoordinador   = jsoncoordinador.nombre1+" "+jsoncoordinador.nombre2+" "+jsoncoordinador.apellido1+" "+jsoncoordinador.apellido2;
+        var emailpadre          = jsoncorreopadres.correoMama;
+        var emailmadre          = jsoncorreopadres.correoPapa;
+        var tramite             = this.tramiteTipoTramiteLookup1.getDisplayValue();
+        var std                 = this.referenciadoLookup1.getDisplayValue();
+        var fecha               = this.fechaTramiteEditor1.getDisplayValue();
+        var hora                = this.horaTramiteEditor1.getDisplayValue();
+        var fechahora           = fecha+" - "+hora;
+        var comentario          = this.comentariosEditor1.getDataValue();
+        this.sendEmailNotification(nombrecoordinador, email, emailpadre, emailmadre, tramite, std, fechahora, comentario);
+	},
+	tramiteautorizacionesLiveVariable2Success: function(inSender, inDeprecated) {
+		main.tramiteautorizacionesDojoGrid.setSortIndex(0);
+	},
+	tramiteautorizacionesLiveForm1BeginInsert: function(inSender) {
+		var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+        this.personaIdPersonaEditor1.setDataValue(idpersona);
 	},
 	_end: 0
 });

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 10/16/2014 11:51:31
+<!-- Generated 11/24/2014 08:50:40
 
 Configuration for 'aprendoz_desarrollo' database service
 
@@ -100,12 +100,14 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/BusDriver.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TransporteNovedades.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaDashboardNoCalificados.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/PadresCorreosPadres.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Promocion.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaDashboardDirectores.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Coordinadores.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AccAuthorization.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/LogDocentes.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/PerfilPersonaImg.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/VistaActividadesPorAsignatura.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TransporteInscAlumTransporte.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TipoDesempeno.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TramiteTipoTramite.hbm.xml</value>
@@ -214,6 +216,7 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/SeguridadPersonasAccesos.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscAlumActividad.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CafeteriaProteina.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/PadresCorreoCoordinador.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/GestionEncuestas.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CalificacionFinal.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscComentariosAlumnos.hbm.xml</value>

@@ -369,6 +369,11 @@
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.HqlGetTotalPagarRtnType]"
 	}, {
+		"name": "hqlTipoTramite",
+		"operationType": "hqlquery",
+		"parameters": null,
+		"returnType": "[com.aprendoz_desarrollo.data.output.HqlTipoTramiteRtnType]"
+	}, {
 		"name": "hql_dash_asignaturas",
 		"operationType": "hqlquery",
 		"parameters": [{

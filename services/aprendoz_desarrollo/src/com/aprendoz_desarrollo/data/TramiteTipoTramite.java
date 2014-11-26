@@ -8,13 +8,14 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.TramiteTipoTramite
- *  10/16/2014 12:01:13
+ *  11/24/2014 08:53:35
  * 
  */
 public class TramiteTipoTramite {
 
     private Integer idTipoTramite;
     private String tramite;
+    private Boolean disponibleUi;
     private Date fechaCreacion;
     private Date fechaActualizacion;
     private Set<com.aprendoz_desarrollo.data.TramiteTipoTramiteRol> tramiteTipoTramiteRols = new HashSet<com.aprendoz_desarrollo.data.TramiteTipoTramiteRol>();
@@ -34,6 +35,14 @@ public class TramiteTipoTramite {
 
     public void setTramite(String tramite) {
         this.tramite = tramite;
+    }
+
+    public Boolean getDisponibleUi() {
+        return disponibleUi;
+    }
+
+    public void setDisponibleUi(Boolean disponibleUi) {
+        this.disponibleUi = disponibleUi;
     }
 
     public Date getFechaCreacion() {

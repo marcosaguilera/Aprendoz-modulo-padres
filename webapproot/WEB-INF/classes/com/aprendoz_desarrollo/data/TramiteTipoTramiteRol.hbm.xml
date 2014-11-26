@@ -23,6 +23,9 @@
         <property name="fechaActualizacion" type="timestamp">
             <column name="fecha_actualizacion" length="19"/>
         </property>
+        <property name="notificacion" type="boolean">
+            <column name="notificacion"/>
+        </property>
         <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite">
             <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
         </many-to-one>
