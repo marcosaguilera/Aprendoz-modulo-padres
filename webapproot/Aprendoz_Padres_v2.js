@@ -14,7 +14,7 @@ dojo.declare("Aprendoz_Padres_v2", wm.Application, {
 	"projectSubVersion": "Alpha68", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
-	"studioVersion": "6.6.0.RELEASE", 
+	"studioVersion": "6.7.0.RELEASE", 
 	"tabletMain": "", 
 	"theme": "wm.base.widget.themes.wm_notheme", 
 	"toastPosition": "br", 

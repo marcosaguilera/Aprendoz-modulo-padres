@@ -7,16 +7,16 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.AccAuthorization
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:13
  * 
  */
 public class AccAuthorization {
 
     private Integer id;
-    private String code;
-    private String areas;
     private Grado grado;
     private TipoPersona tipoPersona;
+    private String code;
+    private String areas;
     private Set<com.aprendoz_desarrollo.data.AccStudentCardAuthorization> accStudentCardAuthorizations = new HashSet<com.aprendoz_desarrollo.data.AccStudentCardAuthorization>();
 
     public Integer getId() {
@@ -25,22 +25,6 @@ public class AccAuthorization {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getAreas() {
-        return areas;
-    }
-
-    public void setAreas(String areas) {
-        this.areas = areas;
     }
 
     public Grado getGrado() {
@@ -57,6 +41,22 @@ public class AccAuthorization {
 
     public void setTipoPersona(TipoPersona tipoPersona) {
         this.tipoPersona = tipoPersona;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getAreas() {
+        return areas;
+    }
+
+    public void setAreas(String areas) {
+        this.areas = areas;
     }
 
     public Set<com.aprendoz_desarrollo.data.AccStudentCardAuthorization> getAccStudentCardAuthorizations() {

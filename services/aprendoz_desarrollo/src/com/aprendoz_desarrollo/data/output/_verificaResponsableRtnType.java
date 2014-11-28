@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "_verificaResponsable" on 11/24/2014 08:53:42
+ * Generated for query "_verificaResponsable" on 11/28/2014 10:15:43
  * 
  */
 public class _verificaResponsableRtnType {

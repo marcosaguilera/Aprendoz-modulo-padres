@@ -1,0 +1,43 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.PadresTramitesTipopersona" table="padres_tramites_tipopersona" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.PadresTramitesTipopersonaId">
+            <key-property name="idTipoTramite" type="integer">
+                <column name="id_tipo_tramite"/>
+            </key-property>
+            <key-property name="tramite" type="string">
+                <column name="tramite"/>
+            </key-property>
+            <key-property name="disponible" type="boolean">
+                <column name="disponible"/>
+            </key-property>
+            <key-property name="tramiteTipoRolId" type="integer">
+                <column name="tramite_tipo_rol_id"/>
+            </key-property>
+            <key-property name="tipoTramiteIdTipoTramite" type="integer">
+                <column name="tipo_tramite_id_tipo_tramite"/>
+            </key-property>
+            <key-property name="tipoPersonaIdTipoPersona" type="integer">
+                <column name="tipo_persona_id_tipo_persona"/>
+            </key-property>
+            <key-property name="requerido" type="boolean">
+                <column name="requerido"/>
+            </key-property>
+            <key-property name="valorDefecto" type="boolean">
+                <column name="valor_defecto"/>
+            </key-property>
+            <key-property name="apruebaSolicita" type="boolean">
+                <column name="aprueba_solicita"/>
+            </key-property>
+            <key-property name="notificacion" type="boolean">
+                <column name="notificacion"/>
+            </key-property>
+            <key-property name="idTipoPersona" type="integer">
+                <column name="Id_Tipo_Persona"/>
+            </key-property>
+            <key-property name="tipoPersona" type="string">
+                <column name="Tipo_Persona" length="45"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

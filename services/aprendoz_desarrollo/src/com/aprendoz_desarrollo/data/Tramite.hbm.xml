@@ -5,6 +5,12 @@
             <column name="id_tramite"/>
             <generator class="identity"/>
         </id>
+        <property name="idSolicitante" type="integer">
+            <column name="id_solicitante" not-null="true"/>
+        </property>
+        <property name="idReferenciado" type="integer">
+            <column name="id_referenciado" not-null="true"/>
+        </property>
         <property name="fechaTramite" type="date">
             <column name="fecha_tramite" length="10"/>
         </property>
@@ -17,7 +23,7 @@
         <property name="fechaEntrega" type="timestamp">
             <column name="fecha_entrega" length="19"/>
         </property>
-        <property name="url_file" type="string">
+        <property name="urlFile" type="string">
             <column name="url_file" length="200"/>
         </property>
         <property name="comentarios" type="string">
@@ -29,20 +35,14 @@
         <property name="fechaModificacion" type="timestamp">
             <column name="fecha_modificacion" length="19"/>
         </property>
-        <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite" cascade="none">
+        <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite">
             <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
         </many-to-one>
-        <set name="tramiteAutorizacioneses" inverse="true" cascade="none">
+        <set name="tramiteAutorizacioneses" inverse="true" cascade="">
             <key>
                 <column name="tramite_id_tramite" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TramiteAutorizaciones"/>
         </set>
-        <many-to-one name="solicitante" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
-            <column name="id_solicitante" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="referenciado" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
-            <column name="id_referenciado" not-null="true"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

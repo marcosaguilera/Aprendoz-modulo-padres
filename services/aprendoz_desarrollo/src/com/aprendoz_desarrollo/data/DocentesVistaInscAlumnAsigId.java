@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 /**
  *  aprendoz_desarrollo.DocentesVistaInscAlumnAsigId
- *  11/24/2014 08:53:36
+ *  11/28/2014 10:15:14
  * 
  */
 public class DocentesVistaInscAlumnAsigId

@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.TramiteAccion" table="tramite_accion" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <id name="idAccion" type="integer">
+            <column name="id_accion"/>
+            <generator class="identity"/>
+        </id>
+        <property name="accion" type="string">
+            <column name="accion" length="50" not-null="true"/>
+        </property>
+        <set name="tramiteTipoTramiteRols" inverse="true" cascade="">
+            <key>
+                <column name="tramite_accion_id_tramite_accion" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.TramiteTipoTramiteRol"/>
+        </set>
+    </class>
+</hibernate-mapping>

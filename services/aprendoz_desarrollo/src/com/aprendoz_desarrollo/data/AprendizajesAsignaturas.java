@@ -6,12 +6,17 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.AprendizajesAsignaturas
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class AprendizajesAsignaturas {
 
     private Integer idAprendizaje;
+    private Inteligencia inteligencia;
+    private DimensionComprension dimensionComprension;
+    private Asignatura asignatura;
+    private NivelEsperado nivelEsperado;
+    private DimensionCurricular dimensionCurricular;
     private Date fechaEsperada;
     private String aprendizaje;
     private String learning;
@@ -19,11 +24,6 @@ public class AprendizajesAsignaturas {
     private Integer ejeIdEje;
     private Integer eje2IdEje;
     private Integer eje3IdEje;
-    private Inteligencia inteligencia;
-    private DimensionComprension dimensionComprension;
-    private Asignatura asignatura;
-    private NivelEsperado nivelEsperado;
-    private DimensionCurricular dimensionCurricular;
 
     public Integer getIdAprendizaje() {
         return idAprendizaje;
@@ -31,6 +31,46 @@ public class AprendizajesAsignaturas {
 
     public void setIdAprendizaje(Integer idAprendizaje) {
         this.idAprendizaje = idAprendizaje;
+    }
+
+    public Inteligencia getInteligencia() {
+        return inteligencia;
+    }
+
+    public void setInteligencia(Inteligencia inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public DimensionComprension getDimensionComprension() {
+        return dimensionComprension;
+    }
+
+    public void setDimensionComprension(DimensionComprension dimensionComprension) {
+        this.dimensionComprension = dimensionComprension;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public NivelEsperado getNivelEsperado() {
+        return nivelEsperado;
+    }
+
+    public void setNivelEsperado(NivelEsperado nivelEsperado) {
+        this.nivelEsperado = nivelEsperado;
+    }
+
+    public DimensionCurricular getDimensionCurricular() {
+        return dimensionCurricular;
+    }
+
+    public void setDimensionCurricular(DimensionCurricular dimensionCurricular) {
+        this.dimensionCurricular = dimensionCurricular;
     }
 
     public Date getFechaEsperada() {
@@ -87,46 +127,6 @@ public class AprendizajesAsignaturas {
 
     public void setEje3IdEje(Integer eje3IdEje) {
         this.eje3IdEje = eje3IdEje;
-    }
-
-    public Inteligencia getInteligencia() {
-        return inteligencia;
-    }
-
-    public void setInteligencia(Inteligencia inteligencia) {
-        this.inteligencia = inteligencia;
-    }
-
-    public DimensionComprension getDimensionComprension() {
-        return dimensionComprension;
-    }
-
-    public void setDimensionComprension(DimensionComprension dimensionComprension) {
-        this.dimensionComprension = dimensionComprension;
-    }
-
-    public Asignatura getAsignatura() {
-        return asignatura;
-    }
-
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
-    }
-
-    public NivelEsperado getNivelEsperado() {
-        return nivelEsperado;
-    }
-
-    public void setNivelEsperado(NivelEsperado nivelEsperado) {
-        this.nivelEsperado = nivelEsperado;
-    }
-
-    public DimensionCurricular getDimensionCurricular() {
-        return dimensionCurricular;
-    }
-
-    public void setDimensionCurricular(DimensionCurricular dimensionCurricular) {
-        this.dimensionCurricular = dimensionCurricular;
     }
 
 }

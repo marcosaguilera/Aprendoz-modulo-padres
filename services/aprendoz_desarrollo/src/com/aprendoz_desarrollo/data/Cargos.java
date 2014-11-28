@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.Cargos
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class Cargos {

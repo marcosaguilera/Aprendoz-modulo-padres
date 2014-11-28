@@ -8,12 +8,14 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Educom
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class Educom {
 
     private Integer idEducom;
+    private Sy sy;
+    private Costos costos;
     private Boolean activoRetirado;
     private Integer edadRequeridadFinal;
     private Integer edadRequeridaInicial;
@@ -54,8 +56,6 @@ public class Educom {
     private Double costoTransporte;
     private String descripcion;
     private String tipoEducom;
-    private Sy sy;
-    private Costos costos;
     private Set<com.aprendoz_desarrollo.data.InscPersonaEduCom> inscPersonaEduComs = new HashSet<com.aprendoz_desarrollo.data.InscPersonaEduCom>();
 
     public Integer getIdEducom() {
@@ -64,6 +64,22 @@ public class Educom {
 
     public void setIdEducom(Integer idEducom) {
         this.idEducom = idEducom;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
+    }
+
+    public Costos getCostos() {
+        return costos;
+    }
+
+    public void setCostos(Costos costos) {
+        this.costos = costos;
     }
 
     public Boolean getActivoRetirado() {
@@ -384,22 +400,6 @@ public class Educom {
 
     public void setTipoEducom(String tipoEducom) {
         this.tipoEducom = tipoEducom;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
-    }
-
-    public Costos getCostos() {
-        return costos;
-    }
-
-    public void setCostos(Costos costos) {
-        this.costos = costos;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscPersonaEduCom> getInscPersonaEduComs() {

@@ -6,18 +6,18 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumCurso
- *  11/24/2014 08:53:34
+ *  11/28/2014 10:15:14
  * 
  */
 public class InscAlumCurso {
 
     private Integer idInscAlumCurso;
-    private Integer calificacion;
-    private String califChar;
-    private Date fechaMatricula;
     private Curso curso;
     private Sy sy;
     private Persona persona;
+    private Integer calificacion;
+    private String califChar;
+    private Date fechaMatricula;
 
     public Integer getIdInscAlumCurso() {
         return idInscAlumCurso;
@@ -25,30 +25,6 @@ public class InscAlumCurso {
 
     public void setIdInscAlumCurso(Integer idInscAlumCurso) {
         this.idInscAlumCurso = idInscAlumCurso;
-    }
-
-    public Integer getCalificacion() {
-        return calificacion;
-    }
-
-    public void setCalificacion(Integer calificacion) {
-        this.calificacion = calificacion;
-    }
-
-    public String getCalifChar() {
-        return califChar;
-    }
-
-    public void setCalifChar(String califChar) {
-        this.califChar = califChar;
-    }
-
-    public Date getFechaMatricula() {
-        return fechaMatricula;
-    }
-
-    public void setFechaMatricula(Date fechaMatricula) {
-        this.fechaMatricula = fechaMatricula;
     }
 
     public Curso getCurso() {
@@ -73,6 +49,30 @@ public class InscAlumCurso {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+
+    public Integer getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(Integer calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public String getCalifChar() {
+        return califChar;
+    }
+
+    public void setCalifChar(String califChar) {
+        this.califChar = califChar;
+    }
+
+    public Date getFechaMatricula() {
+        return fechaMatricula;
+    }
+
+    public void setFechaMatricula(Date fechaMatricula) {
+        this.fechaMatricula = fechaMatricula;
     }
 
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.BusStudentRoute
- *  11/24/2014 08:53:36
+ *  11/28/2014 10:15:13
  * 
  */
 public class BusStudentRoute {

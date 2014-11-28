@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.aprendoz_desarrollo.data.VistaAprendizajesSubarea" table="vista_aprendizajes_subarea" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
+        <composite-id name="id" class="com.aprendoz_desarrollo.data.VistaAprendizajesSubareaId">
+            <key-property name="idSubarea" type="integer">
+                <column name="Id_Subarea"/>
+            </key-property>
+            <key-property name="subarea" type="string">
+                <column name="Subarea" length="45"/>
+            </key-property>
+            <key-property name="idArea" type="integer">
+                <column name="Id_Area"/>
+            </key-property>
+            <key-property name="sy" type="integer">
+                <column name="SY"/>
+            </key-property>
+            <key-property name="idGrado" type="integer">
+                <column name="Id_Grado"/>
+            </key-property>
+            <key-property name="gradoSapiens" type="string">
+                <column name="Grado_sapiens" length="11"/>
+            </key-property>
+            <key-property name="subareaGrado" type="integer">
+                <column name="subarea_grado"/>
+            </key-property>
+            <key-property name="subareaTotal" type="integer">
+                <column name="subarea_total"/>
+            </key-property>
+            <key-property name="grade" type="string">
+                <column name="Grade" length="45"/>
+            </key-property>
+            <key-property name="idNivel" type="integer">
+                <column name="Id_Nivel"/>
+            </key-property>
+            <key-property name="grado" type="string">
+                <column name="grado" length="45"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

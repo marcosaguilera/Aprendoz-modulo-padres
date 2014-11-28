@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.CertificadosFirmas
- *  11/24/2014 08:53:34
+ *  11/28/2014 10:15:13
  * 
  */
 public class CertificadosFirmas {

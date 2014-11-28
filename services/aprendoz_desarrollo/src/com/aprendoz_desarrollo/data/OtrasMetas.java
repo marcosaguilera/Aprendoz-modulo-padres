@@ -6,17 +6,17 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.OtrasMetas
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class OtrasMetas {
 
     private Integer idOtraMeta;
+    private Subtopico subtopico;
     private String meta;
     private Date fecha;
     private Boolean logrado;
     private Integer idSyIdIdSy;
-    private Subtopico subtopico;
 
     public Integer getIdOtraMeta() {
         return idOtraMeta;
@@ -24,6 +24,14 @@ public class OtrasMetas {
 
     public void setIdOtraMeta(Integer idOtraMeta) {
         this.idOtraMeta = idOtraMeta;
+    }
+
+    public Subtopico getSubtopico() {
+        return subtopico;
+    }
+
+    public void setSubtopico(Subtopico subtopico) {
+        this.subtopico = subtopico;
     }
 
     public String getMeta() {
@@ -56,14 +64,6 @@ public class OtrasMetas {
 
     public void setIdSyIdIdSy(Integer idSyIdIdSy) {
         this.idSyIdIdSy = idSyIdIdSy;
-    }
-
-    public Subtopico getSubtopico() {
-        return subtopico;
-    }
-
-    public void setSubtopico(Subtopico subtopico) {
-        this.subtopico = subtopico;
     }
 
 }

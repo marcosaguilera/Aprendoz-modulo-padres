@@ -6,18 +6,18 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.TramiteAutorizaciones
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class TramiteAutorizaciones {
 
     private Integer idAutorizacion;
+    private Tramite tramite;
     private Integer personaIdPersona;
     private Boolean aprobacion;
     private String comentario;
     private Date fechaCreacion;
     private Date fechaActualizacion;
-    private Tramite tramite;
 
     public Integer getIdAutorizacion() {
         return idAutorizacion;
@@ -25,6 +25,14 @@ public class TramiteAutorizaciones {
 
     public void setIdAutorizacion(Integer idAutorizacion) {
         this.idAutorizacion = idAutorizacion;
+    }
+
+    public Tramite getTramite() {
+        return tramite;
+    }
+
+    public void setTramite(Tramite tramite) {
+        this.tramite = tramite;
     }
 
     public Integer getPersonaIdPersona() {
@@ -65,14 +73,6 @@ public class TramiteAutorizaciones {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
-    }
-
-    public Tramite getTramite() {
-        return tramite;
-    }
-
-    public void setTramite(Tramite tramite) {
-        this.tramite = tramite;
     }
 
 }

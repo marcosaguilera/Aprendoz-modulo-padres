@@ -5,19 +5,19 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.Asistencia
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class Asistencia {
 
     private Integer idAsistencia;
+    private Sesion sesion;
+    private TipoAsistencia tipoAsistencia;
+    private Persona persona;
     private String tipoEventualidadIdTipoEventualidad;
     private String tipoEventualidadIdTipoEventualidad1;
     private String tipoEventualidadIdTipoEventualidad2;
     private String comentario;
-    private Sesion sesion;
-    private TipoAsistencia tipoAsistencia;
-    private Persona persona;
 
     public Integer getIdAsistencia() {
         return idAsistencia;
@@ -25,6 +25,30 @@ public class Asistencia {
 
     public void setIdAsistencia(Integer idAsistencia) {
         this.idAsistencia = idAsistencia;
+    }
+
+    public Sesion getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
+    }
+
+    public TipoAsistencia getTipoAsistencia() {
+        return tipoAsistencia;
+    }
+
+    public void setTipoAsistencia(TipoAsistencia tipoAsistencia) {
+        this.tipoAsistencia = tipoAsistencia;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public String getTipoEventualidadIdTipoEventualidad() {
@@ -57,30 +81,6 @@ public class Asistencia {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
-    }
-
-    public Sesion getSesion() {
-        return sesion;
-    }
-
-    public void setSesion(Sesion sesion) {
-        this.sesion = sesion;
-    }
-
-    public TipoAsistencia getTipoAsistencia() {
-        return tipoAsistencia;
-    }
-
-    public void setTipoAsistencia(TipoAsistencia tipoAsistencia) {
-        this.tipoAsistencia = tipoAsistencia;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

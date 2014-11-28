@@ -6,12 +6,15 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscPersonaEduCom
- *  11/24/2014 08:53:34
+ *  11/28/2014 10:15:14
  * 
  */
 public class InscPersonaEduCom {
 
     private Integer idInscPersonaEduCom;
+    private Educom educom;
+    private TipoPago tipoPago;
+    private Persona persona;
     private Date fechaCreacion;
     private Date fechaActualizacion;
     private Double descuento;
@@ -19,9 +22,6 @@ public class InscPersonaEduCom {
     private String plazo;
     private Boolean activoRetirado;
     private Boolean beca;
-    private Educom educom;
-    private TipoPago tipoPago;
-    private Persona persona;
 
     public Integer getIdInscPersonaEduCom() {
         return idInscPersonaEduCom;
@@ -29,6 +29,30 @@ public class InscPersonaEduCom {
 
     public void setIdInscPersonaEduCom(Integer idInscPersonaEduCom) {
         this.idInscPersonaEduCom = idInscPersonaEduCom;
+    }
+
+    public Educom getEducom() {
+        return educom;
+    }
+
+    public void setEducom(Educom educom) {
+        this.educom = educom;
+    }
+
+    public TipoPago getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(TipoPago tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Date getFechaCreacion() {
@@ -85,30 +109,6 @@ public class InscPersonaEduCom {
 
     public void setBeca(Boolean beca) {
         this.beca = beca;
-    }
-
-    public Educom getEducom() {
-        return educom;
-    }
-
-    public void setEducom(Educom educom) {
-        this.educom = educom;
-    }
-
-    public TipoPago getTipoPago() {
-        return tipoPago;
-    }
-
-    public void setTipoPago(TipoPago tipoPago) {
-        this.tipoPago = tipoPago;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

@@ -6,15 +6,15 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.LogDocentes
- *  11/24/2014 08:53:34
+ *  11/28/2014 10:15:14
  * 
  */
 public class LogDocentes {
 
     private Integer idLogDocentes;
+    private Persona persona;
     private Date fechaIngreso;
     private Date horaIngreso;
-    private Persona persona;
 
     public Integer getIdLogDocentes() {
         return idLogDocentes;
@@ -22,6 +22,14 @@ public class LogDocentes {
 
     public void setIdLogDocentes(Integer idLogDocentes) {
         this.idLogDocentes = idLogDocentes;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Date getFechaIngreso() {
@@ -38,14 +46,6 @@ public class LogDocentes {
 
     public void setHoraIngreso(Date horaIngreso) {
         this.horaIngreso = horaIngreso;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
 }

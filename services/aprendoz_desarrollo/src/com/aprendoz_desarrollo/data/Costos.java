@@ -7,12 +7,14 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Costos
- *  11/24/2014 08:53:35
+ *  11/28/2014 10:15:14
  * 
  */
 public class Costos {
 
     private Integer idCosto;
+    private Grado grado;
+    private Sy sy;
     private String codigo;
     private String nombreProducto;
     private String descripcion;
@@ -22,8 +24,6 @@ public class Costos {
     private Boolean positivo;
     private Boolean anual;
     private Integer tipoCosto;
-    private Grado grado;
-    private Sy sy;
     private Set<com.aprendoz_desarrollo.data.InscAlumCosto> inscAlumCostos = new HashSet<com.aprendoz_desarrollo.data.InscAlumCosto>();
     private Set<com.aprendoz_desarrollo.data.Educom> educoms = new HashSet<com.aprendoz_desarrollo.data.Educom>();
 
@@ -33,6 +33,22 @@ public class Costos {
 
     public void setIdCosto(Integer idCosto) {
         this.idCosto = idCosto;
+    }
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
     }
 
     public String getCodigo() {
@@ -105,22 +121,6 @@ public class Costos {
 
     public void setTipoCosto(Integer tipoCosto) {
         this.tipoCosto = tipoCosto;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscAlumCosto> getInscAlumCostos() {

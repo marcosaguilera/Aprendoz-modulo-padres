@@ -7,12 +7,14 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.TransporteRutas
- *  11/24/2014 08:53:34
+ *  11/28/2014 10:15:14
  * 
  */
 public class TransporteRutas {
 
     private Integer idRuta;
+    private GrupoFamiliar grupoFamiliar;
+    private TipoTransporte tipoTransporte;
     private String numeroRuta;
     private String placaVehiculo;
     private String nombreConductor;
@@ -27,8 +29,6 @@ public class TransporteRutas {
     private String descripcion;
     private String telefono1;
     private String telefono2;
-    private GrupoFamiliar grupoFamiliar;
-    private TipoTransporte tipoTransporte;
     private Set<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte> transporteInscAlumTransportesForMartesRuta = new HashSet<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte>();
     private Set<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte> transporteInscAlumTransportesForMiercolesRuta = new HashSet<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte>();
     private Set<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte> transporteInscAlumTransportesForJuevesRuta = new HashSet<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte>();
@@ -44,6 +44,22 @@ public class TransporteRutas {
 
     public void setIdRuta(Integer idRuta) {
         this.idRuta = idRuta;
+    }
+
+    public GrupoFamiliar getGrupoFamiliar() {
+        return grupoFamiliar;
+    }
+
+    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
+        this.grupoFamiliar = grupoFamiliar;
+    }
+
+    public TipoTransporte getTipoTransporte() {
+        return tipoTransporte;
+    }
+
+    public void setTipoTransporte(TipoTransporte tipoTransporte) {
+        this.tipoTransporte = tipoTransporte;
     }
 
     public String getNumeroRuta() {
@@ -156,22 +172,6 @@ public class TransporteRutas {
 
     public void setTelefono2(String telefono2) {
         this.telefono2 = telefono2;
-    }
-
-    public GrupoFamiliar getGrupoFamiliar() {
-        return grupoFamiliar;
-    }
-
-    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
-        this.grupoFamiliar = grupoFamiliar;
-    }
-
-    public TipoTransporte getTipoTransporte() {
-        return tipoTransporte;
-    }
-
-    public void setTipoTransporte(TipoTransporte tipoTransporte) {
-        this.tipoTransporte = tipoTransporte;
     }
 
     public Set<com.aprendoz_desarrollo.data.TransporteInscAlumTransporte> getTransporteInscAlumTransportesForMartesRuta() {
