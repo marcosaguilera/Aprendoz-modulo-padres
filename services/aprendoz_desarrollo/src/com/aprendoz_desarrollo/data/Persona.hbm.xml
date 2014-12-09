@@ -398,5 +398,11 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Coordinacion"/>
         </set>
+        <set name="tramites" inverse="true" cascade="">
+            <key>
+                <column name="id_referenciado" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Tramite"/>
+        </set>
     </class>
 </hibernate-mapping>

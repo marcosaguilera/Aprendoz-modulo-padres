@@ -6,15 +6,15 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.PersonaCarne
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:11
  * 
  */
 public class PersonaCarne {
 
     private Integer idPersonaCarne;
-    private Persona persona;
     private Date fecha;
     private Integer numerocopias;
+    private Persona persona;
 
     public Integer getIdPersonaCarne() {
         return idPersonaCarne;
@@ -22,14 +22,6 @@ public class PersonaCarne {
 
     public void setIdPersonaCarne(Integer idPersonaCarne) {
         this.idPersonaCarne = idPersonaCarne;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     public Date getFecha() {
@@ -46,6 +38,14 @@ public class PersonaCarne {
 
     public void setNumerocopias(Integer numerocopias) {
         this.numerocopias = numerocopias;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

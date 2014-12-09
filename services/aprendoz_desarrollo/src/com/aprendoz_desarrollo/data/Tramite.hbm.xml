@@ -1,48 +1,48 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.aprendoz_desarrollo.data.Tramite" table="tramite" catalog="aprendoz_desarrollo" dynamic-insert="false" dynamic-update="false">
-        <id name="idTramite" type="integer">
+        <id name="id_tramite" type="integer">
             <column name="id_tramite"/>
             <generator class="identity"/>
         </id>
-        <property name="idSolicitante" type="integer">
-            <column name="id_solicitante" not-null="true"/>
-        </property>
-        <property name="idReferenciado" type="integer">
-            <column name="id_referenciado" not-null="true"/>
-        </property>
-        <property name="fechaTramite" type="date">
+        <property name="fecha_tramite" type="date">
             <column name="fecha_tramite" length="10"/>
         </property>
-        <property name="horaTramite" type="time">
+        <property name="hora_tramite" type="time">
             <column name="hora_tramite" length="8"/>
         </property>
-        <property name="fechaEsperada" type="timestamp">
+        <property name="fecha_esperada" type="timestamp">
             <column name="fecha_esperada" length="19"/>
         </property>
-        <property name="fechaEntrega" type="timestamp">
+        <property name="fecha_entrega" type="timestamp">
             <column name="fecha_entrega" length="19"/>
         </property>
-        <property name="urlFile" type="string">
+        <property name="url_file" type="string">
             <column name="url_file" length="200"/>
         </property>
         <property name="comentarios" type="string">
             <column name="comentarios" length="65535"/>
         </property>
-        <property name="fechaCreacion" type="timestamp">
+        <property name="fecha_creacion" type="timestamp">
             <column name="fecha_creacion" length="19"/>
         </property>
-        <property name="fechaModificacion" type="timestamp">
+        <property name="fecha_modificacion" type="timestamp">
             <column name="fecha_modificacion" length="19"/>
         </property>
-        <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite">
+        <many-to-one name="tramiteTipoTramite" class="com.aprendoz_desarrollo.data.TramiteTipoTramite" cascade="none">
             <column name="tipo_tramite_id_tipo_tramite" not-null="true"/>
         </many-to-one>
-        <set name="tramiteAutorizacioneses" inverse="true" cascade="">
+        <set name="tramiteAutorizacioneses" inverse="true" cascade="none">
             <key>
                 <column name="tramite_id_tramite" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.TramiteAutorizaciones"/>
         </set>
+        <many-to-one name="solicitante" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
+            <column name="id_solicitante" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="referenciado" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
+            <column name="id_referenciado" not-null="true"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.TipoEps
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:10
  * 
  */
 public class TipoEps {

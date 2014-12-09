@@ -7,14 +7,14 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Curso
- *  11/28/2014 10:15:13
+ *  12/04/2014 08:27:11
  * 
  */
 public class Curso {
 
     private Integer idCurso;
-    private Grado grado;
     private String curso;
+    private Grado grado;
     private Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsig>();
     private Set<com.aprendoz_desarrollo.data.Horario> horarios = new HashSet<com.aprendoz_desarrollo.data.Horario>();
     private Set<com.aprendoz_desarrollo.data.CoordinacionDeGrupo> coordinacionDeGrupos = new HashSet<com.aprendoz_desarrollo.data.CoordinacionDeGrupo>();
@@ -34,20 +34,20 @@ public class Curso {
         this.idCurso = idCurso;
     }
 
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
     public String getCurso() {
         return curso;
     }
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscCursoAsig> getInscCursoAsigs() {

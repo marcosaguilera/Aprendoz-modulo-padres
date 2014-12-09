@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.PadresTramitesTipopersonaId
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:12
  * 
  */
 public class PadresTramitesTipopersonaId
@@ -16,6 +16,10 @@ public class PadresTramitesTipopersonaId
     private Integer idTipoTramite;
     private String tramite;
     private Boolean disponible;
+    private Integer idTipoPersona;
+    private String tipoPersona;
+    private Integer idAccion;
+    private String accion;
     private Integer tramiteTipoRolId;
     private Integer tipoTramiteIdTipoTramite;
     private Integer tipoPersonaIdTipoPersona;
@@ -23,8 +27,6 @@ public class PadresTramitesTipopersonaId
     private Boolean valorDefecto;
     private Boolean apruebaSolicita;
     private Boolean notificacion;
-    private Integer idTipoPersona;
-    private String tipoPersona;
 
     public boolean equals(Object o) {
         if (o == this) {
@@ -58,6 +60,42 @@ public class PadresTramitesTipopersonaId
             }
         } else {
             if (!this.disponible.equals(other.disponible)) {
+                return false;
+            }
+        }
+        if (this.idTipoPersona == null) {
+            if (other.idTipoPersona!= null) {
+                return false;
+            }
+        } else {
+            if (!this.idTipoPersona.equals(other.idTipoPersona)) {
+                return false;
+            }
+        }
+        if (this.tipoPersona == null) {
+            if (other.tipoPersona!= null) {
+                return false;
+            }
+        } else {
+            if (!this.tipoPersona.equals(other.tipoPersona)) {
+                return false;
+            }
+        }
+        if (this.idAccion == null) {
+            if (other.idAccion!= null) {
+                return false;
+            }
+        } else {
+            if (!this.idAccion.equals(other.idAccion)) {
+                return false;
+            }
+        }
+        if (this.accion == null) {
+            if (other.accion!= null) {
+                return false;
+            }
+        } else {
+            if (!this.accion.equals(other.accion)) {
                 return false;
             }
         }
@@ -124,24 +162,6 @@ public class PadresTramitesTipopersonaId
                 return false;
             }
         }
-        if (this.idTipoPersona == null) {
-            if (other.idTipoPersona!= null) {
-                return false;
-            }
-        } else {
-            if (!this.idTipoPersona.equals(other.idTipoPersona)) {
-                return false;
-            }
-        }
-        if (this.tipoPersona == null) {
-            if (other.tipoPersona!= null) {
-                return false;
-            }
-        } else {
-            if (!this.tipoPersona.equals(other.tipoPersona)) {
-                return false;
-            }
-        }
         return true;
     }
 
@@ -158,6 +178,22 @@ public class PadresTramitesTipopersonaId
         rtn = (rtn* 37);
         if (this.disponible!= null) {
             rtn = (rtn + this.disponible.hashCode());
+        }
+        rtn = (rtn* 37);
+        if (this.idTipoPersona!= null) {
+            rtn = (rtn + this.idTipoPersona.hashCode());
+        }
+        rtn = (rtn* 37);
+        if (this.tipoPersona!= null) {
+            rtn = (rtn + this.tipoPersona.hashCode());
+        }
+        rtn = (rtn* 37);
+        if (this.idAccion!= null) {
+            rtn = (rtn + this.idAccion.hashCode());
+        }
+        rtn = (rtn* 37);
+        if (this.accion!= null) {
+            rtn = (rtn + this.accion.hashCode());
         }
         rtn = (rtn* 37);
         if (this.tramiteTipoRolId!= null) {
@@ -187,14 +223,6 @@ public class PadresTramitesTipopersonaId
         if (this.notificacion!= null) {
             rtn = (rtn + this.notificacion.hashCode());
         }
-        rtn = (rtn* 37);
-        if (this.idTipoPersona!= null) {
-            rtn = (rtn + this.idTipoPersona.hashCode());
-        }
-        rtn = (rtn* 37);
-        if (this.tipoPersona!= null) {
-            rtn = (rtn + this.tipoPersona.hashCode());
-        }
         return rtn;
     }
 
@@ -220,6 +248,38 @@ public class PadresTramitesTipopersonaId
 
     public void setDisponible(Boolean disponible) {
         this.disponible = disponible;
+    }
+
+    public Integer getIdTipoPersona() {
+        return idTipoPersona;
+    }
+
+    public void setIdTipoPersona(Integer idTipoPersona) {
+        this.idTipoPersona = idTipoPersona;
+    }
+
+    public String getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public void setTipoPersona(String tipoPersona) {
+        this.tipoPersona = tipoPersona;
+    }
+
+    public Integer getIdAccion() {
+        return idAccion;
+    }
+
+    public void setIdAccion(Integer idAccion) {
+        this.idAccion = idAccion;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
     }
 
     public Integer getTramiteTipoRolId() {
@@ -276,22 +336,6 @@ public class PadresTramitesTipopersonaId
 
     public void setNotificacion(Boolean notificacion) {
         this.notificacion = notificacion;
-    }
-
-    public Integer getIdTipoPersona() {
-        return idTipoPersona;
-    }
-
-    public void setIdTipoPersona(Integer idTipoPersona) {
-        this.idTipoPersona = idTipoPersona;
-    }
-
-    public String getTipoPersona() {
-        return tipoPersona;
-    }
-
-    public void setTipoPersona(String tipoPersona) {
-        this.tipoPersona = tipoPersona;
     }
 
 }

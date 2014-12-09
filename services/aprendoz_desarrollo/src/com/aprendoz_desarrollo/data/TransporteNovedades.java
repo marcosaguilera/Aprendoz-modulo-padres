@@ -6,15 +6,12 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.TransporteNovedades
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:10
  * 
  */
 public class TransporteNovedades {
 
     private Integer idNovedades;
-    private TransporteRutas transporteRutas;
-    private Persona persona;
-    private TipoSolicitud tipoSolicitud;
     private Date fechaSolicitudInicio;
     private Date fechaSolicitudFin;
     private Date horaProgramada;
@@ -30,6 +27,9 @@ public class TransporteNovedades {
     private String observaciones;
     private Date fechaCreacion;
     private Date fechaActualizacion;
+    private TransporteRutas transporteRutas;
+    private Persona persona;
+    private TipoSolicitud tipoSolicitud;
 
     public Integer getIdNovedades() {
         return idNovedades;
@@ -37,30 +37,6 @@ public class TransporteNovedades {
 
     public void setIdNovedades(Integer idNovedades) {
         this.idNovedades = idNovedades;
-    }
-
-    public TransporteRutas getTransporteRutas() {
-        return transporteRutas;
-    }
-
-    public void setTransporteRutas(TransporteRutas transporteRutas) {
-        this.transporteRutas = transporteRutas;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public TipoSolicitud getTipoSolicitud() {
-        return tipoSolicitud;
-    }
-
-    public void setTipoSolicitud(TipoSolicitud tipoSolicitud) {
-        this.tipoSolicitud = tipoSolicitud;
     }
 
     public Date getFechaSolicitudInicio() {
@@ -181,6 +157,30 @@ public class TransporteNovedades {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public TransporteRutas getTransporteRutas() {
+        return transporteRutas;
+    }
+
+    public void setTransporteRutas(TransporteRutas transporteRutas) {
+        this.transporteRutas = transporteRutas;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    public TipoSolicitud getTipoSolicitud() {
+        return tipoSolicitud;
+    }
+
+    public void setTipoSolicitud(TipoSolicitud tipoSolicitud) {
+        this.tipoSolicitud = tipoSolicitud;
     }
 
 }

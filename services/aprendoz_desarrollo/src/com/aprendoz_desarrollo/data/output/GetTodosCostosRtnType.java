@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getTodosCostos" on 11/28/2014 10:15:43
+ * Generated for query "getTodosCostos" on 12/04/2014 08:27:20
  * 
  */
 public class GetTodosCostosRtnType {

@@ -1370,33 +1370,49 @@ dojo.declare("Main", wm.Page, {
 	getImgUpdateSuccess: function(inSender, inDeprecated) {
 		this.getImgNameService.update(); // triggered the image show function
 	},
-	tramiteLiveForm1BeginInsert: function(inSender) {
+	tramiteLiveForm2BeginInsert: function(inSender) {
 		var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
-        var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+        var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
+        var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
         var now = new Date().getTime();
+        this.tramiteTipoTramiteLookup1.setReadonly(true);
+        this.tramiteTipoTramiteLookup1.hide();
         this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
         this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
         this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
-        this.tipoTramiteLv.filter.setValue("disponibleUi", true);
+        //this.tipoTramiteLv.filter.setValue("disponibleUi", true);
+        this.tipoTramiteUsuarioLiveVariable.filter.setValue("tipoPersonaIdTipoPersona", idtipo);
+        this.tipoTramiteUsuarioLiveVariable.filter.setValue("tramiteAccion.idAccion", 1);
         this.solicitanteLiveVariable.update();
         this.referenciadoLiveVariable.update();
+        this.tramiteTipoTramite.update();
         this.tipoTramiteLv.update();
-        this.fechaCreacionEditor2.setDataValue(now);
-        this.fechaModificacionEditor1.setDataValue(now);
+        this.tipoTramiteUsuarioLiveVariable.update();
+        this.fecha_creacionEditor1.setDataValue(now);
+        this.fecha_modificacionEditor1.setDataValue(now);
 	},
-	tramiteLiveForm1BeginUpdate: function(inSender) {
+	tramiteLiveForm2BeginUpdate: function(inSender) {
 		var now = new Date().getTime();
         var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
-        var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
+        var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
+        var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
         this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
         this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
         this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+
+        this.tipoTramiteUsuarioLiveVariable.filter.setValue("tipoPersonaIdTipoPersona", idtipo);
+        this.tipoTramiteUsuarioLiveVariable.filter.setValue("tramiteAccion.idAccion", 1);
         this.tipoTramiteLv.filter.setValue("disponibleUi", true);
-        
+       
+
         this.referenciadoLiveVariable.update();
         this.solicitanteLiveVariable.update();
+        this.tramiteTipoTramite.update();
+        this.tipoTramiteUsuarioLiveVariable.update();
+        
         this.tipoTramiteLv.update();
-        this.fechaModificacionEditor1.setDataValue(now);
+        this.fecha_modificacionEditor1.setDataValue(now);
+        
 	},
 	solicitanteLiveVariableSuccess: function(inSender, inDeprecated) {
         var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
@@ -1410,11 +1426,11 @@ dojo.declare("Main", wm.Page, {
 	},
 	parents_transportshipClick3: function(inSender) {
         var idfamilia= main.parents_global_user_info.getItem(0).data.idFamilia;
-        this.tramiteLiveVariable2.filter.setValue("referenciado.grupoFamiliar.idGrupoFamiliar", idfamilia);
-		this.tramiteLiveVariable2.update();
-        this.tramiteautorizacionesLiveVariable2.update();
+        this.tramiteLiveVariable3.filter.setValue("referenciado.grupoFamiliar.idGrupoFamiliar", idfamilia);
+		this.tramiteLiveVariable3.update();
+        //this.tramiteautorizacionesLiveVariable2.update();
 	},
-	tramiteLiveVariable2Success: function(inSender, inDeprecated) {
+	tramiteLiveVariable3Success: function(inSender, inDeprecated) {
 		this.tramiteDojoGrid.setSortIndex(0);
 	},
 	tramiteautorizacionesLiveVariable1Success: function(inSender, inDeprecated) {
@@ -1445,33 +1461,60 @@ dojo.declare("Main", wm.Page, {
             
         }
 	},
-	comunity_terms_acceptClick: function(inSender) {
+	//comunity_terms_acceptClick: function(inSender) {
 		
-	},   
-    referenciadoLookup1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
-    	var id = main.referenciadoLookup1.getDataValue().idPersona;
-        this.tramites_correoCoordinadorLv.filter.setValue("id.personaIdPersona", id);
-        this.tramites_correoPadresLv.filter.setValue("id.idPersona", id);
-        this.tramites_correoCoordinadorLv.update();
-        this.tramites_correoPadresLv.update();
+	//},   
+    AuxTipoTramiteChange: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+    	var tramite = main.AuxTipoTramite.getDisplayValue();
+        this.tramiteTipoTramiteLookup1.setDisplayValue(tramite);
 	},
-	tramiteLiveForm1Success1: function(inSender, inData) {
-	    
-	},	
-    sendEmailNotification: function(nombrecoordinador, correocoordinador, correopadre, correomadre, tramite, std, fechahora, comentario){
-        console.log("->"+correocoordinador+" ->"+correopadre+" ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
-        this.tramites_enviarNotificacion.input.setValue("correocoordinador", correocoordinador);
-        this.tramites_enviarNotificacion.input.setValue("correopadre", correopadre);
-        this.tramites_enviarNotificacion.input.setValue("correomadre", correomadre);
-        this.tramites_enviarNotificacion.input.setValue("tramite", tramite);
-        this.tramites_enviarNotificacion.input.setValue("std", std);
-        this.tramites_enviarNotificacion.input.setValue("fechahora", fechahora);
-        this.tramites_enviarNotificacion.input.setValue("comentario", comentario);
-        this.tramites_enviarNotificacion.update();
-    },
-      
-	tramiteLiveForm1InsertData: function(inSender) {
-		var jsoncoordinador     = main.tramites_correoCoordinadorLv.getItem(0).data.id.data;
+    tramiteLiveForm1BeginInsert: function(inSender) {
+    	var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+        var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
+        var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
+        var now       = new Date().getTime();
+
+        //this.tramiteTipoTramiteLookup1.setReadonly(true);
+        //this.tramiteTipoTramiteLookup1.hide();
+        this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
+        this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia );
+        this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1 );
+        this.tipo_accion_usuario.filter.setValue("id.idTipoPersona", idtipo);
+        this.tipo_accion_usuario.filter.setValue("id.idAccion", 1);
+
+        this.solicitanteLiveVariable.update();
+        this.referenciadoLiveVariable.update();
+        this.tramiteTipoTramite.update();
+        this.tipoTramiteLv.update();
+
+        this.tipo_accion_usuario.update();   
+        this.fecha_creacionEditor1.setDataValue(now);    
+        this.fecha_modificacionEditor1.setDataValue(now);
+	},
+	tramiteLiveForm1BeginUpdate: function(inSender) {
+		var now = new Date().getTime();
+        var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
+        var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
+        var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
+        
+        this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
+        this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
+        this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
+
+        this.tipoTramiteUsuarioLiveVariable.filter.setValue("tipoPersonaIdTipoPersona", idtipo);
+        this.tipoTramiteUsuarioLiveVariable.filter.setValue("tramiteAccion.idAccion", 1);
+        //this.tipoTramiteLv.filter.setValue("disponibleUi", true);
+       
+        this.referenciadoLiveVariable.update();
+        this.solicitanteLiveVariable.update();
+        this.tramiteTipoTramite.update();
+        this.tipoTramiteUsuarioLiveVariable.update();
+        
+        this.tipoTramiteLv.update();
+        this.fecha_modificacionEditor2.setDataValue(now);
+	},
+    tramiteLiveForm1InsertData: function(inSender) {
+    	var jsoncoordinador     = main.tramites_correoCoordinadorLv.getItem(0).data.id.data;
         var jsoncorreopadres    = main.tramites_correoPadresLv.getItem(0).data.id.data;
         var email               = jsoncoordinador.email;
         var nombrecoordinador   = jsoncoordinador.nombre1+" "+jsoncoordinador.nombre2+" "+jsoncoordinador.apellido1+" "+jsoncoordinador.apellido2;
@@ -1485,12 +1528,16 @@ dojo.declare("Main", wm.Page, {
         var comentario          = this.comentariosEditor1.getDataValue();
         this.sendEmailNotification(nombrecoordinador, email, emailpadre, emailmadre, tramite, std, fechahora, comentario);
 	},
-	tramiteautorizacionesLiveVariable2Success: function(inSender, inDeprecated) {
-		main.tramiteautorizacionesDojoGrid.setSortIndex(0);
-	},
-	tramiteautorizacionesLiveForm1BeginInsert: function(inSender) {
-		var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
-        this.personaIdPersonaEditor1.setDataValue(idpersona);
-	},
-	_end: 0
+    sendEmailNotification: function(nombrecoordinador, correocoordinador, correopadre, correomadre, tramite, std, fechahora, comentario){
+        console.log("->"+correocoordinador+" ->"+correopadre+" ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+        this.tramites_enviarNotificacion.input.setValue("correocoordinador", correocoordinador);
+        this.tramites_enviarNotificacion.input.setValue("correopadre", correopadre);
+        this.tramites_enviarNotificacion.input.setValue("correomadre", correomadre);
+        this.tramites_enviarNotificacion.input.setValue("tramite", tramite);
+        this.tramites_enviarNotificacion.input.setValue("std", std);
+        this.tramites_enviarNotificacion.input.setValue("fechahora", fechahora);
+        this.tramites_enviarNotificacion.input.setValue("comentario", comentario);
+        this.tramites_enviarNotificacion.update();
+    }, 
+    
 });

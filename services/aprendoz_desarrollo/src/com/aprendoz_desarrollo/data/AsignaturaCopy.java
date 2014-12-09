@@ -5,15 +5,12 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.AsignaturaCopy
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:12
  * 
  */
 public class AsignaturaCopy {
 
     private Integer idAsignatura;
-    private Grado grado;
-    private TipoInscAsig tipoInscAsig;
-    private Sy sy;
     private String asignatura;
     private String subject;
     private Boolean electiva;
@@ -33,6 +30,9 @@ public class AsignaturaCopy {
     private Float ihA3;
     private Float meses;
     private Integer esperadostotal;
+    private Grado grado;
+    private TipoInscAsig tipoInscAsig;
+    private Sy sy;
 
     public Integer getIdAsignatura() {
         return idAsignatura;
@@ -40,30 +40,6 @@ public class AsignaturaCopy {
 
     public void setIdAsignatura(Integer idAsignatura) {
         this.idAsignatura = idAsignatura;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
-    public TipoInscAsig getTipoInscAsig() {
-        return tipoInscAsig;
-    }
-
-    public void setTipoInscAsig(TipoInscAsig tipoInscAsig) {
-        this.tipoInscAsig = tipoInscAsig;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public String getAsignatura() {
@@ -216,6 +192,30 @@ public class AsignaturaCopy {
 
     public void setEsperadostotal(Integer esperadostotal) {
         this.esperadostotal = esperadostotal;
+    }
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+
+    public TipoInscAsig getTipoInscAsig() {
+        return tipoInscAsig;
+    }
+
+    public void setTipoInscAsig(TipoInscAsig tipoInscAsig) {
+        this.tipoInscAsig = tipoInscAsig;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
     }
 
 }

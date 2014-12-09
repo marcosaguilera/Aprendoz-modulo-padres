@@ -6,13 +6,12 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.GestionEncuestas
- *  11/28/2014 10:15:13
+ *  12/04/2014 08:27:12
  * 
  */
 public class GestionEncuestas {
 
     private Integer idPkEncuesta;
-    private Persona persona;
     private Date fechaIngreso;
     private Date fechaActualizacion;
     private String tipo;
@@ -38,6 +37,7 @@ public class GestionEncuestas {
     private Integer p19;
     private Integer p20;
     private String sugerencias;
+    private Persona persona;
 
     public Integer getIdPkEncuesta() {
         return idPkEncuesta;
@@ -45,14 +45,6 @@ public class GestionEncuestas {
 
     public void setIdPkEncuesta(Integer idPkEncuesta) {
         this.idPkEncuesta = idPkEncuesta;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     public Date getFechaIngreso() {
@@ -253,6 +245,14 @@ public class GestionEncuestas {
 
     public void setSugerencias(String sugerencias) {
         this.sugerencias = sugerencias;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

@@ -8,95 +8,71 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Tramite
- *  11/28/2014 10:15:13
+ *  12/04/2014 08:27:10
  * 
  */
 public class Tramite {
 
-    private Integer idTramite;
-    private TramiteTipoTramite tramiteTipoTramite;
-    private Integer idSolicitante;
-    private Integer idReferenciado;
-    private Date fechaTramite;
-    private Date horaTramite;
-    private Date fechaEsperada;
-    private Date fechaEntrega;
-    private String urlFile;
+    private Integer id_tramite;
+    private Date fecha_tramite;
+    private Date hora_tramite;
+    private Date fecha_esperada;
+    private Date fecha_entrega;
+    private String url_file;
     private String comentarios;
-    private Date fechaCreacion;
-    private Date fechaModificacion;
+    private Date fecha_creacion;
+    private Date fecha_modificacion;
+    private TramiteTipoTramite tramiteTipoTramite;
+    private com.aprendoz_desarrollo.data.Persona solicitante;
+    private com.aprendoz_desarrollo.data.Persona referenciado;
     private Set<com.aprendoz_desarrollo.data.TramiteAutorizaciones> tramiteAutorizacioneses = new HashSet<com.aprendoz_desarrollo.data.TramiteAutorizaciones>();
 
-    public Integer getIdTramite() {
-        return idTramite;
+    public Integer getId_tramite() {
+        return id_tramite;
     }
 
-    public void setIdTramite(Integer idTramite) {
-        this.idTramite = idTramite;
+    public void setId_tramite(Integer id_tramite) {
+        this.id_tramite = id_tramite;
     }
 
-    public TramiteTipoTramite getTramiteTipoTramite() {
-        return tramiteTipoTramite;
+    public Date getFecha_tramite() {
+        return fecha_tramite;
     }
 
-    public void setTramiteTipoTramite(TramiteTipoTramite tramiteTipoTramite) {
-        this.tramiteTipoTramite = tramiteTipoTramite;
+    public void setFecha_tramite(Date fecha_tramite) {
+        this.fecha_tramite = fecha_tramite;
     }
 
-    public Integer getIdSolicitante() {
-        return idSolicitante;
+    public Date getHora_tramite() {
+        return hora_tramite;
     }
 
-    public void setIdSolicitante(Integer idSolicitante) {
-        this.idSolicitante = idSolicitante;
+    public void setHora_tramite(Date hora_tramite) {
+        this.hora_tramite = hora_tramite;
     }
 
-    public Integer getIdReferenciado() {
-        return idReferenciado;
+    public Date getFecha_esperada() {
+        return fecha_esperada;
     }
 
-    public void setIdReferenciado(Integer idReferenciado) {
-        this.idReferenciado = idReferenciado;
+    public void setFecha_esperada(Date fecha_esperada) {
+        this.fecha_esperada = fecha_esperada;
     }
 
-    public Date getFechaTramite() {
-        return fechaTramite;
+    public Date getFecha_entrega() {
+        return fecha_entrega;
     }
 
-    public void setFechaTramite(Date fechaTramite) {
-        this.fechaTramite = fechaTramite;
+    public void setFecha_entrega(Date fecha_entrega) {
+        this.fecha_entrega = fecha_entrega;
     }
 
-    public Date getHoraTramite() {
-        return horaTramite;
+    public String getUrl_file() {
+        return url_file;
     }
 
-    public void setHoraTramite(Date horaTramite) {
-        this.horaTramite = horaTramite;
-    }
-
-    public Date getFechaEsperada() {
-        return fechaEsperada;
-    }
-
-    public void setFechaEsperada(Date fechaEsperada) {
-        this.fechaEsperada = fechaEsperada;
-    }
-
-    public Date getFechaEntrega() {
-        return fechaEntrega;
-    }
-
-    public void setFechaEntrega(Date fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
-    }
-
-    public String getUrlFile() {
-        return urlFile;
-    }
-
-    public void setUrlFile(String urlFile) {
-        this.urlFile = urlFile;
+    public void setUrl_file(String url_file) {
+        this.url_file = url_file;
     }
 
     public String getComentarios() {
@@ -107,20 +83,44 @@ public class Tramite {
         this.comentarios = comentarios;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
+    public Date getFecha_creacion() {
+        return fecha_creacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFecha_creacion(Date fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
     }
 
-    public Date getFechaModificacion() {
-        return fechaModificacion;
+    public Date getFecha_modificacion() {
+        return fecha_modificacion;
     }
 
-    public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
+    public void setFecha_modificacion(Date fecha_modificacion) {
+        this.fecha_modificacion = fecha_modificacion;
+    }
+
+    public TramiteTipoTramite getTramiteTipoTramite() {
+        return tramiteTipoTramite;
+    }
+
+    public void setTramiteTipoTramite(TramiteTipoTramite tramiteTipoTramite) {
+        this.tramiteTipoTramite = tramiteTipoTramite;
+    }
+
+    public com.aprendoz_desarrollo.data.Persona getSolicitante() {
+        return solicitante;
+    }
+
+    public void setSolicitante(com.aprendoz_desarrollo.data.Persona solicitante) {
+        this.solicitante = solicitante;
+    }
+
+    public com.aprendoz_desarrollo.data.Persona getReferenciado() {
+        return referenciado;
+    }
+
+    public void setReferenciado(com.aprendoz_desarrollo.data.Persona referenciado) {
+        this.referenciado = referenciado;
     }
 
     public Set<com.aprendoz_desarrollo.data.TramiteAutorizaciones> getTramiteAutorizacioneses() {

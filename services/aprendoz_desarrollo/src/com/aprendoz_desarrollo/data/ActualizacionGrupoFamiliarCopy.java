@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.ActualizacionGrupoFamiliarCopy
- *  11/28/2014 10:15:13
+ *  12/04/2014 08:27:12
  * 
  */
 public class ActualizacionGrupoFamiliarCopy {
 
     private Integer idActualizacionGrupoFamiliar;
-    private GrupoFamiliar grupoFamiliar;
     private Date fechaCreacion;
     private Date fecha;
     private Byte actualizado;
+    private GrupoFamiliar grupoFamiliar;
 
     public Integer getIdActualizacionGrupoFamiliar() {
         return idActualizacionGrupoFamiliar;
@@ -23,14 +23,6 @@ public class ActualizacionGrupoFamiliarCopy {
 
     public void setIdActualizacionGrupoFamiliar(Integer idActualizacionGrupoFamiliar) {
         this.idActualizacionGrupoFamiliar = idActualizacionGrupoFamiliar;
-    }
-
-    public GrupoFamiliar getGrupoFamiliar() {
-        return grupoFamiliar;
-    }
-
-    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
-        this.grupoFamiliar = grupoFamiliar;
     }
 
     public Date getFechaCreacion() {
@@ -55,6 +47,14 @@ public class ActualizacionGrupoFamiliarCopy {
 
     public void setActualizado(Byte actualizado) {
         this.actualizado = actualizado;
+    }
+
+    public GrupoFamiliar getGrupoFamiliar() {
+        return grupoFamiliar;
+    }
+
+    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
+        this.grupoFamiliar = grupoFamiliar;
     }
 
 }

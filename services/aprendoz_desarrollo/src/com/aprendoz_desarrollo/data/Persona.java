@@ -8,15 +8,12 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Persona
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:12
  * 
  */
 public class Persona {
 
     private Integer idPersona;
-    private Pais pais;
-    private TipoPersona tipoPersona;
-    private GrupoFamiliar grupoFamiliar;
     private String nombreLdap;
     private String clave;
     private String codigo;
@@ -77,6 +74,9 @@ public class Persona {
     private Boolean tomaSeguroAccidentes;
     private String noPlaqueta;
     private Integer inscAlumCursoIdInscAlumCurso;
+    private Pais pais;
+    private TipoPersona tipoPersona;
+    private GrupoFamiliar grupoFamiliar;
     private Set<com.aprendoz_desarrollo.data.SeguridadPersonasAccesos> seguridadPersonasAccesoses = new HashSet<com.aprendoz_desarrollo.data.SeguridadPersonasAccesos>();
     private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
     private Set<com.aprendoz_desarrollo.data.PromocionCopy> promocionCopies = new HashSet<com.aprendoz_desarrollo.data.PromocionCopy>();
@@ -111,6 +111,7 @@ public class Persona {
     private Set<com.aprendoz_desarrollo.data.GestionEncuestas> gestionEncuestases = new HashSet<com.aprendoz_desarrollo.data.GestionEncuestas>();
     private Set<com.aprendoz_desarrollo.data.InscAlumCosto> inscAlumCostos = new HashSet<com.aprendoz_desarrollo.data.InscAlumCosto>();
     private Set<com.aprendoz_desarrollo.data.Coordinacion> coordinacions = new HashSet<com.aprendoz_desarrollo.data.Coordinacion>();
+    private Set<com.aprendoz_desarrollo.data.Tramite> tramites = new HashSet<com.aprendoz_desarrollo.data.Tramite>();
 
     public Integer getIdPersona() {
         return idPersona;
@@ -118,30 +119,6 @@ public class Persona {
 
     public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
-    }
-
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
-    public TipoPersona getTipoPersona() {
-        return tipoPersona;
-    }
-
-    public void setTipoPersona(TipoPersona tipoPersona) {
-        this.tipoPersona = tipoPersona;
-    }
-
-    public GrupoFamiliar getGrupoFamiliar() {
-        return grupoFamiliar;
-    }
-
-    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
-        this.grupoFamiliar = grupoFamiliar;
     }
 
     public String getNombreLdap() {
@@ -624,6 +601,30 @@ public class Persona {
         this.inscAlumCursoIdInscAlumCurso = inscAlumCursoIdInscAlumCurso;
     }
 
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public void setTipoPersona(TipoPersona tipoPersona) {
+        this.tipoPersona = tipoPersona;
+    }
+
+    public GrupoFamiliar getGrupoFamiliar() {
+        return grupoFamiliar;
+    }
+
+    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
+        this.grupoFamiliar = grupoFamiliar;
+    }
+
     public Set<com.aprendoz_desarrollo.data.SeguridadPersonasAccesos> getSeguridadPersonasAccesoses() {
         return seguridadPersonasAccesoses;
     }
@@ -894,6 +895,14 @@ public class Persona {
 
     public void setCoordinacions(Set<com.aprendoz_desarrollo.data.Coordinacion> coordinacions) {
         this.coordinacions = coordinacions;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Tramite> getTramites() {
+        return tramites;
+    }
+
+    public void setTramites(Set<com.aprendoz_desarrollo.data.Tramite> tramites) {
+        this.tramites = tramites;
     }
 
 }

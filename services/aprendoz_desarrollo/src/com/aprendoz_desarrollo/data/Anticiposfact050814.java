@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.Anticiposfact050814
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:12
  * 
  */
 public class Anticiposfact050814 {

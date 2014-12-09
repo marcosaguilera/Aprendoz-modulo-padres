@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.VPorcentajeCalificacionId
- *  11/28/2014 10:15:13
+ *  12/04/2014 08:27:09
  * 
  */
 public class VPorcentajeCalificacionId

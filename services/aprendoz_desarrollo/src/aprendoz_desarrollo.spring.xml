@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 11/28/2014 10:15:04
+<!-- Generated 12/03/2014 15:48:25
 
 Configuration for 'aprendoz_desarrollo' database service
 
@@ -124,6 +124,7 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/Aprendizaje.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscCursoAsig.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscAlumCosto.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/PersonalActivo.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaPersonasGrupoFamiliar.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Periodo.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscAlumCurso.hbm.xml</value>
@@ -198,8 +199,8 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/AdministracionVistaInscAlumAsig.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscAlumAsigCurso.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaMatriculasGraficasTotalDia.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/GestionEncuestasGrupoFamiliar.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TramiteTipoTramiteRol.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/GestionEncuestasGrupoFamiliar.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/ImportacionCartera.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Asistencia.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Formulario5a.hbm.xml</value>

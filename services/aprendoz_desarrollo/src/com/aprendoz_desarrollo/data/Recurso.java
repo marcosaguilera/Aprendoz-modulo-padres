@@ -5,17 +5,17 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.Recurso
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:10
  * 
  */
 public class Recurso {
 
     private Integer idRecurso;
-    private Subtopico subtopico;
-    private TipoRecurso tipoRecurso;
     private String recurso;
     private String ubicacion;
     private String fileName;
+    private Subtopico subtopico;
+    private TipoRecurso tipoRecurso;
 
     public Integer getIdRecurso() {
         return idRecurso;
@@ -23,22 +23,6 @@ public class Recurso {
 
     public void setIdRecurso(Integer idRecurso) {
         this.idRecurso = idRecurso;
-    }
-
-    public Subtopico getSubtopico() {
-        return subtopico;
-    }
-
-    public void setSubtopico(Subtopico subtopico) {
-        this.subtopico = subtopico;
-    }
-
-    public TipoRecurso getTipoRecurso() {
-        return tipoRecurso;
-    }
-
-    public void setTipoRecurso(TipoRecurso tipoRecurso) {
-        this.tipoRecurso = tipoRecurso;
     }
 
     public String getRecurso() {
@@ -63,6 +47,22 @@ public class Recurso {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public Subtopico getSubtopico() {
+        return subtopico;
+    }
+
+    public void setSubtopico(Subtopico subtopico) {
+        this.subtopico = subtopico;
+    }
+
+    public TipoRecurso getTipoRecurso() {
+        return tipoRecurso;
+    }
+
+    public void setTipoRecurso(TipoRecurso tipoRecurso) {
+        this.tipoRecurso = tipoRecurso;
     }
 
 }

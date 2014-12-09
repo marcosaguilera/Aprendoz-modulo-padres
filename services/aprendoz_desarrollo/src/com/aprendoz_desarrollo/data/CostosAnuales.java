@@ -5,14 +5,12 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.CostosAnuales
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:11
  * 
  */
 public class CostosAnuales {
 
     private Integer idCostoAnua;
-    private Grado grado;
-    private Sy sy;
     private String codigo;
     private String nombreProducto;
     private String descripcion;
@@ -20,6 +18,8 @@ public class CostosAnuales {
     private Boolean nuevo;
     private Boolean obligatorio;
     private Integer tipoCosto;
+    private Grado grado;
+    private Sy sy;
 
     public Integer getIdCostoAnua() {
         return idCostoAnua;
@@ -27,22 +27,6 @@ public class CostosAnuales {
 
     public void setIdCostoAnua(Integer idCostoAnua) {
         this.idCostoAnua = idCostoAnua;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
-
-    public Sy getSy() {
-        return sy;
-    }
-
-    public void setSy(Sy sy) {
-        this.sy = sy;
     }
 
     public String getCodigo() {
@@ -99,6 +83,22 @@ public class CostosAnuales {
 
     public void setTipoCosto(Integer tipoCosto) {
         this.tipoCosto = tipoCosto;
+    }
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
+
+    public Sy getSy() {
+        return sy;
+    }
+
+    public void setSy(Sy sy) {
+        this.sy = sy;
     }
 
 }

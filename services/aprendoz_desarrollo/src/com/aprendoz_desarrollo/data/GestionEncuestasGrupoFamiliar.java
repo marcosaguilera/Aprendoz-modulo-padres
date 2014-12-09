@@ -6,16 +6,16 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.GestionEncuestasGrupoFamiliar
- *  11/28/2014 10:15:14
+ *  12/04/2014 08:27:12
  * 
  */
 public class GestionEncuestasGrupoFamiliar {
 
     private Integer idGestionEncuestaGrupoFamiliar;
-    private GrupoFamiliar grupoFamiliar;
     private Byte encuestaTerminada;
     private Date fechaCreacion;
     private Date fechaActualizacion;
+    private GrupoFamiliar grupoFamiliar;
 
     public Integer getIdGestionEncuestaGrupoFamiliar() {
         return idGestionEncuestaGrupoFamiliar;
@@ -23,14 +23,6 @@ public class GestionEncuestasGrupoFamiliar {
 
     public void setIdGestionEncuestaGrupoFamiliar(Integer idGestionEncuestaGrupoFamiliar) {
         this.idGestionEncuestaGrupoFamiliar = idGestionEncuestaGrupoFamiliar;
-    }
-
-    public GrupoFamiliar getGrupoFamiliar() {
-        return grupoFamiliar;
-    }
-
-    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
-        this.grupoFamiliar = grupoFamiliar;
     }
 
     public Byte getEncuestaTerminada() {
@@ -55,6 +47,14 @@ public class GestionEncuestasGrupoFamiliar {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public GrupoFamiliar getGrupoFamiliar() {
+        return grupoFamiliar;
+    }
+
+    public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
+        this.grupoFamiliar = grupoFamiliar;
     }
 
 }
