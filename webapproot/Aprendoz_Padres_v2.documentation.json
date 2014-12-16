@@ -5,6 +5,10 @@
 		"service_invalid_EnviarMail": true, 
 		"service_invalid_reciboMatricula": true, 
 		"service_invalid_FileUploadDownload": false, 
-		"service_invalid_NotificacionCoordinador": false
+		"service_invalid_NotificacionCoordinador": false, 
+		"service_invalid_NotificacionPadres": false, 
+		"service_invalid_NotificacionMadres": false, 
+		"service_invalid_NotificacionDirNivel": false, 
+		"service_invalid_NotificacionAdmon": false
 	}
 }

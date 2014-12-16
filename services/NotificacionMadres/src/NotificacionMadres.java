@@ -19,9 +19,8 @@ import javax.mail.internet.*;
 import java.net.*; //clase para las URL
 
 @ExposeToClient
-public class NotificacionCoordinador extends JavaServiceSuperClass {
-
-   public String sendEmailNotification(String correocoordinador, String tramite, String std, String fechahora, String comentario){ 
+public class NotificacionMadres extends JavaServiceSuperClass {
+   public String sendEmailNotification(String correomadre, String tramite, String std, String fechahora, String comentario){ 
       try{        
             Properties props = new Properties();
             props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -35,7 +34,7 @@ public class NotificacionCoordinador extends JavaServiceSuperClass {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("eventualidades@rochester.edu.co"));       
                message.addRecipient(
-                  Message.RecipientType.TO, new InternetAddress(correocoordinador));
+                  Message.RecipientType.TO, new InternetAddress(correomadre));
                message.addRecipient(
                   Message.RecipientType.TO, new InternetAddress("eventualidades@rochester.edu.co"));                
 
@@ -50,8 +49,6 @@ public class NotificacionCoordinador extends JavaServiceSuperClass {
                   "<li>Tramite: "+tramite+"</li>"+
                   "<li>Comentario: "+comentario+"</li>"+
               "</ul>"+"<br/>"+
-              "Para realizar la aprobación de este tramite por favor dirijase al Módulo de Docentes en la pestaña Tramites.<br/>"+
-              "Link de acceso: http://docentes.rochester.edu.co:8080/Aprendoz_Docentes/login.html<br/><br/>"+
               "Agradecemos su atención,<br/><br/>"+
               "***Este un mensaje automático del sistema APRENDOZ***<br/><br/>"+               
               "Aprendoz Colegio Rochester","ISO-8859-1","html");          

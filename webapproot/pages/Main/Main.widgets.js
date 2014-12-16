@@ -774,6 +774,18 @@ Main.widgets = {
 {"caption":"Notificacion","sortable":true,"dataIndex":"id.notificacion","type":"java.lang.Boolean","displayType":"CheckBox","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":2013,"subType":null,"widthUnits":"px"}
 ]}, {}]
 	}],
+	tramites_enviarNotificacionPadres: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionPadres"}, {}, {
+		input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+	}],
+	tramites_enviarNotificacionMadres: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionMadres"}, {}, {
+		input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+	}],
+	tramites_enviarDirNivelNotificacion: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionDirNivel"}, {}, {
+		input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+	}],
+	tramites_enviarAdmonNotificacion: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionAdmon"}, {}, {
+		input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+	}],
 	syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 		containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 			syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
@@ -1090,18 +1102,18 @@ Main.widgets = {
 	}],
 	tramiteDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar4","containerWidgetId":"containerWidget4","desktopHeight":"350px","height":"350px","styles":{},"title":"tramite","width":"500px"}, {}, {
 		containerWidget4: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-			tramiteLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"248px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onBeginInsert":"tramiteLiveForm1BeginInsert","onBeginUpdate":"tramiteLiveForm1BeginUpdate","onInsertData":"tramiteLiveForm1InsertData","onSuccess":"tramiteLivePanel1.popupLiveFormSuccess"}, {
+			tramiteLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"250px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onBeforeServiceCall":"tramiteLiveForm1BeforeServiceCall","onBeginInsert":"tramiteLiveForm1BeginInsert","onBeginUpdate":"tramiteLiveForm1BeginUpdate","onInsertData":"tramiteLiveForm1InsertData","onSuccess":"tramiteLivePanel1.popupLiveFormSuccess"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"expression":undefined,"source":"tramiteDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 				}],
-				id_tramiteEditor1: ["wm.Number", {"border":"0","caption":"No. Tramite","captionSize":"140px","changeOnKey":true,"desktopHeight":"32px","emptyValue":"zero","formField":"id_tramite","height":"32px","required":true,"width":"100%"}, {}],
-				AuxTipoTramite: ["wm.SelectMenu", {"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.PadresTramitesTipopersona","dataValue":undefined,"desktopHeight":"32px","displayField":"id.tramite","displayValue":"","height":"32px","required":true,"styles":{},"width":"100%"}, {"onchange":"AuxTipoTramiteChange"}, {
+				id_tramiteEditor1: ["wm.Number", {"border":"0","caption":"No. Tramite","captionSize":"140px","changeOnKey":true,"desktopHeight":"32px","emptyValue":"zero","formField":"id_tramite","height":"32px","width":"100%"}, {}],
+				AuxTipoTramite: ["wm.SelectMenu", {"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.PadresTramitesTipopersona","dataValue":undefined,"desktopHeight":"32px","displayField":"id.tramite","displayValue":"","height":"32px","required":true,"styles":{},"width":"100%"}, {"onchange":"AuxTipoTramiteChange","onchange1":"AuxTipoTramiteChange1"}, {
 					binding: ["wm.Binding", {}, {}, {
 						wire: ["wm.Wire", {"expression":undefined,"source":"tipo_accion_usuario","targetProperty":"dataSet"}, {}]
 					}]
 				}],
 				tramiteTipoTramiteLookup1: ["wm.Lookup", {"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TramiteTipoTramite","desktopHeight":"32px","displayField":"tramite","formField":"tramiteTipoTramite","height":"32px","required":true,"showing":false,"width":"100%"}, {}],
-				referenciadoLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Referenciado","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayField":"nombreLdap","formField":"referenciado","height":"32px","required":true,"width":"100%"}, {}, {
+				referenciadoLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Referenciado","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayExpression":"${nombre1}+\" \"+${nombre2}+${apellido1}+\" \"+${apellido2}","displayField":"nombreLdap","formField":"referenciado","height":"32px","required":true,"width":"100%"}, {"onchange":"referenciadoLookup1Change"}, {
 					binding: ["wm.Binding", {}, {}, {
 						dataFieldWire: ["wm.Wire", {"source":"referenciadoLookup1.liveVariable","targetProperty":"dataSet"}, {}],
 						wire: ["wm.Wire", {"expression":undefined,"source":"referenciadoLiveVariable","targetProperty":"dataSet"}, {}]
@@ -1113,8 +1125,8 @@ Main.widgets = {
 						wire: ["wm.Wire", {"expression":undefined,"source":"solicitanteLiveVariable","targetProperty":"dataSet"}, {}]
 					}]
 				}],
-				fecha_tramiteEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_tramite","height":"32px","required":true,"width":"100%"}, {}],
-				hora_tramiteEditor1: ["wm.Time", {"border":"0","caption":"Hora","captionSize":"140px","desktopHeight":"32px","emptyValue":"zero","formField":"hora_tramite","height":"32px","required":true,"width":"100%"}, {}],
+				fecha_tramiteEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_tramite","height":"32px","width":"100%"}, {}],
+				hora_tramiteEditor1: ["wm.Time", {"border":"0","caption":"Hora","captionSize":"140px","desktopHeight":"32px","emptyValue":"zero","formField":"hora_tramite","height":"32px","width":"100%"}, {}],
 				fecha_esperadaEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha_esperada","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_esperada","height":"32px","showing":false,"width":"100%"}, {}],
 				fecha_entregaEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha_entrega","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_entrega","height":"32px","showing":false,"width":"100%"}, {}],
 				url_fileEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Url_file","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"desktopHeight":"80px","emptyValue":"emptyString","formField":"url_file","height":"80px","maxChars":200,"showing":false,"width":"100%"}, {}],
@@ -1124,6 +1136,7 @@ Main.widgets = {
 			}]
 		}],
 		buttonBar4: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{}}, {}, {
+			auxButton1: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Guardar","margin":"4","styles":{}}, {"onclick":"auxButton1Click"}],
 			tramiteSaveButton: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Guardar","margin":"4","styles":{}}, {"onclick":"tramiteLiveForm1.saveDataIfValid"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"source":"tramiteLiveForm1.invalid","targetId":null,"targetProperty":"disabled"}, {}]

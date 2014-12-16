@@ -1406,8 +1406,9 @@ var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
 var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
 var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
 var now       = new Date().getTime();
-//this.tramiteTipoTramiteLookup1.setReadonly(true);
-//this.tramiteTipoTramiteLookup1.hide();
+this.tramiteTipoTramiteLookup1.setReadonly(true);
+this.tramiteTipoTramiteLookup1.hide();
+this.tramiteSaveButton.hide();
 this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
 this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia );
 this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1 );
@@ -1426,6 +1427,7 @@ var now = new Date().getTime();
 var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
 var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
 var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
+this.tramiteSaveButton.show();
 this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
 this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
 this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
@@ -1446,24 +1448,90 @@ var email               = jsoncoordinador.email;
 var nombrecoordinador   = jsoncoordinador.nombre1+" "+jsoncoordinador.nombre2+" "+jsoncoordinador.apellido1+" "+jsoncoordinador.apellido2;
 var emailpadre          = jsoncorreopadres.correoMama;
 var emailmadre          = jsoncorreopadres.correoPapa;
-var tramite             = this.tramiteTipoTramiteLookup1.getDisplayValue();
+var tramite             = this.AuxTipoTramite.getDisplayValue();
 var std                 = this.referenciadoLookup1.getDisplayValue();
-var fecha               = this.fechaTramiteEditor1.getDisplayValue();
-var hora                = this.horaTramiteEditor1.getDisplayValue();
+var fecha               = this.fecha_tramiteEditor1.getDisplayValue();
+var hora                = this.hora_tramiteEditor1.getDisplayValue();
 var fechahora           = fecha+" - "+hora;
 var comentario          = this.comentariosEditor1.getDataValue();
-this.sendEmailNotification(nombrecoordinador, email, emailpadre, emailmadre, tramite, std, fechahora, comentario);
+var count               = main.tramite_tipo_accion.getCount();
+for (var i =0 ; i <= count; i++){
+var items    = main.tramite_tipo_accion.getItem(i).data.id.data.idTipoPersona;
+var itemname = main.tramite_tipo_accion.getItem(i).data.id.data.tipoPersona;
+console.log(items + " - " + itemname);
+if(itemname == "Padre"){  this.sendEmailNotificationFather(emailpadre, tramite, std, fechahora, comentario);  }
+if(itemname == "Madre"){  this.sendEmailNotificationMother(emailmadre, tramite, std, fechahora, comentario);  }
+if(itemname == "Docente"){  this.sendEmailNotification(nombrecoordinador, email, tramite, std, fechahora, comentario);  }
+if(itemname == "Directivo Académico"){  this.sendEmailNotificationDirNivel(tramite, std, fechahora, comentario);  }
+if(itemname == "Administrativo"){  this.sendEmailNotificationAdmon(tramite, std, fechahora, comentario);  }
+}
 },
-sendEmailNotification: function(nombrecoordinador, correocoordinador, correopadre, correomadre, tramite, std, fechahora, comentario){
-console.log("->"+correocoordinador+" ->"+correopadre+" ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+sendEmailNotification: function(nombrecoordinador, correocoordinador, tramite, std, fechahora, comentario){
+console.log("->"+correocoordinador+" ->"+tramite+" ->"+std+" ->"+fechahora);
 this.tramites_enviarNotificacion.input.setValue("correocoordinador", correocoordinador);
-this.tramites_enviarNotificacion.input.setValue("correopadre", correopadre);
-this.tramites_enviarNotificacion.input.setValue("correomadre", correomadre);
 this.tramites_enviarNotificacion.input.setValue("tramite", tramite);
 this.tramites_enviarNotificacion.input.setValue("std", std);
 this.tramites_enviarNotificacion.input.setValue("fechahora", fechahora);
 this.tramites_enviarNotificacion.input.setValue("comentario", comentario);
 this.tramites_enviarNotificacion.update();
+},
+sendEmailNotificationMother: function(correomadre, tramite, std, fechahora, comentario){
+console.log("Madre ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+this.tramites_enviarNotificacionMadres.input.setValue("correomadre", correomadre);
+this.tramites_enviarNotificacionMadres.input.setValue("tramite", tramite);
+this.tramites_enviarNotificacionMadres.input.setValue("std", std);
+this.tramites_enviarNotificacionMadres.input.setValue("fechahora", fechahora);
+this.tramites_enviarNotificacionMadres.input.setValue("comentario", comentario);
+this.tramites_enviarNotificacionMadres.update();
+},
+sendEmailNotificationFather: function(correopadre, tramite, std, fechahora, comentario){
+console.log("Padre ->"+correopadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+this.tramites_enviarNotificacionPadres.input.setValue("correopadre", correopadre);
+this.tramites_enviarNotificacionPadres.input.setValue("tramite", tramite);
+this.tramites_enviarNotificacionPadres.input.setValue("std", std);
+this.tramites_enviarNotificacionPadres.input.setValue("fechahora", fechahora);
+this.tramites_enviarNotificacionPadres.input.setValue("comentario", comentario);
+this.tramites_enviarNotificacionPadres.update();
+},
+sendEmailNotificationDirNivel: function(tramite, std, fechahora, comentario){
+this.tramites_enviarDirNivelNotificacion.input.setValue("tramite", tramite);
+this.tramites_enviarDirNivelNotificacion.input.setValue("std", std);
+this.tramites_enviarDirNivelNotificacion.input.setValue("fechahora", fechahora);
+this.tramites_enviarDirNivelNotificacion.input.setValue("comentario", comentario);
+this.tramites_enviarDirNivelNotificacion.update();
+},
+sendEmailNotificationAdmon: function(tramite, std, fechahora, comentario){
+console.log(" ->"+tramite+" ->"+std+" ->"+fechahora);
+this.tramites_enviarAdmonNotificacion.input.setValue("tramite", tramite);
+this.tramites_enviarAdmonNotificacion.input.setValue("std", std);
+this.tramites_enviarAdmonNotificacion.input.setValue("fechahora", fechahora);
+this.tramites_enviarAdmonNotificacion.input.setValue("comentario", comentario);
+this.tramites_enviarAdmonNotificacion.update();
+},
+auxButton1Click: function(inSender) {
+var tramite = this.AuxTipoTramite.getDisplayValue();
+var para    = this.referenciadoLookup1.getDisplayValue();
+var fecha   = this.fecha_tramiteEditor1.getDisplayValue();
+var hora    = this.hora_tramiteEditor1.getDisplayValue();
+var coment  = this.comentariosEditor1.getDisplayValue();
+var r = confirm("Se creará el trámite con la siguiente información: \n-- "+tramite+"\n-- "+para+"\n-- "+fecha+"\n-- "+hora+"\n-- "+coment+"\n\n¿Confirma la creación del tramite?");
+if (r == true) {
+this.tramiteLiveForm1.saveDataIfValid();
+} else {
+this.tramiteLiveForm1.cancelEdit();
+}
+},
+referenciadoLookup1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+var id = main.referenciadoLookup1.getDataValue().idPersona;
+this.tramites_correoCoordinadorLv.filter.setValue("id.personaIdPersona", id);
+this.tramites_correoPadresLv.filter.setValue("id.idPersona", id);
+this.tramites_correoCoordinadorLv.update();
+this.tramites_correoPadresLv.update();
+},
+AuxTipoTramiteChange1: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+var idtramite = main.AuxTipoTramite.getDataValue().id.tipoTramiteIdTipoTramite;
+this.tramite_tipo_accion.filter.setValue("id.tipoTramiteIdTipoTramite", idtramite);
+this.tramite_tipo_accion.update();
 },
 });
 
@@ -2243,6 +2311,18 @@ liveView: ["wm.LiveView", {"dataType":"com.aprendoz_desarrollo.data.PadresTramit
 {"caption":"Notificacion","sortable":true,"dataIndex":"id.notificacion","type":"java.lang.Boolean","displayType":"CheckBox","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":2013,"subType":null,"widthUnits":"px"}
 ]}, {}]
 }],
+tramites_enviarNotificacionPadres: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionPadres"}, {}, {
+input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+}],
+tramites_enviarNotificacionMadres: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionMadres"}, {}, {
+input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+}],
+tramites_enviarDirNivelNotificacion: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionDirNivel"}, {}, {
+input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+}],
+tramites_enviarAdmonNotificacion: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"sendEmailNotification","service":"NotificacionAdmon"}, {}, {
+input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
+}],
 syDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","desktopHeight":"197px","height":"197px","styles":{},"title":"sy","width":"500px"}, {}, {
 containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
 syLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"114px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onSuccess":"syLivePanel1.popupLiveFormSuccess"}, {
@@ -2559,18 +2639,18 @@ wire: ["wm.Wire", {"expression":undefined,"source":"panel_transporte","targetPro
 }],
 tramiteDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar4","containerWidgetId":"containerWidget4","desktopHeight":"350px","height":"350px","styles":{},"title":"tramite","width":"500px"}, {}, {
 containerWidget4: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","padding":"5","styles":{},"verticalAlign":"top","width":"100%"}, {}, {
-tramiteLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"248px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onBeginInsert":"tramiteLiveForm1BeginInsert","onBeginUpdate":"tramiteLiveForm1BeginUpdate","onInsertData":"tramiteLiveForm1InsertData","onSuccess":"tramiteLivePanel1.popupLiveFormSuccess"}, {
+tramiteLiveForm1: ["wm.LiveForm", {"alwaysPopulateEditors":true,"fitToContentHeight":true,"height":"250px","horizontalAlign":"left","liveEditing":false,"margin":"4","verticalAlign":"top"}, {"onBeforeServiceCall":"tramiteLiveForm1BeforeServiceCall","onBeginInsert":"tramiteLiveForm1BeginInsert","onBeginUpdate":"tramiteLiveForm1BeginUpdate","onInsertData":"tramiteLiveForm1InsertData","onSuccess":"tramiteLivePanel1.popupLiveFormSuccess"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"tramiteDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 }],
-id_tramiteEditor1: ["wm.Number", {"border":"0","caption":"No. Tramite","captionSize":"140px","changeOnKey":true,"desktopHeight":"32px","emptyValue":"zero","formField":"id_tramite","height":"32px","required":true,"width":"100%"}, {}],
-AuxTipoTramite: ["wm.SelectMenu", {"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.PadresTramitesTipopersona","dataValue":undefined,"desktopHeight":"32px","displayField":"id.tramite","displayValue":"","height":"32px","required":true,"styles":{},"width":"100%"}, {"onchange":"AuxTipoTramiteChange"}, {
+id_tramiteEditor1: ["wm.Number", {"border":"0","caption":"No. Tramite","captionSize":"140px","changeOnKey":true,"desktopHeight":"32px","emptyValue":"zero","formField":"id_tramite","height":"32px","width":"100%"}, {}],
+AuxTipoTramite: ["wm.SelectMenu", {"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.PadresTramitesTipopersona","dataValue":undefined,"desktopHeight":"32px","displayField":"id.tramite","displayValue":"","height":"32px","required":true,"styles":{},"width":"100%"}, {"onchange":"AuxTipoTramiteChange","onchange1":"AuxTipoTramiteChange1"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"tipo_accion_usuario","targetProperty":"dataSet"}, {}]
 }]
 }],
 tramiteTipoTramiteLookup1: ["wm.Lookup", {"caption":"Tramite","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.TramiteTipoTramite","desktopHeight":"32px","displayField":"tramite","formField":"tramiteTipoTramite","height":"32px","required":true,"showing":false,"width":"100%"}, {}],
-referenciadoLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Referenciado","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayField":"nombreLdap","formField":"referenciado","height":"32px","required":true,"width":"100%"}, {}, {
+referenciadoLookup1: ["wm.Lookup", {"autoDataSet":false,"caption":"Referenciado","captionSize":"140px","dataType":"com.aprendoz_desarrollo.data.Persona","desktopHeight":"32px","displayExpression":"${nombre1}+\" \"+${nombre2}+${apellido1}+\" \"+${apellido2}","displayField":"nombreLdap","formField":"referenciado","height":"32px","required":true,"width":"100%"}, {"onchange":"referenciadoLookup1Change"}, {
 binding: ["wm.Binding", {}, {}, {
 dataFieldWire: ["wm.Wire", {"source":"referenciadoLookup1.liveVariable","targetProperty":"dataSet"}, {}],
 wire: ["wm.Wire", {"expression":undefined,"source":"referenciadoLiveVariable","targetProperty":"dataSet"}, {}]
@@ -2582,8 +2662,8 @@ dataFieldWire: ["wm.Wire", {"source":"solicitanteLookup1.liveVariable","targetPr
 wire: ["wm.Wire", {"expression":undefined,"source":"solicitanteLiveVariable","targetProperty":"dataSet"}, {}]
 }]
 }],
-fecha_tramiteEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_tramite","height":"32px","required":true,"width":"100%"}, {}],
-hora_tramiteEditor1: ["wm.Time", {"border":"0","caption":"Hora","captionSize":"140px","desktopHeight":"32px","emptyValue":"zero","formField":"hora_tramite","height":"32px","required":true,"width":"100%"}, {}],
+fecha_tramiteEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_tramite","height":"32px","width":"100%"}, {}],
+hora_tramiteEditor1: ["wm.Time", {"border":"0","caption":"Hora","captionSize":"140px","desktopHeight":"32px","emptyValue":"zero","formField":"hora_tramite","height":"32px","width":"100%"}, {}],
 fecha_esperadaEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha_esperada","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_esperada","height":"32px","showing":false,"width":"100%"}, {}],
 fecha_entregaEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha_entrega","captionSize":"140px","dateMode":"Date","desktopHeight":"32px","emptyValue":"zero","formField":"fecha_entrega","height":"32px","showing":false,"width":"100%"}, {}],
 url_fileEditor1: ["wm.LargeTextArea", {"border":"0","caption":"Url_file","captionAlign":"right","captionPosition":"left","captionSize":"140px","changeOnKey":true,"desktopHeight":"80px","emptyValue":"emptyString","formField":"url_file","height":"80px","maxChars":200,"showing":false,"width":"100%"}, {}],
@@ -2593,6 +2673,7 @@ fecha_modificacionEditor1: ["wm.DateTime", {"border":"0","caption":"Fecha_modifi
 }]
 }],
 buttonBar4: ["wm.ButtonBarPanel", {"border":"1","desktopHeight":"34px","height":"34px","styles":{}}, {}, {
+auxButton1: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Guardar","margin":"4","styles":{}}, {"onclick":"auxButton1Click"}],
 tramiteSaveButton: ["wm.Button", {"_classes":{"domNode":["Green"]},"caption":"Guardar","margin":"4","styles":{}}, {"onclick":"tramiteLiveForm1.saveDataIfValid"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"source":"tramiteLiveForm1.invalid","targetId":null,"targetProperty":"disabled"}, {}]

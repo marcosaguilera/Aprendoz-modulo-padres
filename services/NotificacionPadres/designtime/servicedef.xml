@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="NotificacionCoordinador" class="NotificacionCoordinador" CRUDService="false" type="JavaService" springFile="NotificacionCoordinador.spring.xml">
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="NotificacionPadres" class="NotificacionPadres" CRUDService="false" type="JavaService" springFile="NotificacionPadres.spring.xml">
     <operation name="sendEmailNotification">
-        <parameter name="correocoordinador" typeRef="java.lang.String" isList="false"/>
+        <parameter name="correopadre" typeRef="java.lang.String" isList="false"/>
         <parameter name="tramite" typeRef="java.lang.String" isList="false"/>
         <parameter name="std" typeRef="java.lang.String" isList="false"/>
         <parameter name="fechahora" typeRef="java.lang.String" isList="false"/>

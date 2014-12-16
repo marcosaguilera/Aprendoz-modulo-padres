@@ -3,7 +3,7 @@
 		"name": "sendEmailNotification",
 		"operationType": null,
 		"parameters": [{
-			"name": "correocoordinador",
+			"name": "correomadre",
 			"type": "java.lang.String"
 		}, {
 			"name": "tramite",
@@ -21,5 +21,5 @@
 		"returnType": "java.lang.String"
 	}],
 	"serviceType": "JSON-RPC",
-	"serviceURL": "NotificacionCoordinador.json"
+	"serviceURL": "NotificacionMadres.json"
 }

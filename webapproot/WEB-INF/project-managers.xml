@@ -11,7 +11,19 @@
                         <value>org.springframework.web.multipart.MultipartFile</value>
                     </list>
                 </entry>
+                <entry key="NotificacionAdmon">
+                    <list/>
+                </entry>
                 <entry key="NotificacionCoordinador">
+                    <list/>
+                </entry>
+                <entry key="NotificacionDirNivel">
+                    <list/>
+                </entry>
+                <entry key="NotificacionMadres">
+                    <list/>
+                </entry>
+                <entry key="NotificacionPadres">
                     <list/>
                 </entry>
                 <entry key="aprendoz_desarrollo">

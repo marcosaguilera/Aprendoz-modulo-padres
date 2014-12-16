@@ -1468,14 +1468,16 @@ dojo.declare("Main", wm.Page, {
     	var tramite = main.AuxTipoTramite.getDisplayValue();
         this.tramiteTipoTramiteLookup1.setDisplayValue(tramite);
 	},
-    tramiteLiveForm1BeginInsert: function(inSender) {
+    tramiteLiveForm1BeginInsert: function(inSender) {       
     	var idpersona = main.parents_global_user_info.getItem(0).data.idpersona;
         var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
         var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
         var now       = new Date().getTime();
 
-        //this.tramiteTipoTramiteLookup1.setReadonly(true);
-        //this.tramiteTipoTramiteLookup1.hide();
+        this.tramiteTipoTramiteLookup1.setReadonly(true);
+        this.tramiteTipoTramiteLookup1.hide();
+        this.tramiteSaveButton.hide();
+        
         this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
         this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia );
         this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1 );
@@ -1497,6 +1499,7 @@ dojo.declare("Main", wm.Page, {
         var idfamilia = main.parents_global_user_info.getItem(0).data.idFamilia;
         var idtipo    = main.parents_global_user_info.getItem(0).data.tipoId;
         
+        this.tramiteSaveButton.show();
         this.solicitanteLiveVariable.filter.setValue("idPersona", idpersona);
         this.referenciadoLiveVariable.filter.setValue("grupoFamiliar.idGrupoFamiliar", idfamilia);
         this.referenciadoLiveVariable.filter.setValue("tipoPersona.idTipoPersona", 1);
@@ -1520,24 +1523,94 @@ dojo.declare("Main", wm.Page, {
         var nombrecoordinador   = jsoncoordinador.nombre1+" "+jsoncoordinador.nombre2+" "+jsoncoordinador.apellido1+" "+jsoncoordinador.apellido2;
         var emailpadre          = jsoncorreopadres.correoMama;
         var emailmadre          = jsoncorreopadres.correoPapa;
-        var tramite             = this.tramiteTipoTramiteLookup1.getDisplayValue();
+        
+        var tramite             = this.AuxTipoTramite.getDisplayValue();
         var std                 = this.referenciadoLookup1.getDisplayValue();
-        var fecha               = this.fechaTramiteEditor1.getDisplayValue();
-        var hora                = this.horaTramiteEditor1.getDisplayValue();
+        var fecha               = this.fecha_tramiteEditor1.getDisplayValue();
+        var hora                = this.hora_tramiteEditor1.getDisplayValue();
         var fechahora           = fecha+" - "+hora;
         var comentario          = this.comentariosEditor1.getDataValue();
-        this.sendEmailNotification(nombrecoordinador, email, emailpadre, emailmadre, tramite, std, fechahora, comentario);
+        var count               = main.tramite_tipo_accion.getCount();
+        
+        for (var i =0 ; i <= count; i++){
+            var items    = main.tramite_tipo_accion.getItem(i).data.id.data.idTipoPersona;
+            var itemname = main.tramite_tipo_accion.getItem(i).data.id.data.tipoPersona;
+            console.log(items + " - " + itemname);
+            
+            if(itemname == "Padre"){  this.sendEmailNotificationFather(emailpadre, tramite, std, fechahora, comentario);  }
+            if(itemname == "Madre"){  this.sendEmailNotificationMother(emailmadre, tramite, std, fechahora, comentario);  }
+            if(itemname == "Docente"){  this.sendEmailNotification(nombrecoordinador, email, tramite, std, fechahora, comentario);  }
+            if(itemname == "Directivo Académico"){  this.sendEmailNotificationDirNivel(tramite, std, fechahora, comentario);  }
+            if(itemname == "Administrativo"){  this.sendEmailNotificationAdmon(tramite, std, fechahora, comentario);  }
+        }                
 	},
-    sendEmailNotification: function(nombrecoordinador, correocoordinador, correopadre, correomadre, tramite, std, fechahora, comentario){
-        console.log("->"+correocoordinador+" ->"+correopadre+" ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+    sendEmailNotification: function(nombrecoordinador, correocoordinador, tramite, std, fechahora, comentario){
+        console.log("->"+correocoordinador+" ->"+tramite+" ->"+std+" ->"+fechahora);
         this.tramites_enviarNotificacion.input.setValue("correocoordinador", correocoordinador);
-        this.tramites_enviarNotificacion.input.setValue("correopadre", correopadre);
-        this.tramites_enviarNotificacion.input.setValue("correomadre", correomadre);
         this.tramites_enviarNotificacion.input.setValue("tramite", tramite);
         this.tramites_enviarNotificacion.input.setValue("std", std);
         this.tramites_enviarNotificacion.input.setValue("fechahora", fechahora);
         this.tramites_enviarNotificacion.input.setValue("comentario", comentario);
         this.tramites_enviarNotificacion.update();
+    },   
+    sendEmailNotificationMother: function(correomadre, tramite, std, fechahora, comentario){
+        console.log("Madre ->"+correomadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+        this.tramites_enviarNotificacionMadres.input.setValue("correomadre", correomadre);
+        this.tramites_enviarNotificacionMadres.input.setValue("tramite", tramite);
+        this.tramites_enviarNotificacionMadres.input.setValue("std", std);
+        this.tramites_enviarNotificacionMadres.input.setValue("fechahora", fechahora);
+        this.tramites_enviarNotificacionMadres.input.setValue("comentario", comentario);
+        this.tramites_enviarNotificacionMadres.update();
     }, 
+    sendEmailNotificationFather: function(correopadre, tramite, std, fechahora, comentario){
+        console.log("Padre ->"+correopadre+" ->"+tramite+" ->"+std+" ->"+fechahora);
+        this.tramites_enviarNotificacionPadres.input.setValue("correopadre", correopadre);
+        this.tramites_enviarNotificacionPadres.input.setValue("tramite", tramite);
+        this.tramites_enviarNotificacionPadres.input.setValue("std", std);
+        this.tramites_enviarNotificacionPadres.input.setValue("fechahora", fechahora);
+        this.tramites_enviarNotificacionPadres.input.setValue("comentario", comentario);
+        this.tramites_enviarNotificacionPadres.update();
+    }, 
+    sendEmailNotificationDirNivel: function(tramite, std, fechahora, comentario){
+        this.tramites_enviarDirNivelNotificacion.input.setValue("tramite", tramite);
+        this.tramites_enviarDirNivelNotificacion.input.setValue("std", std);
+        this.tramites_enviarDirNivelNotificacion.input.setValue("fechahora", fechahora);
+        this.tramites_enviarDirNivelNotificacion.input.setValue("comentario", comentario);
+        this.tramites_enviarDirNivelNotificacion.update();
+    }, 
+    sendEmailNotificationAdmon: function(tramite, std, fechahora, comentario){
+        console.log(" ->"+tramite+" ->"+std+" ->"+fechahora);
+        this.tramites_enviarAdmonNotificacion.input.setValue("tramite", tramite);
+        this.tramites_enviarAdmonNotificacion.input.setValue("std", std);
+        this.tramites_enviarAdmonNotificacion.input.setValue("fechahora", fechahora);
+        this.tramites_enviarAdmonNotificacion.input.setValue("comentario", comentario);
+        this.tramites_enviarAdmonNotificacion.update();
+    }, 
+    auxButton1Click: function(inSender) {
+        var tramite = this.AuxTipoTramite.getDisplayValue();
+        var para    = this.referenciadoLookup1.getDisplayValue();   
+        var fecha   = this.fecha_tramiteEditor1.getDisplayValue();
+        var hora    = this.hora_tramiteEditor1.getDisplayValue();
+        var coment  = this.comentariosEditor1.getDisplayValue();
+        
+        var r = confirm("Se creará el trámite con la siguiente información: \n-- "+tramite+"\n-- "+para+"\n-- "+fecha+"\n-- "+hora+"\n-- "+coment+"\n\n¿Confirma la creación del tramite?");
+        if (r == true) {
+            this.tramiteLiveForm1.saveDataIfValid();
+        } else {
+            this.tramiteLiveForm1.cancelEdit();
+        } 
+    },
+    referenciadoLookup1Change: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var id = main.referenciadoLookup1.getDataValue().idPersona;
+        this.tramites_correoCoordinadorLv.filter.setValue("id.personaIdPersona", id);
+        this.tramites_correoPadresLv.filter.setValue("id.idPersona", id);
+        this.tramites_correoCoordinadorLv.update();
+        this.tramites_correoPadresLv.update();
+	},
+    AuxTipoTramiteChange1: function(inSender, inDisplayValue, inDataValue, inSetByCode) {
+        var idtramite = main.AuxTipoTramite.getDataValue().id.tipoTramiteIdTipoTramite;
+        this.tramite_tipo_accion.filter.setValue("id.tipoTramiteIdTipoTramite", idtramite);
+        this.tramite_tipo_accion.update();
+    },
     
 });
