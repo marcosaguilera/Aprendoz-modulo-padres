@@ -30215,7 +30215,7 @@ dojo.declare("Aprendoz_Padres_v2", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha71", 
+	"projectSubVersion": "Alpha72", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"studioVersion": "6.7.0.RELEASE", 
@@ -30336,5 +30336,8 @@ border-radius: 4px;\
 color: #fff;\
 background-color: #428bca !important;\
 border-color: #357ebd !important;\
+}\
+div#main_mensajeTransporteDialog_titleBar {\
+background-color: rgb(235, 235, 235);\
 }\
 ';

@@ -75,12 +75,10 @@ dojo.declare("Main", wm.Page, {
     var tipo_solicitud = this.tipoSolicitudLookup1.getDataValue().idTipoSolicitud;
     var tipo_solicitud_string = this.tipoSolicitudLookup1.getDisplayValue();
     
-    if(tipo== "Temporal"){
-      
+    if(tipo== "Temporal"){      
       //HQL captures
       //Servicio ya cargado, capturo los datos del usuario logueado en el sistema
       //con esto busco que se envie el correo electronico a quien se ha logueado
-      
       var nombre= main.a_getInforUser.getItem(0);
       var n1 = nombre.data.n1;
       var nombre2 = main.a_getInforUser.getItem(0);
@@ -1015,40 +1013,8 @@ dojo.declare("Main", wm.Page, {
 	},
     // selection and validation when the user tries to add a Curse
     // it shows a alert message
-    comunity_button_addClick: function(inSender) {       
-        var idpersona= this.performance_family_grid.selectedItem.data.pid;
-        var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
-        var idsy=5;
-        var json= main.parents_global_currentSy.getItem(0);
-        var idsy= json.data.idsy;
-        //triggering MAXSubscriptions validator
-        main.getMaxEducom.input.setValue("pidsy", idsy);
-        main.getMaxEducom.input.setValue("pideducom", ideducom);
-        main.getMaxEducom.update();
-        //triggering EFA validator
-        this.getEducomEFA.input.setValue("pidsy", idsy);
-        this.getEducomEFA.input.setValue("pidpersona", idpersona); 
-        this.getEducomEFA.update();
-        //triggering EAD validator
-        this.getEducomEAD.input.setValue("pidsy", idsy);
-        this.getEducomEAD.input.setValue("pidpersona", idpersona);
-        this.getEducomEAD.update();
-        //triggering EPD validator
-        this.getEducomEPD.input.setValue("pidsy", idsy);
-        this.getEducomEPD.input.setValue("pidpersona", idpersona);
-        this.getEducomEPD.update(); 
-        //triggering ECR validator
-        this.getEducomECR.input.setValue("pidsy", idsy);
-        this.getEducomECR.input.setValue("pidpersona", idpersona); 
-        this.getEducomECR.update();
-        //triggering OLA validator
-        this.getEducomOLA.input.setValue("pidsy", idsy);
-        this.getEducomOLA.input.setValue("pidpersona", idpersona); 
-        this.getEducomOLA.update();
-        //triggering counter serviceVariable
-        this.getEducomCount.input.setValue("pidsy", idsy);
-        this.getEducomCount.input.setValue("pidpersona", idpersona);         
-        this.getEducomCount.update();
+    comunity_button_addClick: function(inSender) { 
+        this.mensajeTransporteDialog.show();    
 	},    
 	getEducomCountSuccess: function(inSender, inDeprecated) {
         var cupoMax     = main.comunity_costs_grid.selectedItem.getData().cupoMaximo;
@@ -1612,5 +1578,41 @@ dojo.declare("Main", wm.Page, {
         this.tramite_tipo_accion.filter.setValue("id.tipoTramiteIdTipoTramite", idtramite);
         this.tramite_tipo_accion.update();
     },
+    mensajeTransporteContinueDialogClick: function(inSender){
+        this.mensajeTransporteDialog.hide();
+        var idpersona= this.performance_family_grid.selectedItem.data.pid;
+        var ideducom = this.comunity_costs_grid.selectedItem.getData().id;
+        var idsy = 5;
+        var json = main.parents_global_currentSy.getItem(0);
+        var idsy = json.data.idsy;
+        //triggering MAXSubscriptions validator
+        main.getMaxEducom.input.setValue("pidsy", idsy);
+        main.getMaxEducom.input.setValue("pideducom", ideducom);
+        main.getMaxEducom.update();
+        //triggering EFA validator
+        this.getEducomEFA.input.setValue("pidsy", idsy);
+        this.getEducomEFA.input.setValue("pidpersona", idpersona); 
+        this.getEducomEFA.update();
+        //triggering EAD validator
+        this.getEducomEAD.input.setValue("pidsy", idsy);
+        this.getEducomEAD.input.setValue("pidpersona", idpersona);
+        this.getEducomEAD.update();
+        //triggering EPD validator
+        this.getEducomEPD.input.setValue("pidsy", idsy);
+        this.getEducomEPD.input.setValue("pidpersona", idpersona);
+        this.getEducomEPD.update(); 
+        //triggering ECR validator
+        this.getEducomECR.input.setValue("pidsy", idsy);
+        this.getEducomECR.input.setValue("pidpersona", idpersona); 
+        this.getEducomECR.update();
+        //triggering OLA validator
+        this.getEducomOLA.input.setValue("pidsy", idsy);
+        this.getEducomOLA.input.setValue("pidpersona", idpersona); 
+        this.getEducomOLA.update();
+        //triggering counter serviceVariable
+        this.getEducomCount.input.setValue("pidsy", idsy);
+        this.getEducomCount.input.setValue("pidpersona", idpersona);         
+        this.getEducomCount.update();
+    }
     
 });

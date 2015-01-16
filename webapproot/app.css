@@ -102,4 +102,7 @@ div#main_schedule_page_container_schedule_logActivities_titleBar {
     background-color: #428bca !important;
     border-color: #357ebd !important;
 }
+div#main_mensajeTransporteDialog_titleBar {
+    background-color: rgb(235, 235, 235);
+}
 
